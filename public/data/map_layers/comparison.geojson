@@ -1,0 +1,726 @@
+{
+  "type": "FeatureCollection",
+  "name": "comparison",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Ukraine",
+        "iso3": "UKR",
+        "russia_composite": 4.55,
+        "usa_composite": 3.0,
+        "china_composite": null,
+        "highest_actor": "Russia",
+        "score_difference": 1.55,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Mali",
+        "iso3": "MLI",
+        "russia_composite": 4.15,
+        "usa_composite": null,
+        "china_composite": null,
+        "highest_actor": "Russia",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Central African Republic",
+        "iso3": "CAF",
+        "russia_composite": 4.15,
+        "usa_composite": null,
+        "china_composite": null,
+        "highest_actor": "Russia",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Moldova",
+        "iso3": "MDA",
+        "russia_composite": 3.2,
+        "usa_composite": null,
+        "china_composite": null,
+        "highest_actor": "Russia",
+        "score_difference": 0,
+        "dominant_dimension": "election_interference_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Georgia",
+        "iso3": "GEO",
+        "russia_composite": 3.0,
+        "usa_composite": null,
+        "china_composite": null,
+        "highest_actor": "Russia",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Serbia",
+        "iso3": "SRB",
+        "russia_composite": 2.8,
+        "usa_composite": 3.0,
+        "china_composite": 2.0,
+        "highest_actor": "USA",
+        "score_difference": 0.2,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Hungary",
+        "iso3": "HUN",
+        "russia_composite": 2.35,
+        "usa_composite": null,
+        "china_composite": 1.63,
+        "highest_actor": "Russia",
+        "score_difference": 0.72,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Slovakia",
+        "iso3": "SVK",
+        "russia_composite": 2.05,
+        "usa_composite": null,
+        "china_composite": null,
+        "highest_actor": "Russia",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "United States",
+        "iso3": "USA",
+        "russia_composite": 2.6,
+        "usa_composite": null,
+        "china_composite": 2.5,
+        "highest_actor": "Russia",
+        "score_difference": 0.1,
+        "dominant_dimension": "election_interference_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "France",
+        "iso3": "FRA",
+        "russia_composite": 1.55,
+        "usa_composite": null,
+        "china_composite": null,
+        "highest_actor": "Russia",
+        "score_difference": 0,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Germany",
+        "iso3": "DEU",
+        "russia_composite": 1.75,
+        "usa_composite": 2.5,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0.75,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Spain",
+        "iso3": "ESP",
+        "russia_composite": 1.25,
+        "usa_composite": null,
+        "china_composite": null,
+        "highest_actor": "Russia",
+        "score_difference": 0,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Lithuania",
+        "iso3": "LTU",
+        "russia_composite": 1.55,
+        "usa_composite": null,
+        "china_composite": null,
+        "highest_actor": "Russia",
+        "score_difference": 0,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Syria",
+        "iso3": "SYR",
+        "russia_composite": 2.95,
+        "usa_composite": 3.0,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0.05,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Iraq",
+        "iso3": "IRQ",
+        "russia_composite": null,
+        "usa_composite": 4.0,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Afghanistan",
+        "iso3": "AFG",
+        "russia_composite": null,
+        "usa_composite": 4.0,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "pmc_psc_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Israel",
+        "iso3": "ISR",
+        "russia_composite": null,
+        "usa_composite": 2.5,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Japan",
+        "iso3": "JPN",
+        "russia_composite": null,
+        "usa_composite": 2.5,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "South Korea",
+        "iso3": "KOR",
+        "russia_composite": null,
+        "usa_composite": 2.5,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Philippines",
+        "iso3": "PHL",
+        "russia_composite": null,
+        "usa_composite": 2.25,
+        "china_composite": 2.25,
+        "highest_actor": "USA",
+        "score_difference": 0.0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Colombia",
+        "iso3": "COL",
+        "russia_composite": null,
+        "usa_composite": 2.5,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Nicaragua",
+        "iso3": "NIC",
+        "russia_composite": null,
+        "usa_composite": 2.75,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "election_interference_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Chile",
+        "iso3": "CHL",
+        "russia_composite": null,
+        "usa_composite": 2.25,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "election_interference_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Italy",
+        "iso3": "ITA",
+        "russia_composite": null,
+        "usa_composite": 2.75,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "election_interference_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Guatemala",
+        "iso3": "GTM",
+        "russia_composite": null,
+        "usa_composite": 3.25,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "election_interference_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Venezuela",
+        "iso3": "VEN",
+        "russia_composite": null,
+        "usa_composite": 2.5,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Iran",
+        "iso3": "IRN",
+        "russia_composite": null,
+        "usa_composite": 2.5,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Cuba",
+        "iso3": "CUB",
+        "russia_composite": null,
+        "usa_composite": 2.75,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Qatar",
+        "iso3": "QAT",
+        "russia_composite": null,
+        "usa_composite": 2.5,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Djibouti",
+        "iso3": "DJI",
+        "russia_composite": null,
+        "usa_composite": 2.25,
+        "china_composite": null,
+        "highest_actor": "USA",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Taiwan",
+        "iso3": "TWN",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 3.5,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Pakistan",
+        "iso3": "PAK",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 3.38,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Cambodia",
+        "iso3": "KHM",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 3.0,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Myanmar",
+        "iso3": "MMR",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 3.38,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Solomon Islands",
+        "iso3": "SLB",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 3.0,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Laos",
+        "iso3": "LAO",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.5,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Sri Lanka",
+        "iso3": "LKA",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.25,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Kenya",
+        "iso3": "KEN",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.88,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Ethiopia",
+        "iso3": "ETH",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.75,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Nigeria",
+        "iso3": "NGA",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.88,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "South Africa",
+        "iso3": "ZAF",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.38,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Kazakhstan",
+        "iso3": "KAZ",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.63,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Tajikistan",
+        "iso3": "TJK",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.38,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Kyrgyzstan",
+        "iso3": "KGZ",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.25,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Canada",
+        "iso3": "CAN",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.38,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "election_interference_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Australia",
+        "iso3": "AUS",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.25,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "United Kingdom",
+        "iso3": "GBR",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.25,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "propaganda_score",
+        "has_data": true
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": null,
+      "properties": {
+        "country": "Peru",
+        "iso3": "PER",
+        "russia_composite": null,
+        "usa_composite": null,
+        "china_composite": 2.13,
+        "highest_actor": "China",
+        "score_difference": 0,
+        "dominant_dimension": "influence_score",
+        "has_data": true
+      }
+    }
+  ]
+}

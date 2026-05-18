@@ -1,0 +1,426 @@
+{
+  "type": "FeatureCollection",
+  "name": "russia",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.0,
+          49.0
+        ]
+      },
+      "properties": {
+        "country": "Ukraine",
+        "iso3": "UKR",
+        "region": "Europe",
+        "actor": "Russia",
+        "composite_score": 4.55,
+        "influence_score": 5,
+        "pmc_psc_score": 4.0,
+        "propaganda_score": 5,
+        "election_interference_score": 4.0,
+        "confidence_score": 0.76,
+        "confidence_band": "Medium",
+        "map_color": "#A63603",
+        "map_opacity": 0.75,
+        "latitude": 49.0,
+        "longitude": 31.0,
+        "short_rationale": "High influence score reflects direct coercive control in occupied territories, not normal peacetime influence.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.9,
+          17.5
+        ]
+      },
+      "properties": {
+        "country": "Mali",
+        "iso3": "MLI",
+        "region": "Africa",
+        "actor": "Russia",
+        "composite_score": 4.15,
+        "influence_score": 5,
+        "pmc_psc_score": 5,
+        "propaganda_score": 4.0,
+        "election_interference_score": 2.0,
+        "confidence_score": 0.84,
+        "confidence_band": "High",
+        "map_color": "#A63603",
+        "map_opacity": 1,
+        "latitude": 17.5,
+        "longitude": -3.9,
+        "short_rationale": "Election score should be revisited with country-specific electoral-cycle evidence.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          20.9,
+          6.6
+        ]
+      },
+      "properties": {
+        "country": "Central African Republic",
+        "iso3": "CAF",
+        "region": "Africa",
+        "actor": "Russia",
+        "composite_score": 4.15,
+        "influence_score": 5,
+        "pmc_psc_score": 5,
+        "propaganda_score": 4.0,
+        "election_interference_score": 2.0,
+        "confidence_score": 0.84,
+        "confidence_band": "High",
+        "map_color": "#A63603",
+        "map_opacity": 1,
+        "latitude": 6.6,
+        "longitude": 20.9,
+        "short_rationale": "Election score should be revisited with country-specific electoral-cycle evidence.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          28.3699,
+          47.4116
+        ]
+      },
+      "properties": {
+        "country": "Moldova",
+        "iso3": "MDA",
+        "region": "Europe",
+        "actor": "Russia",
+        "composite_score": 3.2,
+        "influence_score": 4.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 5,
+        "confidence_score": 0.84,
+        "confidence_band": "High",
+        "map_color": "#F16913",
+        "map_opacity": 1,
+        "latitude": 47.4116,
+        "longitude": 28.3699,
+        "short_rationale": "No confirmed PMC channel in cited ResurgamHub source.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.3569,
+          42.3154
+        ]
+      },
+      "properties": {
+        "country": "Georgia",
+        "iso3": "GEO",
+        "region": "Europe/Caucasus",
+        "actor": "Russia",
+        "composite_score": 3.0,
+        "influence_score": 4.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 4.0,
+        "confidence_score": 0.82,
+        "confidence_band": "High",
+        "map_color": "#F16913",
+        "map_opacity": 1,
+        "latitude": 42.3154,
+        "longitude": 43.3569,
+        "short_rationale": "PMC score remains zero because cited evidence focuses on military occupation/hybrid coercion rather than PMCs.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.0,
+          44.0
+        ]
+      },
+      "properties": {
+        "country": "Serbia",
+        "iso3": "SRB",
+        "region": "Europe",
+        "actor": "Russia",
+        "composite_score": 2.8,
+        "influence_score": 4.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 3.0,
+        "confidence_score": 0.86,
+        "confidence_band": "High",
+        "map_color": "#FDAE6B",
+        "map_opacity": 1,
+        "latitude": 44.0,
+        "longitude": 21.0,
+        "short_rationale": "Election score reflects vulnerability and influence channels, not proof of a completed Russian operation in a specific election.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.5033,
+          47.1625
+        ]
+      },
+      "properties": {
+        "country": "Hungary",
+        "iso3": "HUN",
+        "region": "Europe",
+        "actor": "Russia",
+        "composite_score": 2.35,
+        "influence_score": 4.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 2.0,
+        "confidence_score": 0.83,
+        "confidence_band": "High",
+        "map_color": "#FDAE6B",
+        "map_opacity": 1,
+        "latitude": 47.1625,
+        "longitude": 19.5033,
+        "short_rationale": "Election score captures structural advantages and influence-friendly political financing, not a direct ballot-hack case.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.699,
+          48.669
+        ]
+      },
+      "properties": {
+        "country": "Slovakia",
+        "iso3": "SVK",
+        "region": "Europe",
+        "actor": "Russia",
+        "composite_score": 2.05,
+        "influence_score": 3.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 2.0,
+        "confidence_score": 0.72,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 48.669,
+        "longitude": 19.699,
+        "short_rationale": "Moderate confidence because sources are regional and narrative-focused rather than a dedicated Slovakia scorecard.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -98.6,
+          39.8
+        ]
+      },
+      "properties": {
+        "country": "United States",
+        "iso3": "USA",
+        "region": "North America",
+        "actor": "Russia",
+        "composite_score": 2.6,
+        "influence_score": 2.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 5,
+        "confidence_score": 0.7,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 39.8,
+        "longitude": -98.6,
+        "short_rationale": "Structural Russian influence is scored lower than election/propganda interference.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          2.2,
+          46.5
+        ]
+      },
+      "properties": {
+        "country": "France",
+        "iso3": "FRA",
+        "region": "Europe",
+        "actor": "Russia",
+        "composite_score": 1.55,
+        "influence_score": 2.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.82,
+        "confidence_band": "High",
+        "map_color": "#ADDD8E",
+        "map_opacity": 1,
+        "latitude": 46.5,
+        "longitude": 2.2,
+        "short_rationale": "Score is limited because the French media landscape was assessed as mostly accurate overall.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.0,
+          51.0
+        ]
+      },
+      "properties": {
+        "country": "Germany",
+        "iso3": "DEU",
+        "region": "Europe",
+        "actor": "Russia",
+        "composite_score": 1.75,
+        "influence_score": 2.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 2.0,
+        "confidence_score": 0.68,
+        "confidence_band": "Medium",
+        "map_color": "#ADDD8E",
+        "map_opacity": 0.75,
+        "latitude": 51.0,
+        "longitude": 10.0,
+        "short_rationale": "Medium confidence because the cited source is an EU/Russian-House analysis, not a full Germany profile.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.7038,
+          40.4168
+        ]
+      },
+      "properties": {
+        "country": "Spain",
+        "iso3": "ESP",
+        "region": "Europe",
+        "actor": "Russia",
+        "composite_score": 1.25,
+        "influence_score": 1.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.88,
+        "confidence_band": "High",
+        "map_color": "#ADDD8E",
+        "map_opacity": 1,
+        "latitude": 40.4168,
+        "longitude": -3.7038,
+        "short_rationale": "High confidence for propaganda ecosystem; low scores for PMC and election interference due to lack of country-specific evidence in cited material.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          23.8813,
+          55.1694
+        ]
+      },
+      "properties": {
+        "country": "Lithuania",
+        "iso3": "LTU",
+        "region": "Europe",
+        "actor": "Russia",
+        "composite_score": 1.55,
+        "influence_score": 2.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.8,
+        "confidence_band": "High",
+        "map_color": "#ADDD8E",
+        "map_opacity": 1,
+        "latitude": 55.1694,
+        "longitude": 23.8813,
+        "short_rationale": "No direct PMC or election-interference evidence in cited source.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.5,
+          35.0
+        ]
+      },
+      "properties": {
+        "country": "Syria",
+        "iso3": "SYR",
+        "region": "Middle East",
+        "actor": "Russia",
+        "composite_score": 2.95,
+        "influence_score": 4.0,
+        "pmc_psc_score": 5,
+        "propaganda_score": 2.0,
+        "election_interference_score": 0,
+        "confidence_score": 0.45,
+        "confidence_band": "Low",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.45,
+        "latitude": 35.0,
+        "longitude": 38.5,
+        "short_rationale": "Needs a Syria-specific ResurgamHub or external source pack before public release.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    }
+  ]
+}

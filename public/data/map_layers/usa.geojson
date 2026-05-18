@@ -1,0 +1,606 @@
+{
+  "type": "FeatureCollection",
+  "name": "usa",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          43.6793,
+          33.2232
+        ]
+      },
+      "properties": {
+        "country": "Iraq",
+        "iso3": "IRQ",
+        "region": "Middle East / West Asia",
+        "actor": "USA",
+        "composite_score": 4.0,
+        "influence_score": 5,
+        "pmc_psc_score": 5,
+        "propaganda_score": 4.0,
+        "election_interference_score": 2.0,
+        "confidence_score": 0.8,
+        "confidence_band": "High",
+        "map_color": "#F16913",
+        "map_opacity": 1,
+        "latitude": 33.2232,
+        "longitude": 43.6793,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          38.9968,
+          34.8021
+        ]
+      },
+      "properties": {
+        "country": "Syria",
+        "iso3": "SYR",
+        "region": "Middle East / West Asia",
+        "actor": "USA",
+        "composite_score": 3.0,
+        "influence_score": 4.0,
+        "pmc_psc_score": 4.0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.79,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 34.8021,
+        "longitude": 38.9968,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          67.71,
+          33.9391
+        ]
+      },
+      "properties": {
+        "country": "Afghanistan",
+        "iso3": "AFG",
+        "region": "Central Asia / South Asia",
+        "actor": "USA",
+        "composite_score": 4.0,
+        "influence_score": 4.0,
+        "pmc_psc_score": 5,
+        "propaganda_score": 4.0,
+        "election_interference_score": 3.0,
+        "confidence_score": 0.73,
+        "confidence_band": "Medium",
+        "map_color": "#F16913",
+        "map_opacity": 0.75,
+        "latitude": 33.9391,
+        "longitude": 67.71,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          31.1656,
+          48.3794
+        ]
+      },
+      "properties": {
+        "country": "Ukraine",
+        "iso3": "UKR",
+        "region": "Eastern Europe",
+        "actor": "USA",
+        "composite_score": 3.0,
+        "influence_score": 5,
+        "pmc_psc_score": 2.0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.75,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 48.3794,
+        "longitude": 31.1656,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          34.8516,
+          31.0461
+        ]
+      },
+      "properties": {
+        "country": "Israel",
+        "iso3": "ISR",
+        "region": "Middle East / West Asia",
+        "actor": "USA",
+        "composite_score": 2.5,
+        "influence_score": 5,
+        "pmc_psc_score": 2.0,
+        "propaganda_score": 2.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.73,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 31.0461,
+        "longitude": 34.8516,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          138.2529,
+          36.2048
+        ]
+      },
+      "properties": {
+        "country": "Japan",
+        "iso3": "JPN",
+        "region": "East Asia",
+        "actor": "USA",
+        "composite_score": 2.5,
+        "influence_score": 5,
+        "pmc_psc_score": 3.0,
+        "propaganda_score": 1.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.76,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 36.2048,
+        "longitude": 138.2529,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          127.7669,
+          35.9078
+        ]
+      },
+      "properties": {
+        "country": "South Korea",
+        "iso3": "KOR",
+        "region": "East Asia",
+        "actor": "USA",
+        "composite_score": 2.5,
+        "influence_score": 5,
+        "pmc_psc_score": 3.0,
+        "propaganda_score": 1.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.76,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 35.9078,
+        "longitude": 127.7669,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.4515,
+          51.1657
+        ]
+      },
+      "properties": {
+        "country": "Germany",
+        "iso3": "DEU",
+        "region": "Europe",
+        "actor": "USA",
+        "composite_score": 2.5,
+        "influence_score": 4.0,
+        "pmc_psc_score": 3.0,
+        "propaganda_score": 2.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.76,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 51.1657,
+        "longitude": 10.4515,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.774,
+          12.8797
+        ]
+      },
+      "properties": {
+        "country": "Philippines",
+        "iso3": "PHL",
+        "region": "Southeast Asia",
+        "actor": "USA",
+        "composite_score": 2.25,
+        "influence_score": 4.0,
+        "pmc_psc_score": 2.0,
+        "propaganda_score": 2.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.73,
+        "confidence_band": "Medium",
+        "map_color": "#ADDD8E",
+        "map_opacity": 0.75,
+        "latitude": 12.8797,
+        "longitude": 121.774,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -74.2973,
+          4.5709
+        ]
+      },
+      "properties": {
+        "country": "Colombia",
+        "iso3": "COL",
+        "region": "South America",
+        "actor": "USA",
+        "composite_score": 2.5,
+        "influence_score": 4.0,
+        "pmc_psc_score": 3.0,
+        "propaganda_score": 2.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.76,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 4.5709,
+        "longitude": -74.2973,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.0059,
+          44.0165
+        ]
+      },
+      "properties": {
+        "country": "Serbia",
+        "iso3": "SRB",
+        "region": "Europe / Balkans",
+        "actor": "USA",
+        "composite_score": 3.0,
+        "influence_score": 3.0,
+        "pmc_psc_score": 1.0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 4.0,
+        "confidence_score": 0.75,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 44.0165,
+        "longitude": 21.0059,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -85.2072,
+          12.8654
+        ]
+      },
+      "properties": {
+        "country": "Nicaragua",
+        "iso3": "NIC",
+        "region": "Central America",
+        "actor": "USA",
+        "composite_score": 2.75,
+        "influence_score": 3.0,
+        "pmc_psc_score": 1.0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 4.0,
+        "confidence_score": 0.75,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 12.8654,
+        "longitude": -85.2072,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -71.543,
+          -35.6751
+        ]
+      },
+      "properties": {
+        "country": "Chile",
+        "iso3": "CHL",
+        "region": "South America",
+        "actor": "USA",
+        "composite_score": 2.25,
+        "influence_score": 2.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 2.0,
+        "election_interference_score": 5,
+        "confidence_score": 0.71,
+        "confidence_band": "Medium",
+        "map_color": "#ADDD8E",
+        "map_opacity": 0.75,
+        "latitude": -35.6751,
+        "longitude": -71.543,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.5674,
+          41.8719
+        ]
+      },
+      "properties": {
+        "country": "Italy",
+        "iso3": "ITA",
+        "region": "Europe",
+        "actor": "USA",
+        "composite_score": 2.75,
+        "influence_score": 3.0,
+        "pmc_psc_score": 1.0,
+        "propaganda_score": 2.0,
+        "election_interference_score": 5,
+        "confidence_score": 0.74,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 41.8719,
+        "longitude": 12.5674,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -90.2308,
+          15.7835
+        ]
+      },
+      "properties": {
+        "country": "Guatemala",
+        "iso3": "GTM",
+        "region": "Central America",
+        "actor": "USA",
+        "composite_score": 3.25,
+        "influence_score": 3.0,
+        "pmc_psc_score": 1.0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 5,
+        "confidence_score": 0.75,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 15.7835,
+        "longitude": -90.2308,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -66.5897,
+          6.4238
+        ]
+      },
+      "properties": {
+        "country": "Venezuela",
+        "iso3": "VEN",
+        "region": "South America",
+        "actor": "USA",
+        "composite_score": 2.5,
+        "influence_score": 4.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 3.0,
+        "confidence_score": 0.74,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 6.4238,
+        "longitude": -66.5897,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          53.688,
+          32.4279
+        ]
+      },
+      "properties": {
+        "country": "Iran",
+        "iso3": "IRN",
+        "region": "Middle East / West Asia",
+        "actor": "USA",
+        "composite_score": 2.5,
+        "influence_score": 2.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 4.0,
+        "confidence_score": 0.73,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 32.4279,
+        "longitude": 53.688,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.7812,
+          21.5218
+        ]
+      },
+      "properties": {
+        "country": "Cuba",
+        "iso3": "CUB",
+        "region": "Caribbean",
+        "actor": "USA",
+        "composite_score": 2.75,
+        "influence_score": 3.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 5,
+        "election_interference_score": 3.0,
+        "confidence_score": 0.74,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 21.5218,
+        "longitude": -77.7812,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          51.1839,
+          25.3548
+        ]
+      },
+      "properties": {
+        "country": "Qatar",
+        "iso3": "QAT",
+        "region": "Middle East / West Asia",
+        "actor": "USA",
+        "composite_score": 2.5,
+        "influence_score": 4.0,
+        "pmc_psc_score": 4.0,
+        "propaganda_score": 2.0,
+        "election_interference_score": 0,
+        "confidence_score": 0.76,
+        "confidence_band": "Medium",
+        "map_color": "#FDAE6B",
+        "map_opacity": 0.75,
+        "latitude": 25.3548,
+        "longitude": 51.1839,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          42.5903,
+          11.8251
+        ]
+      },
+      "properties": {
+        "country": "Djibouti",
+        "iso3": "DJI",
+        "region": "Horn of Africa",
+        "actor": "USA",
+        "composite_score": 2.25,
+        "influence_score": 4.0,
+        "pmc_psc_score": 3.0,
+        "propaganda_score": 2.0,
+        "election_interference_score": 0,
+        "confidence_score": 0.76,
+        "confidence_band": "Medium",
+        "map_color": "#ADDD8E",
+        "map_opacity": 0.75,
+        "latitude": 11.8251,
+        "longitude": 42.5903,
+        "short_rationale": "",
+        "caveats": "",
+        "last_updated": ""
+      }
+    }
+  ]
+}

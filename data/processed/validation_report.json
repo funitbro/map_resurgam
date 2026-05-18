@@ -1,0 +1,14 @@
+{
+  "severe_count": 0,
+  "warning_count": 7,
+  "severe": [],
+  "warnings": [
+    "Russia / Mali: composite 4.15 differs from dimension average 4.0.",
+    "Russia / Central African Republic: composite 4.15 differs from dimension average 4.0.",
+    "Russia / Syria: composite 2.95 differs from dimension average 2.75.",
+    "Evidence reliability should be High, Medium, or Low: Medium-High",
+    "Evidence reliability should be High, Medium, or Low: Medium-High",
+    "Evidence reliability should be High, Medium, or Low: Medium-High",
+    "Evidence reliability should be High, Medium, or Low: Analyst"
+  ]
+}

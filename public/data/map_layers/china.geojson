@@ -1,0 +1,666 @@
+{
+  "type": "FeatureCollection",
+  "name": "china",
+  "features": [
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          120.9605,
+          23.6978
+        ]
+      },
+      "properties": {
+        "country": "Taiwan",
+        "iso3": "TWN",
+        "region": "East Asia",
+        "actor": "China",
+        "composite_score": 3.5,
+        "influence_score": 4.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 5,
+        "election_interference_score": 5,
+        "confidence_score": 0.9,
+        "confidence_band": "High",
+        "map_color": "#DC2626",
+        "map_opacity": 0.85,
+        "latitude": 23.6978,
+        "longitude": 120.9605,
+        "short_rationale": "Highest election/interference score: Microsoft documents Storm-1376/Spamouflage AI content around Taiwan's 2024 elections; FH rates PRC media influence very high. No verified PRC PSC/PMC footprint on Taiwan.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          69.3451,
+          30.3753
+        ]
+      },
+      "properties": {
+        "country": "Pakistan",
+        "iso3": "PAK",
+        "region": "South Asia",
+        "actor": "China",
+        "composite_score": 3.38,
+        "influence_score": 5,
+        "pmc_psc_score": 4.0,
+        "propaganda_score": 3.5,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.82,
+        "confidence_band": "High",
+        "map_color": "#DC2626",
+        "map_opacity": 0.8,
+        "latitude": 30.3753,
+        "longitude": 69.3451,
+        "short_rationale": "China Index ranks Pakistan most exposed to PRC influence; Reuters reports Beijing pushed for a joint security role to protect Chinese nationals and CPEC projects. Election interference evidence is not strong in this pass.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          104.991,
+          12.5657
+        ]
+      },
+      "properties": {
+        "country": "Cambodia",
+        "iso3": "KHM",
+        "region": "Southeast Asia",
+        "actor": "China",
+        "composite_score": 3.0,
+        "influence_score": 5,
+        "pmc_psc_score": 2.0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 2.0,
+        "confidence_score": 0.76,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.77,
+        "latitude": 12.5657,
+        "longitude": 104.991,
+        "short_rationale": "China Index ranks Cambodia near the top; Chinese MOD/Xinhua confirms a joint logistics and training center at Ream Naval Base. Domestic election score remains moderate because evidence is mostly influence/elite dependency, not direct PRC vote manipulation.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          95.956,
+          21.9162
+        ]
+      },
+      "properties": {
+        "country": "Myanmar",
+        "iso3": "MMR",
+        "region": "Southeast Asia",
+        "actor": "China",
+        "composite_score": 3.38,
+        "influence_score": 4.5,
+        "pmc_psc_score": 4.0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 2.0,
+        "confidence_score": 0.65,
+        "confidence_band": "Medium",
+        "map_color": "#DC2626",
+        "map_opacity": 0.71,
+        "latitude": 21.9162,
+        "longitude": 95.956,
+        "short_rationale": "Scored high for leverage and security contractor risk based on CMEC/BRI security needs and reporting on Chinese security arrangements; confidence discounted because open-source evidence on PSC deployment is less standardized.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          160.1562,
+          -9.6457
+        ]
+      },
+      "properties": {
+        "country": "Solomon Islands",
+        "iso3": "SLB",
+        "region": "Pacific",
+        "actor": "China",
+        "composite_score": 3.0,
+        "influence_score": 4.0,
+        "pmc_psc_score": 3.0,
+        "propaganda_score": 2.5,
+        "election_interference_score": 2.5,
+        "confidence_score": 0.72,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.75,
+        "latitude": -9.6457,
+        "longitude": 160.1562,
+        "short_rationale": "Reuters documents Chinese security presence after the 2022 pact and competition with Australia. Election/political-process score is moderate because influence over security and coalitions is visible, while direct vote manipulation evidence is limited.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          102.4955,
+          19.8563
+        ]
+      },
+      "properties": {
+        "country": "Laos",
+        "iso3": "LAO",
+        "region": "Southeast Asia",
+        "actor": "China",
+        "composite_score": 2.5,
+        "influence_score": 5,
+        "pmc_psc_score": 1.0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.65,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.71,
+        "latitude": 19.8563,
+        "longitude": 102.4955,
+        "short_rationale": "High economic and infrastructure leverage via BRI/debt exposure. Election interference score is low because Laos is a one-party system and sources reviewed do not show PRC election-targeting.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          80.7718,
+          7.8731
+        ]
+      },
+      "properties": {
+        "country": "Sri Lanka",
+        "iso3": "LKA",
+        "region": "South Asia",
+        "actor": "China",
+        "composite_score": 2.25,
+        "influence_score": 4.0,
+        "pmc_psc_score": 1.0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.62,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.69,
+        "latitude": 7.8731,
+        "longitude": 80.7718,
+        "short_rationale": "Economic and strategic infrastructure influence is prominent. PSC and election scores remain low pending stronger country-specific verified evidence.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          37.9062,
+          -0.0236
+        ]
+      },
+      "properties": {
+        "country": "Kenya",
+        "iso3": "KEN",
+        "region": "East Africa",
+        "actor": "China",
+        "composite_score": 2.88,
+        "influence_score": 3.5,
+        "pmc_psc_score": 3.0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.78,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.78,
+        "latitude": -0.0236,
+        "longitude": 37.9062,
+        "short_rationale": "Freedom House rates Beijing media influence in Kenya high; Carnegie describes Chinese security contractors protecting railways/mines/construction projects in Africa. Election score remains low.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          40.4897,
+          9.145
+        ]
+      },
+      "properties": {
+        "country": "Ethiopia",
+        "iso3": "ETH",
+        "region": "East Africa",
+        "actor": "China",
+        "composite_score": 2.75,
+        "influence_score": 4.0,
+        "pmc_psc_score": 3.0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.62,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.69,
+        "latitude": 9.145,
+        "longitude": 40.4897,
+        "short_rationale": "High economic leverage and regional PSC risk; confidence discounted because propaganda/election evidence is less country-specific than for FH case-study countries.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          8.6753,
+          9.082
+        ]
+      },
+      "properties": {
+        "country": "Nigeria",
+        "iso3": "NGA",
+        "region": "West Africa",
+        "actor": "China",
+        "composite_score": 2.88,
+        "influence_score": 3.5,
+        "pmc_psc_score": 2.0,
+        "propaganda_score": 5,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.74,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.76,
+        "latitude": 9.082,
+        "longitude": 8.6753,
+        "short_rationale": "Freedom House rates Beijing media influence very high in Nigeria. PSC score is moderate based on wider Africa contractor footprint, not a strong country-only record in this pass.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          22.9375,
+          -30.5595
+        ]
+      },
+      "properties": {
+        "country": "South Africa",
+        "iso3": "ZAF",
+        "region": "Southern Africa",
+        "actor": "China",
+        "composite_score": 2.38,
+        "influence_score": 3.5,
+        "pmc_psc_score": 1.0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.76,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.77,
+        "latitude": -30.5595,
+        "longitude": 22.9375,
+        "short_rationale": "China Index ranks South Africa highly, and Freedom House rates media influence high. No strong verified Chinese PSC/election interference case in this pass.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          66.9237,
+          48.0196
+        ]
+      },
+      "properties": {
+        "country": "Kazakhstan",
+        "iso3": "KAZ",
+        "region": "Central Asia",
+        "actor": "China",
+        "composite_score": 2.63,
+        "influence_score": 4.0,
+        "pmc_psc_score": 2.5,
+        "propaganda_score": 3.0,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.68,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.72,
+        "latitude": 48.0196,
+        "longitude": 66.9237,
+        "short_rationale": "USIP and Carnegie document expanded Chinese security cooperation and PSC emergence in Central Asia; country-level PSC scoring is moderate due shared regional evidence.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          71.2761,
+          38.861
+        ]
+      },
+      "properties": {
+        "country": "Tajikistan",
+        "iso3": "TJK",
+        "region": "Central Asia",
+        "actor": "China",
+        "composite_score": 2.38,
+        "influence_score": 4.0,
+        "pmc_psc_score": 2.0,
+        "propaganda_score": 2.5,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.65,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.71,
+        "latitude": 38.861,
+        "longitude": 71.2761,
+        "short_rationale": "High China Index exposure and China-linked regional security activity; PSC and propaganda evidence treated as regional rather than country-specific.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          74.7661,
+          41.2044
+        ]
+      },
+      "properties": {
+        "country": "Kyrgyzstan",
+        "iso3": "KGZ",
+        "region": "Central Asia",
+        "actor": "China",
+        "composite_score": 2.25,
+        "influence_score": 3.5,
+        "pmc_psc_score": 2.0,
+        "propaganda_score": 2.5,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.62,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.69,
+        "latitude": 41.2044,
+        "longitude": 74.7661,
+        "short_rationale": "China Index and Central Asia PSC studies support moderate-high influence and PSC risk; little verified election interference evidence in this pass.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          121.774,
+          12.8797
+        ]
+      },
+      "properties": {
+        "country": "Philippines",
+        "iso3": "PHL",
+        "region": "Southeast Asia",
+        "actor": "China",
+        "composite_score": 2.25,
+        "influence_score": 3.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 2.0,
+        "confidence_score": 0.78,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.78,
+        "latitude": 12.8797,
+        "longitude": 121.774,
+        "short_rationale": "Freedom House rates Beijing media influence high; Microsoft tracks regional CCP-linked influence operations. No meaningful PRC PSC score; election score is moderate for political/disinformation pressure.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -106.3468,
+          56.1304
+        ]
+      },
+      "properties": {
+        "country": "Canada",
+        "iso3": "CAN",
+        "region": "North America",
+        "actor": "China",
+        "composite_score": 2.38,
+        "influence_score": 2.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 3.5,
+        "election_interference_score": 4.0,
+        "confidence_score": 0.82,
+        "confidence_band": "High",
+        "map_color": "#F97316",
+        "map_opacity": 0.8,
+        "latitude": 56.1304,
+        "longitude": -106.3468,
+        "short_rationale": "Canada's Hogue inquiry examined PRC and other foreign interference in the 2019/2021 elections. High election score, but not a score for changed national election outcomes.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          133.7751,
+          -25.2744
+        ]
+      },
+      "properties": {
+        "country": "Australia",
+        "iso3": "AUS",
+        "region": "Oceania",
+        "actor": "China",
+        "composite_score": 2.25,
+        "influence_score": 2.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 4.0,
+        "election_interference_score": 3.0,
+        "confidence_score": 0.72,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.75,
+        "latitude": -25.2744,
+        "longitude": 133.7751,
+        "short_rationale": "China Index ranks Australia highly and Freedom House rates PRC media influence high. Election score is conservative because this pass found more broad foreign interference evidence than direct election-operation evidence.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -95.7129,
+          37.0902
+        ]
+      },
+      "properties": {
+        "country": "United States",
+        "iso3": "USA",
+        "region": "North America",
+        "actor": "China",
+        "composite_score": 2.5,
+        "influence_score": 2.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 5,
+        "election_interference_score": 3.0,
+        "confidence_score": 0.78,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.78,
+        "latitude": 37.0902,
+        "longitude": -95.7129,
+        "short_rationale": "Freedom House rates PRC media influence very high; Microsoft/Graphika/ODNI sources point to election-related influence operations but not voting-system control.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -3.436,
+          55.3781
+        ]
+      },
+      "properties": {
+        "country": "United Kingdom",
+        "iso3": "GBR",
+        "region": "Europe",
+        "actor": "China",
+        "composite_score": 2.25,
+        "influence_score": 2.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 5,
+        "election_interference_score": 2.0,
+        "confidence_score": 0.72,
+        "confidence_band": "Medium",
+        "map_color": "#F97316",
+        "map_opacity": 0.75,
+        "latitude": 55.3781,
+        "longitude": -3.436,
+        "short_rationale": "Freedom House rates PRC media influence very high. Election score lower than Canada due less direct election-specific evidence in this pass.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          21.0059,
+          44.0165
+        ]
+      },
+      "properties": {
+        "country": "Serbia",
+        "iso3": "SRB",
+        "region": "Europe",
+        "actor": "China",
+        "composite_score": 2.0,
+        "influence_score": 3.5,
+        "pmc_psc_score": 0,
+        "propaganda_score": 3.0,
+        "election_interference_score": 1.5,
+        "confidence_score": 0.65,
+        "confidence_band": "Medium",
+        "map_color": "#FACC15",
+        "map_opacity": 0.71,
+        "latitude": 44.0165,
+        "longitude": 21.0059,
+        "short_rationale": "China Index/BRI-linked influence evidence supports a medium-high leverage score; no verified Chinese PSC footprint or direct election interference located in this pass.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          19.5033,
+          47.1625
+        ]
+      },
+      "properties": {
+        "country": "Hungary",
+        "iso3": "HUN",
+        "region": "Europe",
+        "actor": "China",
+        "composite_score": 1.63,
+        "influence_score": 3.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 2.5,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.58,
+        "confidence_band": "Low",
+        "map_color": "#FACC15",
+        "map_opacity": 0.67,
+        "latitude": 47.1625,
+        "longitude": 19.5033,
+        "short_rationale": "Influence score reflects strategic-economic exposure and China Index data. Confidence discounted because Hungary's current political context should be refreshed separately after 2026 political changes.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    },
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -75.0152,
+          -9.19
+        ]
+      },
+      "properties": {
+        "country": "Peru",
+        "iso3": "PER",
+        "region": "South America",
+        "actor": "China",
+        "composite_score": 2.13,
+        "influence_score": 4.0,
+        "pmc_psc_score": 0,
+        "propaganda_score": 3.5,
+        "election_interference_score": 1.0,
+        "confidence_score": 0.6,
+        "confidence_band": "Medium",
+        "map_color": "#FACC15",
+        "map_opacity": 0.68,
+        "latitude": -9.19,
+        "longitude": -75.0152,
+        "short_rationale": "China Index places Peru in the top tier for PRC influence. PMC/PSC and election scores remain low until stronger country-specific evidence is added.",
+        "caveats": "",
+        "last_updated": ""
+      }
+    }
+  ]
+}
