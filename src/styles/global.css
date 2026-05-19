@@ -466,6 +466,56 @@ select:focus-visible,
   color: #fecaca;
 }
 
+.empty-overlay {
+  position: absolute;
+  top: 184px;
+  left: 50%;
+  z-index: 760;
+  display: grid;
+  gap: 10px;
+  width: clamp(320px, 34vw, 440px);
+  padding: 18px;
+  border: 1px solid rgba(251, 191, 36, 0.28);
+  border-radius: 12px;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.92), rgba(8, 16, 33, 0.86));
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.38);
+  transform: translateX(-50%);
+}
+
+.empty-overlay span {
+  color: #fbbf24;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.empty-overlay h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+.empty-overlay p {
+  margin: 0;
+  color: #a8b6c7;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.empty-overlay div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.empty-overlay button {
+  min-height: 34px;
+  padding: 7px 10px;
+  border-color: rgba(251, 191, 36, 0.35);
+  color: #fde68a;
+}
+
 .country-drawer {
   top: 84px;
   right: 326px;
@@ -861,11 +911,13 @@ select:focus-visible,
   .left-panels,
   .right-legend,
   .analytics-cards,
+  .empty-overlay,
   .country-drawer {
     position: relative;
     inset: auto;
     width: auto;
     margin: 12px;
+    transform: none;
   }
 
   .leaflet-dashboard-map {

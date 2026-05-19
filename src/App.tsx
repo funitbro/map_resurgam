@@ -182,6 +182,7 @@ function LeftPanels({
             );
           })}
           {normalizedQuery && !searchResults.length && <p className="empty">No matching countries.</p>}
+          {!normalizedQuery && !list.length && <p className="empty">No countries match the current filters.</p>}
         </div>
       </section>
       <section className="panel">
@@ -193,6 +194,92 @@ function LeftPanels({
         </div>
       </section>
     </aside>
+  );
+}
+
+function FilterEmptyState({
+  loaded,
+  visibleCountries,
+  totalCountries,
+  actors,
+  setActors,
+  metrics,
+  setMetrics,
+  selectedRegions,
+  setSelectedRegions,
+  regions,
+  showDemo,
+  setShowDemo
+}: {
+  loaded: boolean;
+  visibleCountries: MapCountry[];
+  totalCountries: number;
+  actors: Actor[];
+  setActors: (actors: Actor[]) => void;
+  metrics: MetricKey[];
+  setMetrics: (metrics: MetricKey[]) => void;
+  selectedRegions: string[];
+  setSelectedRegions: (regions: string[]) => void;
+  regions: string[];
+  showDemo: boolean;
+  setShowDemo: (value: boolean) => void;
+}) {
+  if (!loaded) return null;
+  const noActors = actors.length === 0;
+  const noRegions = selectedRegions.length === 0;
+  const noMetrics = metrics.length === 0;
+  const noCountries = visibleCountries.length === 0;
+  if (!noActors && !noRegions && !noMetrics && !noCountries) return null;
+
+  const title = noActors
+    ? "No actor layers selected"
+    : noRegions
+      ? "No regions selected"
+      : noCountries
+        ? "No countries match current filters"
+        : "No risk layers selected";
+  const copy = noMetrics && !noCountries ? "Countries are visible, but map scores are neutral until a risk layer is selected." : `${visibleCountries.length} of ${totalCountries} country rows visible.`;
+
+  return (
+    <section className="empty-overlay" aria-live="polite">
+      <span>Filter state</span>
+      <h2>{title}</h2>
+      <p>{copy}</p>
+      <div>
+        {noActors && (
+          <button type="button" onClick={() => setActors(actorOptions)}>
+            Restore actors
+          </button>
+        )}
+        {noRegions && (
+          <button type="button" onClick={() => setSelectedRegions(regions)}>
+            Restore regions
+          </button>
+        )}
+        {noMetrics && (
+          <button type="button" onClick={() => setMetrics(metricKeys)}>
+            Restore risk layers
+          </button>
+        )}
+        {!showDemo && noCountries && (
+          <button type="button" onClick={() => setShowDemo(true)}>
+            Show demo layers
+          </button>
+        )}
+        {noCountries && !noActors && !noRegions && (
+          <button
+            type="button"
+            onClick={() => {
+              setActors(actorOptions);
+              setSelectedRegions(regions);
+              setShowDemo(true);
+            }}
+          >
+            Reset map filters
+          </button>
+        )}
+      </div>
+    </section>
   );
 }
 
@@ -615,6 +702,21 @@ export default function App() {
         metrics={metrics}
         selectedKey={selectedKey}
         onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)}
+      />
+
+      <FilterEmptyState
+        loaded={!loading && !error && data.countries.length > 0}
+        visibleCountries={visibleCountries}
+        totalCountries={data.countries.length}
+        actors={actors}
+        setActors={setActors}
+        metrics={metrics}
+        setMetrics={setMetrics}
+        selectedRegions={selectedRegions}
+        setSelectedRegions={setSelectedRegions}
+        regions={regions}
+        showDemo={showDemo}
+        setShowDemo={setShowDemo}
       />
 
       <TopFilters metrics={metrics} setMetrics={setMetrics} actors={actors} setActors={setActors} selectedRegions={selectedRegions} setSelectedRegions={setSelectedRegions} regions={regions} showDemo={showDemo} setShowDemo={setShowDemo} />
