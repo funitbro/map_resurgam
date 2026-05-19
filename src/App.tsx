@@ -17,11 +17,25 @@ import { useDashboardData } from "./hooks/useDashboardData";
 
 const actorOptions: Actor[] = ["Russia", "USA", "China"];
 const metricKeys = metricOptions.map((option) => option.key);
+type RankedSortKey = "selected" | "country" | "actor" | "confidence" | MetricKey;
+type SortDirection = "asc" | "desc";
 
 function summarizeSelection(selectedCount: number, totalCount: number, allLabel: string, noneLabel: string, selectedLabel: string) {
   if (selectedCount === totalCount) return allLabel;
   if (selectedCount === 0) return noneLabel;
   return selectedCount === 1 ? selectedLabel : `${selectedCount} selected`;
+}
+
+function confidenceRank(confidence: string) {
+  const normalized = confidence.toLowerCase();
+  if (normalized.includes("high")) return 3;
+  if (normalized.includes("medium")) return 2;
+  if (normalized.includes("low")) return 1;
+  return 0;
+}
+
+function isMetricSortKey(sortKey: RankedSortKey): sortKey is MetricKey {
+  return metricKeys.includes(sortKey as MetricKey);
 }
 
 function TopFilters({
@@ -33,9 +47,7 @@ function TopFilters({
   setSelectedRegions,
   actors,
   setActors,
-  regions,
-  showDemo,
-  setShowDemo
+  regions
 }: {
   metrics: MetricKey[];
   setMetrics: (metrics: MetricKey[]) => void;
@@ -46,8 +58,6 @@ function TopFilters({
   actors: Actor[];
   setActors: (actors: Actor[]) => void;
   regions: string[];
-  showDemo: boolean;
-  setShowDemo: (value: boolean) => void;
 }) {
   const actorSummary = actors.length === actorOptions.length ? "All actors" : actors.length ? actors.join(", ") : "No actors";
   const metricLabels = metricOptions.filter((option) => metrics.includes(option.key)).map((option) => option.label);
@@ -171,10 +181,6 @@ function TopFilters({
           ))}
         </div>
       </details>
-      <label className="switch-row">
-        <input type="checkbox" checked={showDemo} onChange={(event) => setShowDemo(event.target.checked)} />
-        <span>Show demo/pilot layers</span>
-      </label>
     </div>
   );
 }
@@ -185,7 +191,8 @@ function LeftPanels({
   selected,
   searchQuery,
   setSearchQuery,
-  onSelect
+  onSelect,
+  onOpenMethodology
 }: {
   countries: MapCountry[];
   metrics: MetricKey[];
@@ -193,6 +200,7 @@ function LeftPanels({
   searchQuery: string;
   setSearchQuery: (value: string) => void;
   onSelect: (country: MapCountry) => void;
+  onOpenMethodology: () => void;
 }) {
   const leaders = topCountries(countries, metrics, 6);
   const normalizedQuery = searchQuery.trim().toLowerCase();
@@ -241,6 +249,9 @@ function LeftPanels({
           <span>Confidence drives country opacity.</span>
           <span>Screenshot-style flows and signal icons are marked `Demo`.</span>
         </div>
+        <button type="button" className="panel-action-button" onClick={onOpenMethodology}>
+          Methodology / sources
+        </button>
       </section>
     </aside>
   );
@@ -257,9 +268,7 @@ function FilterEmptyState({
   scoreBuckets,
   selectedRegions,
   setSelectedRegions,
-  regions,
-  showDemo,
-  setShowDemo
+  regions
 }: {
   loaded: boolean;
   visibleCountries: MapCountry[];
@@ -272,8 +281,6 @@ function FilterEmptyState({
   selectedRegions: string[];
   setSelectedRegions: (regions: string[]) => void;
   regions: string[];
-  showDemo: boolean;
-  setShowDemo: (value: boolean) => void;
 }) {
   if (!loaded) return null;
   const noActors = actors.length === 0;
@@ -314,18 +321,12 @@ function FilterEmptyState({
             Restore risk layers
           </button>
         )}
-        {!showDemo && noCountries && (
-          <button type="button" onClick={() => setShowDemo(true)}>
-            Show demo layers
-          </button>
-        )}
         {noCountries && !noActors && !noRegions && (
           <button
             type="button"
             onClick={() => {
               setActors(actorOptions);
               setSelectedRegions(regions);
-              setShowDemo(true);
             }}
           >
             Reset map filters
@@ -333,6 +334,248 @@ function FilterEmptyState({
         )}
       </div>
     </section>
+  );
+}
+
+function ActiveFilterChips({
+  actors,
+  setActors,
+  metrics,
+  setMetrics,
+  scoreBuckets,
+  setScoreBuckets,
+  selectedRegions,
+  setSelectedRegions,
+  regions,
+  compareMode,
+  setCompareMode
+}: {
+  actors: Actor[];
+  setActors: (actors: Actor[]) => void;
+  metrics: MetricKey[];
+  setMetrics: (metrics: MetricKey[]) => void;
+  scoreBuckets: RiskScoreBucket[];
+  setScoreBuckets: (scoreBuckets: RiskScoreBucket[]) => void;
+  selectedRegions: string[];
+  setSelectedRegions: (regions: string[]) => void;
+  regions: string[];
+  compareMode: boolean;
+  setCompareMode: (value: boolean) => void;
+}) {
+  const hasCustomFilters =
+    actors.length !== actorOptions.length ||
+    metrics.length !== metricKeys.length ||
+    scoreBuckets.length !== riskScoreKeys.length ||
+    selectedRegions.length !== regions.length ||
+    compareMode;
+
+  const resetFilters = () => {
+    setActors(actorOptions);
+    setMetrics(metricKeys);
+    setScoreBuckets(riskScoreKeys);
+    setSelectedRegions(regions);
+    setCompareMode(false);
+  };
+
+  return (
+    <section className={`filter-chips ${hasCustomFilters ? "" : "quiet"}`} aria-label="Active filters">
+      <span>Active filters</span>
+      <div>
+        {!hasCustomFilters && <em>All actor, score, risk, and region layers are visible.</em>}
+        {!actors.length && (
+          <button type="button" onClick={() => setActors(actorOptions)}>
+            No actors <b>+</b>
+          </button>
+        )}
+        {actors.length > 0 &&
+          actors.length < actorOptions.length &&
+          actors.map((actor) => (
+            <button type="button" key={`actor-${actor}`} onClick={() => setActors(actors.filter((item) => item !== actor))}>
+              Actor: {actor} <b>x</b>
+            </button>
+          ))}
+        {!scoreBuckets.length && (
+          <button type="button" onClick={() => setScoreBuckets(riskScoreKeys)}>
+            No score ranges <b>+</b>
+          </button>
+        )}
+        {scoreBuckets.length > 0 &&
+          scoreBuckets.length < riskScoreKeys.length &&
+          riskScoreOptions
+            .filter((option) => scoreBuckets.includes(option.key))
+            .map((option) => (
+              <button type="button" key={`score-${option.key}`} onClick={() => setScoreBuckets(scoreBuckets.filter((item) => item !== option.key))}>
+                Score: {option.range} <b>x</b>
+              </button>
+            ))}
+        {!metrics.length && (
+          <button type="button" onClick={() => setMetrics(metricKeys)}>
+            No risk layers <b>+</b>
+          </button>
+        )}
+        {metrics.length > 0 &&
+          metrics.length < metricKeys.length &&
+          metricOptions
+            .filter((option) => metrics.includes(option.key))
+            .map((option) => (
+              <button type="button" key={`metric-${option.key}`} onClick={() => setMetrics(metrics.filter((item) => item !== option.key))}>
+                Layer: {option.label} <b>x</b>
+              </button>
+            ))}
+        {!selectedRegions.length && (
+          <button type="button" onClick={() => setSelectedRegions(regions)}>
+            No regions <b>+</b>
+          </button>
+        )}
+        {selectedRegions.length > 0 &&
+          selectedRegions.length < regions.length &&
+          selectedRegions.map((region) => (
+            <button type="button" key={`region-${region}`} onClick={() => setSelectedRegions(selectedRegions.filter((item) => item !== region))}>
+              Region: {region} <b>x</b>
+            </button>
+          ))}
+        {compareMode && (
+          <button type="button" onClick={() => setCompareMode(false)}>
+            Compare mode on <b>x</b>
+          </button>
+        )}
+        {hasCustomFilters && (
+          <button type="button" className="reset-chip" onClick={resetFilters}>
+            Reset filters
+          </button>
+        )}
+      </div>
+    </section>
+  );
+}
+
+function RankedTableDrawer({
+  open,
+  countries,
+  metrics,
+  selectedKey,
+  onSelect,
+  onClose
+}: {
+  open: boolean;
+  countries: MapCountry[];
+  metrics: MetricKey[];
+  selectedKey: string;
+  onSelect: (country: MapCountry) => void;
+  onClose: () => void;
+}) {
+  const [sortKey, setSortKey] = useState<RankedSortKey>("selected");
+  const [direction, setDirection] = useState<SortDirection>("desc");
+
+  const sortedCountries = useMemo(() => {
+    const valueFor = (country: MapCountry): number | string => {
+      if (sortKey === "selected") return selectedMetric(country, metrics).score;
+      if (sortKey === "country") return country.country;
+      if (sortKey === "actor") return country.actor;
+      if (sortKey === "confidence") return confidenceRank(country.confidence);
+      if (isMetricSortKey(sortKey)) return countryMetric(country, sortKey).score;
+      return selectedMetric(country, metrics).score;
+    };
+    return [...countries].sort((left, right) => {
+      const leftValue = valueFor(left);
+      const rightValue = valueFor(right);
+      const result =
+        typeof leftValue === "string" && typeof rightValue === "string"
+          ? leftValue.localeCompare(rightValue)
+          : Number(leftValue) - Number(rightValue);
+      if (result === 0) return left.country.localeCompare(right.country);
+      return direction === "asc" ? result : -result;
+    });
+  }, [countries, direction, metrics, sortKey]);
+
+  const toggleSort = (nextKey: RankedSortKey) => {
+    if (nextKey === sortKey) {
+      setDirection(direction === "asc" ? "desc" : "asc");
+      return;
+    }
+    setSortKey(nextKey);
+    setDirection(nextKey === "country" || nextKey === "actor" ? "asc" : "desc");
+  };
+
+  const sortLabel = (key: RankedSortKey) => (sortKey === key ? (direction === "asc" ? " up" : " down") : "");
+
+  if (!open) return null;
+
+  return (
+    <aside className="ranked-table-drawer" aria-label="Ranked country table">
+      <header>
+        <div>
+          <span>Ranked table</span>
+          <h2>{countries.length} visible country rows</h2>
+        </div>
+        <button type="button" onClick={onClose} aria-label="Close ranked table">
+          x
+        </button>
+      </header>
+      <div className="ranked-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>
+                <button type="button" onClick={() => toggleSort("country")}>
+                  Country{sortLabel("country")}
+                </button>
+              </th>
+              <th>
+                <button type="button" onClick={() => toggleSort("actor")}>
+                  Actor{sortLabel("actor")}
+                </button>
+              </th>
+              <th>
+                <button type="button" onClick={() => toggleSort("selected")}>
+                  Selected{sortLabel("selected")}
+                </button>
+              </th>
+              {metricOptions.map((option) => (
+                <th key={option.key}>
+                  <button type="button" onClick={() => toggleSort(option.key)}>
+                    {option.label.replace(" / ", " ")}{sortLabel(option.key)}
+                  </button>
+                </th>
+              ))}
+              <th>
+                <button type="button" onClick={() => toggleSort("confidence")}>
+                  Confidence{sortLabel("confidence")}
+                </button>
+              </th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedCountries.map((country, index) => {
+              const datum = selectedMetric(country, metrics);
+              const key = `${country.actor}:${country.iso3}`;
+              return (
+                <tr key={key} className={selectedKey === key ? "selected" : ""}>
+                  <td>{index + 1}</td>
+                  <td>
+                    <button type="button" onClick={() => onSelect(country)}>
+                      {country.country}
+                    </button>
+                  </td>
+                  <td>{country.actor}</td>
+                  <td>
+                    <strong>{formatScore(datum.score)}</strong>
+                  </td>
+                  {metricOptions.map((option) => (
+                    <td key={option.key}>{formatScore(countryMetric(country, option.key).score)}</td>
+                  ))}
+                  <td>{country.confidence}</td>
+                  <td>{country.data_status}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+        {!sortedCountries.length && <p className="empty">No country rows match the current filters.</p>}
+      </div>
+    </aside>
   );
 }
 
@@ -347,33 +590,32 @@ function RiskLegend({ countries, metrics }: { countries: MapCountry[]; metrics: 
   });
   return (
     <aside className="right-legend">
-      <section className="panel">
-        <h2>Risk Legend</h2>
-        {buckets.map((bucket) => (
-          <div className="legend-row" key={bucket.score}>
-            <i style={{ background: bucket.color }} />
-            <span>{bucket.score}</span>
-            <strong>{bucket.label}</strong>
-          </div>
-        ))}
-      </section>
-      <section className="panel">
-        <h2>Confidence Opacity</h2>
-        <div className="opacity-row">
-          <i style={{ opacity: 1 }} />
-          <span>High</span>
+      <section className="panel compact-legend">
+        <header>
+          <h2>Risk / Confidence</h2>
+          <span>Score color + opacity</span>
+        </header>
+        <div className="risk-scale" aria-label="Risk score legend">
+          {buckets.map((bucket) => (
+            <div className="risk-scale-item" key={bucket.score} title={`${bucket.score}: ${bucket.label}`}>
+              <i style={{ background: bucket.color }} />
+              <strong>{bucket.score}</strong>
+              <span>{bucket.label}</span>
+            </div>
+          ))}
         </div>
-        <div className="opacity-row">
-          <i style={{ opacity: 0.75 }} />
-          <span>Medium</span>
-        </div>
-        <div className="opacity-row">
-          <i style={{ opacity: 0.45 }} />
-          <span>Low</span>
-        </div>
-        <div className="opacity-row">
-          <i style={{ opacity: 0.25 }} />
-          <span>Needs review / Demo</span>
+        <div className="confidence-scale" aria-label="Confidence opacity legend">
+          {[
+            ["High", 1],
+            ["Med", 0.75],
+            ["Low", 0.45],
+            ["Review", 0.25]
+          ].map(([label, opacity]) => (
+            <div className="confidence-pill" key={label}>
+              <i style={{ opacity: Number(opacity) }} />
+              <span>{label}</span>
+            </div>
+          ))}
         </div>
       </section>
       <section className="panel">
@@ -682,28 +924,62 @@ function MethodologyModal({ onClose }: { onClose: () => void }) {
     <div className="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="methodology-title">
       <section className="methodology-modal">
         <header>
-          <h2 id="methodology-title">Methodology and Source Governance</h2>
+          <div>
+            <span>Workbook methodology</span>
+            <h2 id="methodology-title">Methodology and Source Governance</h2>
+          </div>
           <button type="button" onClick={onClose} aria-label="Close methodology">
             x
           </button>
         </header>
-        <p>
-          This dashboard extracts `Map_Data`, `Legend_Config`, `Dashboard`, `Evidence_Log`, `Source_Register`, and
-          `Rules_Weights` from the all-in-one workbook. Map rows preserve ISO3 identifiers and are joined to world country
-          boundaries by ISO3.
-        </p>
-        <p>
-          Country fill colors, scores, confidence labels, opacity, publication status, and notes come from the workbook.
-          Confidence controls map opacity: high confidence is opaque, review/pilot data is intentionally faint.
-        </p>
-        <p>
-          Curved influence flows and security/digital/channel icons are generated visualization aids from workbook score fields
-          and are marked `Demo`. They must not be interpreted as verified intelligence or source-backed attribution.
-        </p>
-        <p>
-          To replace pilot scores with verified evidence, add source-backed rows in `Evidence_Log`, update `Source_Register`,
-          revise `Rules_Weights`, and change map rows away from pilot/demo status before public release.
-        </p>
+        <div className="methodology-grid">
+          <article>
+            <h3>Data basis</h3>
+            <p>
+              The dashboard extracts `Map_Data`, `Legend_Config`, `Dashboard`, `Evidence_Log`, `Source_Register`, and
+              `Rules_Weights` from the workbook pipeline. Country records preserve ISO3 IDs and join to world boundaries by ISO3.
+            </p>
+          </article>
+          <article>
+            <h3>Scoring</h3>
+            <p>
+              Scores use a 0-5 scale. Selected risk layers are averaged for the active map score, while workbook colors,
+              confidence labels, opacity, publication status, and notes remain the source of truth.
+            </p>
+          </article>
+          <article>
+            <h3>Confidence</h3>
+            <p>
+              Opacity reflects confidence and review status. High-confidence rows render more strongly; low-confidence,
+              review, or pilot rows are intentionally more faint.
+            </p>
+          </article>
+          <article>
+            <h3>Evidence and sources</h3>
+            <p>
+              `Evidence_Log` links indicators to country, actor, factor, source tier, status, and analyst notes.
+              `Source_Register` stores source names, reliability weights, URLs, and factor coverage.
+            </p>
+          </article>
+          <article>
+            <h3>Demo governance</h3>
+            <p>
+              Generated flow lines and signal icons are visualization aids derived from score fields and are marked `Demo`.
+              Demo or pilot material must not be presented as verified intelligence or definitive attribution.
+            </p>
+          </article>
+          <article>
+            <h3>Publication limits</h3>
+            <p>
+              This is an analytical visualization based on structured scoring and open-source evidence tracking. It is not a
+              legal finding, sanctions designation, or definitive intelligence assessment.
+            </p>
+          </article>
+        </div>
+        <div className="source-governance-strip">
+          <span>Refresh path</span>
+          <p>Add source-backed evidence, update source reliability, revise weights, regenerate data, then review publication status before release.</p>
+        </div>
       </section>
     </div>
   );
@@ -715,10 +991,11 @@ export default function App() {
   const [scoreBuckets, setScoreBuckets] = useState<RiskScoreBucket[]>(riskScoreKeys);
   const [actors, setActors] = useState<Actor[]>(actorOptions);
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
-  const [showDemo, setShowDemo] = useState(true);
   const [selectedKey, setSelectedKey] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [methodologyOpen, setMethodologyOpen] = useState(false);
+  const [rankedTableOpen, setRankedTableOpen] = useState(false);
+  const [compareMode, setCompareMode] = useState(false);
 
   const regions = useMemo(() => Array.from(new Set(data.countries.map((country) => country.region).filter(Boolean))).sort(), [data.countries]);
   useEffect(() => {
@@ -735,16 +1012,13 @@ export default function App() {
         (country) =>
           actors.includes(country.actor) &&
           selectedRegions.includes(country.region) &&
-          scoreBuckets.includes(riskScoreBucket(selectedMetric(country, metrics).score)) &&
-          (showDemo || country.data_status !== "Demo")
+          scoreBuckets.includes(riskScoreBucket(selectedMetric(country, metrics).score))
       ),
-    [actors, data.countries, metrics, scoreBuckets, selectedRegions, showDemo]
+    [actors, data.countries, metrics, scoreBuckets, selectedRegions]
   );
   const selected = visibleCountries.find((country) => `${country.actor}:${country.iso3}` === selectedKey);
   const selectedEvidence = selected ? data.evidence.filter((row) => row.ISO3 === selected.iso3 && (!("actor" in row) || row.actor === selected.actor)) : [];
-  const comparisonRows = selected
-    ? data.countries.filter((country) => country.iso3 === selected.iso3 && (showDemo || country.data_status !== "Demo"))
-    : [];
+  const comparisonRows = selected ? data.countries.filter((country) => country.iso3 === selected.iso3) : [];
   const visibleKeys = new Set(visibleCountries.map((country) => `${country.actor}:${country.iso3}`));
 
   return (
@@ -752,9 +1026,10 @@ export default function App() {
       <MapView
         countries={visibleCountries}
         geojson={data.joined}
-        flows={showDemo ? data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`)) : []}
-        markers={showDemo ? data.markers.filter((marker) => visibleKeys.has(`${marker.actor}:${marker.iso3}`)) : []}
+        flows={data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`))}
+        markers={data.markers.filter((marker) => visibleKeys.has(`${marker.actor}:${marker.iso3}`))}
         metrics={metrics}
+        compareMode={compareMode}
         selectedKey={selectedKey}
         onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)}
       />
@@ -771,8 +1046,6 @@ export default function App() {
         selectedRegions={selectedRegions}
         setSelectedRegions={setSelectedRegions}
         regions={regions}
-        showDemo={showDemo}
-        setShowDemo={setShowDemo}
       />
 
       <TopFilters
@@ -785,19 +1058,54 @@ export default function App() {
         selectedRegions={selectedRegions}
         setSelectedRegions={setSelectedRegions}
         regions={regions}
-        showDemo={showDemo}
-        setShowDemo={setShowDemo}
       />
-      <LeftPanels countries={visibleCountries} metrics={metrics} selected={selected} searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)} />
+      <ActiveFilterChips
+        actors={actors}
+        setActors={setActors}
+        metrics={metrics}
+        setMetrics={setMetrics}
+        scoreBuckets={scoreBuckets}
+        setScoreBuckets={setScoreBuckets}
+        selectedRegions={selectedRegions}
+        setSelectedRegions={setSelectedRegions}
+        regions={regions}
+        compareMode={compareMode}
+        setCompareMode={setCompareMode}
+      />
+      <LeftPanels
+        countries={visibleCountries}
+        metrics={metrics}
+        selected={selected}
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery}
+        onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)}
+        onOpenMethodology={() => setMethodologyOpen(true)}
+      />
       <RiskLegend countries={visibleCountries} metrics={metrics} />
-      <AnalyticsCards countries={visibleCountries} metrics={metrics} demoFlows={showDemo ? data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`)).length : 0} demoMarkers={showDemo ? data.markers.filter((marker) => visibleKeys.has(`${marker.actor}:${marker.iso3}`)).length : 0} />
+      <AnalyticsCards
+        countries={visibleCountries}
+        metrics={metrics}
+        demoFlows={data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`)).length}
+        demoMarkers={data.markers.filter((marker) => visibleKeys.has(`${marker.actor}:${marker.iso3}`)).length}
+      />
 
-      <button type="button" className="methodology-button" onClick={() => setMethodologyOpen(true)}>
-        Methodology / sources
+      <button type="button" className="ranked-table-button" onClick={() => setRankedTableOpen(true)}>
+        Ranked table
+      </button>
+      <button type="button" className={`compare-mode-button ${compareMode ? "active" : ""}`} onClick={() => setCompareMode(!compareMode)} aria-pressed={compareMode}>
+        {compareMode ? "Compare mode on" : "Compare mode"}
       </button>
 
       {loading && <div className="status-banner">Loading workbook intelligence layers...</div>}
       {error && <div className="status-banner error">{error}</div>}
+      <RankedTableDrawer
+        open={rankedTableOpen}
+        countries={visibleCountries}
+        metrics={metrics}
+        selectedKey={selectedKey}
+        onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)}
+        onClose={() => setRankedTableOpen(false)}
+      />
       <CountryDrawer country={selected} comparisonRows={comparisonRows} metrics={metrics} evidence={selectedEvidence} sources={data.sources} onClose={() => setSelectedKey("")} />
       {methodologyOpen && <MethodologyModal onClose={() => setMethodologyOpen(false)} />}
     </div>
