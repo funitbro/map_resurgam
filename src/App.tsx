@@ -19,6 +19,73 @@ const actorOptions: Actor[] = ["Russia", "USA", "China"];
 const metricKeys = metricOptions.map((option) => option.key);
 type RankedSortKey = "selected" | "country" | "actor" | "confidence" | MetricKey;
 type SortDirection = "asc" | "desc";
+type TimelineBounds = { minYear: number; maxYear: number };
+type CountrySearchResult = {
+  key: string;
+  country: string;
+  iso3: string;
+  region: string;
+  bestRow: MapCountry;
+  actorCount: number;
+  visibleActorCount: number;
+};
+
+function rowKey(country: MapCountry) {
+  return `${country.actor}:${country.iso3}`;
+}
+
+function parseTimelineYear(value: unknown): number | undefined {
+  if (value === null || value === undefined || value === "") return undefined;
+  if (typeof value === "number") {
+    if (!Number.isFinite(value)) return undefined;
+    if (value >= 25000 && value <= 80000) {
+      const date = new Date(Date.UTC(1899, 11, 30) + value * 86400000);
+      const year = date.getUTCFullYear();
+      return year >= 1900 && year <= 2200 ? year : undefined;
+    }
+    if (value >= 1900 && value <= 2200) return Math.round(value);
+    return undefined;
+  }
+  const trimmed = String(value).trim();
+  if (!trimmed) return undefined;
+  if (/^\d+(\.\d+)?$/.test(trimmed)) return parseTimelineYear(Number(trimmed));
+  const parsed = Date.parse(trimmed);
+  if (Number.isNaN(parsed)) return undefined;
+  const year = new Date(parsed).getUTCFullYear();
+  return year >= 1900 && year <= 2200 ? year : undefined;
+}
+
+function newestYear(values: unknown[]) {
+  const years = values.map(parseTimelineYear).filter((year): year is number => typeof year === "number");
+  return years.length ? Math.max(...years) : undefined;
+}
+
+function rememberYear(lookup: Map<string, number>, key: string, year?: number) {
+  if (!key || typeof year !== "number") return;
+  lookup.set(key, Math.max(lookup.get(key) ?? year, year));
+}
+
+function buildEvidenceYearLookup(evidence: EvidenceRow[]) {
+  const lookup = new Map<string, number>();
+  evidence.forEach((row) => {
+    const iso3 = String(row.ISO3 ?? "").trim();
+    if (!iso3) return;
+    const year = parseTimelineYear(row.Event_Date) ?? parseTimelineYear(row.Retrieved_Date);
+    rememberYear(lookup, iso3, year);
+    if (row.actor) rememberYear(lookup, `${row.actor}:${iso3}`, year);
+  });
+  return lookup;
+}
+
+function countryTimelineYear(country: MapCountry, evidenceYears: Map<string, number>) {
+  return newestYear([country.last_updated, evidenceYears.get(rowKey(country)), evidenceYears.get(country.iso3)]);
+}
+
+function buildTimelineBounds(countries: MapCountry[], evidenceYears: Map<string, number>): TimelineBounds | undefined {
+  const years = countries.map((country) => countryTimelineYear(country, evidenceYears)).filter((year): year is number => typeof year === "number");
+  if (!years.length) return undefined;
+  return { minYear: Math.min(...years), maxYear: Math.max(...years) };
+}
 
 function summarizeSelection(selectedCount: number, totalCount: number, allLabel: string, noneLabel: string, selectedLabel: string) {
   if (selectedCount === totalCount) return allLabel;
@@ -187,33 +254,79 @@ function TopFilters({
 
 function LeftPanels({
   countries,
+  allCountries,
   metrics,
   selected,
   searchQuery,
   setSearchQuery,
   onSelect,
-  onOpenMethodology
+  onQuickJump,
+  onOpenMethodology,
+  timelineBounds,
+  timelineYear,
+  setTimelineYear,
+  includeUndated,
+  setIncludeUndated,
+  timelineDatedRows,
+  timelineUndatedRows,
+  timelineActiveRows
 }: {
   countries: MapCountry[];
+  allCountries: MapCountry[];
   metrics: MetricKey[];
   selected?: MapCountry;
   searchQuery: string;
   setSearchQuery: (value: string) => void;
   onSelect: (country: MapCountry) => void;
+  onQuickJump: (country: MapCountry) => void;
   onOpenMethodology: () => void;
+  timelineBounds?: TimelineBounds;
+  timelineYear: number;
+  setTimelineYear: (year: number) => void;
+  includeUndated: boolean;
+  setIncludeUndated: (value: boolean) => void;
+  timelineDatedRows: number;
+  timelineUndatedRows: number;
+  timelineActiveRows: number;
 }) {
   const leaders = topCountries(countries, metrics, 6);
   const normalizedQuery = searchQuery.trim().toLowerCase();
-  const searchResults = normalizedQuery
-    ? topCountries(
-        countries.filter((country) =>
-          [country.country, country.iso3, country.actor, country.region].some((value) => value.toLowerCase().includes(normalizedQuery))
-        ),
-        metrics,
-        8
+  const visibleKeys = useMemo(() => new Set(countries.map(rowKey)), [countries]);
+  const searchResults = useMemo<CountrySearchResult[]>(() => {
+    if (!normalizedQuery) return [];
+    const groups = new Map<string, MapCountry[]>();
+    allCountries
+      .filter((country) =>
+        [country.country, country.iso3, country.actor, country.region].some((value) => value.toLowerCase().includes(normalizedQuery))
       )
-    : [];
-  const list = normalizedQuery ? searchResults : leaders;
+      .forEach((country) => {
+        const key = country.iso3 || country.country;
+        groups.set(key, [...(groups.get(key) ?? []), country]);
+      });
+
+    return [...groups.values()]
+      .map((rows) => {
+        const visibleRows = rows.filter((row) => visibleKeys.has(rowKey(row)));
+        const bestRow = topCountries(visibleRows.length ? visibleRows : rows, metrics, 1)[0] ?? rows[0];
+        return {
+          key: bestRow.iso3 || bestRow.country,
+          country: bestRow.country,
+          iso3: bestRow.iso3,
+          region: bestRow.region,
+          bestRow,
+          actorCount: rows.length,
+          visibleActorCount: visibleRows.length
+        };
+      })
+      .sort((left, right) => {
+        const visibility = right.visibleActorCount - left.visibleActorCount;
+        if (visibility !== 0) return visibility;
+        const score = selectedMetric(right.bestRow, metrics).score - selectedMetric(left.bestRow, metrics).score;
+        if (score !== 0) return score;
+        return left.country.localeCompare(right.country);
+      })
+      .slice(0, 8);
+  }, [allCountries, metrics, normalizedQuery, visibleKeys]);
   return (
     <aside className="left-panels">
       <section className="panel brand-panel">
@@ -221,25 +334,91 @@ function LeftPanels({
         <h1>Global Authoritarian Expansion Map</h1>
         <p>Workbook-driven pilot visualization. Demo flows and icons are not verified intelligence.</p>
       </section>
+      <section className="panel timeline-panel">
+        <div className="timeline-heading">
+          <div>
+            <span>Evidence timeline</span>
+            <h2>Data Through {timelineBounds ? timelineYear : "No Dates"}</h2>
+          </div>
+          <strong>{timelineActiveRows}</strong>
+        </div>
+        {timelineBounds ? (
+          <>
+            <input
+              type="range"
+              min={timelineBounds.minYear}
+              max={timelineBounds.maxYear}
+              value={timelineYear}
+              disabled={timelineBounds.minYear === timelineBounds.maxYear}
+              onChange={(event) => setTimelineYear(Number(event.target.value))}
+              aria-label="Filter countries by evidence year"
+            />
+            <div className="timeline-scale">
+              <span>{timelineBounds.minYear}</span>
+              <span>{timelineBounds.maxYear}</span>
+            </div>
+            <label className="timeline-toggle">
+              <input type="checkbox" checked={includeUndated} onChange={(event) => setIncludeUndated(event.target.checked)} />
+              <span>Include no-date rows</span>
+            </label>
+            <p>
+              {timelineDatedRows} dated rows / {timelineUndatedRows} without dates
+            </p>
+          </>
+        ) : (
+          <p>No workbook dates were found for the current data export.</p>
+        )}
+      </section>
       <section className="panel search-panel">
-        <h2>Country Search</h2>
-        <input type="search" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search country, ISO3, actor" aria-label="Search countries" />
+        <h2>Country Quick Jump</h2>
+        <input
+          type="search"
+          value={searchQuery}
+          onChange={(event) => setSearchQuery(event.target.value)}
+          placeholder="Search country, ISO3, actor"
+          aria-label="Search countries"
+          onKeyDown={(event) => {
+            if (event.key === "Enter" && searchResults[0]) onQuickJump(searchResults[0].bestRow);
+          }}
+        />
+        <p>{normalizedQuery ? `${searchResults.length} jump target${searchResults.length === 1 ? "" : "s"} found.` : "Search jumps to a country and reveals it if filters hide it."}</p>
       </section>
       <section className="panel">
-        <h2>{normalizedQuery ? "Search Results" : "Priority Watchlist"}</h2>
+        <h2>{normalizedQuery ? "Quick Jump Results" : "Priority Watchlist"}</h2>
         <div className="watchlist">
-          {list.map((country) => {
+          {normalizedQuery &&
+            searchResults.map((result) => {
+              const datum = selectedMetric(result.bestRow, metrics);
+              const selectedIso = selected?.iso3 === result.iso3;
+              return (
+                <button type="button" key={result.key} className={selectedIso ? "selected" : ""} onClick={() => onQuickJump(result.bestRow)}>
+                  <span>
+                    <b>{result.country}</b>
+                    <small>
+                      {result.iso3} / {result.region} / {result.visibleActorCount ? `${result.visibleActorCount} visible` : "reveal hidden"}
+                    </small>
+                  </span>
+                  <strong>{result.actorCount} actor{result.actorCount === 1 ? "" : "s"}</strong>
+                  <i style={{ background: datum.color }} />
+                </button>
+              );
+            })}
+          {!normalizedQuery &&
+            leaders.map((country) => {
             const datum = selectedMetric(country, metrics);
             return (
               <button type="button" key={`${country.actor}-${country.iso3}`} className={selected?.actor === country.actor && selected?.iso3 === country.iso3 ? "selected" : ""} onClick={() => onSelect(country)}>
-                <span>{country.actor} / {country.country}</span>
+                <span>
+                  <b>{country.actor} / {country.country}</b>
+                  <small>{country.iso3} / {country.region}</small>
+                </span>
                 <strong>{formatScore(datum.score)}</strong>
                 <i style={{ background: datum.color }} />
               </button>
             );
           })}
           {normalizedQuery && !searchResults.length && <p className="empty">No matching countries.</p>}
-          {!normalizedQuery && !list.length && <p className="empty">No countries match the current filters.</p>}
+          {!normalizedQuery && !leaders.length && <p className="empty">No countries match the current filters.</p>}
         </div>
       </section>
       <section className="panel">
@@ -266,9 +445,11 @@ function FilterEmptyState({
   metrics,
   setMetrics,
   scoreBuckets,
+  setScoreBuckets,
   selectedRegions,
   setSelectedRegions,
-  regions
+  regions,
+  resetTimeline
 }: {
   loaded: boolean;
   visibleCountries: MapCountry[];
@@ -278,9 +459,11 @@ function FilterEmptyState({
   metrics: MetricKey[];
   setMetrics: (metrics: MetricKey[]) => void;
   scoreBuckets: RiskScoreBucket[];
+  setScoreBuckets: (scoreBuckets: RiskScoreBucket[]) => void;
   selectedRegions: string[];
   setSelectedRegions: (regions: string[]) => void;
   regions: string[];
+  resetTimeline: () => void;
 }) {
   if (!loaded) return null;
   const noActors = actors.length === 0;
@@ -326,7 +509,9 @@ function FilterEmptyState({
             type="button"
             onClick={() => {
               setActors(actorOptions);
+              setScoreBuckets(riskScoreKeys);
               setSelectedRegions(regions);
+              resetTimeline();
             }}
           >
             Reset map filters
@@ -348,7 +533,12 @@ function ActiveFilterChips({
   setSelectedRegions,
   regions,
   compareMode,
-  setCompareMode
+  setCompareMode,
+  timelineBounds,
+  timelineYear,
+  setTimelineYear,
+  includeUndated,
+  setIncludeUndated
 }: {
   actors: Actor[];
   setActors: (actors: Actor[]) => void;
@@ -361,13 +551,22 @@ function ActiveFilterChips({
   regions: string[];
   compareMode: boolean;
   setCompareMode: (value: boolean) => void;
+  timelineBounds?: TimelineBounds;
+  timelineYear: number;
+  setTimelineYear: (year: number) => void;
+  includeUndated: boolean;
+  setIncludeUndated: (value: boolean) => void;
 }) {
+  const timelineFiltered = Boolean(timelineBounds && timelineYear < timelineBounds.maxYear);
+  const undatedFiltered = timelineBounds ? !includeUndated : false;
   const hasCustomFilters =
     actors.length !== actorOptions.length ||
     metrics.length !== metricKeys.length ||
     scoreBuckets.length !== riskScoreKeys.length ||
     selectedRegions.length !== regions.length ||
-    compareMode;
+    compareMode ||
+    timelineFiltered ||
+    undatedFiltered;
 
   const resetFilters = () => {
     setActors(actorOptions);
@@ -375,13 +574,15 @@ function ActiveFilterChips({
     setScoreBuckets(riskScoreKeys);
     setSelectedRegions(regions);
     setCompareMode(false);
+    if (timelineBounds) setTimelineYear(timelineBounds.maxYear);
+    setIncludeUndated(true);
   };
 
   return (
     <section className={`filter-chips ${hasCustomFilters ? "" : "quiet"}`} aria-label="Active filters">
       <span>Active filters</span>
       <div>
-        {!hasCustomFilters && <em>All actor, score, risk, and region layers are visible.</em>}
+        {!hasCustomFilters && <em>All actor, score, risk, region, and timeline layers are visible.</em>}
         {!actors.length && (
           <button type="button" onClick={() => setActors(actorOptions)}>
             No actors <b>+</b>
@@ -437,6 +638,16 @@ function ActiveFilterChips({
         {compareMode && (
           <button type="button" onClick={() => setCompareMode(false)}>
             Compare mode on <b>x</b>
+          </button>
+        )}
+        {timelineFiltered && timelineBounds && (
+          <button type="button" onClick={() => setTimelineYear(timelineBounds.maxYear)}>
+            Through: {timelineYear} <b>x</b>
+          </button>
+        )}
+        {undatedFiltered && (
+          <button type="button" onClick={() => setIncludeUndated(true)}>
+            No-date rows hidden <b>+</b>
           </button>
         )}
         {hasCustomFilters && (
@@ -996,8 +1207,14 @@ export default function App() {
   const [methodologyOpen, setMethodologyOpen] = useState(false);
   const [rankedTableOpen, setRankedTableOpen] = useState(false);
   const [compareMode, setCompareMode] = useState(false);
+  const [timelineYear, setTimelineYear] = useState<number | undefined>();
+  const [includeUndated, setIncludeUndated] = useState(true);
 
   const regions = useMemo(() => Array.from(new Set(data.countries.map((country) => country.region).filter(Boolean))).sort(), [data.countries]);
+  const evidenceYears = useMemo(() => buildEvidenceYearLookup(data.evidence), [data.evidence]);
+  const timelineBounds = useMemo(() => buildTimelineBounds(data.countries, evidenceYears), [data.countries, evidenceYears]);
+  const activeTimelineYear = timelineYear ?? timelineBounds?.maxYear ?? new Date().getFullYear();
+
   useEffect(() => {
     setSelectedRegions((current) => {
       if (!regions.length) return [];
@@ -1006,20 +1223,68 @@ export default function App() {
       return validRegions.length ? validRegions : regions;
     });
   }, [regions]);
+  useEffect(() => {
+    if (!timelineBounds) return;
+    setTimelineYear((current) => {
+      if (current === undefined) return timelineBounds.maxYear;
+      return Math.min(Math.max(current, timelineBounds.minYear), timelineBounds.maxYear);
+    });
+  }, [timelineBounds]);
+
+  const timelineStats = useMemo(() => {
+    let datedRows = 0;
+    let undatedRows = 0;
+    let activeRows = 0;
+    data.countries.forEach((country) => {
+      const year = countryTimelineYear(country, evidenceYears);
+      if (year) {
+        datedRows += 1;
+        if (year <= activeTimelineYear) activeRows += 1;
+      } else {
+        undatedRows += 1;
+        if (includeUndated) activeRows += 1;
+      }
+    });
+    return { datedRows, undatedRows, activeRows };
+  }, [activeTimelineYear, data.countries, evidenceYears, includeUndated]);
+
   const visibleCountries = useMemo(
     () =>
       data.countries.filter(
-        (country) =>
-          actors.includes(country.actor) &&
-          selectedRegions.includes(country.region) &&
-          scoreBuckets.includes(riskScoreBucket(selectedMetric(country, metrics).score))
+        (country) => {
+          const year = countryTimelineYear(country, evidenceYears);
+          const matchesTimeline = !timelineBounds || (year ? year <= activeTimelineYear : includeUndated);
+          return (
+            actors.includes(country.actor) &&
+            selectedRegions.includes(country.region) &&
+            scoreBuckets.includes(riskScoreBucket(selectedMetric(country, metrics).score)) &&
+            matchesTimeline
+          );
+        }
       ),
-    [actors, data.countries, metrics, scoreBuckets, selectedRegions]
+    [activeTimelineYear, actors, data.countries, evidenceYears, includeUndated, metrics, scoreBuckets, selectedRegions, timelineBounds]
   );
-  const selected = visibleCountries.find((country) => `${country.actor}:${country.iso3}` === selectedKey);
+  const selected = visibleCountries.find((country) => rowKey(country) === selectedKey);
   const selectedEvidence = selected ? data.evidence.filter((row) => row.ISO3 === selected.iso3 && (!("actor" in row) || row.actor === selected.actor)) : [];
   const comparisonRows = selected ? data.countries.filter((country) => country.iso3 === selected.iso3) : [];
-  const visibleKeys = new Set(visibleCountries.map((country) => `${country.actor}:${country.iso3}`));
+  const visibleKeys = new Set(visibleCountries.map(rowKey));
+  const resetTimeline = () => {
+    if (timelineBounds) setTimelineYear(timelineBounds.maxYear);
+    setIncludeUndated(true);
+  };
+  const selectCountry = (country: MapCountry) => setSelectedKey(rowKey(country));
+  const quickJumpCountry = (country: MapCountry) => {
+    const effectiveMetrics = metrics.length ? metrics : metricKeys;
+    if (!metrics.length) setMetrics(metricKeys);
+    setActors((current) => (current.includes(country.actor) ? current : actorOptions.filter((actor) => actor === country.actor || current.includes(actor))));
+    setSelectedRegions((current) => (current.includes(country.region) ? current : [...current, country.region].filter(Boolean)));
+    const scoreBucket = riskScoreBucket(selectedMetric(country, effectiveMetrics).score);
+    setScoreBuckets((current) => (current.includes(scoreBucket) ? current : riskScoreKeys.filter((bucket) => bucket === scoreBucket || current.includes(bucket))));
+    const year = countryTimelineYear(country, evidenceYears);
+    if (year) setTimelineYear((current) => Math.max(current ?? year, year));
+    if (!year) setIncludeUndated(true);
+    setSelectedKey(rowKey(country));
+  };
 
   return (
     <div className="dashboard-shell">
@@ -1031,7 +1296,7 @@ export default function App() {
         metrics={metrics}
         compareMode={compareMode}
         selectedKey={selectedKey}
-        onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)}
+        onSelect={selectCountry}
       />
 
       <FilterEmptyState
@@ -1043,9 +1308,11 @@ export default function App() {
         metrics={metrics}
         setMetrics={setMetrics}
         scoreBuckets={scoreBuckets}
+        setScoreBuckets={setScoreBuckets}
         selectedRegions={selectedRegions}
         setSelectedRegions={setSelectedRegions}
         regions={regions}
+        resetTimeline={resetTimeline}
       />
 
       <TopFilters
@@ -1071,15 +1338,30 @@ export default function App() {
         regions={regions}
         compareMode={compareMode}
         setCompareMode={setCompareMode}
+        timelineBounds={timelineBounds}
+        timelineYear={activeTimelineYear}
+        setTimelineYear={setTimelineYear}
+        includeUndated={includeUndated}
+        setIncludeUndated={setIncludeUndated}
       />
       <LeftPanels
         countries={visibleCountries}
+        allCountries={data.countries}
         metrics={metrics}
         selected={selected}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)}
+        onSelect={selectCountry}
+        onQuickJump={quickJumpCountry}
         onOpenMethodology={() => setMethodologyOpen(true)}
+        timelineBounds={timelineBounds}
+        timelineYear={activeTimelineYear}
+        setTimelineYear={setTimelineYear}
+        includeUndated={includeUndated}
+        setIncludeUndated={setIncludeUndated}
+        timelineDatedRows={timelineStats.datedRows}
+        timelineUndatedRows={timelineStats.undatedRows}
+        timelineActiveRows={timelineStats.activeRows}
       />
       <RiskLegend countries={visibleCountries} metrics={metrics} />
       <AnalyticsCards
@@ -1103,7 +1385,7 @@ export default function App() {
         countries={visibleCountries}
         metrics={metrics}
         selectedKey={selectedKey}
-        onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)}
+        onSelect={selectCountry}
         onClose={() => setRankedTableOpen(false)}
       />
       <CountryDrawer country={selected} comparisonRows={comparisonRows} metrics={metrics} evidence={selectedEvidence} sources={data.sources} onClose={() => setSelectedKey("")} />

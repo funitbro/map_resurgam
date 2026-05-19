@@ -44,6 +44,8 @@ export type EvidenceRow = {
   Source_Name: string;
   Source_URL?: string;
   Source_Domain?: string;
+  Event_Date?: number | string;
+  Retrieved_Date?: number | string;
   Analyst_Notes?: string;
   Evidence_Status?: string;
 };
