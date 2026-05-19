@@ -1,0 +1,8 @@
+[build]
+command = "python -m pip install -r requirements.txt && npm ci && npm run build"
+publish = "dist"
+
+[build.environment]
+NODE_VERSION = "24"
+PYTHON_VERSION = "3.13"
+VITE_BASE_PATH = "/"

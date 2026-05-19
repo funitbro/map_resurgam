@@ -84,7 +84,54 @@ npm run lint
 
 ## Deployment
 
-Run:
+### GitHub Pages
+
+This repo includes `.github/workflows/deploy-pages.yml`. After the branch is merged to `main`, GitHub Actions can build and deploy the dashboard to:
+
+```text
+https://funitbro.github.io/map_resurgam/
+```
+
+In the GitHub repo settings, set **Pages** source to **GitHub Actions**. The workflow:
+
+- installs Node and Python dependencies
+- runs `npm run build`
+- sets `VITE_BASE_PATH=/map_resurgam/`
+- uploads `dist/` to GitHub Pages
+
+You can also run it manually from the GitHub Actions tab with **Deploy GitHub Pages**.
+
+### Vercel
+
+`vercel.json` is included. Import the repository in Vercel and use the default project settings. The config builds with:
+
+```bash
+pip install -r requirements.txt && npm ci && npm run build
+```
+
+Output directory:
+
+```text
+dist
+```
+
+### Netlify
+
+`netlify.toml` is included. Import the repository in Netlify. It uses:
+
+```bash
+pip install -r requirements.txt && npm ci && npm run build
+```
+
+Publish directory:
+
+```text
+dist
+```
+
+### Manual Static Host
+
+Run locally:
 
 ```bash
 npm run build

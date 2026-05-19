@@ -14,6 +14,7 @@ type DashboardData = {
 };
 
 const emptyCollection: GeoJSON.FeatureCollection = { type: "FeatureCollection", features: [] };
+const dataUrl = (path: string) => `${import.meta.env.BASE_URL}${path}`;
 
 export function useDashboardData() {
   const [data, setData] = useState<DashboardData>({
@@ -34,15 +35,15 @@ export function useDashboardData() {
     async function load() {
       try {
         const [countries, joined, flows, markers, legend, evidence, sources, rules, summary] = await Promise.all([
-          fetch("/data/normalized_map_data.json").then((response) => response.json()),
-          fetch("/data/joined_countries.geojson").then((response) => response.json()),
-          fetch("/data/flows.json").then((response) => response.json()),
-          fetch("/data/markers.json").then((response) => response.json()),
-          fetch("/data/legend_config.json").then((response) => response.json()),
-          fetch("/data/evidence_log.json").then((response) => response.json()),
-          fetch("/data/source_register.json").then((response) => response.json()),
-          fetch("/data/rules_weights.json").then((response) => response.json()),
-          fetch("/data/build_summary.json").then((response) => response.json())
+          fetch(dataUrl("data/normalized_map_data.json")).then((response) => response.json()),
+          fetch(dataUrl("data/joined_countries.geojson")).then((response) => response.json()),
+          fetch(dataUrl("data/flows.json")).then((response) => response.json()),
+          fetch(dataUrl("data/markers.json")).then((response) => response.json()),
+          fetch(dataUrl("data/legend_config.json")).then((response) => response.json()),
+          fetch(dataUrl("data/evidence_log.json")).then((response) => response.json()),
+          fetch(dataUrl("data/source_register.json")).then((response) => response.json()),
+          fetch(dataUrl("data/rules_weights.json")).then((response) => response.json()),
+          fetch(dataUrl("data/build_summary.json")).then((response) => response.json())
         ]);
         if (!active) return;
         setData({ countries, joined, flows, markers, legend, evidence, sources, rules, summary });

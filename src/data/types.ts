@@ -43,6 +43,7 @@ export type EvidenceRow = {
   Source_Tier: string;
   Source_Name: string;
   Source_URL?: string;
+  Source_Domain?: string;
   Analyst_Notes?: string;
   Evidence_Status?: string;
 };

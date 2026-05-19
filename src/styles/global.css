@@ -24,6 +24,8 @@ input {
 
 button,
 select,
+.search-panel input,
+.source-filters input,
 .checkbox-menu summary {
   border: 1px solid rgba(125, 211, 252, 0.25);
   color: #e5edf7;
@@ -38,6 +40,8 @@ button {
 button:hover,
 button:focus-visible,
 select:focus-visible,
+.search-panel input:focus-visible,
+.source-filters input:focus-visible,
 .checkbox-menu summary:focus-visible {
   border-color: #38bdf8;
   outline: none;
@@ -196,14 +200,21 @@ select:focus-visible,
   background: rgba(14, 116, 144, 0.28);
 }
 
-.checkbox-menu-panel .menu-clear {
+.checkbox-menu-panel .menu-bulk-actions {
+  display: grid;
+  gap: 4px;
   margin-bottom: 2px;
+  padding-bottom: 4px;
   border-bottom: 1px solid rgba(125, 211, 252, 0.14);
-  border-radius: 6px 6px 0 0;
+}
+
+.checkbox-menu-panel .menu-bulk-actions label {
+  min-height: 30px;
+  border-radius: 6px;
   background: rgba(15, 23, 42, 0.78);
 }
 
-.checkbox-menu-panel .menu-clear span {
+.checkbox-menu-panel .menu-bulk-actions span {
   color: #fbbf24;
 }
 
@@ -296,6 +307,21 @@ select:focus-visible,
   gap: 8px;
 }
 
+.search-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.search-panel input {
+  width: 100%;
+  min-height: 38px;
+  padding: 8px 10px;
+}
+
+.search-panel input::placeholder {
+  color: #64748b;
+}
+
 .watchlist button {
   display: grid;
   grid-template-columns: 1fr auto 22px;
@@ -349,6 +375,48 @@ select:focus-visible,
   height: 12px;
   border-radius: 999px;
   background: #38bdf8;
+}
+
+.signal-legend {
+  display: grid;
+  gap: 10px;
+}
+
+.signal-legend div {
+  display: grid;
+  grid-template-columns: 30px minmax(64px, auto) 1fr;
+  align-items: center;
+  gap: 9px;
+  min-height: 34px;
+}
+
+.signal-legend .signal-icon {
+  --marker-color: #38bdf8;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--marker-color) 72%, #020617);
+  box-shadow: 0 0 18px var(--marker-color);
+}
+
+.signal-legend strong {
+  color: #e5edf7;
+  font-size: 13px;
+}
+
+.signal-legend span,
+.legend-note {
+  color: #94a3b8;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.legend-note {
+  margin: 10px 0 0;
 }
 
 .analytics-cards {
@@ -471,12 +539,153 @@ select:focus-visible,
   border-radius: 999px;
 }
 
+.compare-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.compare-card {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  padding: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 8px;
+  background: rgba(15, 23, 42, 0.58);
+}
+
+.compare-card span,
+.compare-card small {
+  overflow: hidden;
+  color: #a8b6c7;
+  font-size: 11px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compare-card strong {
+  color: #ffffff;
+  font-size: 24px;
+}
+
+.compare-card i {
+  height: 7px;
+  border-radius: 999px;
+}
+
+.compare-card.muted {
+  opacity: 0.55;
+}
+
+.compare-matrix {
+  display: grid;
+  gap: 11px;
+  margin-top: 10px;
+}
+
+.compare-chart-row {
+  display: grid;
+  gap: 6px;
+  padding-top: 9px;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.compare-chart-row > span {
+  overflow: hidden;
+  color: #a8b6c7;
+  font-size: 12px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.compare-chart-row > div {
+  display: grid;
+  gap: 5px;
+}
+
+.compare-chart-row article {
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr) 28px;
+  align-items: center;
+  gap: 7px;
+}
+
+.compare-chart-row small {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.compare-chart-row i {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.16);
+}
+
+.compare-chart-row i b {
+  display: block;
+  height: 100%;
+  min-width: 2px;
+  border-radius: inherit;
+}
+
+.compare-chart-row strong {
+  color: #e5edf7;
+  font-size: 12px;
+  text-align: right;
+}
+
 .demo-warning {
   padding: 10px;
   border: 1px solid rgba(251, 191, 36, 0.35);
   border-radius: 8px;
   background: rgba(120, 53, 15, 0.3);
   color: #fde68a !important;
+}
+
+.source-filters {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.source-filters label {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+}
+
+.source-filters span {
+  color: #7dd3fc;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.source-filters select,
+.source-filters input {
+  width: 100%;
+  min-height: 34px;
+  padding: 7px 8px;
+  font-size: 12px;
+}
+
+.source-search {
+  grid-column: 1 / -1;
+}
+
+.source-search input::placeholder {
+  color: #64748b;
+}
+
+.filter-count {
+  margin: 0 0 8px;
+  color: #94a3b8;
+  font-size: 12px !important;
 }
 
 .evidence-stack,
@@ -543,19 +752,23 @@ select:focus-visible,
 }
 
 .signal-marker span::before,
-.signal-marker span::after {
+.signal-marker span::after,
+.signal-legend .signal-icon::before,
+.signal-legend .signal-icon::after {
   position: absolute;
   content: "";
 }
 
-.signal-marker .security::before {
+.signal-marker .security::before,
+.signal-legend .security::before {
   width: 12px;
   height: 14px;
   background: #ffffff;
   clip-path: polygon(50% 0, 88% 16%, 78% 75%, 50% 100%, 22% 75%, 12% 16%);
 }
 
-.signal-marker .security::after {
+.signal-marker .security::after,
+.signal-legend .security::after {
   top: 9px;
   width: 4px;
   height: 5px;
@@ -563,14 +776,16 @@ select:focus-visible,
   background: color-mix(in srgb, var(--marker-color) 70%, #020617);
 }
 
-.signal-marker .channel::before {
+.signal-marker .channel::before,
+.signal-legend .channel::before {
   width: 6px;
   height: 6px;
   border-radius: 50%;
   background: #ffffff;
 }
 
-.signal-marker .channel::after {
+.signal-marker .channel::after,
+.signal-legend .channel::after {
   width: 14px;
   height: 14px;
   border: 2px solid #ffffff;
@@ -580,7 +795,8 @@ select:focus-visible,
   transform: rotate(45deg);
 }
 
-.signal-marker .digital::before {
+.signal-marker .digital::before,
+.signal-legend .digital::before {
   width: 4px;
   height: 4px;
   border-radius: 50%;
@@ -588,7 +804,8 @@ select:focus-visible,
   box-shadow: -6px -5px 0 #ffffff, 6px -5px 0 #ffffff, -6px 5px 0 #ffffff, 6px 5px 0 #ffffff;
 }
 
-.signal-marker .digital::after {
+.signal-marker .digital::after,
+.signal-legend .digital::after {
   width: 16px;
   height: 12px;
   border-top: 2px solid #ffffff;

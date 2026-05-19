@@ -56,10 +56,16 @@ function TopFilters({
           <strong>{actorSummary}</strong>
         </summary>
         <div className="checkbox-menu-panel" role="group" aria-label="Actor layers">
-          <label className="menu-clear">
-            <input type="checkbox" checked={!actors.length} onChange={(event) => setActors(event.target.checked ? [] : actorOptions)} />
-            <span>Unselect everything</span>
-          </label>
+          <div className="menu-bulk-actions">
+            <label>
+              <input type="checkbox" checked={actors.length === actorOptions.length} onChange={(event) => setActors(event.target.checked ? actorOptions : [])} />
+              <span>Select everything</span>
+            </label>
+            <label>
+              <input type="checkbox" checked={!actors.length} onChange={(event) => setActors(event.target.checked ? [] : actorOptions)} />
+              <span>Unselect everything</span>
+            </label>
+          </div>
           {actorOptions.map((option) => (
             <label key={option}>
               <input type="checkbox" checked={actors.includes(option)} onChange={() => toggleActor(option)} />
@@ -74,10 +80,16 @@ function TopFilters({
           <strong>{metricSummary}</strong>
         </summary>
         <div className="checkbox-menu-panel" role="group" aria-label="Risk layers">
-          <label className="menu-clear">
-            <input type="checkbox" checked={!metrics.length} onChange={(event) => setMetrics(event.target.checked ? [] : metricKeys)} />
-            <span>Unselect everything</span>
-          </label>
+          <div className="menu-bulk-actions">
+            <label>
+              <input type="checkbox" checked={metrics.length === metricKeys.length} onChange={(event) => setMetrics(event.target.checked ? metricKeys : [])} />
+              <span>Select everything</span>
+            </label>
+            <label>
+              <input type="checkbox" checked={!metrics.length} onChange={(event) => setMetrics(event.target.checked ? [] : metricKeys)} />
+              <span>Unselect everything</span>
+            </label>
+          </div>
           {metricOptions.map((option) => (
             <label key={option.key}>
               <input type="checkbox" checked={metrics.includes(option.key)} onChange={() => toggleMetric(option.key)} />
@@ -92,10 +104,16 @@ function TopFilters({
           <strong>{regionSummary}</strong>
         </summary>
         <div className="checkbox-menu-panel" role="group" aria-label="Regions">
-          <label className="menu-clear">
-            <input type="checkbox" checked={!selectedRegions.length} onChange={(event) => setSelectedRegions(event.target.checked ? [] : regions)} />
-            <span>Unselect everything</span>
-          </label>
+          <div className="menu-bulk-actions">
+            <label>
+              <input type="checkbox" checked={selectedRegions.length === regions.length} onChange={(event) => setSelectedRegions(event.target.checked ? regions : [])} />
+              <span>Select everything</span>
+            </label>
+            <label>
+              <input type="checkbox" checked={!selectedRegions.length} onChange={(event) => setSelectedRegions(event.target.checked ? [] : regions)} />
+              <span>Unselect everything</span>
+            </label>
+          </div>
           {regions.map((item) => (
             <label key={item}>
               <input type="checkbox" checked={selectedRegions.includes(item)} onChange={() => toggleRegion(item)} />
@@ -116,14 +134,29 @@ function LeftPanels({
   countries,
   metrics,
   selected,
+  searchQuery,
+  setSearchQuery,
   onSelect
 }: {
   countries: MapCountry[];
   metrics: MetricKey[];
   selected?: MapCountry;
+  searchQuery: string;
+  setSearchQuery: (value: string) => void;
   onSelect: (country: MapCountry) => void;
 }) {
   const leaders = topCountries(countries, metrics, 6);
+  const normalizedQuery = searchQuery.trim().toLowerCase();
+  const searchResults = normalizedQuery
+    ? topCountries(
+        countries.filter((country) =>
+          [country.country, country.iso3, country.actor, country.region].some((value) => value.toLowerCase().includes(normalizedQuery))
+        ),
+        metrics,
+        8
+      )
+    : [];
+  const list = normalizedQuery ? searchResults : leaders;
   return (
     <aside className="left-panels">
       <section className="panel brand-panel">
@@ -131,10 +164,14 @@ function LeftPanels({
         <h1>Global Authoritarian Expansion Map</h1>
         <p>Workbook-driven pilot visualization. Demo flows and icons are not verified intelligence.</p>
       </section>
+      <section className="panel search-panel">
+        <h2>Country Search</h2>
+        <input type="search" value={searchQuery} onChange={(event) => setSearchQuery(event.target.value)} placeholder="Search country, ISO3, actor" aria-label="Search countries" />
+      </section>
       <section className="panel">
-        <h2>Priority Watchlist</h2>
+        <h2>{normalizedQuery ? "Search Results" : "Priority Watchlist"}</h2>
         <div className="watchlist">
-          {leaders.map((country) => {
+          {list.map((country) => {
             const datum = selectedMetric(country, metrics);
             return (
               <button type="button" key={`${country.actor}-${country.iso3}`} className={selected?.actor === country.actor && selected?.iso3 === country.iso3 ? "selected" : ""} onClick={() => onSelect(country)}>
@@ -144,6 +181,7 @@ function LeftPanels({
               </button>
             );
           })}
+          {normalizedQuery && !searchResults.length && <p className="empty">No matching countries.</p>}
         </div>
       </section>
       <section className="panel">
@@ -198,6 +236,27 @@ function RiskLegend({ countries, metrics }: { countries: MapCountry[]; metrics: 
           <span>Needs review / Demo</span>
         </div>
       </section>
+      <section className="panel">
+        <h2>Signal Marker Legend</h2>
+        <div className="signal-legend">
+          <div>
+            <i className="signal-icon security" />
+            <strong>Security</strong>
+            <span>PSC / PMC / contractor signal</span>
+          </div>
+          <div>
+            <i className="signal-icon channel" />
+            <strong>Channel</strong>
+            <span>Propaganda or information ecosystem signal</span>
+          </div>
+          <div>
+            <i className="signal-icon digital" />
+            <strong>Digital</strong>
+            <span>Election, cyber, or political-process signal</span>
+          </div>
+        </div>
+        <p className="legend-note">Icons are generated demo aids from workbook score fields, not verified intelligence points.</p>
+      </section>
     </aside>
   );
 }
@@ -246,22 +305,125 @@ function EvidenceList({ evidence }: { evidence: EvidenceRow[] }) {
   );
 }
 
+function uniqueValues(rows: EvidenceRow[], key: keyof EvidenceRow) {
+  return Array.from(new Set(rows.map((row) => String(row[key] ?? "").trim()).filter(Boolean))).sort();
+}
+
+function SourceFilters({
+  evidence,
+  tier,
+  setTier,
+  status,
+  setStatus,
+  factor,
+  setFactor,
+  query,
+  setQuery
+}: {
+  evidence: EvidenceRow[];
+  tier: string;
+  setTier: (value: string) => void;
+  status: string;
+  setStatus: (value: string) => void;
+  factor: string;
+  setFactor: (value: string) => void;
+  query: string;
+  setQuery: (value: string) => void;
+}) {
+  const tiers = uniqueValues(evidence, "Source_Tier");
+  const statuses = uniqueValues(evidence, "Evidence_Status");
+  const factors = uniqueValues(evidence, "Factor");
+  return (
+    <div className="source-filters">
+      <label>
+        <span>Source tier</span>
+        <select value={tier} onChange={(event) => setTier(event.target.value)}>
+          <option value="All">All tiers</option>
+          {tiers.map((item) => (
+            <option value={item} key={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label>
+        <span>Status</span>
+        <select value={status} onChange={(event) => setStatus(event.target.value)}>
+          <option value="All">All statuses</option>
+          {statuses.map((item) => (
+            <option value={item} key={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label>
+        <span>Factor</span>
+        <select value={factor} onChange={(event) => setFactor(event.target.value)}>
+          <option value="All">All factors</option>
+          {factors.map((item) => (
+            <option value={item} key={item}>
+              {item}
+            </option>
+          ))}
+        </select>
+      </label>
+      <label className="source-search">
+        <span>Search</span>
+        <input type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Source, note, indicator" aria-label="Search evidence sources" />
+      </label>
+    </div>
+  );
+}
+
 function CountryDrawer({
   country,
+  comparisonRows,
   metrics,
   evidence,
   sources,
   onClose
 }: {
   country?: MapCountry;
+  comparisonRows: MapCountry[];
   metrics: MetricKey[];
   evidence: EvidenceRow[];
   sources: SourceRow[];
   onClose: () => void;
 }) {
+  const [tierFilter, setTierFilter] = useState("All");
+  const [statusFilter, setStatusFilter] = useState("All");
+  const [factorFilter, setFactorFilter] = useState("All");
+  const [sourceQuery, setSourceQuery] = useState("");
+  useEffect(() => {
+    setTierFilter("All");
+    setStatusFilter("All");
+    setFactorFilter("All");
+    setSourceQuery("");
+  }, [country?.actor, country?.iso3]);
   if (!country) return null;
   const selected = selectedMetric(country, metrics);
   const visibleMetricOptions = metricOptions.filter((option) => metrics.includes(option.key));
+  const normalizedSourceQuery = sourceQuery.trim().toLowerCase();
+  const filteredEvidence = evidence.filter((row) => {
+    const matchesTier = tierFilter === "All" || row.Source_Tier === tierFilter;
+    const matchesStatus = statusFilter === "All" || row.Evidence_Status === statusFilter;
+    const matchesFactor = factorFilter === "All" || row.Factor === factorFilter;
+    const matchesQuery =
+      !normalizedSourceQuery ||
+      [row.Source_Name, row.Source_URL, row.Source_Domain, row.Indicator, row.Analyst_Notes, row.Factor].some((value) =>
+        String(value ?? "").toLowerCase().includes(normalizedSourceQuery)
+      );
+    return matchesTier && matchesStatus && matchesFactor && matchesQuery;
+  });
+  const hasActiveSourceFilter = tierFilter !== "All" || statusFilter !== "All" || factorFilter !== "All" || normalizedSourceQuery.length > 0;
+  const filteredSourceNames = new Set(filteredEvidence.map((row) => row.Source_Name).filter(Boolean));
+  const filteredSources =
+    filteredEvidence.length === 0 && hasActiveSourceFilter
+      ? []
+      : filteredSourceNames.size > 0
+        ? sources.filter((source) => filteredSourceNames.has(source.Source_Name) || filteredEvidence.some((row) => source.Useful_For_Factor?.includes(row.Factor)))
+        : sources;
   return (
     <aside className="country-drawer">
       <header>
@@ -295,18 +457,80 @@ function CountryDrawer({
       </div>
       {country.data_status === "Demo" && <p className="demo-warning">{country.demo_warning}</p>}
       <section>
+        <h3>Actor Comparison</h3>
+        <div className="compare-cards">
+          {actorOptions.map((actor) => {
+            const row = comparisonRows.find((item) => item.actor === actor);
+            if (!row) {
+              return (
+                <article className="compare-card muted" key={actor}>
+                  <span>{actor}</span>
+                  <strong>No data</strong>
+                </article>
+              );
+            }
+            const datum = selectedMetric(row, metrics);
+            return (
+              <article className="compare-card" key={actor}>
+                <span>{actor}</span>
+                <strong>{formatScore(datum.score)}</strong>
+                <i style={{ width: `${(datum.score / 5) * 100}%`, background: datum.color, opacity: datum.opacity }} />
+                <small>{datum.label}</small>
+              </article>
+            );
+          })}
+        </div>
+        <div className="compare-matrix">
+          {metricOptions.map((option) => (
+            <div className="compare-chart-row" key={option.key}>
+              <span>{option.label}</span>
+              <div>
+                {actorOptions.map((actor) => {
+                  const row = comparisonRows.find((item) => item.actor === actor);
+                  const datum = row ? countryMetric(row, option.key) : undefined;
+                  return (
+                    <article key={actor}>
+                      <small>{actor}</small>
+                      <i>
+                        <b style={datum ? { width: `${(datum.score / 5) * 100}%`, background: datum.color, opacity: datum.opacity } : undefined} />
+                      </i>
+                      <strong>{datum ? formatScore(datum.score) : "-"}</strong>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section>
         <h3>Evidence</h3>
-        <EvidenceList evidence={evidence} />
+        <SourceFilters
+          evidence={evidence}
+          tier={tierFilter}
+          setTier={setTierFilter}
+          status={statusFilter}
+          setStatus={setStatusFilter}
+          factor={factorFilter}
+          setFactor={setFactorFilter}
+          query={sourceQuery}
+          setQuery={setSourceQuery}
+        />
+        <p className="filter-count">
+          Showing {filteredEvidence.length} of {evidence.length} evidence rows
+        </p>
+        <EvidenceList evidence={filteredEvidence} />
       </section>
       <section>
         <h3>Source governance</h3>
         <div className="source-stack">
-          {sources.slice(0, 5).map((source) => (
+          {filteredSources.slice(0, 6).map((source) => (
             <a href={source.URL || undefined} target="_blank" rel="noreferrer" key={source.Source_ID}>
               <strong>{source.Source_Name}</strong>
               <span>{source.Default_Tier}</span>
             </a>
           ))}
+          {!filteredSources.length && <p className="empty">No sources match the current evidence filters.</p>}
         </div>
       </section>
     </aside>
@@ -352,6 +576,7 @@ export default function App() {
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
   const [showDemo, setShowDemo] = useState(true);
   const [selectedKey, setSelectedKey] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   const [methodologyOpen, setMethodologyOpen] = useState(false);
 
   const regions = useMemo(() => Array.from(new Set(data.countries.map((country) => country.region).filter(Boolean))).sort(), [data.countries]);
@@ -375,6 +600,9 @@ export default function App() {
   );
   const selected = visibleCountries.find((country) => `${country.actor}:${country.iso3}` === selectedKey);
   const selectedEvidence = selected ? data.evidence.filter((row) => row.ISO3 === selected.iso3 && (!("actor" in row) || row.actor === selected.actor)) : [];
+  const comparisonRows = selected
+    ? data.countries.filter((country) => country.iso3 === selected.iso3 && (showDemo || country.data_status !== "Demo"))
+    : [];
   const visibleKeys = new Set(visibleCountries.map((country) => `${country.actor}:${country.iso3}`));
 
   return (
@@ -390,7 +618,7 @@ export default function App() {
       />
 
       <TopFilters metrics={metrics} setMetrics={setMetrics} actors={actors} setActors={setActors} selectedRegions={selectedRegions} setSelectedRegions={setSelectedRegions} regions={regions} showDemo={showDemo} setShowDemo={setShowDemo} />
-      <LeftPanels countries={visibleCountries} metrics={metrics} selected={selected} onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)} />
+      <LeftPanels countries={visibleCountries} metrics={metrics} selected={selected} searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)} />
       <RiskLegend countries={visibleCountries} metrics={metrics} />
       <AnalyticsCards countries={visibleCountries} metrics={metrics} demoFlows={showDemo ? data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`)).length : 0} demoMarkers={showDemo ? data.markers.filter((marker) => visibleKeys.has(`${marker.actor}:${marker.iso3}`)).length : 0} />
 
@@ -400,7 +628,7 @@ export default function App() {
 
       {loading && <div className="status-banner">Loading workbook intelligence layers...</div>}
       {error && <div className="status-banner error">{error}</div>}
-      <CountryDrawer country={selected} metrics={metrics} evidence={selectedEvidence} sources={data.sources} onClose={() => setSelectedKey("")} />
+      <CountryDrawer country={selected} comparisonRows={comparisonRows} metrics={metrics} evidence={selectedEvidence} sources={data.sources} onClose={() => setSelectedKey("")} />
       {methodologyOpen && <MethodologyModal onClose={() => setMethodologyOpen(false)} />}
     </div>
   );
