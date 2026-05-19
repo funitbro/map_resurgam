@@ -23,7 +23,8 @@ input {
 }
 
 button,
-select {
+select,
+.checkbox-menu summary {
   border: 1px solid rgba(125, 211, 252, 0.25);
   color: #e5edf7;
   background: rgba(8, 16, 33, 0.88);
@@ -36,7 +37,8 @@ button {
 
 button:hover,
 button:focus-visible,
-select:focus-visible {
+select:focus-visible,
+.checkbox-menu summary:focus-visible {
   border-color: #38bdf8;
   outline: none;
 }
@@ -82,9 +84,11 @@ select:focus-visible {
 .top-filters {
   top: 16px;
   left: 340px;
-  right: 340px;
+  right: 188px;
+  z-index: 950;
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   gap: 12px;
   padding: 10px;
   border: 1px solid rgba(125, 211, 252, 0.18);
@@ -115,12 +119,115 @@ select:focus-visible {
   padding: 7px 10px;
 }
 
+.checkbox-menu {
+  position: relative;
+  flex: 1 1 180px;
+  min-width: 170px;
+}
+
+.checkbox-menu summary {
+  display: grid;
+  gap: 5px;
+  min-height: 47px;
+  padding: 7px 34px 7px 10px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.checkbox-menu summary::-webkit-details-marker {
+  display: none;
+}
+
+.checkbox-menu summary::after {
+  position: absolute;
+  top: 22px;
+  right: 12px;
+  width: 8px;
+  height: 8px;
+  border-right: 2px solid #7dd3fc;
+  border-bottom: 2px solid #7dd3fc;
+  content: "";
+  transform: rotate(45deg);
+}
+
+.checkbox-menu[open] summary::after {
+  top: 25px;
+  transform: rotate(225deg);
+}
+
+.checkbox-menu summary strong {
+  overflow: hidden;
+  color: #e5edf7;
+  font-size: 13px;
+  font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.checkbox-menu-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  z-index: 900;
+  display: grid;
+  gap: 6px;
+  width: 100%;
+  max-height: 330px;
+  overflow: auto;
+  padding: 8px;
+  border: 1px solid rgba(125, 211, 252, 0.22);
+  border-radius: 8px;
+  background: rgba(8, 16, 33, 0.96);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.36);
+}
+
+.checkbox-menu-panel label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: auto;
+  min-height: 32px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.checkbox-menu-panel label:hover {
+  background: rgba(14, 116, 144, 0.28);
+}
+
+.checkbox-menu-panel .menu-clear {
+  margin-bottom: 2px;
+  border-bottom: 1px solid rgba(125, 211, 252, 0.14);
+  border-radius: 6px 6px 0 0;
+  background: rgba(15, 23, 42, 0.78);
+}
+
+.checkbox-menu-panel .menu-clear span {
+  color: #fbbf24;
+}
+
+.checkbox-menu-panel input {
+  width: 16px;
+  height: 16px;
+  accent-color: #38bdf8;
+}
+
+.checkbox-menu-panel span {
+  color: #e5edf7;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
 .switch-row {
   display: flex !important;
   grid-template-columns: none !important;
   align-items: center;
   gap: 9px !important;
-  min-width: 230px !important;
+  flex: 1 1 190px;
+  min-width: 190px !important;
 }
 
 .switch-row input {
@@ -516,7 +623,7 @@ select:focus-visible {
   .top-filters,
   .analytics-cards {
     left: 282px;
-    right: 282px;
+    right: 180px;
   }
 
   .country-drawer {

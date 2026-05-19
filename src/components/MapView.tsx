@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import L, { type Layer, type PathOptions } from "leaflet";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { confidenceOpacity, normalizeHex } from "../data/colors";
-import { countryMetric, formatScore, riskLabel } from "../data/scoring";
+import { formatScore, riskLabel, selectedMetric } from "../data/scoring";
 import type { Flow, MapCountry, MetricKey, SignalMarker } from "../data/types";
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
   geojson: GeoJSON.FeatureCollection;
   flows: Flow[];
   markers: SignalMarker[];
-  metric: MetricKey;
+  metrics: MetricKey[];
   selectedKey?: string;
   onSelect: (country: MapCountry) => void;
 };
@@ -36,8 +36,8 @@ function countryKey(country: MapCountry) {
   return `${country.actor}:${country.iso3}`;
 }
 
-function popupHtml(country: MapCountry, metric: MetricKey) {
-  const datum = countryMetric(country, metric);
+function popupHtml(country: MapCountry, metrics: MetricKey[]) {
+  const datum = selectedMetric(country, metrics);
   return `
     <div class="intel-popup">
       <strong>${country.country}</strong>
@@ -135,7 +135,7 @@ function createPanes(map: L.Map) {
   });
 }
 
-function LeafletLayers({ countries, geojson, flows, markers, metric, selectedKey, onSelect }: Props) {
+function LeafletLayers({ countries, geojson, flows, markers, metrics, selectedKey, onSelect }: Props) {
   const map = useMap();
   const markerGroups = useMemo(() => groupMarkers(markers), [markers]);
   const byIso = useMemo(() => {
@@ -165,7 +165,7 @@ function LeafletLayers({ countries, geojson, flows, markers, metric, selectedKey
           opacity: 0.75
         };
       }
-      const datum = countryMetric(country, metric);
+      const datum = selectedMetric(country, metrics);
       return {
         pane: "country-fill",
         fillColor: normalizeHex(datum.color),
@@ -183,7 +183,7 @@ function LeafletLayers({ countries, geojson, flows, markers, metric, selectedKey
         const props = feature.properties as { iso3?: string } | null;
         const country = props?.iso3 ? byIso.get(props.iso3) : undefined;
         if (!country) return;
-        layer.bindPopup(popupHtml(country, metric), { pane: "intel-popups", className: "dark-popup" });
+        layer.bindPopup(popupHtml(country, metrics), { pane: "intel-popups", className: "dark-popup" });
         layer.on({
           mouseover: () => {
             (layer as L.Path).setStyle({ weight: 2.4, color: "#dbeafe" });
@@ -201,7 +201,7 @@ function LeafletLayers({ countries, geojson, flows, markers, metric, selectedKey
     return () => {
       countryLayer.removeFrom(map);
     };
-  }, [byIso, geojson, map, metric, onSelect, selectedKey]);
+  }, [byIso, geojson, map, metrics, onSelect, selectedKey]);
 
   useEffect(() => {
     const renderer = L.canvas({ pane: "flows", padding: 0.35 });

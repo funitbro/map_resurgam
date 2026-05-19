@@ -1,62 +1,109 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { MapView } from "./components/MapView";
-import { metricOptions, countryMetric, formatScore, riskLabel, topCountries } from "./data/scoring";
-import type { ActorFilter, EvidenceRow, MapCountry, MetricKey, SourceRow } from "./data/types";
+import { metricOptions, countryMetric, formatScore, riskLabel, selectedMetric, topCountries } from "./data/scoring";
+import type { Actor, EvidenceRow, MapCountry, MetricKey, SourceRow } from "./data/types";
 import { useDashboardData } from "./hooks/useDashboardData";
 
+const actorOptions: Actor[] = ["Russia", "USA", "China"];
+const metricKeys = metricOptions.map((option) => option.key);
+
+function summarizeSelection(selectedCount: number, totalCount: number, allLabel: string, noneLabel: string, selectedLabel: string) {
+  if (selectedCount === totalCount) return allLabel;
+  if (selectedCount === 0) return noneLabel;
+  return selectedCount === 1 ? selectedLabel : `${selectedCount} selected`;
+}
+
 function TopFilters({
-  metric,
-  setMetric,
-  region,
-  setRegion,
-  actor,
-  setActor,
+  metrics,
+  setMetrics,
+  selectedRegions,
+  setSelectedRegions,
+  actors,
+  setActors,
   regions,
   showDemo,
   setShowDemo
 }: {
-  metric: MetricKey;
-  setMetric: (metric: MetricKey) => void;
-  region: string;
-  setRegion: (region: string) => void;
-  actor: ActorFilter;
-  setActor: (actor: ActorFilter) => void;
+  metrics: MetricKey[];
+  setMetrics: (metrics: MetricKey[]) => void;
+  selectedRegions: string[];
+  setSelectedRegions: (regions: string[]) => void;
+  actors: Actor[];
+  setActors: (actors: Actor[]) => void;
   regions: string[];
   showDemo: boolean;
   setShowDemo: (value: boolean) => void;
 }) {
+  const actorSummary = actors.length === actorOptions.length ? "All actors" : actors.length ? actors.join(", ") : "No actors";
+  const metricLabels = metricOptions.filter((option) => metrics.includes(option.key)).map((option) => option.label);
+  const metricSummary = summarizeSelection(metrics.length, metricOptions.length, "All risk layers", "No risk layers", metricLabels[0]);
+  const regionSummary = summarizeSelection(selectedRegions.length, regions.length, "All regions", "No regions", selectedRegions[0]);
+  const toggleActor = (actor: Actor) => {
+    setActors(actors.includes(actor) ? actors.filter((item) => item !== actor) : [...actors, actor]);
+  };
+  const toggleMetric = (metric: MetricKey) => {
+    setMetrics(metrics.includes(metric) ? metrics.filter((item) => item !== metric) : metricKeys.filter((item) => item === metric || metrics.includes(item)));
+  };
+  const toggleRegion = (region: string) => {
+    setSelectedRegions(selectedRegions.includes(region) ? selectedRegions.filter((item) => item !== region) : regions.filter((item) => item === region || selectedRegions.includes(item)));
+  };
+
   return (
     <div className="top-filters">
-      <label>
-        <span>Actor</span>
-        <select value={actor} onChange={(event) => setActor(event.target.value as ActorFilter)}>
-          <option value="All">All actors</option>
-          <option value="Russia">Russia</option>
-          <option value="USA">USA</option>
-          <option value="China">China</option>
-        </select>
-      </label>
-      <label>
-        <span>Risk layer</span>
-        <select value={metric} onChange={(event) => setMetric(event.target.value as MetricKey)}>
+      <details className="checkbox-menu">
+        <summary>
+          <span>Actor layers</span>
+          <strong>{actorSummary}</strong>
+        </summary>
+        <div className="checkbox-menu-panel" role="group" aria-label="Actor layers">
+          <label className="menu-clear">
+            <input type="checkbox" checked={!actors.length} onChange={(event) => setActors(event.target.checked ? [] : actorOptions)} />
+            <span>Unselect everything</span>
+          </label>
+          {actorOptions.map((option) => (
+            <label key={option}>
+              <input type="checkbox" checked={actors.includes(option)} onChange={() => toggleActor(option)} />
+              <span>{option}</span>
+            </label>
+          ))}
+        </div>
+      </details>
+      <details className="checkbox-menu">
+        <summary>
+          <span>Risk layers</span>
+          <strong>{metricSummary}</strong>
+        </summary>
+        <div className="checkbox-menu-panel" role="group" aria-label="Risk layers">
+          <label className="menu-clear">
+            <input type="checkbox" checked={!metrics.length} onChange={(event) => setMetrics(event.target.checked ? [] : metricKeys)} />
+            <span>Unselect everything</span>
+          </label>
           {metricOptions.map((option) => (
-            <option value={option.key} key={option.key}>
-              {option.label}
-            </option>
+            <label key={option.key}>
+              <input type="checkbox" checked={metrics.includes(option.key)} onChange={() => toggleMetric(option.key)} />
+              <span>{option.label}</span>
+            </label>
           ))}
-        </select>
-      </label>
-      <label>
-        <span>Region</span>
-        <select value={region} onChange={(event) => setRegion(event.target.value)}>
-          <option value="All">All regions</option>
+        </div>
+      </details>
+      <details className="checkbox-menu">
+        <summary>
+          <span>Regions</span>
+          <strong>{regionSummary}</strong>
+        </summary>
+        <div className="checkbox-menu-panel" role="group" aria-label="Regions">
+          <label className="menu-clear">
+            <input type="checkbox" checked={!selectedRegions.length} onChange={(event) => setSelectedRegions(event.target.checked ? [] : regions)} />
+            <span>Unselect everything</span>
+          </label>
           {regions.map((item) => (
-            <option value={item} key={item}>
-              {item}
-            </option>
+            <label key={item}>
+              <input type="checkbox" checked={selectedRegions.includes(item)} onChange={() => toggleRegion(item)} />
+              <span>{item}</span>
+            </label>
           ))}
-        </select>
-      </label>
+        </div>
+      </details>
       <label className="switch-row">
         <input type="checkbox" checked={showDemo} onChange={(event) => setShowDemo(event.target.checked)} />
         <span>Show demo/pilot layers</span>
@@ -67,16 +114,16 @@ function TopFilters({
 
 function LeftPanels({
   countries,
-  metric,
+  metrics,
   selected,
   onSelect
 }: {
   countries: MapCountry[];
-  metric: MetricKey;
+  metrics: MetricKey[];
   selected?: MapCountry;
   onSelect: (country: MapCountry) => void;
 }) {
-  const leaders = topCountries(countries, metric, 6);
+  const leaders = topCountries(countries, metrics, 6);
   return (
     <aside className="left-panels">
       <section className="panel brand-panel">
@@ -88,7 +135,7 @@ function LeftPanels({
         <h2>Priority Watchlist</h2>
         <div className="watchlist">
           {leaders.map((country) => {
-            const datum = countryMetric(country, metric);
+            const datum = selectedMetric(country, metrics);
             return (
               <button type="button" key={`${country.actor}-${country.iso3}`} className={selected?.actor === country.actor && selected?.iso3 === country.iso3 ? "selected" : ""} onClick={() => onSelect(country)}>
                 <span>{country.actor} / {country.country}</span>
@@ -111,13 +158,13 @@ function LeftPanels({
   );
 }
 
-function RiskLegend({ countries, metric }: { countries: MapCountry[]; metric: MetricKey }) {
+function RiskLegend({ countries, metrics }: { countries: MapCountry[]; metrics: MetricKey[] }) {
   const buckets = [0, 1, 2, 3, 4, 5].map((score) => {
-    const sample = countries.find((country) => Math.round(countryMetric(country, metric).score) === score);
+    const sample = countries.find((country) => Math.round(selectedMetric(country, metrics).score) === score);
     return {
       score,
       label: riskLabel(score),
-      color: sample ? countryMetric(sample, metric).color : ["#F2F2F2", "#D9F0D3", "#ADDD8E", "#FDAE6B", "#F16913", "#A63603"][score]
+      color: sample ? selectedMetric(sample, metrics).color : ["#F2F2F2", "#D9F0D3", "#ADDD8E", "#FDAE6B", "#F16913", "#A63603"][score]
     };
   });
   return (
@@ -155,9 +202,9 @@ function RiskLegend({ countries, metric }: { countries: MapCountry[]; metric: Me
   );
 }
 
-function AnalyticsCards({ countries, metric, demoFlows, demoMarkers }: { countries: MapCountry[]; metric: MetricKey; demoFlows: number; demoMarkers: number }) {
-  const average = countries.length ? countries.reduce((sum, country) => sum + countryMetric(country, metric).score, 0) / countries.length : 0;
-  const highRisk = countries.filter((country) => countryMetric(country, metric).score >= 3).length;
+function AnalyticsCards({ countries, metrics, demoFlows, demoMarkers }: { countries: MapCountry[]; metrics: MetricKey[]; demoFlows: number; demoMarkers: number }) {
+  const average = countries.length ? countries.reduce((sum, country) => sum + selectedMetric(country, metrics).score, 0) / countries.length : 0;
+  const highRisk = countries.filter((country) => selectedMetric(country, metrics).score >= 3).length;
   const demoRows = countries.filter((country) => country.data_status === "Demo").length;
   return (
     <div className="analytics-cards">
@@ -201,19 +248,20 @@ function EvidenceList({ evidence }: { evidence: EvidenceRow[] }) {
 
 function CountryDrawer({
   country,
-  metric,
+  metrics,
   evidence,
   sources,
   onClose
 }: {
   country?: MapCountry;
-  metric: MetricKey;
+  metrics: MetricKey[];
   evidence: EvidenceRow[];
   sources: SourceRow[];
   onClose: () => void;
 }) {
   if (!country) return null;
-  const selected = countryMetric(country, metric);
+  const selected = selectedMetric(country, metrics);
+  const visibleMetricOptions = metricOptions.filter((option) => metrics.includes(option.key));
   return (
     <aside className="country-drawer">
       <header>
@@ -232,7 +280,7 @@ function CountryDrawer({
         <em>{riskLabel(selected.score)}</em>
       </div>
       <div className="metric-grid">
-        {metricOptions.map((option) => {
+        {visibleMetricOptions.map((option) => {
           const datum = countryMetric(country, option.key);
           return (
             <div key={option.key}>
@@ -243,6 +291,7 @@ function CountryDrawer({
             </div>
           );
         })}
+        {!visibleMetricOptions.length && <p className="empty">No risk layers selected.</p>}
       </div>
       {country.data_status === "Demo" && <p className="demo-warning">{country.demo_warning}</p>}
       <section>
@@ -298,23 +347,31 @@ function MethodologyModal({ onClose }: { onClose: () => void }) {
 
 export default function App() {
   const { data, loading, error } = useDashboardData();
-  const [metric, setMetric] = useState<MetricKey>("composite");
-  const [actor, setActor] = useState<ActorFilter>("All");
-  const [region, setRegion] = useState("All");
+  const [metrics, setMetrics] = useState<MetricKey[]>(metricKeys);
+  const [actors, setActors] = useState<Actor[]>(actorOptions);
+  const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
   const [showDemo, setShowDemo] = useState(true);
   const [selectedKey, setSelectedKey] = useState("");
   const [methodologyOpen, setMethodologyOpen] = useState(false);
 
   const regions = useMemo(() => Array.from(new Set(data.countries.map((country) => country.region).filter(Boolean))).sort(), [data.countries]);
+  useEffect(() => {
+    setSelectedRegions((current) => {
+      if (!regions.length) return [];
+      if (!current.length) return regions;
+      const validRegions = current.filter((region) => regions.includes(region));
+      return validRegions.length ? validRegions : regions;
+    });
+  }, [regions]);
   const visibleCountries = useMemo(
     () =>
       data.countries.filter(
         (country) =>
-          (actor === "All" || country.actor === actor) &&
-          (region === "All" || country.region === region) &&
+          actors.includes(country.actor) &&
+          selectedRegions.includes(country.region) &&
           (showDemo || country.data_status !== "Demo")
       ),
-    [actor, data.countries, region, showDemo]
+    [actors, data.countries, selectedRegions, showDemo]
   );
   const selected = visibleCountries.find((country) => `${country.actor}:${country.iso3}` === selectedKey);
   const selectedEvidence = selected ? data.evidence.filter((row) => row.ISO3 === selected.iso3 && (!("actor" in row) || row.actor === selected.actor)) : [];
@@ -327,15 +384,15 @@ export default function App() {
         geojson={data.joined}
         flows={showDemo ? data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`)) : []}
         markers={showDemo ? data.markers.filter((marker) => visibleKeys.has(`${marker.actor}:${marker.iso3}`)) : []}
-        metric={metric}
+        metrics={metrics}
         selectedKey={selectedKey}
         onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)}
       />
 
-      <TopFilters metric={metric} setMetric={setMetric} actor={actor} setActor={setActor} region={region} setRegion={setRegion} regions={regions} showDemo={showDemo} setShowDemo={setShowDemo} />
-      <LeftPanels countries={visibleCountries} metric={metric} selected={selected} onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)} />
-      <RiskLegend countries={visibleCountries} metric={metric} />
-      <AnalyticsCards countries={visibleCountries} metric={metric} demoFlows={showDemo ? data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`)).length : 0} demoMarkers={showDemo ? data.markers.filter((marker) => visibleKeys.has(`${marker.actor}:${marker.iso3}`)).length : 0} />
+      <TopFilters metrics={metrics} setMetrics={setMetrics} actors={actors} setActors={setActors} selectedRegions={selectedRegions} setSelectedRegions={setSelectedRegions} regions={regions} showDemo={showDemo} setShowDemo={setShowDemo} />
+      <LeftPanels countries={visibleCountries} metrics={metrics} selected={selected} onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)} />
+      <RiskLegend countries={visibleCountries} metrics={metrics} />
+      <AnalyticsCards countries={visibleCountries} metrics={metrics} demoFlows={showDemo ? data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`)).length : 0} demoMarkers={showDemo ? data.markers.filter((marker) => visibleKeys.has(`${marker.actor}:${marker.iso3}`)).length : 0} />
 
       <button type="button" className="methodology-button" onClick={() => setMethodologyOpen(true)}>
         Methodology / sources
@@ -343,7 +400,7 @@ export default function App() {
 
       {loading && <div className="status-banner">Loading workbook intelligence layers...</div>}
       {error && <div className="status-banner error">{error}</div>}
-      <CountryDrawer country={selected} metric={metric} evidence={selectedEvidence} sources={data.sources} onClose={() => setSelectedKey("")} />
+      <CountryDrawer country={selected} metrics={metrics} evidence={selectedEvidence} sources={data.sources} onClose={() => setSelectedKey("")} />
       {methodologyOpen && <MethodologyModal onClose={() => setMethodologyOpen(false)} />}
     </div>
   );
