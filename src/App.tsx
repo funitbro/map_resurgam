@@ -20,6 +20,7 @@ const metricKeys = metricOptions.map((option) => option.key);
 type RankedSortKey = "selected" | "country" | "actor" | "confidence" | MetricKey;
 type SortDirection = "asc" | "desc";
 type TimelineBounds = { minYear: number; maxYear: number };
+type MobileSheet = "map" | "explore" | "filters" | "legend" | "stats";
 type CountrySearchResult = {
   key: string;
   country: string;
@@ -1196,6 +1197,25 @@ function MethodologyModal({ onClose }: { onClose: () => void }) {
   );
 }
 
+function MobileDock({ active, setActive }: { active: MobileSheet; setActive: (sheet: MobileSheet) => void }) {
+  const options: { key: MobileSheet; label: string }[] = [
+    { key: "map", label: "Map" },
+    { key: "explore", label: "Search" },
+    { key: "filters", label: "Filters" },
+    { key: "legend", label: "Legend" },
+    { key: "stats", label: "Stats" }
+  ];
+  return (
+    <nav className="mobile-dock" aria-label="Mobile dashboard panels">
+      {options.map((option) => (
+        <button type="button" key={option.key} className={active === option.key ? "active" : ""} onClick={() => setActive(option.key)} aria-pressed={active === option.key}>
+          {option.label}
+        </button>
+      ))}
+    </nav>
+  );
+}
+
 export default function App() {
   const { data, loading, error } = useDashboardData();
   const [metrics, setMetrics] = useState<MetricKey[]>(metricKeys);
@@ -1209,6 +1229,7 @@ export default function App() {
   const [compareMode, setCompareMode] = useState(false);
   const [timelineYear, setTimelineYear] = useState<number | undefined>();
   const [includeUndated, setIncludeUndated] = useState(true);
+  const [mobileSheet, setMobileSheet] = useState<MobileSheet>("map");
 
   const regions = useMemo(() => Array.from(new Set(data.countries.map((country) => country.region).filter(Boolean))).sort(), [data.countries]);
   const evidenceYears = useMemo(() => buildEvidenceYearLookup(data.evidence), [data.evidence]);
@@ -1287,7 +1308,7 @@ export default function App() {
   };
 
   return (
-    <div className="dashboard-shell">
+    <div className={`dashboard-shell mobile-sheet-${mobileSheet}`}>
       <MapView
         countries={visibleCountries}
         geojson={data.joined}
@@ -1377,6 +1398,7 @@ export default function App() {
       <button type="button" className={`compare-mode-button ${compareMode ? "active" : ""}`} onClick={() => setCompareMode(!compareMode)} aria-pressed={compareMode}>
         {compareMode ? "Compare mode on" : "Compare mode"}
       </button>
+      <MobileDock active={mobileSheet} setActive={setMobileSheet} />
 
       {loading && <div className="status-banner">Loading workbook intelligence layers...</div>}
       {error && <div className="status-banner error">{error}</div>}

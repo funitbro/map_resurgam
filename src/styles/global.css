@@ -88,6 +88,10 @@ select:focus-visible,
   z-index: 800;
 }
 
+.mobile-dock {
+  display: none;
+}
+
 .top-filters {
   top: 16px;
   left: 340px;
@@ -1379,55 +1383,203 @@ select:focus-visible,
 
 @media (max-width: 880px) {
   body {
-    overflow: auto;
+    overflow: hidden;
   }
 
   .dashboard-shell {
-    height: auto;
+    height: 100vh;
+    height: 100dvh;
     min-height: 100vh;
-    overflow: visible;
-    padding-bottom: 12px;
+    min-height: 100dvh;
+    overflow: hidden;
+    padding-bottom: 0;
   }
 
   .top-filters,
   .left-panels,
   .right-legend,
   .analytics-cards,
-  .empty-overlay,
-  .country-drawer,
   .filter-chips,
-  .ranked-table-button,
-  .compare-mode-button,
   .ranked-table-drawer {
-    position: relative;
-    inset: auto;
-    width: auto;
-    margin: 12px;
-    transform: none;
+    display: none;
+  }
+
+  .leaflet-dashboard-map {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+
+  .mobile-dock {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1200;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px;
+    padding: 8px;
+    border: 1px solid rgba(125, 211, 252, 0.2);
+    border-radius: 14px;
+    background: rgba(5, 10, 24, 0.9);
+    box-shadow: 0 20px 55px rgba(0, 0, 0, 0.42);
+    backdrop-filter: blur(16px);
+  }
+
+  .mobile-dock button {
+    min-width: 0;
+    min-height: 42px;
+    padding: 7px 5px;
+    overflow: hidden;
+    border-radius: 10px;
+    font-size: 11px;
+    font-weight: 800;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .mobile-dock button.active {
+    border-color: rgba(56, 189, 248, 0.72);
+    color: #ffffff;
+    background: rgba(14, 116, 144, 0.48);
   }
 
   .ranked-table-button,
   .compare-mode-button {
-    display: block;
-    width: calc(100% - 24px);
+    right: 10px;
+    z-index: 980;
+    min-height: 34px;
+    padding: 7px 9px;
+    margin: 0;
+    font-size: 12px;
   }
 
-  .leaflet-dashboard-map {
-    position: relative;
-    height: 560px;
+  .ranked-table-button {
+    top: 10px;
+  }
+
+  .compare-mode-button {
+    top: 52px;
+  }
+
+  .dashboard-shell.mobile-sheet-explore .left-panels,
+  .dashboard-shell.mobile-sheet-legend .right-legend,
+  .dashboard-shell.mobile-sheet-stats .analytics-cards {
+    display: grid;
+    position: absolute;
+    top: auto;
+    right: 10px;
+    bottom: 74px;
+    left: 10px;
+    width: auto;
+    margin: 0;
+    transform: none;
+  }
+
+  .dashboard-shell.mobile-sheet-explore .left-panels,
+  .dashboard-shell.mobile-sheet-legend .right-legend {
+    max-height: min(62vh, 560px);
+    overflow: auto;
+    padding-right: 2px;
+  }
+
+  .dashboard-shell.mobile-sheet-filters .top-filters {
+    position: absolute;
+    top: auto;
+    right: 10px;
+    bottom: 74px;
+    left: 10px;
+    z-index: 1040;
+    display: grid;
+    max-height: min(54vh, 430px);
+    margin: 0;
+    overflow: auto;
+    padding: 10px;
+    transform: none;
+  }
+
+  .dashboard-shell.mobile-sheet-filters .filter-chips {
+    position: absolute;
+    top: auto;
+    right: 10px;
+    bottom: calc(84px + min(54vh, 430px));
+    left: 10px;
+    z-index: 1030;
+    display: grid;
+    max-height: 118px;
+    margin: 0;
+    overflow: auto;
+    transform: none;
+  }
+
+  .checkbox-menu {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .checkbox-menu-panel {
+    position: static;
+    width: 100%;
+    max-height: 210px;
+    margin-top: 7px;
+    box-shadow: none;
+  }
+
+  .top-filters label {
+    min-width: 0;
   }
 
   .analytics-cards {
     grid-template-columns: 1fr 1fr;
   }
 
-  .filter-chips,
+  .analytics-cards article {
+    min-height: 82px;
+    padding: 12px;
+  }
+
+  .analytics-cards strong {
+    font-size: 25px;
+  }
+
+  .empty-overlay,
+  .country-drawer,
   .ranked-table-drawer {
-    max-height: none;
+    position: absolute;
+    right: 10px;
+    left: 10px;
+    width: auto;
+    margin: 0;
+    transform: none;
+  }
+
+  .empty-overlay {
+    top: 108px;
+    z-index: 980;
+  }
+
+  .country-drawer {
+    top: auto;
+    bottom: 74px;
+    z-index: 1160;
+    max-height: min(72vh, 620px);
+    overflow: auto;
   }
 
   .ranked-table-drawer {
-    height: 520px;
+    top: 74px;
+    bottom: 74px;
+    z-index: 1180;
+    height: auto;
+    max-height: none;
+  }
+
+  .methodology-modal {
+    width: calc(100vw - 20px);
+    max-height: calc(100dvh - 28px);
+    margin: 14px auto;
+    overflow: auto;
   }
 
   .methodology-grid {
