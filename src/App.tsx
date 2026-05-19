@@ -1,6 +1,17 @@
 import { useEffect, useMemo, useState } from "react";
 import { MapView } from "./components/MapView";
-import { metricOptions, countryMetric, formatScore, riskLabel, selectedMetric, topCountries } from "./data/scoring";
+import {
+  metricOptions,
+  countryMetric,
+  formatScore,
+  riskLabel,
+  riskScoreBucket,
+  riskScoreKeys,
+  riskScoreOptions,
+  selectedMetric,
+  topCountries
+} from "./data/scoring";
+import type { RiskScoreBucket } from "./data/scoring";
 import type { Actor, EvidenceRow, MapCountry, MetricKey, SourceRow } from "./data/types";
 import { useDashboardData } from "./hooks/useDashboardData";
 
@@ -16,6 +27,8 @@ function summarizeSelection(selectedCount: number, totalCount: number, allLabel:
 function TopFilters({
   metrics,
   setMetrics,
+  scoreBuckets,
+  setScoreBuckets,
   selectedRegions,
   setSelectedRegions,
   actors,
@@ -26,6 +39,8 @@ function TopFilters({
 }: {
   metrics: MetricKey[];
   setMetrics: (metrics: MetricKey[]) => void;
+  scoreBuckets: RiskScoreBucket[];
+  setScoreBuckets: (scoreBuckets: RiskScoreBucket[]) => void;
   selectedRegions: string[];
   setSelectedRegions: (regions: string[]) => void;
   actors: Actor[];
@@ -37,12 +52,21 @@ function TopFilters({
   const actorSummary = actors.length === actorOptions.length ? "All actors" : actors.length ? actors.join(", ") : "No actors";
   const metricLabels = metricOptions.filter((option) => metrics.includes(option.key)).map((option) => option.label);
   const metricSummary = summarizeSelection(metrics.length, metricOptions.length, "All risk layers", "No risk layers", metricLabels[0]);
+  const scoreLabels = riskScoreOptions.filter((option) => scoreBuckets.includes(option.key)).map((option) => option.label);
+  const scoreSummary = summarizeSelection(scoreBuckets.length, riskScoreOptions.length, "All scores", "No scores", scoreLabels[0]);
   const regionSummary = summarizeSelection(selectedRegions.length, regions.length, "All regions", "No regions", selectedRegions[0]);
   const toggleActor = (actor: Actor) => {
     setActors(actors.includes(actor) ? actors.filter((item) => item !== actor) : [...actors, actor]);
   };
   const toggleMetric = (metric: MetricKey) => {
     setMetrics(metrics.includes(metric) ? metrics.filter((item) => item !== metric) : metricKeys.filter((item) => item === metric || metrics.includes(item)));
+  };
+  const toggleScoreBucket = (scoreBucket: RiskScoreBucket) => {
+    setScoreBuckets(
+      scoreBuckets.includes(scoreBucket)
+        ? scoreBuckets.filter((item) => item !== scoreBucket)
+        : riskScoreKeys.filter((item) => item === scoreBucket || scoreBuckets.includes(item))
+    );
   };
   const toggleRegion = (region: string) => {
     setSelectedRegions(selectedRegions.includes(region) ? selectedRegions.filter((item) => item !== region) : regions.filter((item) => item === region || selectedRegions.includes(item)));
@@ -70,6 +94,31 @@ function TopFilters({
             <label key={option}>
               <input type="checkbox" checked={actors.includes(option)} onChange={() => toggleActor(option)} />
               <span>{option}</span>
+            </label>
+          ))}
+        </div>
+      </details>
+      <details className="checkbox-menu">
+        <summary>
+          <span>Risk scores</span>
+          <strong>{scoreSummary}</strong>
+        </summary>
+        <div className="checkbox-menu-panel" role="group" aria-label="Risk scores">
+          <div className="menu-bulk-actions">
+            <label>
+              <input type="checkbox" checked={scoreBuckets.length === riskScoreKeys.length} onChange={(event) => setScoreBuckets(event.target.checked ? riskScoreKeys : [])} />
+              <span>Select everything</span>
+            </label>
+            <label>
+              <input type="checkbox" checked={!scoreBuckets.length} onChange={(event) => setScoreBuckets(event.target.checked ? [] : riskScoreKeys)} />
+              <span>Unselect everything</span>
+            </label>
+          </div>
+          {riskScoreOptions.map((option) => (
+            <label key={option.key}>
+              <input type="checkbox" checked={scoreBuckets.includes(option.key)} onChange={() => toggleScoreBucket(option.key)} />
+              <span>{option.label}</span>
+              <small>{option.range}</small>
             </label>
           ))}
         </div>
@@ -205,6 +254,7 @@ function FilterEmptyState({
   setActors,
   metrics,
   setMetrics,
+  scoreBuckets,
   selectedRegions,
   setSelectedRegions,
   regions,
@@ -218,6 +268,7 @@ function FilterEmptyState({
   setActors: (actors: Actor[]) => void;
   metrics: MetricKey[];
   setMetrics: (metrics: MetricKey[]) => void;
+  scoreBuckets: RiskScoreBucket[];
   selectedRegions: string[];
   setSelectedRegions: (regions: string[]) => void;
   regions: string[];
@@ -228,7 +279,9 @@ function FilterEmptyState({
   const noActors = actors.length === 0;
   const noRegions = selectedRegions.length === 0;
   const noMetrics = metrics.length === 0;
+  const noScoreBuckets = scoreBuckets.length === 0;
   const noCountries = visibleCountries.length === 0;
+  if (noScoreBuckets && !noActors && !noRegions && !noMetrics) return null;
   if (!noActors && !noRegions && !noMetrics && !noCountries) return null;
 
   const title = noActors
@@ -659,6 +712,7 @@ function MethodologyModal({ onClose }: { onClose: () => void }) {
 export default function App() {
   const { data, loading, error } = useDashboardData();
   const [metrics, setMetrics] = useState<MetricKey[]>(metricKeys);
+  const [scoreBuckets, setScoreBuckets] = useState<RiskScoreBucket[]>(riskScoreKeys);
   const [actors, setActors] = useState<Actor[]>(actorOptions);
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
   const [showDemo, setShowDemo] = useState(true);
@@ -681,9 +735,10 @@ export default function App() {
         (country) =>
           actors.includes(country.actor) &&
           selectedRegions.includes(country.region) &&
+          scoreBuckets.includes(riskScoreBucket(selectedMetric(country, metrics).score)) &&
           (showDemo || country.data_status !== "Demo")
       ),
-    [actors, data.countries, selectedRegions, showDemo]
+    [actors, data.countries, metrics, scoreBuckets, selectedRegions, showDemo]
   );
   const selected = visibleCountries.find((country) => `${country.actor}:${country.iso3}` === selectedKey);
   const selectedEvidence = selected ? data.evidence.filter((row) => row.ISO3 === selected.iso3 && (!("actor" in row) || row.actor === selected.actor)) : [];
@@ -712,6 +767,7 @@ export default function App() {
         setActors={setActors}
         metrics={metrics}
         setMetrics={setMetrics}
+        scoreBuckets={scoreBuckets}
         selectedRegions={selectedRegions}
         setSelectedRegions={setSelectedRegions}
         regions={regions}
@@ -719,7 +775,19 @@ export default function App() {
         setShowDemo={setShowDemo}
       />
 
-      <TopFilters metrics={metrics} setMetrics={setMetrics} actors={actors} setActors={setActors} selectedRegions={selectedRegions} setSelectedRegions={setSelectedRegions} regions={regions} showDemo={showDemo} setShowDemo={setShowDemo} />
+      <TopFilters
+        metrics={metrics}
+        setMetrics={setMetrics}
+        scoreBuckets={scoreBuckets}
+        setScoreBuckets={setScoreBuckets}
+        actors={actors}
+        setActors={setActors}
+        selectedRegions={selectedRegions}
+        setSelectedRegions={setSelectedRegions}
+        regions={regions}
+        showDemo={showDemo}
+        setShowDemo={setShowDemo}
+      />
       <LeftPanels countries={visibleCountries} metrics={metrics} selected={selected} searchQuery={searchQuery} setSearchQuery={setSearchQuery} onSelect={(country) => setSelectedKey(`${country.actor}:${country.iso3}`)} />
       <RiskLegend countries={visibleCountries} metrics={metrics} />
       <AnalyticsCards countries={visibleCountries} metrics={metrics} demoFlows={showDemo ? data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`)).length : 0} demoMarkers={showDemo ? data.markers.filter((marker) => visibleKeys.has(`${marker.actor}:${marker.iso3}`)).length : 0} />

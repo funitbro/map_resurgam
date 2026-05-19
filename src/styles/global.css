@@ -232,6 +232,12 @@ select:focus-visible,
   text-transform: none;
 }
 
+.checkbox-menu-panel small {
+  margin-left: auto;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
 .switch-row {
   display: flex !important;
   grid-template-columns: none !important;

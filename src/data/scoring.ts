@@ -1,5 +1,7 @@
 import type { MapCountry, MetricDatum, MetricKey } from "./types";
 
+export type RiskScoreBucket = 0 | 1 | 2 | 3 | 4;
+
 export const metricOptions: { key: MetricKey; label: string }[] = [
   { key: "composite", label: "Composite risk" },
   { key: "influence", label: "Influence / leverage" },
@@ -7,6 +9,16 @@ export const metricOptions: { key: MetricKey; label: string }[] = [
   { key: "propaganda", label: "Propaganda ecosystems" },
   { key: "election", label: "Election interference" }
 ];
+
+export const riskScoreOptions: { key: RiskScoreBucket; label: string; range: string }[] = [
+  { key: 0, label: "0 No confirmed signs", range: "0.0-0.9" },
+  { key: 1, label: "1 Limited", range: "1.0-1.9" },
+  { key: 2, label: "2 Elevated", range: "2.0-2.9" },
+  { key: 3, label: "3 High", range: "3.0-3.9" },
+  { key: 4, label: "4-5 Severe", range: "4.0-5.0" }
+];
+
+export const riskScoreKeys = riskScoreOptions.map((option) => option.key);
 
 export function formatScore(score?: number): string {
   if (typeof score !== "number" || Number.isNaN(score)) return "No data";
@@ -50,6 +62,14 @@ export function riskLabel(score: number): string {
   if (score >= 2) return "Elevated";
   if (score >= 1) return "Limited";
   return "No confirmed signs";
+}
+
+export function riskScoreBucket(score: number): RiskScoreBucket {
+  if (!Number.isFinite(score) || score < 1) return 0;
+  if (score < 2) return 1;
+  if (score < 3) return 2;
+  if (score < 4) return 3;
+  return 4;
 }
 
 export function topCountries(countries: MapCountry[], metrics: MetricKey | MetricKey[], limit = 5): MapCountry[] {
