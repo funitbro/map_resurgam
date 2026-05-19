@@ -1,24 +1,68 @@
-# Interactive Authoritarian Influence Map
+# Global Authoritarian Expansion Map
 
-## Purpose
+Dark intelligence-dashboard UI for exploring Russia, USA, and China influence scoring workbooks.
 
-Visualizes country-level influence scoring for Russia, USA, and China across leverage, contractor/security presence, propaganda ecosystems, and election or political-process interference.
+## Architecture
 
-## Scoring dimensions
+- React + TypeScript + Vite
+- Leaflet through React-Leaflet
+- `MapContainer` and configurable `TileLayer`
+- `L.geoJSON` country polygons joined by ISO3
+- `L.polyline` curved influence-flow overlays using `L.canvas()`
+- Leaflet `Marker` + `DivIcon` signal icons for security, digital, and channel indicators
+- Custom Leaflet panes for country fill, borders, flows, markers, selected outlines, and popups
 
-- Influence / leverage
-- PMC / PSC / contractor presence
-- Propaganda ecosystem
-- Election / political-process interference
+Tile settings are configurable:
 
-## Data sources
+```bash
+VITE_TILE_URL=https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png
+VITE_TILE_ATTRIBUTION="..."
+```
 
-The app is built from structured evaluation workbooks and their open-source evidence logs:
+## Data Pipeline
 
-- `data/input/resurgam_authoritarian_influence_scores.xlsx`
-- `data/input/usa_authoritarian_influence_scores.xlsx`
-- `data/input/china_authoritarian_influence_scores.xlsx`
-- `data/input/interactive_influence_map_all_in_one_google_sheet.xlsx`
+The build starts from `interactive_influence_map_all_in_one_google_sheet.xlsx` for the Russia/pilot layer and also merges:
+
+- `usa_authoritarian_influence_scores.xlsx`
+- `china_authoritarian_influence_scores.xlsx`
+
+The build extracts these all-in-one workbook sheets into `public/data` and `data/processed`:
+
+- `Map_Data`
+- `Legend_Config`
+- `Dashboard`
+- `Evidence_Log`
+- `Source_Register`
+- `Rules_Weights`
+
+It also generates:
+
+- `normalized_map_data.json`
+- `joined_countries.geojson`
+- `flows.json`
+- `markers.json`
+- `build_summary.json`
+- `validation_report.json`
+
+## ISO3 Boundary Join
+
+`scripts/build_data.py` downloads a world boundary GeoJSON if needed, preserves workbook ISO3 values, and joins normalized actor rows to country polygons by ISO3. Countries without workbook rows remain visible as neutral dark boundaries. When multiple actors have scores for the same ISO3 in the all-actors view, the polygon uses the highest composite score; actor-specific filters show the selected actor layer.
+
+## Confidence Opacity
+
+Workbook colors are used for country fills. Workbook confidence and opacity fields drive map opacity. Pilot/review rows are deliberately faint.
+
+## Demo Data Governance
+
+Generated curved flows and signal icons are marked `Demo`. Pilot Russia workbook rows are also surfaced as demo/review data when the workbook notes indicate pilot scoring. Demo data must not be presented as verified intelligence. USA and China score rows are loaded as actor layers from their dedicated workbooks, while their generated flows/icons remain demo visual aids.
+
+To replace pilot scores with verified evidence:
+
+1. Add source-backed rows to `Evidence_Log`.
+2. Update `Source_Register` with reliability and source-governance details.
+3. Revise `Rules_Weights` to reflect source-backed indicators.
+4. Update `Map_Data` scores, confidence, opacity, and publication status.
+5. Run `npm run build:data`.
 
 ## Setup
 
@@ -29,41 +73,21 @@ npm run build:data
 npm run dev
 ```
 
-## Data refresh
-
-Place updated workbooks in `data/input` and run:
+## Commands
 
 ```bash
-npm run build:data
+npm run dev
+npm run build
+npm run test
+npm run lint
 ```
 
-The generated files are written to `public/data` for the frontend and `data/processed` for review.
-
 ## Deployment
+
+Run:
 
 ```bash
 npm run build
 ```
 
-Deploy `dist/` to GitHub Pages, Vercel, or Netlify. For GitHub Pages, configure the Pages source to the build artifact or publish `dist/` from CI. Vercel and Netlify can use `npm run build` as the build command and `dist` as the publish directory.
-
-## Methodology
-
-Scores use a 0-5 scale. The composite score is the average of the four dimensions unless a workbook already contains a trusted composite score. Confidence is normalized to 0-1 and reflects source quality, number of sources, specificity, and recency.
-
-PMC/PSC scoring is actor-specific:
-
-- Russia: Wagner, Africa Corps, and PMC-style military presence.
-- USA: contractors, security contractors, military-support contractors, and PMC-like presence.
-- China: private security companies, overseas police or security cooperation, GSI-linked security activity, and PLA-linked facility access.
-
-Election interference is scored conservatively. Diplomacy or democracy assistance alone is not enough; higher scores require targeted political-process interference, covert support, coercion, cyber operations, disinformation, or documented manipulation.
-
-## Map data
-
-If `public/data/countries.geojson` is present, `scripts/export_geojson.py` joins score records to country polygons by ISO3 and exports actor choropleth layers. Without a polygon file, the exporter emits point features from workbook latitude/longitude columns so the map remains usable.
-
-## Limitations
-
-Open-source evidence is uneven by country and actor. Scores are analytical estimates, not legal findings or definitive attribution.
-
+Deploy `dist/` to any static host.

@@ -1,0 +1,13 @@
+{
+  "map_rows": 52,
+  "actors": [
+    "China",
+    "Russia",
+    "USA"
+  ],
+  "joined_features": 258,
+  "demo_flows": 52,
+  "demo_markers": 135,
+  "source_workbook": "data\\input\\interactive_influence_map_all_in_one_google_sheet.xlsx",
+  "demo_notice": "Pilot/demo rows and generated flows/markers are not verified intelligence."
+}

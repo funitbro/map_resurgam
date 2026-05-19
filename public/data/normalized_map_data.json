@@ -1,0 +1,2914 @@
+[
+  {
+    "actor": "Russia",
+    "actor_slug": "russia",
+    "country": "Ukraine",
+    "iso3": "UKR",
+    "region": "Europe",
+    "latitude": 49.0,
+    "longitude": 31.0,
+    "layer_status": "Show with caution",
+    "last_updated": "2025-01-01",
+    "notes": "Pilot score rows included; replace/verify before public release.",
+    "publication_status": "Show with caution",
+    "data_status": "Demo",
+    "demo_warning": "Pilot/demo score row. Do not present as verified intelligence.",
+    "metrics": {
+      "composite": {
+        "score": 5.0,
+        "color": "#A63603",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#A63603",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Russian influence"
+      },
+      "security": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "PMC presence"
+      },
+      "propaganda": {
+        "score": 5.0,
+        "color": "#A63603",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 5.0,
+        "color": "#A63603",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Election interference"
+      }
+    },
+    "composite_score": 5.0,
+    "map_color": "#A63603",
+    "map_opacity": 0.25,
+    "confidence": "Needs review"
+  },
+  {
+    "actor": "Russia",
+    "actor_slug": "russia",
+    "country": "Germany",
+    "iso3": "DEU",
+    "region": "Europe",
+    "latitude": 51.0,
+    "longitude": 10.0,
+    "layer_status": "Show with caution",
+    "last_updated": "2025-01-01",
+    "notes": "Pilot score rows included; replace/verify before public release.",
+    "publication_status": "Show with caution",
+    "data_status": "Demo",
+    "demo_warning": "Pilot/demo score row. Do not present as verified intelligence.",
+    "metrics": {
+      "composite": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Russian influence"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#F2F2F2",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "PMC presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Election interference"
+      }
+    },
+    "composite_score": 3.0,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.25,
+    "confidence": "Needs review"
+  },
+  {
+    "actor": "Russia",
+    "actor_slug": "russia",
+    "country": "France",
+    "iso3": "FRA",
+    "region": "Europe",
+    "latitude": 46.5,
+    "longitude": 2.2,
+    "layer_status": "Show with caution",
+    "last_updated": "2025-01-01",
+    "notes": "Pilot score rows included; replace/verify before public release.",
+    "publication_status": "Show with caution",
+    "data_status": "Demo",
+    "demo_warning": "Pilot/demo score row. Do not present as verified intelligence.",
+    "metrics": {
+      "composite": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Russian influence"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#F2F2F2",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "PMC presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Election interference"
+      }
+    },
+    "composite_score": 3.0,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.25,
+    "confidence": "Needs review"
+  },
+  {
+    "actor": "Russia",
+    "actor_slug": "russia",
+    "country": "Mali",
+    "iso3": "MLI",
+    "region": "Africa",
+    "latitude": 17.5,
+    "longitude": -3.9,
+    "layer_status": "Show with caution",
+    "last_updated": "2025-01-01",
+    "notes": "Pilot score rows included; replace/verify before public release.",
+    "publication_status": "Show with caution",
+    "data_status": "Demo",
+    "demo_warning": "Pilot/demo score row. Do not present as verified intelligence.",
+    "metrics": {
+      "composite": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#A63603",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Russian influence"
+      },
+      "security": {
+        "score": 5.0,
+        "color": "#A63603",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "PMC presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 2.0,
+        "color": "#ADDD8E",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Election interference"
+      }
+    },
+    "composite_score": 4.0,
+    "map_color": "#F16913",
+    "map_opacity": 0.25,
+    "confidence": "Needs review"
+  },
+  {
+    "actor": "Russia",
+    "actor_slug": "russia",
+    "country": "Central African Republic",
+    "iso3": "CAF",
+    "region": "Africa",
+    "latitude": 6.6,
+    "longitude": 20.9,
+    "layer_status": "Show with caution",
+    "last_updated": "2025-01-01",
+    "notes": "Pilot score rows included; replace/verify before public release.",
+    "publication_status": "Show with caution",
+    "data_status": "Demo",
+    "demo_warning": "Pilot/demo score row. Do not present as verified intelligence.",
+    "metrics": {
+      "composite": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#A63603",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Russian influence"
+      },
+      "security": {
+        "score": 5.0,
+        "color": "#A63603",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "PMC presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#D9F0D3",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Election interference"
+      }
+    },
+    "composite_score": 4.0,
+    "map_color": "#F16913",
+    "map_opacity": 0.25,
+    "confidence": "Needs review"
+  },
+  {
+    "actor": "Russia",
+    "actor_slug": "russia",
+    "country": "United States",
+    "iso3": "USA",
+    "region": "North America",
+    "latitude": 39.8,
+    "longitude": -98.6,
+    "layer_status": "Show with caution",
+    "last_updated": "2025-01-01",
+    "notes": "Pilot score rows included; replace/verify before public release.",
+    "publication_status": "Show with caution",
+    "data_status": "Demo",
+    "demo_warning": "Pilot/demo score row. Do not present as verified intelligence.",
+    "metrics": {
+      "composite": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 2.0,
+        "color": "#ADDD8E",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Russian influence"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#F2F2F2",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "PMC presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 5.0,
+        "color": "#A63603",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Election interference"
+      }
+    },
+    "composite_score": 3.0,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.25,
+    "confidence": "Needs review"
+  },
+  {
+    "actor": "Russia",
+    "actor_slug": "russia",
+    "country": "Georgia",
+    "iso3": "GEO",
+    "region": "Europe/Caucasus",
+    "latitude": 42.3,
+    "longitude": 43.4,
+    "layer_status": "Show with caution",
+    "last_updated": "2025-01-01",
+    "notes": "Pilot score rows included; replace/verify before public release.",
+    "publication_status": "Show with caution",
+    "data_status": "Demo",
+    "demo_warning": "Pilot/demo score row. Do not present as verified intelligence.",
+    "metrics": {
+      "composite": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Russian influence"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#F2F2F2",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "PMC presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Election interference"
+      }
+    },
+    "composite_score": 3.0,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.25,
+    "confidence": "Needs review"
+  },
+  {
+    "actor": "Russia",
+    "actor_slug": "russia",
+    "country": "Syria",
+    "iso3": "SYR",
+    "region": "Middle East",
+    "latitude": 35.0,
+    "longitude": 38.5,
+    "layer_status": "Show with caution",
+    "last_updated": "2025-01-01",
+    "notes": "Pilot score rows included; replace/verify before public release.",
+    "publication_status": "Show with caution",
+    "data_status": "Demo",
+    "demo_warning": "Pilot/demo score row. Do not present as verified intelligence.",
+    "metrics": {
+      "composite": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#A63603",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Russian influence"
+      },
+      "security": {
+        "score": 5.0,
+        "color": "#A63603",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "PMC presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#D9F0D3",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Election interference"
+      }
+    },
+    "composite_score": 4.0,
+    "map_color": "#F16913",
+    "map_opacity": 0.25,
+    "confidence": "Needs review"
+  },
+  {
+    "actor": "Russia",
+    "actor_slug": "russia",
+    "country": "Serbia",
+    "iso3": "SRB",
+    "region": "Europe",
+    "latitude": 44.0,
+    "longitude": 21.0,
+    "layer_status": "Show with caution",
+    "last_updated": "2025-01-01",
+    "notes": "Pilot score rows included; replace/verify before public release.",
+    "publication_status": "Show with caution",
+    "data_status": "Demo",
+    "demo_warning": "Pilot/demo score row. Do not present as verified intelligence.",
+    "metrics": {
+      "composite": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Russian influence"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#F2F2F2",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "PMC presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 2.0,
+        "color": "#ADDD8E",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Election interference"
+      }
+    },
+    "composite_score": 3.0,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.25,
+    "confidence": "Needs review"
+  },
+  {
+    "actor": "Russia",
+    "actor_slug": "russia",
+    "country": "Poland",
+    "iso3": "POL",
+    "region": "Europe",
+    "latitude": 52.0,
+    "longitude": 19.0,
+    "layer_status": "Show with caution",
+    "last_updated": "2025-01-01",
+    "notes": "Pilot score rows included; replace/verify before public release.",
+    "publication_status": "Show with caution",
+    "data_status": "Demo",
+    "demo_warning": "Pilot/demo score row. Do not present as verified intelligence.",
+    "metrics": {
+      "composite": {
+        "score": 2.0,
+        "color": "#ADDD8E",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Russian influence"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#F2F2F2",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "PMC presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Needs review",
+        "opacity": 0.25,
+        "label": "Election interference"
+      }
+    },
+    "composite_score": 2.0,
+    "map_color": "#ADDD8E",
+    "map_opacity": 0.25,
+    "confidence": "Needs review"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Iraq",
+    "iso3": "IRQ",
+    "region": "Middle East / West Asia",
+    "latitude": 33.2232,
+    "longitude": 43.6793,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "High current U.S. military/security footprint; contractor evidence is grouped with Syria in DoD CENTCOM reporting.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "High",
+        "opacity": 1.0,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#F16913",
+        "confidence": "High",
+        "opacity": 1.0,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 5.0,
+        "color": "#F16913",
+        "confidence": "High",
+        "opacity": 1.0,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "High",
+        "opacity": 1.0,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 2.0,
+        "color": "#F16913",
+        "confidence": "High",
+        "opacity": 1.0,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 4.0,
+    "map_color": "#F16913",
+    "map_opacity": 1.0,
+    "confidence": "High"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Syria",
+    "iso3": "SYR",
+    "region": "Middle East / West Asia",
+    "latitude": 34.8021,
+    "longitude": 38.9968,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "U.S. footprint tied to counter-ISIS posture; contractor evidence is grouped with Iraq in DoD reporting.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 3.0,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Afghanistan",
+    "iso3": "AFG",
+    "region": "Central Asia / South Asia",
+    "latitude": 33.9391,
+    "longitude": 67.71,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Legacy high score due to 2001-2021 intervention; current post-withdrawal direct presence is much lower.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 5.0,
+        "color": "#F16913",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F16913",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 3.0,
+        "color": "#F16913",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 4.0,
+    "map_color": "#F16913",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Ukraine",
+    "iso3": "UKR",
+    "region": "Eastern Europe",
+    "latitude": 48.3794,
+    "longitude": 31.1656,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "High overt security and financial assistance since Russia's full-scale invasion; no score for covert election manipulation in selected sources.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 2.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 3.0,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Israel",
+    "iso3": "ISR",
+    "region": "Middle East / West Asia",
+    "latitude": 31.0461,
+    "longitude": 34.8516,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Strong bilateral security-assistance relationship and regional military coordination; election interference not treated as verified.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.5,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 2.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.5,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Japan",
+    "iso3": "JPN",
+    "region": "East Asia",
+    "latitude": 36.2048,
+    "longitude": 138.2529,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Major long-term U.S. basing/alliance presence; contractor score reflects base-support ecosystem, not armed PMCs.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.5,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.5,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "South Korea",
+    "iso3": "KOR",
+    "region": "East Asia",
+    "latitude": 35.9078,
+    "longitude": 127.7669,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Major long-term U.S. basing/alliance presence; contractor score reflects base-support ecosystem, not armed PMCs.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.5,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.5,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Germany",
+    "iso3": "DEU",
+    "region": "Europe",
+    "latitude": 51.1657,
+    "longitude": 10.4515,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Large enduring U.S. military infrastructure in Europe; contractor score reflects support/logistics contracting.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.5,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.5,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Philippines",
+    "iso3": "PHL",
+    "region": "Southeast Asia",
+    "latitude": 12.8797,
+    "longitude": 121.774,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Rotational access expanded under EDCA; no selected-source evidence of current direct U.S. ballot manipulation.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.25,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 2.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.25,
+    "map_color": "#ADDD8E",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Colombia",
+    "iso3": "COL",
+    "region": "South America",
+    "latitude": 4.5709,
+    "longitude": -74.2973,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Longstanding U.S. security/counternarcotics partnership under Plan Colombia; contractor scoring is partly historical.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.5,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.5,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Serbia",
+    "iso3": "SRB",
+    "region": "Europe / Balkans",
+    "latitude": 44.0165,
+    "longitude": 21.0059,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "High election/political-transition score is historical and tied to 2000 anti-Milosevic electoral support, not current verified covert action.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 3.0,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Nicaragua",
+    "iso3": "NIC",
+    "region": "Central America",
+    "latitude": 12.8654,
+    "longitude": -85.2072,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Historical score captures U.S.-backed opposition and conflict/election pressure around the 1990 election.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.75,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.75,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Chile",
+    "iso3": "CHL",
+    "region": "South America",
+    "latitude": -35.6751,
+    "longitude": -71.543,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Historical score captures U.S. covert action against Allende-era political transition, not current U.S. posture.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.25,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 2.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 5.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.25,
+    "map_color": "#ADDD8E",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Italy",
+    "iso3": "ITA",
+    "region": "Europe",
+    "latitude": 41.8719,
+    "longitude": 12.5674,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Historical score captures CIA financial support in the early Cold War; current score would be much lower if scored separately.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.75,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 5.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.75,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Guatemala",
+    "iso3": "GTM",
+    "region": "Central America",
+    "latitude": 15.7835,
+    "longitude": -90.2308,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Historical score captures the 1954 CIA-supported operation and propaganda pressure.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 3.25,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 1.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 5.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 3.25,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Venezuela",
+    "iso3": "VEN",
+    "region": "South America",
+    "latitude": 6.4238,
+    "longitude": -66.5897,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Current U.S. posture includes sanctions, democracy assistance, recognition/transition pressure and media/democracy networks.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.5,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.5,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Iran",
+    "iso3": "IRN",
+    "region": "Middle East / West Asia",
+    "latitude": 32.4279,
+    "longitude": 53.688,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Election/political-transition score is historical, tied to 1953 coup; information score reflects USAGM Persian/anti-censorship networks.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.5,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 2.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.5,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Cuba",
+    "iso3": "CUB",
+    "region": "Caribbean",
+    "latitude": 21.5218,
+    "longitude": -77.7812,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Information score is high due to Radio/TV Martí; political interference score is historical/pressure-based and lower-confidence.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.75,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 5.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 3.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.75,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Qatar",
+    "iso3": "QAT",
+    "region": "Middle East / West Asia",
+    "latitude": 25.3548,
+    "longitude": 51.1839,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "High influence/contractor score due to U.S. regional military hub posture; election score is zero in selected sources.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.5,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 4.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 0.0,
+        "color": "#FDAE6B",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.5,
+    "map_color": "#FDAE6B",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "USA",
+    "actor_slug": "usa",
+    "country": "Djibouti",
+    "iso3": "DJI",
+    "region": "Horn of Africa",
+    "latitude": 11.8251,
+    "longitude": 42.5903,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "High influence score due to Camp Lemonnier; contractor score reflects base operations/maintenance evidence, not armed PMC units.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.25,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "USA influence / leverage"
+      },
+      "security": {
+        "score": 3.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 0.0,
+        "color": "#ADDD8E",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.25,
+    "map_color": "#ADDD8E",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Taiwan",
+    "iso3": "TWN",
+    "region": "East Asia",
+    "latitude": 23.6978,
+    "longitude": 120.9605,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Highest election/interference score: Microsoft documents Storm-1376/Spamouflage AI content around Taiwan's 2024 elections; FH rates PRC media influence very high. No verified PRC PSC/PMC footprint on Taiwan.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 3.5,
+        "color": "#DC2626",
+        "confidence": "High",
+        "opacity": 0.85,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#DC2626",
+        "confidence": "High",
+        "opacity": 0.85,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#DC2626",
+        "confidence": "High",
+        "opacity": 0.85,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 5.0,
+        "color": "#DC2626",
+        "confidence": "High",
+        "opacity": 0.85,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 5.0,
+        "color": "#DC2626",
+        "confidence": "High",
+        "opacity": 0.85,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 3.5,
+    "map_color": "#DC2626",
+    "map_opacity": 0.85,
+    "confidence": "High"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Pakistan",
+    "iso3": "PAK",
+    "region": "South Asia",
+    "latitude": 30.3753,
+    "longitude": 69.3451,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "China Index ranks Pakistan most exposed to PRC influence; Reuters reports Beijing pushed for a joint security role to protect Chinese nationals and CPEC projects. Election interference evidence is not strong in this pass.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 3.38,
+        "color": "#DC2626",
+        "confidence": "High",
+        "opacity": 0.8,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#DC2626",
+        "confidence": "High",
+        "opacity": 0.8,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 4.0,
+        "color": "#DC2626",
+        "confidence": "High",
+        "opacity": 0.8,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.5,
+        "color": "#DC2626",
+        "confidence": "High",
+        "opacity": 0.8,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#DC2626",
+        "confidence": "High",
+        "opacity": 0.8,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 3.38,
+    "map_color": "#DC2626",
+    "map_opacity": 0.8,
+    "confidence": "High"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Cambodia",
+    "iso3": "KHM",
+    "region": "Southeast Asia",
+    "latitude": 12.5657,
+    "longitude": 104.991,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "China Index ranks Cambodia near the top; Chinese MOD/Xinhua confirms a joint logistics and training center at Ream Naval Base. Domestic election score remains moderate because evidence is mostly influence/elite dependency, not direct PRC vote manipulation.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.77,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.77,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 2.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.77,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.77,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 2.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.77,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 3.0,
+    "map_color": "#F97316",
+    "map_opacity": 0.77,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Myanmar",
+    "iso3": "MMR",
+    "region": "Southeast Asia",
+    "latitude": 21.9162,
+    "longitude": 95.956,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Scored high for leverage and security contractor risk based on CMEC/BRI security needs and reporting on Chinese security arrangements; confidence discounted because open-source evidence on PSC deployment is less standardized.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 3.38,
+        "color": "#DC2626",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.5,
+        "color": "#DC2626",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 4.0,
+        "color": "#DC2626",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#DC2626",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 2.0,
+        "color": "#DC2626",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 3.38,
+    "map_color": "#DC2626",
+    "map_opacity": 0.71,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Solomon Islands",
+    "iso3": "SLB",
+    "region": "Pacific",
+    "latitude": -9.6457,
+    "longitude": 160.1562,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Reuters documents Chinese security presence after the 2022 pact and competition with Australia. Election/political-process score is moderate because influence over security and coalitions is visible, while direct vote manipulation evidence is limited.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.5,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 2.5,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 3.0,
+    "map_color": "#F97316",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Laos",
+    "iso3": "LAO",
+    "region": "Southeast Asia",
+    "latitude": 19.8563,
+    "longitude": 102.4955,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "High economic and infrastructure leverage via BRI/debt exposure. Election interference score is low because Laos is a one-party system and sources reviewed do not show PRC election-targeting.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.5,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 5.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.5,
+    "map_color": "#F97316",
+    "map_opacity": 0.71,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Sri Lanka",
+    "iso3": "LKA",
+    "region": "South Asia",
+    "latitude": 7.8731,
+    "longitude": 80.7718,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Economic and strategic infrastructure influence is prominent. PSC and election scores remain low pending stronger country-specific verified evidence.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.25,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.25,
+    "map_color": "#F97316",
+    "map_opacity": 0.69,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Kenya",
+    "iso3": "KEN",
+    "region": "East Africa",
+    "latitude": -0.0236,
+    "longitude": 37.9062,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Freedom House rates Beijing media influence in Kenya high; Carnegie describes Chinese security contractors protecting railways/mines/construction projects in Africa. Election score remains low.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.88,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.5,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.88,
+    "map_color": "#F97316",
+    "map_opacity": 0.78,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Ethiopia",
+    "iso3": "ETH",
+    "region": "East Africa",
+    "latitude": 9.145,
+    "longitude": 40.4897,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "High economic leverage and regional PSC risk; confidence discounted because propaganda/election evidence is less country-specific than for FH case-study countries.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.75,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.75,
+    "map_color": "#F97316",
+    "map_opacity": 0.69,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Nigeria",
+    "iso3": "NGA",
+    "region": "West Africa",
+    "latitude": 9.082,
+    "longitude": 8.6753,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Freedom House rates Beijing media influence very high in Nigeria. PSC score is moderate based on wider Africa contractor footprint, not a strong country-only record in this pass.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.88,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.76,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.5,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.76,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 2.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.76,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 5.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.76,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.76,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.88,
+    "map_color": "#F97316",
+    "map_opacity": 0.76,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "South Africa",
+    "iso3": "ZAF",
+    "region": "Southern Africa",
+    "latitude": -30.5595,
+    "longitude": 22.9375,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "China Index ranks South Africa highly, and Freedom House rates media influence high. No strong verified Chinese PSC/election interference case in this pass.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.38,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.77,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.5,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.77,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.77,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.77,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.77,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.38,
+    "map_color": "#F97316",
+    "map_opacity": 0.77,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Kazakhstan",
+    "iso3": "KAZ",
+    "region": "Central Asia",
+    "latitude": 48.0196,
+    "longitude": 66.9237,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "USIP and Carnegie document expanded Chinese security cooperation and PSC emergence in Central Asia; country-level PSC scoring is moderate due shared regional evidence.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.63,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.72,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.72,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 2.5,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.72,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.72,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.72,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.63,
+    "map_color": "#F97316",
+    "map_opacity": 0.72,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Tajikistan",
+    "iso3": "TJK",
+    "region": "Central Asia",
+    "latitude": 38.861,
+    "longitude": 71.2761,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "High China Index exposure and China-linked regional security activity; PSC and propaganda evidence treated as regional rather than country-specific.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.38,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 2.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.5,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.38,
+    "map_color": "#F97316",
+    "map_opacity": 0.71,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Kyrgyzstan",
+    "iso3": "KGZ",
+    "region": "Central Asia",
+    "latitude": 41.2044,
+    "longitude": 74.7661,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "China Index and Central Asia PSC studies support moderate-high influence and PSC risk; little verified election interference evidence in this pass.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.25,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.5,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 2.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.5,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.69,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.25,
+    "map_color": "#F97316",
+    "map_opacity": 0.69,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Philippines",
+    "iso3": "PHL",
+    "region": "Southeast Asia",
+    "latitude": 12.8797,
+    "longitude": 121.774,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Freedom House rates Beijing media influence high; Microsoft tracks regional CCP-linked influence operations. No meaningful PRC PSC score; election score is moderate for political/disinformation pressure.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.25,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 2.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.25,
+    "map_color": "#F97316",
+    "map_opacity": 0.78,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Canada",
+    "iso3": "CAN",
+    "region": "North America",
+    "latitude": 56.1304,
+    "longitude": -106.3468,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Canada's Hogue inquiry examined PRC and other foreign interference in the 2019/2021 elections. High election score, but not a score for changed national election outcomes.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.38,
+        "color": "#F97316",
+        "confidence": "High",
+        "opacity": 0.8,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 2.0,
+        "color": "#F97316",
+        "confidence": "High",
+        "opacity": 0.8,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#F97316",
+        "confidence": "High",
+        "opacity": 0.8,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.5,
+        "color": "#F97316",
+        "confidence": "High",
+        "opacity": 0.8,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 4.0,
+        "color": "#F97316",
+        "confidence": "High",
+        "opacity": 0.8,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.38,
+    "map_color": "#F97316",
+    "map_opacity": 0.8,
+    "confidence": "High"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Australia",
+    "iso3": "AUS",
+    "region": "Oceania",
+    "latitude": -25.2744,
+    "longitude": 133.7751,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "China Index ranks Australia highly and Freedom House rates PRC media influence high. Election score is conservative because this pass found more broad foreign interference evidence than direct election-operation evidence.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.25,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 2.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 4.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.25,
+    "map_color": "#F97316",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "United States",
+    "iso3": "USA",
+    "region": "North America",
+    "latitude": 37.0902,
+    "longitude": -95.7129,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Freedom House rates PRC media influence very high; Microsoft/Graphika/ODNI sources point to election-related influence operations but not voting-system control.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.5,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 2.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 5.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 3.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.78,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.5,
+    "map_color": "#F97316",
+    "map_opacity": 0.78,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "United Kingdom",
+    "iso3": "GBR",
+    "region": "Europe",
+    "latitude": 55.3781,
+    "longitude": -3.436,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Freedom House rates PRC media influence very high. Election score lower than Canada due less direct election-specific evidence in this pass.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.25,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 2.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 5.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 2.0,
+        "color": "#F97316",
+        "confidence": "Medium",
+        "opacity": 0.75,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.25,
+    "map_color": "#F97316",
+    "map_opacity": 0.75,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Serbia",
+    "iso3": "SRB",
+    "region": "Europe",
+    "latitude": 44.0165,
+    "longitude": 21.0059,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "China Index/BRI-linked influence evidence supports a medium-high leverage score; no verified Chinese PSC footprint or direct election interference located in this pass.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.0,
+        "color": "#FACC15",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.5,
+        "color": "#FACC15",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#FACC15",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.0,
+        "color": "#FACC15",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.5,
+        "color": "#FACC15",
+        "confidence": "Medium",
+        "opacity": 0.71,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.0,
+    "map_color": "#FACC15",
+    "map_opacity": 0.71,
+    "confidence": "Medium"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Hungary",
+    "iso3": "HUN",
+    "region": "Europe",
+    "latitude": 47.1625,
+    "longitude": 19.5033,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "Influence score reflects strategic-economic exposure and China Index data. Confidence discounted because Hungary's current political context should be refreshed separately after 2026 political changes.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 1.63,
+        "color": "#FACC15",
+        "confidence": "Low",
+        "opacity": 0.67,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 3.0,
+        "color": "#FACC15",
+        "confidence": "Low",
+        "opacity": 0.67,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#FACC15",
+        "confidence": "Low",
+        "opacity": 0.67,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 2.5,
+        "color": "#FACC15",
+        "confidence": "Low",
+        "opacity": 0.67,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#FACC15",
+        "confidence": "Low",
+        "opacity": 0.67,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 1.63,
+    "map_color": "#FACC15",
+    "map_opacity": 0.67,
+    "confidence": "Low"
+  },
+  {
+    "actor": "China",
+    "actor_slug": "china",
+    "country": "Peru",
+    "iso3": "PER",
+    "region": "South America",
+    "latitude": -9.19,
+    "longitude": -75.0152,
+    "layer_status": "Ready",
+    "last_updated": "",
+    "notes": "China Index places Peru in the top tier for PRC influence. PMC/PSC and election scores remain low until stronger country-specific evidence is added.",
+    "publication_status": "Ready",
+    "data_status": "Verified",
+    "demo_warning": "",
+    "metrics": {
+      "composite": {
+        "score": 2.13,
+        "color": "#FACC15",
+        "confidence": "Medium",
+        "opacity": 0.68,
+        "label": "Composite risk"
+      },
+      "influence": {
+        "score": 4.0,
+        "color": "#FACC15",
+        "confidence": "Medium",
+        "opacity": 0.68,
+        "label": "China influence / leverage"
+      },
+      "security": {
+        "score": 0.0,
+        "color": "#FACC15",
+        "confidence": "Medium",
+        "opacity": 0.68,
+        "label": "Security / contractor presence"
+      },
+      "propaganda": {
+        "score": 3.5,
+        "color": "#FACC15",
+        "confidence": "Medium",
+        "opacity": 0.68,
+        "label": "Propaganda ecosystems"
+      },
+      "election": {
+        "score": 1.0,
+        "color": "#FACC15",
+        "confidence": "Medium",
+        "opacity": 0.68,
+        "label": "Election / political interference"
+      }
+    },
+    "composite_score": 2.13,
+    "map_color": "#FACC15",
+    "map_opacity": 0.68,
+    "confidence": "Medium"
+  }
+]

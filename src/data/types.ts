@@ -1,69 +1,112 @@
 export type Actor = "Russia" | "USA" | "China";
-export type ActorMode = Actor | "Compare";
+export type ActorFilter = Actor | "All";
+export type MetricKey = "composite" | "influence" | "security" | "propaganda" | "election";
 
-export type MetricKey =
-  | "composite_score"
-  | "influence_score"
-  | "pmc_psc_score"
-  | "propaganda_score"
-  | "election_interference_score"
-  | "confidence_score";
+export type MetricDatum = {
+  score: number;
+  color: string;
+  confidence: string;
+  opacity: number;
+  label: string;
+};
 
-export type ViewMode = "map" | "table" | "country" | "evidence";
-
-export type CountryScore = {
+export type MapCountry = {
   actor: Actor;
+  actor_slug: string;
   country: string;
   iso3: string;
-  region?: string;
-  latitude?: number | null;
-  longitude?: number | null;
+  region: string;
+  latitude: number;
+  longitude: number;
+  layer_status: string;
+  last_updated: string;
+  notes: string;
+  publication_status: string;
+  data_status: "Demo" | "Verified";
+  demo_warning: string;
+  metrics: Record<MetricKey, MetricDatum>;
   composite_score: number;
-  influence_score: number;
-  pmc_psc_score: number;
-  propaganda_score: number;
-  election_interference_score: number;
-  confidence_score: number;
-  confidence_band: "High" | "Medium" | "Low";
-  map_color?: string;
-  map_opacity?: number;
-  short_rationale?: string;
-  caveats?: string;
-  last_updated?: string;
+  map_color: string;
+  map_opacity: number;
+  confidence: string;
 };
 
-export type EvidenceItem = {
+export type EvidenceRow = {
+  actor?: Actor;
+  Evidence_ID: string;
+  Country: string;
+  ISO3: string;
+  Region: string;
+  Factor: string;
+  Indicator: string;
+  Indicator_Score_0_5: number;
+  Source_Tier: string;
+  Source_Name: string;
+  Source_URL?: string;
+  Analyst_Notes?: string;
+  Evidence_Status?: string;
+};
+
+export type SourceRow = {
+  actor?: Actor;
+  Source_ID: string;
+  Source_Name: string;
+  Default_Tier: string;
+  Reliability_Weight: number;
+  URL?: string;
+  Useful_For_Factor?: string;
+  Notes?: string;
+};
+
+export type LegendRow = {
+  Score?: number;
+  Risk_Label?: string;
+  Hex_Colour_NoHash?: string;
+  Default_Opacity?: number;
+  Meaning?: string;
+  Confidence_Band?: string;
+  Opacity?: number;
+  Confidence_Range?: string;
+  Factor?: string;
+  Layer_Display_Name?: string;
+  Default_Visible?: string;
+  Layer_Description?: string;
+};
+
+export type Flow = {
+  id: string;
   actor: Actor;
-  country: string;
-  iso3?: string;
-  category: "Influence" | "PMC/PSC" | "Propaganda" | "Election interference" | "Confidence" | "General";
-  claim: string;
-  source_name: string;
-  source_url?: string;
-  source_type?: string;
-  reliability?: "High" | "Medium" | "Low" | string;
-  date_accessed?: string;
-  notes?: string;
+  from: string;
+  to: string;
+  iso3: string;
+  score: number;
+  color: string;
+  opacity: number;
+  coordinates: [number, number][];
+  data_status: "Demo";
+  warning: string;
 };
 
-export type SourceItem = {
+export type SignalMarker = {
+  id: string;
   actor: Actor;
-  source_name: string;
-  url?: string;
-  publisher?: string;
-  source_type?: string;
-  reliability?: "High" | "Medium" | "Low" | string;
-  notes?: string;
-};
-
-export type ComparisonRow = {
+  kind: "security" | "digital" | "channel";
+  label: string;
   country: string;
   iso3: string;
-  Russia?: CountryScore;
-  USA?: CountryScore;
-  China?: CountryScore;
-  highestActor: Actor;
-  scoreDifference: number;
-  dominantDimension: MetricKey;
+  score: number;
+  latitude: number;
+  longitude: number;
+  color: string;
+  data_status: "Demo";
+  warning: string;
 };
 
+export type BuildSummary = {
+  map_rows: number;
+  joined_features: number;
+  demo_flows: number;
+  demo_markers: number;
+  source_workbook: string;
+  demo_notice: string;
+};

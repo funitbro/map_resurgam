@@ -1,188 +1,251 @@
-import { useEffect, useMemo, useRef } from "react";
-import maplibregl, { type Map, type MapLayerMouseEvent, type Popup } from "maplibre-gl";
-import { workbookColorExpression } from "../data/colors";
-import { formatScore, metricLabels } from "../data/scoring";
-import type { ActorMode, CountryScore, MetricKey } from "../data/types";
-import { useMapData } from "../hooks/useMapData";
+import { useEffect, useMemo } from "react";
+import L, { type Layer, type PathOptions } from "leaflet";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import { confidenceOpacity, normalizeHex } from "../data/colors";
+import { countryMetric, formatScore, riskLabel } from "../data/scoring";
+import type { Flow, MapCountry, MetricKey, SignalMarker } from "../data/types";
 
 type Props = {
-  actor: ActorMode;
+  countries: MapCountry[];
+  geojson: GeoJSON.FeatureCollection;
+  flows: Flow[];
+  markers: SignalMarker[];
   metric: MetricKey;
-  scores: CountryScore[];
-  selectedIso?: string;
-  onSelect: (iso3: string, country?: string) => void;
+  selectedKey?: string;
+  onSelect: (country: MapCountry) => void;
 };
 
-const sourceId = "influence-countries";
-const fillLayerId = "influence-fills";
-const lineLayerId = "influence-lines";
-const pointLayerId = "influence-points";
+type MarkerGroup = {
+  id: string;
+  actor: SignalMarker["actor"];
+  country: string;
+  iso3: string;
+  latitude: number;
+  longitude: number;
+  markers: SignalMarker[];
+};
 
-function escapeHtml(value: unknown): string {
-  return String(value ?? "")
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+const tileUrl =
+  (import.meta.env.VITE_TILE_URL as string | undefined) ||
+  "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png";
+const tileAttribution =
+  (import.meta.env.VITE_TILE_ATTRIBUTION as string | undefined) ||
+  '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/">CARTO</a>';
+
+function countryKey(country: MapCountry) {
+  return `${country.actor}:${country.iso3}`;
 }
 
-export function MapView({ actor, metric, scores, selectedIso, onSelect }: Props) {
-  const containerRef = useRef<HTMLDivElement | null>(null);
-  const mapRef = useRef<Map | null>(null);
-  const popupRef = useRef<Popup | null>(null);
-  const { data, error } = useMapData(actor);
+function popupHtml(country: MapCountry, metric: MetricKey) {
+  const datum = countryMetric(country, metric);
+  return `
+    <div class="intel-popup">
+      <strong>${country.country}</strong>
+      <span>${country.actor} / ${country.iso3} / ${country.region}</span>
+      <b>${datum.label}: ${formatScore(datum.score)} (${riskLabel(datum.score)})</b>
+      <span>Confidence: ${datum.confidence}</span>
+      <em>${country.data_status === "Demo" ? "Demo / pilot data, not verified intelligence" : country.publication_status}</em>
+    </div>
+  `;
+}
 
-  const pointFallback = useMemo<GeoJSON.FeatureCollection>(() => {
-    const activeScores = actor === "Compare" ? scores : scores.filter((score) => score.actor === actor);
+function escapeHtml(value: string) {
+  return value.replace(/[&<>"']/g, (char) => {
+    const replacements: Record<string, string> = {
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    };
+    return replacements[char];
+  });
+}
+
+function groupMarkers(markers: SignalMarker[]) {
+  const order: Record<SignalMarker["kind"], number> = { security: 0, channel: 1, digital: 2 };
+  const groups = new Map<string, MarkerGroup>();
+  markers.forEach((marker) => {
+    const key = `${marker.actor}:${marker.iso3}`;
+    const current =
+      groups.get(key) ??
+      ({
+        id: key,
+        actor: marker.actor,
+        country: marker.country,
+        iso3: marker.iso3,
+        latitude: 0,
+        longitude: 0,
+        markers: []
+      } satisfies MarkerGroup);
+    current.markers.push(marker);
+    groups.set(key, current);
+  });
+
+  return [...groups.values()].map((group) => {
+    group.markers.sort((left, right) => order[left.kind] - order[right.kind]);
+    const markerCount = group.markers.length || 1;
     return {
-      type: "FeatureCollection",
-      features: activeScores
-        .filter((score) => typeof score.latitude === "number" && typeof score.longitude === "number")
-        .map((score) => ({
-          type: "Feature",
-          geometry: { type: "Point", coordinates: [score.longitude as number, score.latitude as number] },
-          properties: score
-        }))
+      ...group,
+      latitude: group.markers.reduce((sum, marker) => sum + marker.latitude, 0) / markerCount,
+      longitude: group.markers.reduce((sum, marker) => sum + marker.longitude, 0) / markerCount
     };
-  }, [actor, scores]);
+  });
+}
 
-  useEffect(() => {
-    if (!containerRef.current || mapRef.current) return;
-    const map = new maplibregl.Map({
-      container: containerRef.current,
-      center: [20, 18],
-      zoom: 1.25,
-      minZoom: 1,
-      style: {
-        version: 8,
-        sources: {
-          osm: {
-            type: "raster",
-            tiles: ["https://tile.openstreetmap.org/{z}/{x}/{y}.png"],
-            tileSize: 256,
-            attribution: "(c) OpenStreetMap contributors"
-          }
-        },
-        layers: [
-          {
-            id: "osm",
-            type: "raster",
-            source: "osm",
-            paint: { "raster-saturation": -0.6, "raster-opacity": 0.55 }
-          }
-        ]
-      }
+function makeMarkerIcon(group: MarkerGroup) {
+  const html = group.markers
+    .map(
+      (marker) =>
+        `<span class="signal-icon ${marker.kind}" style="--marker-color:${normalizeHex(marker.color)}" title="${escapeHtml(marker.label)}" aria-label="${escapeHtml(marker.label)}"></span>`
+    )
+    .join("");
+  const width = group.markers.length * 26 + Math.max(0, group.markers.length - 1) * 6;
+  return L.divIcon({
+    className: `signal-marker signal-marker-row actor-${group.actor.toLowerCase()}`,
+    html,
+    iconSize: [width, 26],
+    iconAnchor: [width / 2, 13]
+  });
+}
+
+function markerPopupHtml(group: MarkerGroup) {
+  const rows = group.markers
+    .map(
+      (marker) =>
+        `<span><b>${escapeHtml(marker.label)}</b>: Score ${formatScore(marker.score)}</span>`
+    )
+    .join("");
+  const warning = group.markers[0]?.warning ?? "Generated icon from workbook score fields; not verified intelligence.";
+  return `<div class="intel-popup"><strong>${escapeHtml(group.country)}</strong><span>${group.actor} / ${group.iso3}</span>${rows}<em>${escapeHtml(warning)}</em></div>`;
+}
+
+function createPanes(map: L.Map) {
+  const panes = [
+    ["country-fill", 410],
+    ["country-border", 420],
+    ["flows", 430],
+    ["markers", 440],
+    ["selected-outline", 450],
+    ["intel-popups", 700]
+  ] as const;
+  panes.forEach(([name, zIndex]) => {
+    const pane = map.getPane(name) ?? map.createPane(name);
+    pane.style.zIndex = String(zIndex);
+  });
+}
+
+function LeafletLayers({ countries, geojson, flows, markers, metric, selectedKey, onSelect }: Props) {
+  const map = useMap();
+  const markerGroups = useMemo(() => groupMarkers(markers), [markers]);
+  const byIso = useMemo(() => {
+    const result = new Map<string, MapCountry>();
+    countries.forEach((country) => {
+      const current = result.get(country.iso3);
+      if (!current || country.composite_score > current.composite_score) result.set(country.iso3, country);
     });
-    map.addControl(new maplibregl.NavigationControl({ showCompass: false }), "top-right");
-    mapRef.current = map;
-    return () => {
-      popupRef.current?.remove();
-      map.remove();
-      mapRef.current = null;
-    };
-  }, []);
+    return result;
+  }, [countries]);
 
   useEffect(() => {
-    const map = mapRef.current;
-    const geojson = data && data.features.length ? data : pointFallback;
-    if (!map || !geojson) return;
+    createPanes(map);
+  }, [map]);
 
-    const addOrUpdate = () => {
-      if (map.getSource(sourceId)) {
-        (map.getSource(sourceId) as maplibregl.GeoJSONSource).setData(geojson);
-        return;
+  useEffect(() => {
+    const style = (feature?: GeoJSON.Feature): PathOptions => {
+      const props = feature?.properties as { iso3?: string; has_map_data?: boolean } | null;
+      const country = props?.iso3 ? byIso.get(props.iso3) : undefined;
+      if (!country) {
+        return {
+          pane: "country-fill",
+          fillColor: "#101827",
+          color: "#293142",
+          weight: 0.45,
+          fillOpacity: 0.22,
+          opacity: 0.75
+        };
       }
-      map.addSource(sourceId, { type: "geojson", data: geojson });
-      map.addLayer({
-        id: fillLayerId,
-        type: "fill",
-        source: sourceId,
-        filter: ["==", "$type", "Polygon"],
-        paint: {
-          "fill-color": workbookColorExpression(metric) as any,
-          "fill-opacity": ["case", ["has", metric], ["coalesce", ["get", "map_opacity"], ["+", 0.25, ["*", ["coalesce", ["get", "confidence_score"], 0.5], 0.55]]], 0.18]
-        }
-      });
-      map.addLayer({
-        id: lineLayerId,
-        type: "line",
-        source: sourceId,
-        filter: ["==", "$type", "Polygon"],
-        paint: {
-          "line-color": ["case", ["==", ["get", "iso3"], selectedIso ?? ""], "#111827", "#ffffff"],
-          "line-width": ["case", ["==", ["get", "iso3"], selectedIso ?? ""], 2.2, 0.6],
-          "line-opacity": 0.8
-        }
-      });
-      map.addLayer({
-        id: pointLayerId,
-        type: "circle",
-        source: sourceId,
-        filter: ["==", "$type", "Point"],
-        paint: {
-          "circle-radius": ["interpolate", ["linear"], ["zoom"], 1, 5, 4, 10],
-          "circle-color": workbookColorExpression(metric) as any,
-          "circle-opacity": ["coalesce", ["get", "map_opacity"], ["+", 0.35, ["*", ["coalesce", ["get", "confidence_score"], 0.5], 0.5]]],
-          "circle-stroke-color": ["case", ["==", ["get", "iso3"], selectedIso ?? ""], "#111827", "#ffffff"],
-          "circle-stroke-width": ["case", ["==", ["get", "iso3"], selectedIso ?? ""], 2.5, 1]
-        }
-      });
-
-      const clickHandler = (event: MapLayerMouseEvent) => {
-        const feature = event.features?.[0];
-        const props = feature?.properties as Record<string, string> | undefined;
-        if (props?.iso3) onSelect(props.iso3, props.country);
+      const datum = countryMetric(country, metric);
+      return {
+        pane: "country-fill",
+        fillColor: normalizeHex(datum.color),
+        color: selectedKey === countryKey(country) ? "#f8fafc" : "#56627a",
+        weight: selectedKey === countryKey(country) ? 2.2 : 0.7,
+        fillOpacity: confidenceOpacity(datum.opacity),
+        opacity: 0.95
       };
-      const hoverHandler = (event: MapLayerMouseEvent) => {
-        map.getCanvas().style.cursor = "pointer";
-        const feature = event.features?.[0];
-        const props = feature?.properties as Record<string, string | number> | undefined;
-        if (!props) return;
-        const value = typeof props[metric] === "number" ? (props[metric] as number) : Number(props[metric]);
-        popupRef.current?.remove();
-        popupRef.current = new maplibregl.Popup({ closeButton: false, closeOnClick: false })
-          .setLngLat(event.lngLat)
-          .setHTML(
-            `<strong>${escapeHtml(props.country ?? "Country")}</strong><span>${escapeHtml(props.actor ?? actor)}</span><span>${escapeHtml(metricLabels[metric])}: ${escapeHtml(formatScore(value, metric))}</span><span>Confidence: ${escapeHtml(formatScore(Number(props.confidence_score ?? 0), "confidence_score"))}</span>`
-          )
-          .addTo(map);
-      };
-      const leaveHandler = () => {
-        map.getCanvas().style.cursor = "";
-        popupRef.current?.remove();
-      };
-      [fillLayerId, pointLayerId].forEach((layerId) => {
-        map.on("click", layerId, clickHandler);
-        map.on("mousemove", layerId, hoverHandler);
-        map.on("mouseleave", layerId, leaveHandler);
-      });
     };
 
-    if (map.loaded()) addOrUpdate();
-    else map.once("load", addOrUpdate);
-  }, [actor, data, metric, onSelect, pointFallback, selectedIso]);
+    const countryLayer = L.geoJSON(geojson, {
+      pane: "country-fill",
+      style,
+      onEachFeature: (feature, layer: Layer) => {
+        const props = feature.properties as { iso3?: string } | null;
+        const country = props?.iso3 ? byIso.get(props.iso3) : undefined;
+        if (!country) return;
+        layer.bindPopup(popupHtml(country, metric), { pane: "intel-popups", className: "dark-popup" });
+        layer.on({
+          mouseover: () => {
+            (layer as L.Path).setStyle({ weight: 2.4, color: "#dbeafe" });
+          },
+          mouseout: () => {
+            (layer as L.Path).setStyle(style(feature));
+          },
+          click: () => {
+            onSelect(country);
+          }
+        });
+      }
+    }).addTo(map);
+
+    return () => {
+      countryLayer.removeFrom(map);
+    };
+  }, [byIso, geojson, map, metric, onSelect, selectedKey]);
 
   useEffect(() => {
-    const map = mapRef.current;
-    if (!map?.getLayer(fillLayerId)) return;
-    map.setPaintProperty(fillLayerId, "fill-color", workbookColorExpression(metric) as any);
-    map.setPaintProperty(pointLayerId, "circle-color", workbookColorExpression(metric) as any);
-  }, [metric]);
+    const renderer = L.canvas({ pane: "flows", padding: 0.35 });
+    const flowLayers = flows.map((flow) =>
+      L.polyline(flow.coordinates, {
+        pane: "flows",
+        renderer,
+        color: normalizeHex(flow.color),
+        opacity: Math.min(0.82, Math.max(0.22, flow.opacity)),
+        weight: Math.max(1, flow.score * 0.7),
+        dashArray: flow.data_status === "Demo" ? "5 8" : undefined
+      })
+        .bindTooltip(`${flow.from} -> ${flow.to} (${flow.data_status})`)
+        .addTo(map)
+    );
+    return () => {
+      flowLayers.forEach((layer) => layer.removeFrom(map));
+    };
+  }, [flows, map]);
 
   useEffect(() => {
-    const map = mapRef.current;
-    if (!map?.getLayer(lineLayerId)) return;
-    map.setPaintProperty(lineLayerId, "line-color", ["case", ["==", ["get", "iso3"], selectedIso ?? ""], "#111827", "#ffffff"]);
-    map.setPaintProperty(lineLayerId, "line-width", ["case", ["==", ["get", "iso3"], selectedIso ?? ""], 2.2, 0.6]);
-    map.setPaintProperty(pointLayerId, "circle-stroke-color", ["case", ["==", ["get", "iso3"], selectedIso ?? ""], "#111827", "#ffffff"]);
-    map.setPaintProperty(pointLayerId, "circle-stroke-width", ["case", ["==", ["get", "iso3"], selectedIso ?? ""], 2.5, 1]);
-  }, [selectedIso]);
+    const markerLayers = markerGroups.map((group) =>
+      L.marker([group.latitude, group.longitude], {
+        pane: "markers",
+        icon: makeMarkerIcon(group),
+        keyboard: true,
+        title: `${group.actor} signal indicators: ${group.country}`
+      })
+        .bindPopup(markerPopupHtml(group), { pane: "intel-popups", className: "dark-popup" })
+        .addTo(map)
+    );
+    return () => {
+      markerLayers.forEach((layer) => layer.removeFrom(map));
+    };
+  }, [map, markerGroups]);
 
+  return null;
+}
+
+export function MapView(props: Props) {
   return (
-    <section className="map-shell">
-      <div ref={containerRef} className="map-container" aria-label="Interactive influence map" />
-      {error && <div className="map-notice">Map layer not generated yet: {error}</div>}
-    </section>
+    <MapContainer className="leaflet-dashboard-map" center={[24, 18]} zoom={2.05} minZoom={2} maxZoom={7} worldCopyJump>
+      <TileLayer url={tileUrl} attribution={tileAttribution} />
+      <LeafletLayers {...props} />
+    </MapContainer>
   );
 }

@@ -1,0 +1,65 @@
+[
+  {
+    "Source_ID": "SRC-001",
+    "Source_Name": "V-Dem Dataset",
+    "Default_Tier": "Tier 1",
+    "Reliability_Weight": 1.0,
+    "URL": "https://www.v-dem.net/data/the-v-dem-dataset/",
+    "Useful_For_Factor": "Election interference; Russian influence",
+    "Notes": "Use for democracy/election context and expert-coded indicators."
+  },
+  {
+    "Source_ID": "SRC-002",
+    "Source_Name": "Freedom House — Freedom on the Net methodology",
+    "Default_Tier": "Tier 1",
+    "Reliability_Weight": 1.0,
+    "URL": "https://freedomhouse.org/reports/freedom-net/freedom-net-research-methodology",
+    "Useful_For_Factor": "Propaganda ecosystems; Election interference",
+    "Notes": "Use for digital rights, online manipulation and country narratives."
+  },
+  {
+    "Source_ID": "SRC-003",
+    "Source_Name": "ACLED — Wagner Group and Africa Corps",
+    "Default_Tier": "Tier 1",
+    "Reliability_Weight": 1.0,
+    "URL": "https://acleddata.com/armed-group/wagner-group-and-africa-corps",
+    "Useful_For_Factor": "PMC presence",
+    "Notes": "Use for event-based political violence and PMC-linked activity."
+  },
+  {
+    "Source_ID": "SRC-004",
+    "Source_Name": "EUvsDisinfo — Disinformation cases",
+    "Default_Tier": "Tier 1",
+    "Reliability_Weight": 1.0,
+    "URL": "https://euvsdisinfo.eu/disinformation-cases/",
+    "Useful_For_Factor": "Propaganda ecosystems",
+    "Notes": "Use for pro-Kremlin disinformation case logging."
+  },
+  {
+    "Source_ID": "SRC-005",
+    "Source_Name": "Official sanctions lists / government reports",
+    "Default_Tier": "Tier 1",
+    "Reliability_Weight": 1.0,
+    "URL": null,
+    "Useful_For_Factor": "All factors",
+    "Notes": "Use source-specific URLs in Evidence_Log."
+  },
+  {
+    "Source_ID": "SRC-006",
+    "Source_Name": "Reputable think tank or investigative media",
+    "Default_Tier": "Tier 2",
+    "Reliability_Weight": 0.75,
+    "URL": null,
+    "Useful_For_Factor": "All factors",
+    "Notes": "Use only with source URL and analyst note."
+  },
+  {
+    "Source_ID": "SRC-007",
+    "Source_Name": "Local media / NGO / expert commentary",
+    "Default_Tier": "Tier 3",
+    "Reliability_Weight": 0.5,
+    "URL": null,
+    "Useful_For_Factor": "All factors",
+    "Notes": "Use for triangulation, not as sole high-confidence evidence."
+  }
+]

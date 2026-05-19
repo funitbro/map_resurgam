@@ -1,72 +1,74 @@
 from __future__ import annotations
 
-import sys
-from collections import Counter
+import json
+from pathlib import Path
 
-from pipeline_utils import METRICS, PROCESSED_DIR, PUBLIC_DATA_DIR, read_json, write_json
+
+ROOT = Path(__file__).resolve().parents[1]
+PUBLIC_DATA = ROOT / "public" / "data"
+PROCESSED = ROOT / "data" / "processed"
+METRIC_KEYS = ["composite", "influence", "security", "propaganda", "election"]
+
+
+def read_json(path: Path):
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def write_json(path: Path, payload) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def main() -> int:
-    scores = read_json(PROCESSED_DIR / "scores.json", read_json(PUBLIC_DATA_DIR / "scores.json", []))
-    evidence = read_json(PROCESSED_DIR / "evidence.json", read_json(PUBLIC_DATA_DIR / "evidence.json", []))
+    rows = read_json(PUBLIC_DATA / "normalized_map_data.json")
+    joined = read_json(PUBLIC_DATA / "joined_countries.geojson")
+    flows = read_json(PUBLIC_DATA / "flows.json")
+    markers = read_json(PUBLIC_DATA / "markers.json")
     severe: list[str] = []
     warnings: list[str] = []
 
-    seen = Counter((row.get("actor"), row.get("country")) for row in scores)
-    for (actor, country), count in seen.items():
-        if count > 1:
-            severe.append(f"Duplicate score rows for {actor} + {country}.")
+    seen: set[tuple[str, str, str]] = set()
+    joined_iso = {feature.get("properties", {}).get("iso3") for feature in joined.get("features", [])}
 
-    for index, row in enumerate(scores, start=1):
-        label = f"{row.get('actor', '?')} / {row.get('country', f'row {index}')}"
+    for row in rows:
+        label = f"{row.get('country', '?')} / {row.get('iso3', '?')}"
         if not row.get("country"):
             severe.append(f"{label}: missing country.")
         if not row.get("iso3"):
-            warnings.append(f"{label}: missing ISO3.")
-        for metric in METRICS:
-            value = row.get(metric)
-            if not isinstance(value, (int, float)) or value < 0 or value > 5:
-                severe.append(f"{label}: {metric} must be between 0 and 5.")
-        confidence = row.get("confidence_score")
-        if not isinstance(confidence, (int, float)) or confidence < 0 or confidence > 1:
-            severe.append(f"{label}: confidence_score must be normalized to 0-1.")
-        dimensions = [
-            row.get("influence_score"),
-            row.get("pmc_psc_score"),
-            row.get("propaganda_score"),
-            row.get("election_interference_score"),
-        ]
-        if all(isinstance(value, (int, float)) for value in dimensions):
-            computed = round(sum(dimensions) / 4, 2)
-            provided = round(float(row.get("composite_score", 0)), 2)
-            if abs(computed - provided) > 0.15:
-                warnings.append(f"{label}: composite {provided} differs from dimension average {computed}.")
+            severe.append(f"{label}: missing ISO3.")
+        key = (row.get("actor", ""), row.get("country", ""), row.get("iso3", ""))
+        if key in seen:
+            severe.append(f"{label}: duplicate country/ISO3 row.")
+        seen.add(key)
+        if row.get("iso3") not in joined_iso:
+            warnings.append(f"{label}: ISO3 did not join to the world boundary file.")
+        if row.get("data_status") == "Demo" and not row.get("demo_warning"):
+            severe.append(f"{label}: demo data must carry a warning.")
+        for metric in METRIC_KEYS:
+            metric_data = row.get("metrics", {}).get(metric, {})
+            score = metric_data.get("score")
+            opacity = metric_data.get("opacity")
+            color = metric_data.get("color")
+            if not isinstance(score, (int, float)) or score < 0 or score > 5:
+                severe.append(f"{label}: {metric} score must be 0-5.")
+            if not isinstance(opacity, (int, float)) or opacity < 0 or opacity > 1:
+                severe.append(f"{label}: {metric} opacity must be 0-1.")
+            if not isinstance(color, str) or not color.startswith("#"):
+                warnings.append(f"{label}: {metric} color should be a workbook hex value.")
 
-    score_keys = {(row.get("actor"), row.get("country")) for row in scores}
-    for row in evidence:
-        country = row.get("country")
-        if country and (row.get("actor"), country) not in score_keys:
-            warnings.append(f"Evidence row for {row.get('actor')} / {country} has no matching score row.")
-        if row.get("reliability") not in {"High", "Medium", "Low", ""}:
-            warnings.append(f"Evidence reliability should be High, Medium, or Low: {row.get('reliability')}")
+    for flow in flows:
+        if flow.get("data_status") != "Demo":
+            severe.append(f"{flow.get('id')}: generated flow must be marked Demo.")
+    for marker in markers:
+        if marker.get("data_status") != "Demo":
+            severe.append(f"{marker.get('id')}: generated marker must be marked Demo.")
 
-    report = {
-        "severe_count": len(severe),
-        "warning_count": len(warnings),
-        "severe": severe,
-        "warnings": warnings,
-    }
-    write_json(PROCESSED_DIR / "validation_report.json", report)
-    write_json(PUBLIC_DATA_DIR / "validation_report.json", report)
-
+    report = {"severe_count": len(severe), "warning_count": len(warnings), "severe": severe, "warnings": warnings}
+    write_json(PUBLIC_DATA / "validation_report.json", report)
+    write_json(PROCESSED / "validation_report.json", report)
     print(f"Validation complete: {len(severe)} severe, {len(warnings)} warnings.")
-    if severe:
-        for issue in severe[:20]:
-            print(f"ERROR: {issue}", file=sys.stderr)
-        return 1
-    return 0
+    return 1 if severe else 0
 
 
 if __name__ == "__main__":
     raise SystemExit(main())
-

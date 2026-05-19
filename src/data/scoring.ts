@@ -1,36 +1,30 @@
-import type { Actor, MetricKey } from "./types";
+import type { MapCountry, MetricKey } from "./types";
 
-export const actors: Actor[] = ["Russia", "USA", "China"];
-
-export const metricLabels: Record<MetricKey, string> = {
-  composite_score: "Composite score",
-  influence_score: "Influence / leverage",
-  pmc_psc_score: "PMC / PSC / contractor presence",
-  propaganda_score: "Propaganda ecosystem",
-  election_interference_score: "Election interference",
-  confidence_score: "Confidence"
-};
-
-export const scoreMetrics: MetricKey[] = [
-  "composite_score",
-  "influence_score",
-  "pmc_psc_score",
-  "propaganda_score",
-  "election_interference_score"
+export const metricOptions: { key: MetricKey; label: string }[] = [
+  { key: "composite", label: "Composite risk" },
+  { key: "influence", label: "Influence / leverage" },
+  { key: "security", label: "Security / contractors" },
+  { key: "propaganda", label: "Propaganda ecosystems" },
+  { key: "election", label: "Election interference" }
 ];
 
-export const metricShortLabels: Record<MetricKey, string> = {
-  composite_score: "Composite",
-  influence_score: "Influence",
-  pmc_psc_score: "PMC/PSC",
-  propaganda_score: "Propaganda",
-  election_interference_score: "Election",
-  confidence_score: "Confidence"
-};
-
-export function formatScore(value?: number | null, metric?: MetricKey): string {
-  if (typeof value !== "number" || Number.isNaN(value)) return "No data";
-  if (metric === "confidence_score") return `${Math.round(value * 100)}%`;
-  return value.toFixed(2).replace(/\.00$/, "");
+export function formatScore(score?: number): string {
+  if (typeof score !== "number" || Number.isNaN(score)) return "No data";
+  return score.toFixed(1).replace(/\.0$/, "");
 }
 
+export function countryMetric(country: MapCountry, metric: MetricKey) {
+  return country.metrics[metric] ?? country.metrics.composite;
+}
+
+export function riskLabel(score: number): string {
+  if (score >= 4) return "Severe";
+  if (score >= 3) return "High";
+  if (score >= 2) return "Elevated";
+  if (score >= 1) return "Limited";
+  return "No confirmed signs";
+}
+
+export function topCountries(countries: MapCountry[], metric: MetricKey, limit = 5): MapCountry[] {
+  return [...countries].sort((a, b) => countryMetric(b, metric).score - countryMetric(a, metric).score).slice(0, limit);
+}

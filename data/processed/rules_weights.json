@@ -1,0 +1,170 @@
+[
+  {
+    "Rule_Key": "Russian influence|Pilot baseline estimate",
+    "Factor": "Russian influence",
+    "Indicator": "Pilot baseline estimate",
+    "Indicator_Weight": 100,
+    "Scoring_Note": "Temporary one-line pilot estimate; replace with indicator-level evidence."
+  },
+  {
+    "Rule_Key": "Russian influence|Military/security cooperation",
+    "Factor": "Russian influence",
+    "Indicator": "Military/security cooperation",
+    "Indicator_Weight": 25,
+    "Scoring_Note": "Training, basing, arms, intelligence, or security dependence."
+  },
+  {
+    "Rule_Key": "Russian influence|Political alignment / elite ties",
+    "Factor": "Russian influence",
+    "Indicator": "Political alignment / elite ties",
+    "Indicator_Weight": 25,
+    "Scoring_Note": "Elite networks, party links, diplomatic alignment, patronage."
+  },
+  {
+    "Rule_Key": "Russian influence|Economic or energy dependence",
+    "Factor": "Russian influence",
+    "Indicator": "Economic or energy dependence",
+    "Indicator_Weight": 20,
+    "Scoring_Note": "Energy, trade, debt, mining, logistics, or strategic dependencies."
+  },
+  {
+    "Rule_Key": "Russian influence|Information influence",
+    "Factor": "Russian influence",
+    "Indicator": "Information influence",
+    "Indicator_Weight": 20,
+    "Scoring_Note": "State media, content networks, narrative penetration."
+  },
+  {
+    "Rule_Key": "Russian influence|Cyber / intelligence activity",
+    "Factor": "Russian influence",
+    "Indicator": "Cyber / intelligence activity",
+    "Indicator_Weight": 10,
+    "Scoring_Note": "Cyber operations, espionage, influence-linked cyber incidents."
+  },
+  {
+    "Rule_Key": "PMC presence|Pilot baseline estimate",
+    "Factor": "PMC presence",
+    "Indicator": "Pilot baseline estimate",
+    "Indicator_Weight": 100,
+    "Scoring_Note": "Temporary one-line pilot estimate; replace with indicator-level evidence."
+  },
+  {
+    "Rule_Key": "PMC presence|Confirmed deployment",
+    "Factor": "PMC presence",
+    "Indicator": "Confirmed deployment",
+    "Indicator_Weight": 35,
+    "Scoring_Note": "Confirmed presence of Wagner/Africa Corps/other Russian-linked contractors."
+  },
+  {
+    "Rule_Key": "PMC presence|Combat or security role",
+    "Factor": "PMC presence",
+    "Indicator": "Combat or security role",
+    "Indicator_Weight": 25,
+    "Scoring_Note": "Combat operations, convoy security, regime protection, base protection."
+  },
+  {
+    "Rule_Key": "PMC presence|Integration with state forces",
+    "Factor": "PMC presence",
+    "Indicator": "Integration with state forces",
+    "Indicator_Weight": 20,
+    "Scoring_Note": "Training, joint operations, command integration or state security functions."
+  },
+  {
+    "Rule_Key": "PMC presence|Resource/security contracts",
+    "Factor": "PMC presence",
+    "Indicator": "Resource/security contracts",
+    "Indicator_Weight": 10,
+    "Scoring_Note": "Mining, energy, port, logistics, or security-for-resource arrangements."
+  },
+  {
+    "Rule_Key": "PMC presence|Recency of activity",
+    "Factor": "PMC presence",
+    "Indicator": "Recency of activity",
+    "Indicator_Weight": 10,
+    "Scoring_Note": "Evidence of current or recent activity."
+  },
+  {
+    "Rule_Key": "Propaganda ecosystems|Pilot baseline estimate",
+    "Factor": "Propaganda ecosystems",
+    "Indicator": "Pilot baseline estimate",
+    "Indicator_Weight": 100,
+    "Scoring_Note": "Temporary one-line pilot estimate; replace with indicator-level evidence."
+  },
+  {
+    "Rule_Key": "Propaganda ecosystems|Volume of pro-Kremlin narratives",
+    "Factor": "Propaganda ecosystems",
+    "Indicator": "Volume of pro-Kremlin narratives",
+    "Indicator_Weight": 25,
+    "Scoring_Note": "Repeated narratives across media, social or political channels."
+  },
+  {
+    "Rule_Key": "Propaganda ecosystems|Domestic amplification by local media/politicians",
+    "Factor": "Propaganda ecosystems",
+    "Indicator": "Domestic amplification by local media/politicians",
+    "Indicator_Weight": 25,
+    "Scoring_Note": "Local intermediaries amplify narratives."
+  },
+  {
+    "Rule_Key": "Propaganda ecosystems|Coordination / network behaviour",
+    "Factor": "Propaganda ecosystems",
+    "Indicator": "Coordination / network behaviour",
+    "Indicator_Weight": 20,
+    "Scoring_Note": "Coordinated posting, bot/troll farms, linked media networks."
+  },
+  {
+    "Rule_Key": "Propaganda ecosystems|Platform reach",
+    "Factor": "Propaganda ecosystems",
+    "Indicator": "Platform reach",
+    "Indicator_Weight": 15,
+    "Scoring_Note": "Meaningful audience reach across platforms."
+  },
+  {
+    "Rule_Key": "Propaganda ecosystems|Multilingual/cross-border targeting",
+    "Factor": "Propaganda ecosystems",
+    "Indicator": "Multilingual/cross-border targeting",
+    "Indicator_Weight": 15,
+    "Scoring_Note": "Narratives translated or exported across borders."
+  },
+  {
+    "Rule_Key": "Election interference|Pilot baseline estimate",
+    "Factor": "Election interference",
+    "Indicator": "Pilot baseline estimate",
+    "Indicator_Weight": 100,
+    "Scoring_Note": "Temporary one-line pilot estimate; replace with indicator-level evidence."
+  },
+  {
+    "Rule_Key": "Election interference|Attribution to Russian/state-linked actors",
+    "Factor": "Election interference",
+    "Indicator": "Attribution to Russian/state-linked actors",
+    "Indicator_Weight": 30,
+    "Scoring_Note": "Credible attribution to Russian state, proxies or aligned actors."
+  },
+  {
+    "Rule_Key": "Election interference|Timing around election cycle",
+    "Factor": "Election interference",
+    "Indicator": "Timing around election cycle",
+    "Indicator_Weight": 20,
+    "Scoring_Note": "Activity close to campaign, voting, counting, or transition periods."
+  },
+  {
+    "Rule_Key": "Election interference|Cyber / hack / leak activity",
+    "Factor": "Election interference",
+    "Indicator": "Cyber / hack / leak activity",
+    "Indicator_Weight": 20,
+    "Scoring_Note": "Hacking, leaks, phishing, cyber probing of election infrastructure."
+  },
+  {
+    "Rule_Key": "Election interference|Disinformation or bot operations",
+    "Factor": "Election interference",
+    "Indicator": "Disinformation or bot operations",
+    "Indicator_Weight": 20,
+    "Scoring_Note": "Targeted narratives, bot/troll activity, manipulated media."
+  },
+  {
+    "Rule_Key": "Election interference|Measurable institutional or public impact",
+    "Factor": "Election interference",
+    "Indicator": "Measurable institutional or public impact",
+    "Indicator_Weight": 10,
+    "Scoring_Note": "Institutional disruption, public trust effect, official investigation."
+  }
+]
