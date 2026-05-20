@@ -1,13 +1,13 @@
 {
-  "map_rows": 52,
+  "map_rows": 369,
   "actors": [
     "China",
     "Russia",
     "USA"
   ],
   "joined_features": 258,
-  "demo_flows": 52,
-  "demo_markers": 135,
-  "source_workbook": "data\\input\\interactive_influence_map_all_in_one_google_sheet.xlsx",
-  "demo_notice": "Pilot/demo rows and generated flows/markers are not verified intelligence."
+  "demo_flows": 369,
+  "demo_markers": 935,
+  "source_workbook": "data\\input\\resurgam_actor_influence_resurgamhub_countries_only_workbook.xlsx",
+  "demo_notice": "Unscored rows and generated flows/markers are not verified intelligence."
 }

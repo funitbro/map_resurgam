@@ -1,0 +1,93 @@
+[
+  {
+    "0–10 scoring rubric": "Score",
+    "Unnamed: 1": "Band",
+    "Unnamed: 2": "Meaning",
+    "Unnamed: 3": "Use when evidence shows",
+    "Unnamed: 4": "Verification rule"
+  },
+  {
+    "0–10 scoring rubric": 0,
+    "Unnamed: 1": "Absent / none",
+    "Unnamed: 2": "No verified presence.",
+    "Unnamed: 3": "No country-specific verified evidence of the actor/subfactor.",
+    "Unnamed: 4": "Keep as 0 only when absence is verified; otherwise leave blank / No data."
+  },
+  {
+    "0–10 scoring rubric": 1,
+    "Unnamed: 1": "Low",
+    "Unnamed: 2": "Trace or isolated indicator.",
+    "Unnamed: 3": "One weak, old, or indirect source-backed indicator.",
+    "Unnamed: 4": "Needs source URL and note explaining weakness."
+  },
+  {
+    "0–10 scoring rubric": 2,
+    "Unnamed: 1": "Low",
+    "Unnamed: 2": "Identifiable but limited footprint.",
+    "Unnamed: 3": "One credible country-specific source or a small number of limited indicators.",
+    "Unnamed: 4": "Needs source URL and confidence rating."
+  },
+  {
+    "0–10 scoring rubric": 3,
+    "Unnamed: 1": "Moderate",
+    "Unnamed: 2": "Limited recurring evidence.",
+    "Unnamed: 3": "More than one source-backed indicator, but narrow in channel, time, or scope.",
+    "Unnamed: 4": "Needs source URL(s) and analyst note."
+  },
+  {
+    "0–10 scoring rubric": 4,
+    "Unnamed: 1": "Moderate",
+    "Unnamed: 2": "Recurring and credible activity.",
+    "Unnamed: 3": "Repeated activity or visible footprint, but not yet strategically central.",
+    "Unnamed: 4": "Needs country-specific evidence and review status."
+  },
+  {
+    "0–10 scoring rubric": 5,
+    "Unnamed: 1": "Significant",
+    "Unnamed: 2": "Significant influence in one channel or limited multi-channel activity.",
+    "Unnamed: 3": "Strong single-channel influence or several lower-intensity channels.",
+    "Unnamed: 4": "Source-backed score; mark Partial source unless all subfactor URLs exist."
+  },
+  {
+    "0–10 scoring rubric": 6,
+    "Unnamed: 1": "High",
+    "Unnamed: 2": "Sustained, visible, or strategically relevant evidence.",
+    "Unnamed: 3": "Sustained activity with political, security, or information relevance.",
+    "Unnamed: 4": "Needs credible source URL and confidence."
+  },
+  {
+    "0–10 scoring rubric": 7,
+    "Unnamed: 1": "Very high",
+    "Unnamed: 2": "Strong multi-channel footprint.",
+    "Unnamed: 3": "Influence spans several mechanisms or has durable institutional/network links.",
+    "Unnamed: 4": "Needs multiple or strong official/credible sources."
+  },
+  {
+    "0–10 scoring rubric": 8,
+    "Unnamed: 1": "Entrenched",
+    "Unnamed: 2": "Institutionally or network significant.",
+    "Unnamed: 3": "Entrenched role in institutions, strategic sectors, media/security networks, or elections.",
+    "Unnamed: 4": "Needs strong source base and source-complete review preferred."
+  },
+  {
+    "0–10 scoring rubric": 9,
+    "Unnamed: 1": "Dominant",
+    "Unnamed: 2": "Major role in key influence channels.",
+    "Unnamed: 3": "Actor is dominant in at least one key channel or highly influential across several.",
+    "Unnamed: 4": "Needs high confidence and explicit source justification."
+  },
+  {
+    "0–10 scoring rubric": 10,
+    "Unnamed: 1": "Systemic",
+    "Unnamed: 2": "Central / commanding influence.",
+    "Unnamed: 3": "Actor/subfactor is central to the country’s political-security-information environment.",
+    "Unnamed: 4": "Use rarely; requires robust source-backed justification."
+  },
+  {
+    "0–10 scoring rubric": "Scoring principle",
+    "Unnamed: 1": "Do not fabricate",
+    "Unnamed: 2": "Blank means not assessed / no source-backed score yet.",
+    "Unnamed: 3": "0 means verified absence or verified negligible presence.",
+    "Unnamed: 4": "All country scores require country-specific URLs."
+  }
+]

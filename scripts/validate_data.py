@@ -49,8 +49,8 @@ def main() -> int:
             score = metric_data.get("score")
             opacity = metric_data.get("opacity")
             color = metric_data.get("color")
-            if not isinstance(score, (int, float)) or score < 0 or score > 5:
-                severe.append(f"{label}: {metric} score must be 0-5.")
+            if not isinstance(score, (int, float)) or score < 0 or score > 10:
+                severe.append(f"{label}: {metric} score must be 0-10.")
             if not isinstance(opacity, (int, float)) or opacity < 0 or opacity > 1:
                 severe.append(f"{label}: {metric} opacity must be 0-1.")
             if not isinstance(color, str) or not color.startswith("#"):

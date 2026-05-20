@@ -22,7 +22,7 @@ export type MapCountry = {
   last_updated: string;
   notes: string;
   publication_status: string;
-  data_status: "Demo" | "Verified";
+  data_status: "Demo" | "Verified" | "Needs review" | "Unscored";
   demo_warning: string;
   metrics: Record<MetricKey, MetricDatum>;
   composite_score: number;
@@ -39,6 +39,7 @@ export type EvidenceRow = {
   Region: string;
   Factor: string;
   Indicator: string;
+  Indicator_Score_0_10?: number;
   Indicator_Score_0_5: number;
   Source_Tier: string;
   Source_Name: string;

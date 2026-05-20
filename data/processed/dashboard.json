@@ -1,122 +1,134 @@
 [
   {
-    "Interactive map scoring dashboard": "Metric",
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Metric",
     "Unnamed: 1": "Value",
+    "Unnamed: 2": "Notes",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Countries / areas",
+    "Unnamed: 1": 123,
+    "Unnamed: 2": "Filtered to normalized country/country-area mentions found in ResurgamHub materials; USA is one row.",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Actors",
+    "Unnamed: 1": 4,
+    "Unnamed: 2": "Russia, China, United States, European Union.",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Subfactors per actor",
+    "Unnamed: 1": 4,
+    "Unnamed: 2": "Same four subfactors for every actor.",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Country-actor scoring rows",
+    "Unnamed: 1": 492,
+    "Unnamed: 2": "One row per ResurgamHub country/area per actor.",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Country-actor-subfactor evidence slots",
+    "Unnamed: 1": 1968,
+    "Unnamed: 2": "One placeholder slot per country/actor/subfactor.",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Scored actor-country rows",
+    "Unnamed: 1": 492,
+    "Unnamed: 2": "Formula counts numeric Actor_Influence_Score_0_10 values in Scoring_Matrix.",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Source-complete actor-country rows",
+    "Unnamed: 1": 492,
+    "Unnamed: 2": "Formula counts rows with all four subfactor source URLs.",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Actor",
+    "Unnamed: 1": "Scored countries",
+    "Unnamed: 2": "Average influence score (0–10)",
+    "Unnamed: 3": "Source-complete countries"
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Russia",
+    "Unnamed: 1": 123,
+    "Unnamed: 2": 2.089430894308943,
+    "Unnamed: 3": 123
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "China",
+    "Unnamed: 1": 123,
+    "Unnamed: 2": 2.1707317073170733,
+    "Unnamed: 3": 123
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "United States",
+    "Unnamed: 1": 123,
+    "Unnamed: 2": 3.1239837398373984,
+    "Unnamed: 3": 123
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "European Union",
+    "Unnamed: 1": 123,
+    "Unnamed: 2": 1.9369918699186992,
+    "Unnamed: 3": 123
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Workflow checkpoints",
+    "Unnamed: 1": null,
     "Unnamed: 2": null,
-    "Unnamed: 3": "Composite score",
-    "Unnamed: 4": "Country count",
-    "Unnamed: 5": "Score",
-    "Unnamed: 6": "Colour",
-    "Unnamed: 7": "Meaning"
+    "Unnamed: 3": null
   },
   {
-    "Interactive map scoring dashboard": "Countries included",
-    "Unnamed: 1": 10,
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "1",
+    "Unnamed: 1": "Enter evidence",
+    "Unnamed: 2": "Use Evidence_Log for granular source records; keep country, actor and subfactor aligned.",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "2",
+    "Unnamed: 1": "Score subfactors",
+    "Unnamed: 2": "Populate Scoring_Matrix score/confidence/source cells only when a source URL supports the 0–10 value.",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "3",
+    "Unnamed: 1": "Review rollups",
+    "Unnamed: 2": "Actor_Influence_Score_0_10 is a weighted formula across sourced 0–10 subfactor scores.",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "4",
+    "Unnamed: 1": "Map",
+    "Unnamed: 2": "Use Map_Data for country-level map exports after sufficient evidence coverage.",
+    "Unnamed: 3": null
+  },
+  {
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Leaflet scope",
+    "Unnamed: 1": null,
     "Unnamed: 2": null,
-    "Unnamed: 3": 0,
-    "Unnamed: 4": 39,
-    "Unnamed: 5": 0,
-    "Unnamed: 6": "F2F2F2",
-    "Unnamed: 7": "No confirmed evidence or not applicable"
+    "Unnamed: 3": null
   },
   {
-    "Interactive map scoring dashboard": "Included evidence rows",
-    "Unnamed: 1": 40,
-    "Unnamed: 2": null,
-    "Unnamed: 3": 1,
-    "Unnamed: 4": 0,
-    "Unnamed: 5": 1,
-    "Unnamed: 6": "D9F0D3",
-    "Unnamed: 7": "Weak, isolated or speculative signs"
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Country_Config rows",
+    "Unnamed: 1": 123,
+    "Unnamed: 2": "Only ResurgamHub-mentioned country/country-area rows, all Include_on_Map = Yes.",
+    "Unnamed: 3": null
   },
   {
-    "Interactive map scoring dashboard": "Publishable factor scores",
-    "Unnamed: 1": 0,
-    "Unnamed: 2": null,
-    "Unnamed: 3": 2,
-    "Unnamed: 4": 1,
-    "Unnamed: 5": 2,
-    "Unnamed: 6": "ADDD8E",
-    "Unnamed: 7": "Limited, indirect or sporadic influence"
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "Map_Data Leaflet columns",
+    "Unnamed: 1": "Q:Z",
+    "Unnamed: 2": "Colour, join key, GeoJSON point, feature properties and notes.",
+    "Unnamed: 3": null
   },
   {
-    "Interactive map scoring dashboard": "Scores needing review",
-    "Unnamed: 1": 40,
-    "Unnamed: 2": null,
-    "Unnamed: 3": 3,
-    "Unnamed: 4": 5,
-    "Unnamed: 5": 3,
-    "Unnamed: 6": "FDAE6B",
-    "Unnamed: 7": "Regular, visible or repeated influence"
-  },
-  {
-    "Interactive map scoring dashboard": "No-evidence factor scores",
-    "Unnamed: 1": 39,
-    "Unnamed: 2": null,
-    "Unnamed: 3": 4,
-    "Unnamed: 4": 3,
-    "Unnamed: 5": 4,
-    "Unnamed: 6": "F16913",
-    "Unnamed: 7": "Systemic influence across several channels"
-  },
-  {
-    "Interactive map scoring dashboard": "Latest evidence date",
-    "Unnamed: 1": "2025-01-01T00:00:00",
-    "Unnamed: 2": null,
-    "Unnamed: 3": 5,
-    "Unnamed: 4": 1,
-    "Unnamed: 5": 5,
-    "Unnamed: 6": "A63603",
-    "Unnamed: 7": "Direct, institutionalized, decisive or critical influence"
-  },
-  {
-    "Interactive map scoring dashboard": "Factor",
-    "Unnamed: 1": "Average score",
-    "Unnamed: 2": "Needs review rows",
-    "Unnamed: 3": "Publishable rows",
-    "Unnamed: 4": null,
-    "Unnamed: 5": null,
-    "Unnamed: 6": null,
-    "Unnamed: 7": null
-  },
-  {
-    "Interactive map scoring dashboard": "Russian influence",
-    "Unnamed: 1": 3.9,
-    "Unnamed: 2": 10,
-    "Unnamed: 3": 0,
-    "Unnamed: 4": null,
-    "Unnamed: 5": null,
-    "Unnamed: 6": null,
-    "Unnamed: 7": null
-  },
-  {
-    "Interactive map scoring dashboard": "PMC presence",
-    "Unnamed: 1": 1.8,
-    "Unnamed: 2": 10,
-    "Unnamed: 3": 0,
-    "Unnamed: 4": null,
-    "Unnamed: 5": null,
-    "Unnamed: 6": null,
-    "Unnamed: 7": null
-  },
-  {
-    "Interactive map scoring dashboard": "Propaganda ecosystems",
-    "Unnamed: 1": 3.9,
-    "Unnamed: 2": 10,
-    "Unnamed: 3": 0,
-    "Unnamed: 4": null,
-    "Unnamed: 5": null,
-    "Unnamed: 6": null,
-    "Unnamed: 7": null
-  },
-  {
-    "Interactive map scoring dashboard": "Election interference",
-    "Unnamed: 1": 2.8,
-    "Unnamed: 2": 10,
-    "Unnamed: 3": 0,
-    "Unnamed: 4": null,
-    "Unnamed: 5": null,
-    "Unnamed: 6": null,
-    "Unnamed: 7": null
+    "Influence scoring dashboard — ResurgamHub-mentioned countries only": "GeoJSON feature rows",
+    "Unnamed: 1": 123,
+    "Unnamed: 2": "Rows GeoJSON_Export!D7:D129 can be copied into a FeatureCollection.",
+    "Unnamed: 3": null
   }
 ]

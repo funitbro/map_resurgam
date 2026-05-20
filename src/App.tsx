@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { MapView } from "./components/MapView";
 import {
   metricOptions,
@@ -8,19 +8,29 @@ import {
   riskScoreBucket,
   riskScoreKeys,
   riskScoreOptions,
+  SCORE_MAX,
+  scoreColor,
   selectedMetric,
   topCountries
 } from "./data/scoring";
 import type { RiskScoreBucket } from "./data/scoring";
-import type { Actor, EvidenceRow, MapCountry, MetricKey, SourceRow } from "./data/types";
+import type { Actor, EvidenceRow, MapCountry, MetricKey, SignalMarker, SourceRow } from "./data/types";
 import { useDashboardData } from "./hooks/useDashboardData";
 
 const actorOptions: Actor[] = ["Russia", "USA", "China"];
 const metricKeys = metricOptions.map((option) => option.key);
+const overlayOptions = [
+  { key: "flows", label: "Influence flows" },
+  { key: "security", label: "Security card signs" },
+  { key: "channel", label: "Channel card signs" },
+  { key: "digital", label: "Digital card signs" }
+] as const;
+const overlayKeys = overlayOptions.map((option) => option.key);
 type RankedSortKey = "selected" | "country" | "actor" | "confidence" | MetricKey;
 type SortDirection = "asc" | "desc";
-type TimelineBounds = { minYear: number; maxYear: number };
 type MobileSheet = "map" | "explore" | "filters" | "legend" | "stats";
+type OverlayLayer = (typeof overlayOptions)[number]["key"];
+const defaultOverlayLayers: OverlayLayer[] = [];
 type CountrySearchResult = {
   key: string;
   country: string;
@@ -35,63 +45,29 @@ function rowKey(country: MapCountry) {
   return `${country.actor}:${country.iso3}`;
 }
 
-function parseTimelineYear(value: unknown): number | undefined {
-  if (value === null || value === undefined || value === "") return undefined;
-  if (typeof value === "number") {
-    if (!Number.isFinite(value)) return undefined;
-    if (value >= 25000 && value <= 80000) {
-      const date = new Date(Date.UTC(1899, 11, 30) + value * 86400000);
-      const year = date.getUTCFullYear();
-      return year >= 1900 && year <= 2200 ? year : undefined;
-    }
-    if (value >= 1900 && value <= 2200) return Math.round(value);
-    return undefined;
-  }
-  const trimmed = String(value).trim();
-  if (!trimmed) return undefined;
-  if (/^\d+(\.\d+)?$/.test(trimmed)) return parseTimelineYear(Number(trimmed));
-  const parsed = Date.parse(trimmed);
-  if (Number.isNaN(parsed)) return undefined;
-  const year = new Date(parsed).getUTCFullYear();
-  return year >= 1900 && year <= 2200 ? year : undefined;
+function markerKey(marker: SignalMarker) {
+  return `${marker.actor}:${marker.iso3}`;
 }
 
-function newestYear(values: unknown[]) {
-  const years = values.map(parseTimelineYear).filter((year): year is number => typeof year === "number");
-  return years.length ? Math.max(...years) : undefined;
-}
-
-function rememberYear(lookup: Map<string, number>, key: string, year?: number) {
-  if (!key || typeof year !== "number") return;
-  lookup.set(key, Math.max(lookup.get(key) ?? year, year));
-}
-
-function buildEvidenceYearLookup(evidence: EvidenceRow[]) {
-  const lookup = new Map<string, number>();
-  evidence.forEach((row) => {
-    const iso3 = String(row.ISO3 ?? "").trim();
-    if (!iso3) return;
-    const year = parseTimelineYear(row.Event_Date) ?? parseTimelineYear(row.Retrieved_Date);
-    rememberYear(lookup, iso3, year);
-    if (row.actor) rememberYear(lookup, `${row.actor}:${iso3}`, year);
-  });
-  return lookup;
-}
-
-function countryTimelineYear(country: MapCountry, evidenceYears: Map<string, number>) {
-  return newestYear([country.last_updated, evidenceYears.get(rowKey(country)), evidenceYears.get(country.iso3)]);
-}
-
-function buildTimelineBounds(countries: MapCountry[], evidenceYears: Map<string, number>): TimelineBounds | undefined {
-  const years = countries.map((country) => countryTimelineYear(country, evidenceYears)).filter((year): year is number => typeof year === "number");
-  if (!years.length) return undefined;
-  return { minYear: Math.min(...years), maxYear: Math.max(...years) };
-}
+const markerKindOrder: Record<SignalMarker["kind"], number> = { security: 0, channel: 1, digital: 2 };
 
 function summarizeSelection(selectedCount: number, totalCount: number, allLabel: string, noneLabel: string, selectedLabel: string) {
   if (selectedCount === totalCount) return allLabel;
   if (selectedCount === 0) return noneLabel;
   return selectedCount === 1 ? selectedLabel : `${selectedCount} selected`;
+}
+
+function SignalSigns({ markers, label }: { markers: SignalMarker[]; label: string }) {
+  if (!markers.length) return null;
+  return (
+    <span className="country-card-signs" aria-label={label}>
+      {[...markers]
+        .sort((left, right) => markerKindOrder[left.kind] - markerKindOrder[right.kind])
+        .map((marker) => (
+          <i key={marker.id} className={`signal-icon ${marker.kind}`} style={{ "--marker-color": marker.color } as CSSProperties} title={`${marker.label}: ${formatScore(marker.score)}`} />
+        ))}
+    </span>
+  );
 }
 
 function confidenceRank(confidence: string) {
@@ -115,7 +91,15 @@ function TopFilters({
   setSelectedRegions,
   actors,
   setActors,
-  regions
+  regions,
+  sourceTiers,
+  setSourceTiers,
+  sourceTierOptions,
+  sourceStatuses,
+  setSourceStatuses,
+  sourceStatusOptions,
+  overlayLayers,
+  setOverlayLayers
 }: {
   metrics: MetricKey[];
   setMetrics: (metrics: MetricKey[]) => void;
@@ -126,6 +110,14 @@ function TopFilters({
   actors: Actor[];
   setActors: (actors: Actor[]) => void;
   regions: string[];
+  sourceTiers: string[];
+  setSourceTiers: (tiers: string[]) => void;
+  sourceTierOptions: string[];
+  sourceStatuses: string[];
+  setSourceStatuses: (statuses: string[]) => void;
+  sourceStatusOptions: string[];
+  overlayLayers: OverlayLayer[];
+  setOverlayLayers: (layers: OverlayLayer[]) => void;
 }) {
   const actorSummary = actors.length === actorOptions.length ? "All actors" : actors.length ? actors.join(", ") : "No actors";
   const metricLabels = metricOptions.filter((option) => metrics.includes(option.key)).map((option) => option.label);
@@ -133,6 +125,17 @@ function TopFilters({
   const scoreLabels = riskScoreOptions.filter((option) => scoreBuckets.includes(option.key)).map((option) => option.label);
   const scoreSummary = summarizeSelection(scoreBuckets.length, riskScoreOptions.length, "All scores", "No scores", scoreLabels[0]);
   const regionSummary = summarizeSelection(selectedRegions.length, regions.length, "All regions", "No regions", selectedRegions[0]);
+  const sourceTierSummary = summarizeSelection(sourceTiers.length, sourceTierOptions.length, "All source tiers", "No source tiers", sourceTiers[0]);
+  const sourceStatusSummary = summarizeSelection(sourceStatuses.length, sourceStatusOptions.length, "All source statuses", "No source statuses", sourceStatuses[0]);
+  const overlayLabels = overlayOptions.filter((option) => overlayLayers.includes(option.key)).map((option) => option.label);
+  const overlaySummary = summarizeSelection(overlayLayers.length, overlayOptions.length, "All flows/signs", "No flows/signs", overlayLabels[0]);
+  const advancedActiveCount = [
+    scoreBuckets.length !== riskScoreKeys.length,
+    selectedRegions.length !== regions.length,
+    sourceTiers.length !== sourceTierOptions.length,
+    sourceStatuses.length !== sourceStatusOptions.length,
+    overlayLayers.length > 0
+  ].filter(Boolean).length;
   const toggleActor = (actor: Actor) => {
     setActors(actors.includes(actor) ? actors.filter((item) => item !== actor) : [...actors, actor]);
   };
@@ -148,6 +151,17 @@ function TopFilters({
   };
   const toggleRegion = (region: string) => {
     setSelectedRegions(selectedRegions.includes(region) ? selectedRegions.filter((item) => item !== region) : regions.filter((item) => item === region || selectedRegions.includes(item)));
+  };
+  const toggleSourceTier = (tier: string) => {
+    setSourceTiers(sourceTiers.includes(tier) ? sourceTiers.filter((item) => item !== tier) : sourceTierOptions.filter((item) => item === tier || sourceTiers.includes(item)));
+  };
+  const toggleSourceStatus = (status: string) => {
+    setSourceStatuses(
+      sourceStatuses.includes(status) ? sourceStatuses.filter((item) => item !== status) : sourceStatusOptions.filter((item) => item === status || sourceStatuses.includes(item))
+    );
+  };
+  const toggleOverlay = (layer: OverlayLayer) => {
+    setOverlayLayers(overlayLayers.includes(layer) ? overlayLayers.filter((item) => item !== layer) : overlayKeys.filter((item) => item === layer || overlayLayers.includes(item)));
   };
 
   return (
@@ -178,31 +192,6 @@ function TopFilters({
       </details>
       <details className="checkbox-menu">
         <summary>
-          <span>Risk scores</span>
-          <strong>{scoreSummary}</strong>
-        </summary>
-        <div className="checkbox-menu-panel" role="group" aria-label="Risk scores">
-          <div className="menu-bulk-actions">
-            <label>
-              <input type="checkbox" checked={scoreBuckets.length === riskScoreKeys.length} onChange={(event) => setScoreBuckets(event.target.checked ? riskScoreKeys : [])} />
-              <span>Select everything</span>
-            </label>
-            <label>
-              <input type="checkbox" checked={!scoreBuckets.length} onChange={(event) => setScoreBuckets(event.target.checked ? [] : riskScoreKeys)} />
-              <span>Unselect everything</span>
-            </label>
-          </div>
-          {riskScoreOptions.map((option) => (
-            <label key={option.key}>
-              <input type="checkbox" checked={scoreBuckets.includes(option.key)} onChange={() => toggleScoreBucket(option.key)} />
-              <span>{option.label}</span>
-              <small>{option.range}</small>
-            </label>
-          ))}
-        </div>
-      </details>
-      <details className="checkbox-menu">
-        <summary>
           <span>Risk layers</span>
           <strong>{metricSummary}</strong>
         </summary>
@@ -225,28 +214,125 @@ function TopFilters({
           ))}
         </div>
       </details>
-      <details className="checkbox-menu">
+      <details className="checkbox-menu advanced-filter-menu">
         <summary>
-          <span>Regions</span>
-          <strong>{regionSummary}</strong>
+          <span>Advanced filters</span>
+          <strong>{advancedActiveCount ? `${advancedActiveCount} active` : "Score, region, source, signs"}</strong>
         </summary>
-        <div className="checkbox-menu-panel" role="group" aria-label="Regions">
-          <div className="menu-bulk-actions">
-            <label>
-              <input type="checkbox" checked={selectedRegions.length === regions.length} onChange={(event) => setSelectedRegions(event.target.checked ? regions : [])} />
-              <span>Select everything</span>
-            </label>
-            <label>
-              <input type="checkbox" checked={!selectedRegions.length} onChange={(event) => setSelectedRegions(event.target.checked ? [] : regions)} />
-              <span>Unselect everything</span>
-            </label>
+        <div className="checkbox-menu-panel advanced-filter-panel" aria-label="Advanced filters">
+          <div className="advanced-filter-section" role="group" aria-label="Risk scores">
+            <header>
+              <span>Risk scores</span>
+              <strong>{scoreSummary}</strong>
+            </header>
+            <div className="menu-bulk-actions">
+              <label>
+                <input type="checkbox" checked={scoreBuckets.length === riskScoreKeys.length} onChange={(event) => setScoreBuckets(event.target.checked ? riskScoreKeys : [])} />
+                <span>Select everything</span>
+              </label>
+              <label>
+                <input type="checkbox" checked={!scoreBuckets.length} onChange={(event) => setScoreBuckets(event.target.checked ? [] : riskScoreKeys)} />
+                <span>Unselect everything</span>
+              </label>
+            </div>
+            {riskScoreOptions.map((option) => (
+              <label key={option.key}>
+                <input type="checkbox" checked={scoreBuckets.includes(option.key)} onChange={() => toggleScoreBucket(option.key)} />
+                <span>{option.label}</span>
+                <small>{option.range}</small>
+              </label>
+            ))}
           </div>
-          {regions.map((item) => (
-            <label key={item}>
-              <input type="checkbox" checked={selectedRegions.includes(item)} onChange={() => toggleRegion(item)} />
-              <span>{item}</span>
-            </label>
-          ))}
+          <div className="advanced-filter-section" role="group" aria-label="Regions">
+            <header>
+              <span>Regions</span>
+              <strong>{regionSummary}</strong>
+            </header>
+            <div className="menu-bulk-actions">
+              <label>
+                <input type="checkbox" checked={selectedRegions.length === regions.length} onChange={(event) => setSelectedRegions(event.target.checked ? regions : [])} />
+                <span>Select everything</span>
+              </label>
+              <label>
+                <input type="checkbox" checked={!selectedRegions.length} onChange={(event) => setSelectedRegions(event.target.checked ? [] : regions)} />
+                <span>Unselect everything</span>
+              </label>
+            </div>
+            {regions.map((item) => (
+              <label key={item}>
+                <input type="checkbox" checked={selectedRegions.includes(item)} onChange={() => toggleRegion(item)} />
+                <span>{item}</span>
+              </label>
+            ))}
+          </div>
+          <div className="advanced-filter-section" role="group" aria-label="Source tiers">
+            <header>
+              <span>Source tier</span>
+              <strong>{sourceTierSummary}</strong>
+            </header>
+            <div className="menu-bulk-actions">
+              <label>
+                <input type="checkbox" checked={sourceTiers.length === sourceTierOptions.length} onChange={(event) => setSourceTiers(event.target.checked ? sourceTierOptions : [])} />
+                <span>Select everything</span>
+              </label>
+              <label>
+                <input type="checkbox" checked={!sourceTiers.length} onChange={(event) => setSourceTiers(event.target.checked ? [] : sourceTierOptions)} />
+                <span>Unselect everything</span>
+              </label>
+            </div>
+            {sourceTierOptions.map((item) => (
+              <label key={item}>
+                <input type="checkbox" checked={sourceTiers.includes(item)} onChange={() => toggleSourceTier(item)} />
+                <span>{item}</span>
+              </label>
+            ))}
+            {!sourceTierOptions.length && <p className="empty">No source tiers in the workbook export.</p>}
+          </div>
+          <div className="advanced-filter-section" role="group" aria-label="Source statuses">
+            <header>
+              <span>Source status</span>
+              <strong>{sourceStatusSummary}</strong>
+            </header>
+            <div className="menu-bulk-actions">
+              <label>
+                <input type="checkbox" checked={sourceStatuses.length === sourceStatusOptions.length} onChange={(event) => setSourceStatuses(event.target.checked ? sourceStatusOptions : [])} />
+                <span>Select everything</span>
+              </label>
+              <label>
+                <input type="checkbox" checked={!sourceStatuses.length} onChange={(event) => setSourceStatuses(event.target.checked ? [] : sourceStatusOptions)} />
+                <span>Unselect everything</span>
+              </label>
+            </div>
+            {sourceStatusOptions.map((item) => (
+              <label key={item}>
+                <input type="checkbox" checked={sourceStatuses.includes(item)} onChange={() => toggleSourceStatus(item)} />
+                <span>{item}</span>
+              </label>
+            ))}
+            {!sourceStatusOptions.length && <p className="empty">No source statuses in the workbook export.</p>}
+          </div>
+          <div className="advanced-filter-section" role="group" aria-label="Map flows and country card signs">
+            <header>
+              <span>Flows / signs</span>
+              <strong>{overlaySummary}</strong>
+            </header>
+            <div className="menu-bulk-actions">
+              <label>
+                <input type="checkbox" checked={overlayLayers.length === overlayKeys.length} onChange={(event) => setOverlayLayers(event.target.checked ? overlayKeys : [])} />
+                <span>Select everything</span>
+              </label>
+              <label>
+                <input type="checkbox" checked={!overlayLayers.length} onChange={(event) => setOverlayLayers(event.target.checked ? [] : overlayKeys)} />
+                <span>Unselect everything</span>
+              </label>
+            </div>
+            {overlayOptions.map((option) => (
+              <label key={option.key}>
+                <input type="checkbox" checked={overlayLayers.includes(option.key)} onChange={() => toggleOverlay(option.key)} />
+                <span>{option.label}</span>
+              </label>
+            ))}
+          </div>
         </div>
       </details>
     </div>
@@ -256,43 +342,36 @@ function TopFilters({
 function LeftPanels({
   countries,
   allCountries,
+  cardMarkers,
   metrics,
   selected,
   searchQuery,
   setSearchQuery,
   onSelect,
-  onQuickJump,
-  onOpenMethodology,
-  timelineBounds,
-  timelineYear,
-  setTimelineYear,
-  includeUndated,
-  setIncludeUndated,
-  timelineDatedRows,
-  timelineUndatedRows,
-  timelineActiveRows
+  onQuickJump
 }: {
   countries: MapCountry[];
   allCountries: MapCountry[];
+  cardMarkers: SignalMarker[];
   metrics: MetricKey[];
   selected?: MapCountry;
   searchQuery: string;
   setSearchQuery: (value: string) => void;
   onSelect: (country: MapCountry) => void;
   onQuickJump: (country: MapCountry) => void;
-  onOpenMethodology: () => void;
-  timelineBounds?: TimelineBounds;
-  timelineYear: number;
-  setTimelineYear: (year: number) => void;
-  includeUndated: boolean;
-  setIncludeUndated: (value: boolean) => void;
-  timelineDatedRows: number;
-  timelineUndatedRows: number;
-  timelineActiveRows: number;
 }) {
   const leaders = topCountries(countries, metrics, 6);
   const normalizedQuery = searchQuery.trim().toLowerCase();
   const visibleKeys = useMemo(() => new Set(countries.map(rowKey)), [countries]);
+  const markersByCountry = useMemo(() => {
+    const lookup = new Map<string, SignalMarker[]>();
+    cardMarkers.forEach((marker) => {
+      const key = markerKey(marker);
+      lookup.set(key, [...(lookup.get(key) ?? []), marker]);
+    });
+    lookup.forEach((markers) => markers.sort((left, right) => markerKindOrder[left.kind] - markerKindOrder[right.kind]));
+    return lookup;
+  }, [cardMarkers]);
   const searchResults = useMemo<CountrySearchResult[]>(() => {
     if (!normalizedQuery) return [];
     const groups = new Map<string, MapCountry[]>();
@@ -330,46 +409,6 @@ function LeftPanels({
   }, [allCountries, metrics, normalizedQuery, visibleKeys]);
   return (
     <aside className="left-panels">
-      <section className="panel brand-panel">
-        <span>Intelligence dashboard</span>
-        <h1>Global Authoritarian Expansion Map</h1>
-        <p>Workbook-driven pilot visualization. Demo flows and icons are not verified intelligence.</p>
-      </section>
-      <section className="panel timeline-panel">
-        <div className="timeline-heading">
-          <div>
-            <span>Evidence timeline</span>
-            <h2>Data Through {timelineBounds ? timelineYear : "No Dates"}</h2>
-          </div>
-          <strong>{timelineActiveRows}</strong>
-        </div>
-        {timelineBounds ? (
-          <>
-            <input
-              type="range"
-              min={timelineBounds.minYear}
-              max={timelineBounds.maxYear}
-              value={timelineYear}
-              disabled={timelineBounds.minYear === timelineBounds.maxYear}
-              onChange={(event) => setTimelineYear(Number(event.target.value))}
-              aria-label="Filter countries by evidence year"
-            />
-            <div className="timeline-scale">
-              <span>{timelineBounds.minYear}</span>
-              <span>{timelineBounds.maxYear}</span>
-            </div>
-            <label className="timeline-toggle">
-              <input type="checkbox" checked={includeUndated} onChange={(event) => setIncludeUndated(event.target.checked)} />
-              <span>Include no-date rows</span>
-            </label>
-            <p>
-              {timelineDatedRows} dated rows / {timelineUndatedRows} without dates
-            </p>
-          </>
-        ) : (
-          <p>No workbook dates were found for the current data export.</p>
-        )}
-      </section>
       <section className="panel search-panel">
         <h2>Country Quick Jump</h2>
         <input
@@ -389,7 +428,6 @@ function LeftPanels({
         <div className="watchlist">
           {normalizedQuery &&
             searchResults.map((result) => {
-              const datum = selectedMetric(result.bestRow, metrics);
               const selectedIso = selected?.iso3 === result.iso3;
               return (
                 <button type="button" key={result.key} className={selectedIso ? "selected" : ""} onClick={() => onQuickJump(result.bestRow)}>
@@ -398,9 +436,9 @@ function LeftPanels({
                     <small>
                       {result.iso3} / {result.region} / {result.visibleActorCount ? `${result.visibleActorCount} visible` : "reveal hidden"}
                     </small>
+                    <SignalSigns markers={markersByCountry.get(rowKey(result.bestRow)) ?? []} label={`Signal signs for ${result.bestRow.actor} in ${result.country}`} />
                   </span>
                   <strong>{result.actorCount} actor{result.actorCount === 1 ? "" : "s"}</strong>
-                  <i style={{ background: datum.color }} />
                 </button>
               );
             })}
@@ -412,26 +450,15 @@ function LeftPanels({
                 <span>
                   <b>{country.actor} / {country.country}</b>
                   <small>{country.iso3} / {country.region}</small>
+                  <SignalSigns markers={markersByCountry.get(rowKey(country)) ?? []} label={`Signal signs for ${country.actor} in ${country.country}`} />
                 </span>
                 <strong>{formatScore(datum.score)}</strong>
-                <i style={{ background: datum.color }} />
               </button>
             );
           })}
           {normalizedQuery && !searchResults.length && <p className="empty">No matching countries.</p>}
           {!normalizedQuery && !leaders.length && <p className="empty">No countries match the current filters.</p>}
         </div>
-      </section>
-      <section className="panel">
-        <h2>Governance Flags</h2>
-        <div className="flag-list">
-          <span>Publication status is preserved from `Layer_status`.</span>
-          <span>Confidence drives country opacity.</span>
-          <span>Screenshot-style flows and signal icons are marked `Demo`.</span>
-        </div>
-        <button type="button" className="panel-action-button" onClick={onOpenMethodology}>
-          Methodology / sources
-        </button>
       </section>
     </aside>
   );
@@ -450,7 +477,12 @@ function FilterEmptyState({
   selectedRegions,
   setSelectedRegions,
   regions,
-  resetTimeline
+  sourceTiers,
+  setSourceTiers,
+  sourceTierOptions,
+  sourceStatuses,
+  setSourceStatuses,
+  sourceStatusOptions
 }: {
   loaded: boolean;
   visibleCountries: MapCountry[];
@@ -464,13 +496,19 @@ function FilterEmptyState({
   selectedRegions: string[];
   setSelectedRegions: (regions: string[]) => void;
   regions: string[];
-  resetTimeline: () => void;
+  sourceTiers: string[];
+  setSourceTiers: (tiers: string[]) => void;
+  sourceTierOptions: string[];
+  sourceStatuses: string[];
+  setSourceStatuses: (statuses: string[]) => void;
+  sourceStatusOptions: string[];
 }) {
   if (!loaded) return null;
   const noActors = actors.length === 0;
   const noRegions = selectedRegions.length === 0;
   const noMetrics = metrics.length === 0;
   const noScoreBuckets = scoreBuckets.length === 0;
+  const noSourceFilters = (sourceTierOptions.length > 0 && sourceTiers.length === 0) || (sourceStatusOptions.length > 0 && sourceStatuses.length === 0);
   const noCountries = visibleCountries.length === 0;
   if (noScoreBuckets && !noActors && !noRegions && !noMetrics) return null;
   if (!noActors && !noRegions && !noMetrics && !noCountries) return null;
@@ -479,9 +517,11 @@ function FilterEmptyState({
     ? "No actor layers selected"
     : noRegions
       ? "No regions selected"
-      : noCountries
-        ? "No countries match current filters"
-        : "No risk layers selected";
+      : noSourceFilters
+        ? "No source filters selected"
+        : noCountries
+          ? "No countries match current filters"
+          : "No risk layers selected";
   const copy = noMetrics && !noCountries ? "Countries are visible, but map scores are neutral until a risk layer is selected." : `${visibleCountries.length} of ${totalCountries} country rows visible.`;
 
   return (
@@ -505,6 +545,17 @@ function FilterEmptyState({
             Restore risk layers
           </button>
         )}
+        {noSourceFilters && (
+          <button
+            type="button"
+            onClick={() => {
+              setSourceTiers(sourceTierOptions);
+              setSourceStatuses(sourceStatusOptions);
+            }}
+          >
+            Restore source filters
+          </button>
+        )}
         {noCountries && !noActors && !noRegions && (
           <button
             type="button"
@@ -512,7 +563,8 @@ function FilterEmptyState({
               setActors(actorOptions);
               setScoreBuckets(riskScoreKeys);
               setSelectedRegions(regions);
-              resetTimeline();
+              setSourceTiers(sourceTierOptions);
+              setSourceStatuses(sourceStatusOptions);
             }}
           >
             Reset map filters
@@ -535,11 +587,14 @@ function ActiveFilterChips({
   regions,
   compareMode,
   setCompareMode,
-  timelineBounds,
-  timelineYear,
-  setTimelineYear,
-  includeUndated,
-  setIncludeUndated
+  sourceTiers,
+  setSourceTiers,
+  sourceTierOptions,
+  sourceStatuses,
+  setSourceStatuses,
+  sourceStatusOptions,
+  overlayLayers,
+  setOverlayLayers
 }: {
   actors: Actor[];
   setActors: (actors: Actor[]) => void;
@@ -552,38 +607,41 @@ function ActiveFilterChips({
   regions: string[];
   compareMode: boolean;
   setCompareMode: (value: boolean) => void;
-  timelineBounds?: TimelineBounds;
-  timelineYear: number;
-  setTimelineYear: (year: number) => void;
-  includeUndated: boolean;
-  setIncludeUndated: (value: boolean) => void;
+  sourceTiers: string[];
+  setSourceTiers: (tiers: string[]) => void;
+  sourceTierOptions: string[];
+  sourceStatuses: string[];
+  setSourceStatuses: (statuses: string[]) => void;
+  sourceStatusOptions: string[];
+  overlayLayers: OverlayLayer[];
+  setOverlayLayers: (layers: OverlayLayer[]) => void;
 }) {
-  const timelineFiltered = Boolean(timelineBounds && timelineYear < timelineBounds.maxYear);
-  const undatedFiltered = timelineBounds ? !includeUndated : false;
   const hasCustomFilters =
     actors.length !== actorOptions.length ||
     metrics.length !== metricKeys.length ||
     scoreBuckets.length !== riskScoreKeys.length ||
     selectedRegions.length !== regions.length ||
-    compareMode ||
-    timelineFiltered ||
-    undatedFiltered;
+    sourceTiers.length !== sourceTierOptions.length ||
+    sourceStatuses.length !== sourceStatusOptions.length ||
+    overlayLayers.length > 0 ||
+    compareMode;
 
   const resetFilters = () => {
     setActors(actorOptions);
     setMetrics(metricKeys);
     setScoreBuckets(riskScoreKeys);
     setSelectedRegions(regions);
+    setSourceTiers(sourceTierOptions);
+    setSourceStatuses(sourceStatusOptions);
+    setOverlayLayers(defaultOverlayLayers);
     setCompareMode(false);
-    if (timelineBounds) setTimelineYear(timelineBounds.maxYear);
-    setIncludeUndated(true);
   };
 
   return (
     <section className={`filter-chips ${hasCustomFilters ? "" : "quiet"}`} aria-label="Active filters">
       <span>Active filters</span>
       <div>
-        {!hasCustomFilters && <em>All actor, score, risk, region, and timeline layers are visible.</em>}
+        {!hasCustomFilters && <em>Countries are visible. Flow lines and country-card signs are off by default.</em>}
         {!actors.length && (
           <button type="button" onClick={() => setActors(actorOptions)}>
             No actors <b>+</b>
@@ -641,14 +699,19 @@ function ActiveFilterChips({
             Compare mode on <b>x</b>
           </button>
         )}
-        {timelineFiltered && timelineBounds && (
-          <button type="button" onClick={() => setTimelineYear(timelineBounds.maxYear)}>
-            Through: {timelineYear} <b>x</b>
+        {sourceTierOptions.length > 0 && sourceTiers.length !== sourceTierOptions.length && (
+          <button type="button" onClick={() => setSourceTiers(sourceTierOptions)}>
+            Source tiers: {sourceTiers.length || "none"} <b>+</b>
           </button>
         )}
-        {undatedFiltered && (
-          <button type="button" onClick={() => setIncludeUndated(true)}>
-            No-date rows hidden <b>+</b>
+        {sourceStatusOptions.length > 0 && sourceStatuses.length !== sourceStatusOptions.length && (
+          <button type="button" onClick={() => setSourceStatuses(sourceStatusOptions)}>
+            Source status: {sourceStatuses.length || "none"} <b>+</b>
+          </button>
+        )}
+        {overlayLayers.length > 0 && (
+          <button type="button" onClick={() => setOverlayLayers(defaultOverlayLayers)}>
+            Flows/signs: {overlayLayers.length} <b>x</b>
           </button>
         )}
         {hasCustomFilters && (
@@ -791,13 +854,13 @@ function RankedTableDrawer({
   );
 }
 
-function RiskLegend({ countries, metrics }: { countries: MapCountry[]; metrics: MetricKey[] }) {
-  const buckets = [0, 1, 2, 3, 4, 5].map((score) => {
-    const sample = countries.find((country) => Math.round(selectedMetric(country, metrics).score) === score);
+function RiskLegend({ onOpenMethodology }: { onOpenMethodology: () => void }) {
+  const buckets = Array.from({ length: SCORE_MAX + 1 }, (_, score) => score).map((score) => {
+    const scoreOption = riskScoreOptions.find((option) => option.key === score);
     return {
       score,
-      label: riskLabel(score),
-      color: sample ? selectedMetric(sample, metrics).color : ["#F2F2F2", "#D9F0D3", "#ADDD8E", "#FDAE6B", "#F16913", "#A63603"][score]
+      label: scoreOption ? scoreOption.label.replace(/^\d+\s*/, "") : riskLabel(score),
+      color: scoreColor(score)
     };
   });
   return (
@@ -831,7 +894,7 @@ function RiskLegend({ countries, metrics }: { countries: MapCountry[]; metrics: 
         </div>
       </section>
       <section className="panel">
-        <h2>Signal Marker Legend</h2>
+        <h2>Country Card Signs</h2>
         <div className="signal-legend">
           <div>
             <i className="signal-icon security" />
@@ -849,7 +912,10 @@ function RiskLegend({ countries, metrics }: { countries: MapCountry[]; metrics: 
             <span>Election, cyber, or political-process signal</span>
           </div>
         </div>
-        <p className="legend-note">Icons are generated demo aids from workbook score fields, not verified intelligence points.</p>
+        <p className="legend-note">Signs are shown inside country cards. They are generated demo aids from workbook score fields, not verified intelligence points.</p>
+        <button type="button" className="panel-action-button" onClick={onOpenMethodology}>
+          Methodology / sources
+        </button>
       </section>
     </aside>
   );
@@ -857,7 +923,7 @@ function RiskLegend({ countries, metrics }: { countries: MapCountry[]; metrics: 
 
 function AnalyticsCards({ countries, metrics, demoFlows, demoMarkers }: { countries: MapCountry[]; metrics: MetricKey[]; demoFlows: number; demoMarkers: number }) {
   const average = countries.length ? countries.reduce((sum, country) => sum + selectedMetric(country, metrics).score, 0) / countries.length : 0;
-  const highRisk = countries.filter((country) => selectedMetric(country, metrics).score >= 3).length;
+  const highRisk = countries.filter((country) => selectedMetric(country, metrics).score >= 6).length;
   const demoRows = countries.filter((country) => country.data_status === "Demo").length;
   return (
     <div className="analytics-cards">
@@ -974,6 +1040,7 @@ function CountryDrawer({
   country,
   comparisonRows,
   metrics,
+  cardMarkers,
   evidence,
   sources,
   onClose
@@ -981,6 +1048,7 @@ function CountryDrawer({
   country?: MapCountry;
   comparisonRows: MapCountry[];
   metrics: MetricKey[];
+  cardMarkers: SignalMarker[];
   evidence: EvidenceRow[];
   sources: SourceRow[];
   onClose: () => void;
@@ -1025,6 +1093,7 @@ function CountryDrawer({
           <span>{country.iso3}</span>
           <h2>{country.country}</h2>
           <p>{country.actor} / {country.region}</p>
+          <SignalSigns markers={cardMarkers} label={`Signal signs for ${country.actor} in ${country.country}`} />
         </div>
         <button type="button" onClick={onClose} aria-label="Close country profile">
           x
@@ -1042,14 +1111,14 @@ function CountryDrawer({
             <div key={option.key}>
               <span>{option.label}</span>
               <strong>{formatScore(datum.score)}</strong>
-              <i style={{ width: `${(datum.score / 5) * 100}%`, background: datum.color, opacity: datum.opacity }} />
+              <i style={{ width: `${(datum.score / SCORE_MAX) * 100}%`, background: datum.color, opacity: datum.opacity }} />
               <small>{datum.confidence}</small>
             </div>
           );
         })}
         {!visibleMetricOptions.length && <p className="empty">No risk layers selected.</p>}
       </div>
-      {country.data_status === "Demo" && <p className="demo-warning">{country.demo_warning}</p>}
+      {country.data_status !== "Verified" && country.demo_warning && <p className="demo-warning">{country.demo_warning}</p>}
       <section>
         <h3>Actor Comparison</h3>
         <div className="compare-cards">
@@ -1068,7 +1137,7 @@ function CountryDrawer({
               <article className="compare-card" key={actor}>
                 <span>{actor}</span>
                 <strong>{formatScore(datum.score)}</strong>
-                <i style={{ width: `${(datum.score / 5) * 100}%`, background: datum.color, opacity: datum.opacity }} />
+                <i style={{ width: `${(datum.score / SCORE_MAX) * 100}%`, background: datum.color, opacity: datum.opacity }} />
                 <small>{datum.label}</small>
               </article>
             );
@@ -1086,7 +1155,7 @@ function CountryDrawer({
                     <article key={actor}>
                       <small>{actor}</small>
                       <i>
-                        <b style={datum ? { width: `${(datum.score / 5) * 100}%`, background: datum.color, opacity: datum.opacity } : undefined} />
+                        <b style={datum ? { width: `${(datum.score / SCORE_MAX) * 100}%`, background: datum.color, opacity: datum.opacity } : undefined} />
                       </i>
                       <strong>{datum ? formatScore(datum.score) : "-"}</strong>
                     </article>
@@ -1148,15 +1217,15 @@ function MethodologyModal({ onClose }: { onClose: () => void }) {
           <article>
             <h3>Data basis</h3>
             <p>
-              The dashboard extracts `Map_Data`, `Legend_Config`, `Dashboard`, `Evidence_Log`, `Source_Register`, and
-              `Rules_Weights` from the workbook pipeline. Country records preserve ISO3 IDs and join to world boundaries by ISO3.
+              The dashboard extracts `Map_Data`, `Scoring_Matrix`, `Score_Color_Legend`, `Evidence_Log`, `Source_Register`, and
+              `Factor_Model` from the ResurgamHub country-scope workbook. Country records preserve ISO3 IDs and join to world boundaries by ISO3.
             </p>
           </article>
           <article>
             <h3>Scoring</h3>
             <p>
-              Scores use a 0-5 scale. Selected risk layers are averaged for the active map score, while workbook colors,
-              confidence labels, opacity, publication status, and notes remain the source of truth.
+              Scores use the source workbook's 0-10 rubric directly, while workbook colors, confidence labels,
+              publication status, and notes remain the source of truth.
             </p>
           </article>
           <article>
@@ -1177,7 +1246,8 @@ function MethodologyModal({ onClose }: { onClose: () => void }) {
             <h3>Demo governance</h3>
             <p>
               Generated flow lines and signal icons are visualization aids derived from score fields and are marked `Demo`.
-              Demo or pilot material must not be presented as verified intelligence or definitive attribution.
+              Numeric screening rows are marked `Needs review`; rows with no source-backed score are marked `Unscored`.
+              Demo, review, and unscored material should not be presented as verified intelligence.
             </p>
           </article>
           <article>
@@ -1190,7 +1260,7 @@ function MethodologyModal({ onClose }: { onClose: () => void }) {
         </div>
         <div className="source-governance-strip">
           <span>Refresh path</span>
-          <p>Add source-backed evidence, update source reliability, revise weights, regenerate data, then review publication status before release.</p>
+          <p>Add source-backed evidence, update source reliability, revise the scoring matrix, regenerate data, then review publication status before release.</p>
         </div>
       </section>
     </div>
@@ -1222,19 +1292,19 @@ export default function App() {
   const [scoreBuckets, setScoreBuckets] = useState<RiskScoreBucket[]>(riskScoreKeys);
   const [actors, setActors] = useState<Actor[]>(actorOptions);
   const [selectedRegions, setSelectedRegions] = useState<string[]>([]);
+  const [sourceTiers, setSourceTiers] = useState<string[]>([]);
+  const [sourceStatuses, setSourceStatuses] = useState<string[]>([]);
+  const [overlayLayers, setOverlayLayers] = useState<OverlayLayer[]>(defaultOverlayLayers);
   const [selectedKey, setSelectedKey] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [methodologyOpen, setMethodologyOpen] = useState(false);
   const [rankedTableOpen, setRankedTableOpen] = useState(false);
   const [compareMode, setCompareMode] = useState(false);
-  const [timelineYear, setTimelineYear] = useState<number | undefined>();
-  const [includeUndated, setIncludeUndated] = useState(true);
   const [mobileSheet, setMobileSheet] = useState<MobileSheet>("map");
 
   const regions = useMemo(() => Array.from(new Set(data.countries.map((country) => country.region).filter(Boolean))).sort(), [data.countries]);
-  const evidenceYears = useMemo(() => buildEvidenceYearLookup(data.evidence), [data.evidence]);
-  const timelineBounds = useMemo(() => buildTimelineBounds(data.countries, evidenceYears), [data.countries, evidenceYears]);
-  const activeTimelineYear = timelineYear ?? timelineBounds?.maxYear ?? new Date().getFullYear();
+  const sourceTierOptions = useMemo(() => uniqueValues(data.evidence, "Source_Tier"), [data.evidence]);
+  const sourceStatusOptions = useMemo(() => uniqueValues(data.evidence, "Evidence_Status"), [data.evidence]);
 
   useEffect(() => {
     setSelectedRegions((current) => {
@@ -1245,54 +1315,58 @@ export default function App() {
     });
   }, [regions]);
   useEffect(() => {
-    if (!timelineBounds) return;
-    setTimelineYear((current) => {
-      if (current === undefined) return timelineBounds.maxYear;
-      return Math.min(Math.max(current, timelineBounds.minYear), timelineBounds.maxYear);
+    setSourceTiers((current) => {
+      if (!sourceTierOptions.length) return [];
+      if (!current.length) return sourceTierOptions;
+      const validTiers = current.filter((tier) => sourceTierOptions.includes(tier));
+      return validTiers.length ? validTiers : sourceTierOptions;
     });
-  }, [timelineBounds]);
+  }, [sourceTierOptions]);
+  useEffect(() => {
+    setSourceStatuses((current) => {
+      if (!sourceStatusOptions.length) return [];
+      if (!current.length) return sourceStatusOptions;
+      const validStatuses = current.filter((status) => sourceStatusOptions.includes(status));
+      return validStatuses.length ? validStatuses : sourceStatusOptions;
+    });
+  }, [sourceStatusOptions]);
 
-  const timelineStats = useMemo(() => {
-    let datedRows = 0;
-    let undatedRows = 0;
-    let activeRows = 0;
-    data.countries.forEach((country) => {
-      const year = countryTimelineYear(country, evidenceYears);
-      if (year) {
-        datedRows += 1;
-        if (year <= activeTimelineYear) activeRows += 1;
-      } else {
-        undatedRows += 1;
-        if (includeUndated) activeRows += 1;
-      }
+  const matchingSourceKeys = useMemo(() => {
+    const sourceFiltersActive =
+      (sourceTierOptions.length > 0 && sourceTiers.length !== sourceTierOptions.length) ||
+      (sourceStatusOptions.length > 0 && sourceStatuses.length !== sourceStatusOptions.length);
+    if (!sourceFiltersActive) return undefined;
+    const result = new Set<string>();
+    data.evidence.forEach((row) => {
+      const iso3 = String(row.ISO3 ?? "").trim();
+      if (!iso3) return;
+      const matchesTier = !sourceTierOptions.length || sourceTiers.includes(String(row.Source_Tier ?? "").trim());
+      const matchesStatus = !sourceStatusOptions.length || sourceStatuses.includes(String(row.Evidence_Status ?? "").trim());
+      if (!matchesTier || !matchesStatus) return;
+      if (row.actor) result.add(`${row.actor}:${iso3}`);
+      result.add(iso3);
     });
-    return { datedRows, undatedRows, activeRows };
-  }, [activeTimelineYear, data.countries, evidenceYears, includeUndated]);
+    return result;
+  }, [data.evidence, sourceStatusOptions, sourceStatuses, sourceTierOptions, sourceTiers]);
 
   const visibleCountries = useMemo(
     () =>
       data.countries.filter(
-        (country) => {
-          const year = countryTimelineYear(country, evidenceYears);
-          const matchesTimeline = !timelineBounds || (year ? year <= activeTimelineYear : includeUndated);
-          return (
-            actors.includes(country.actor) &&
-            selectedRegions.includes(country.region) &&
-            scoreBuckets.includes(riskScoreBucket(selectedMetric(country, metrics).score)) &&
-            matchesTimeline
-          );
-        }
+        (country) =>
+          actors.includes(country.actor) &&
+          selectedRegions.includes(country.region) &&
+          scoreBuckets.includes(riskScoreBucket(selectedMetric(country, metrics).score)) &&
+          (!matchingSourceKeys || matchingSourceKeys.has(rowKey(country)) || matchingSourceKeys.has(country.iso3))
       ),
-    [activeTimelineYear, actors, data.countries, evidenceYears, includeUndated, metrics, scoreBuckets, selectedRegions, timelineBounds]
+    [actors, data.countries, matchingSourceKeys, metrics, scoreBuckets, selectedRegions]
   );
   const selected = visibleCountries.find((country) => rowKey(country) === selectedKey);
   const selectedEvidence = selected ? data.evidence.filter((row) => row.ISO3 === selected.iso3 && (!("actor" in row) || row.actor === selected.actor)) : [];
   const comparisonRows = selected ? data.countries.filter((country) => country.iso3 === selected.iso3) : [];
   const visibleKeys = new Set(visibleCountries.map(rowKey));
-  const resetTimeline = () => {
-    if (timelineBounds) setTimelineYear(timelineBounds.maxYear);
-    setIncludeUndated(true);
-  };
+  const visibleFlows = overlayLayers.includes("flows") ? data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`)) : [];
+  const visibleCardMarkers = data.markers.filter((marker) => visibleKeys.has(markerKey(marker)) && overlayLayers.includes(marker.kind));
+  const selectedCardMarkers = selected ? visibleCardMarkers.filter((marker) => markerKey(marker) === rowKey(selected)) : [];
   const selectCountry = (country: MapCountry) => setSelectedKey(rowKey(country));
   const quickJumpCountry = (country: MapCountry) => {
     const effectiveMetrics = metrics.length ? metrics : metricKeys;
@@ -1301,19 +1375,19 @@ export default function App() {
     setSelectedRegions((current) => (current.includes(country.region) ? current : [...current, country.region].filter(Boolean)));
     const scoreBucket = riskScoreBucket(selectedMetric(country, effectiveMetrics).score);
     setScoreBuckets((current) => (current.includes(scoreBucket) ? current : riskScoreKeys.filter((bucket) => bucket === scoreBucket || current.includes(bucket))));
-    const year = countryTimelineYear(country, evidenceYears);
-    if (year) setTimelineYear((current) => Math.max(current ?? year, year));
-    if (!year) setIncludeUndated(true);
+    setSourceTiers(sourceTierOptions);
+    setSourceStatuses(sourceStatusOptions);
     setSelectedKey(rowKey(country));
   };
 
   return (
     <div className={`dashboard-shell mobile-sheet-${mobileSheet}`}>
+      <h1 className="sr-only">Global Authoritarian Expansion Map</h1>
       <MapView
         countries={visibleCountries}
         geojson={data.joined}
-        flows={data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`))}
-        markers={data.markers.filter((marker) => visibleKeys.has(`${marker.actor}:${marker.iso3}`))}
+        flows={visibleFlows}
+        markers={[]}
         metrics={metrics}
         compareMode={compareMode}
         selectedKey={selectedKey}
@@ -1333,7 +1407,12 @@ export default function App() {
         selectedRegions={selectedRegions}
         setSelectedRegions={setSelectedRegions}
         regions={regions}
-        resetTimeline={resetTimeline}
+        sourceTiers={sourceTiers}
+        setSourceTiers={setSourceTiers}
+        sourceTierOptions={sourceTierOptions}
+        sourceStatuses={sourceStatuses}
+        setSourceStatuses={setSourceStatuses}
+        sourceStatusOptions={sourceStatusOptions}
       />
 
       <TopFilters
@@ -1346,6 +1425,14 @@ export default function App() {
         selectedRegions={selectedRegions}
         setSelectedRegions={setSelectedRegions}
         regions={regions}
+        sourceTiers={sourceTiers}
+        setSourceTiers={setSourceTiers}
+        sourceTierOptions={sourceTierOptions}
+        sourceStatuses={sourceStatuses}
+        setSourceStatuses={setSourceStatuses}
+        sourceStatusOptions={sourceStatusOptions}
+        overlayLayers={overlayLayers}
+        setOverlayLayers={setOverlayLayers}
       />
       <ActiveFilterChips
         actors={actors}
@@ -1359,44 +1446,44 @@ export default function App() {
         regions={regions}
         compareMode={compareMode}
         setCompareMode={setCompareMode}
-        timelineBounds={timelineBounds}
-        timelineYear={activeTimelineYear}
-        setTimelineYear={setTimelineYear}
-        includeUndated={includeUndated}
-        setIncludeUndated={setIncludeUndated}
+        sourceTiers={sourceTiers}
+        setSourceTiers={setSourceTiers}
+        sourceTierOptions={sourceTierOptions}
+        sourceStatuses={sourceStatuses}
+        setSourceStatuses={setSourceStatuses}
+        sourceStatusOptions={sourceStatusOptions}
+        overlayLayers={overlayLayers}
+        setOverlayLayers={setOverlayLayers}
       />
       <LeftPanels
         countries={visibleCountries}
         allCountries={data.countries}
+        cardMarkers={visibleCardMarkers}
         metrics={metrics}
         selected={selected}
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
         onSelect={selectCountry}
         onQuickJump={quickJumpCountry}
-        onOpenMethodology={() => setMethodologyOpen(true)}
-        timelineBounds={timelineBounds}
-        timelineYear={activeTimelineYear}
-        setTimelineYear={setTimelineYear}
-        includeUndated={includeUndated}
-        setIncludeUndated={setIncludeUndated}
-        timelineDatedRows={timelineStats.datedRows}
-        timelineUndatedRows={timelineStats.undatedRows}
-        timelineActiveRows={timelineStats.activeRows}
       />
-      <RiskLegend countries={visibleCountries} metrics={metrics} />
-      <AnalyticsCards
-        countries={visibleCountries}
-        metrics={metrics}
-        demoFlows={data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`)).length}
-        demoMarkers={data.markers.filter((marker) => visibleKeys.has(`${marker.actor}:${marker.iso3}`)).length}
-      />
+      <RiskLegend onOpenMethodology={() => setMethodologyOpen(true)} />
+      {mobileSheet === "stats" && (
+        <AnalyticsCards
+          countries={visibleCountries}
+          metrics={metrics}
+          demoFlows={visibleFlows.length}
+          demoMarkers={visibleCardMarkers.length}
+        />
+      )}
 
       <button type="button" className="ranked-table-button" onClick={() => setRankedTableOpen(true)}>
         Ranked table
       </button>
       <button type="button" className={`compare-mode-button ${compareMode ? "active" : ""}`} onClick={() => setCompareMode(!compareMode)} aria-pressed={compareMode}>
         {compareMode ? "Compare mode on" : "Compare mode"}
+      </button>
+      <button type="button" className={`stats-mode-button ${mobileSheet === "stats" ? "active" : ""}`} onClick={() => setMobileSheet(mobileSheet === "stats" ? "map" : "stats")} aria-pressed={mobileSheet === "stats"}>
+        Stats
       </button>
       <MobileDock active={mobileSheet} setActive={setMobileSheet} />
 
@@ -1410,7 +1497,15 @@ export default function App() {
         onSelect={selectCountry}
         onClose={() => setRankedTableOpen(false)}
       />
-      <CountryDrawer country={selected} comparisonRows={comparisonRows} metrics={metrics} evidence={selectedEvidence} sources={data.sources} onClose={() => setSelectedKey("")} />
+      <CountryDrawer
+        country={selected}
+        comparisonRows={comparisonRows}
+        metrics={metrics}
+        cardMarkers={selectedCardMarkers}
+        evidence={selectedEvidence}
+        sources={data.sources}
+        onClose={() => setSelectedKey("")}
+      />
       {methodologyOpen && <MethodologyModal onClose={() => setMethodologyOpen(false)} />}
     </div>
   );

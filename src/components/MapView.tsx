@@ -2,7 +2,7 @@ import { useEffect, useMemo } from "react";
 import L, { type Layer, type PathOptions } from "leaflet";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { confidenceOpacity, normalizeHex } from "../data/colors";
-import { formatScore, riskLabel, selectedMetric } from "../data/scoring";
+import { formatScore, riskLabel, SCORE_MAX, selectedMetric } from "../data/scoring";
 import type { Flow, MapCountry, MetricKey, SignalMarker } from "../data/types";
 
 type Props = {
@@ -78,7 +78,7 @@ function hoverCardHtml(country: MapCountry, metrics: MetricKey[], comparisonRows
       return `
         <span class="hover-actor-row">
           <b>${row.actor}</b>
-          <i style="--bar-width:${Math.max(4, (rowDatum.score / 5) * 100)}%;--bar-color:${normalizeHex(rowDatum.color)}"></i>
+          <i style="--bar-width:${Math.max(4, (rowDatum.score / SCORE_MAX) * 100)}%;--bar-color:${normalizeHex(rowDatum.color)}"></i>
           <strong>${formatScore(rowDatum.score)}</strong>
         </span>
       `;
@@ -274,6 +274,10 @@ function LeafletLayers({ countries, geojson, flows, markers, metrics, compareMod
   }, [byIso, byIsoRows, compareMode, geojson, map, metrics, onSelect, selectedKey]);
 
   useEffect(() => {
+    if (!flows.length) {
+      map.getPane("flows")?.replaceChildren();
+      return;
+    }
     const renderer = L.canvas({ pane: "flows", padding: 0.35 });
     const flowLayers = flows.map((flow) =>
       L.polyline(flow.coordinates, {

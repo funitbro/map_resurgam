@@ -1,6 +1,6 @@
 # Global Authoritarian Expansion Map
 
-Dark intelligence-dashboard UI for exploring Russia, USA, and China influence scoring workbooks.
+Dark intelligence-dashboard UI for exploring Russia, USA, and China influence rows from the ResurgamHub country-scope workbook.
 
 ## Architecture
 
@@ -21,19 +21,25 @@ VITE_TILE_ATTRIBUTION="..."
 
 ## Data Pipeline
 
-The build starts from `interactive_influence_map_all_in_one_google_sheet.xlsx` for the Russia/pilot layer and also merges:
+The build starts from:
 
-- `usa_authoritarian_influence_scores.xlsx`
-- `china_authoritarian_influence_scores.xlsx`
+```text
+data/input/resurgam_actor_influence_resurgamhub_countries_only_workbook.xlsx
+```
 
-The build extracts these all-in-one workbook sheets into `public/data` and `data/processed`:
+The workbook contains Russia, China, United States, and European Union rows. The dashboard currently publishes Russia, China, and United States as `USA` so the actor selector stays aligned with the app UI.
+
+The build extracts workbook sheets into `public/data` and `data/processed`, including:
 
 - `Map_Data`
-- `Legend_Config`
+- `Scoring_Matrix`
+- `Score_Color_Legend`
 - `Dashboard`
 - `Evidence_Log`
 - `Source_Register`
-- `Rules_Weights`
+- `Factor_Model`
+- `Country_Master`
+- `Country_Config`
 
 It also generates:
 
@@ -50,18 +56,18 @@ It also generates:
 
 ## Confidence Opacity
 
-Workbook colors are used for country fills. Workbook confidence and opacity fields drive map opacity. Pilot/review rows are deliberately faint.
+Workbook score colors are used as a fixed 0-10 sequential palette for country fills, bars, legends, flows, and markers. The same score bucket always maps to the same color. Confidence fields drive map opacity. Review rows are deliberately less authoritative than verified rows.
 
 ## Demo Data Governance
 
-Generated curved flows and signal icons are marked `Demo`. Pilot Russia workbook rows are also surfaced as demo/review data when the workbook notes indicate pilot scoring. Demo data must not be presented as verified intelligence. USA and China score rows are loaded as actor layers from their dedicated workbooks, while their generated flows/icons remain demo visual aids.
+Generated curved flows and signal icons are marked `Demo`. Numeric screening rows are marked `Needs review`; rows with no source-backed score are marked `Unscored`. Demo, review, and unscored material must not be presented as verified intelligence.
 
 To replace pilot scores with verified evidence:
 
 1. Add source-backed rows to `Evidence_Log`.
 2. Update `Source_Register` with reliability and source-governance details.
-3. Revise `Rules_Weights` to reflect source-backed indicators.
-4. Update `Map_Data` scores, confidence, opacity, and publication status.
+3. Revise `Factor_Model` and scoring guidance if weights or definitions change.
+4. Update `Scoring_Matrix` scores, confidence, source URLs, and publication status.
 5. Run `npm run build:data`.
 
 ## Setup
