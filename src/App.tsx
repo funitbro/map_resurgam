@@ -1208,7 +1208,7 @@ export default function App() {
         Ranked table
       </button>
       <button type="button" className={`compare-mode-button ${compareMode ? "active" : ""}`} onClick={() => setCompareMode(!compareMode)} aria-pressed={compareMode}>
-        {compareMode ? "Compare mode on" : "Compare mode"}
+        {compareMode ? "Compare on" : "Compare mode"}
       </button>
       <button type="button" className={`stats-mode-button ${mobileSheet === "stats" ? "active" : ""}`} onClick={() => setMobileSheet(mobileSheet === "stats" ? "map" : "stats")} aria-pressed={mobileSheet === "stats"}>
         Stats

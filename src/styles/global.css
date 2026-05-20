@@ -612,12 +612,12 @@ select:focus-visible,
 }
 
 .compare-mode-button {
-  top: 56px;
+  top: 60px;
   right: 16px;
 }
 
 .stats-mode-button {
-  top: 96px;
+  top: 104px;
   right: 16px;
 }
 
@@ -625,9 +625,12 @@ select:focus-visible,
 .compare-mode-button,
 .stats-mode-button {
   width: 124px;
-  min-height: 34px;
+  min-height: 36px;
   padding: 7px 10px;
+  overflow: hidden;
   text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .compare-mode-button.active,
