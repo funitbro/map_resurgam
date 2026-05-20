@@ -7,7 +7,7 @@
   ],
   "joined_features": 258,
   "demo_flows": 369,
-  "demo_markers": 935,
+  "demo_markers": 0,
   "source_workbook": "data\\input\\resurgam_actor_influence_resurgamhub_countries_only_workbook.xlsx",
-  "demo_notice": "Unscored rows and generated flows/markers are not verified intelligence."
+  "demo_notice": "Unscored rows and generated flows are not verified intelligence."
 }

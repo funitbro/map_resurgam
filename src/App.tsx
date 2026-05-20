@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { MapView } from "./components/MapView";
 import {
   metricOptions,
@@ -14,16 +14,13 @@ import {
   topCountries
 } from "./data/scoring";
 import type { RiskScoreBucket } from "./data/scoring";
-import type { Actor, EvidenceRow, MapCountry, MetricKey, SignalMarker, SourceRow } from "./data/types";
+import type { Actor, EvidenceRow, MapCountry, MetricKey, SourceRow } from "./data/types";
 import { useDashboardData } from "./hooks/useDashboardData";
 
 const actorOptions: Actor[] = ["Russia", "USA", "China"];
 const metricKeys = metricOptions.map((option) => option.key);
 const overlayOptions = [
-  { key: "flows", label: "Influence flows" },
-  { key: "security", label: "Security card signs" },
-  { key: "channel", label: "Channel card signs" },
-  { key: "digital", label: "Digital card signs" }
+  { key: "flows", label: "Influence flows" }
 ] as const;
 const overlayKeys = overlayOptions.map((option) => option.key);
 type RankedSortKey = "selected" | "country" | "actor" | "confidence" | MetricKey;
@@ -45,29 +42,10 @@ function rowKey(country: MapCountry) {
   return `${country.actor}:${country.iso3}`;
 }
 
-function markerKey(marker: SignalMarker) {
-  return `${marker.actor}:${marker.iso3}`;
-}
-
-const markerKindOrder: Record<SignalMarker["kind"], number> = { security: 0, channel: 1, digital: 2 };
-
 function summarizeSelection(selectedCount: number, totalCount: number, allLabel: string, noneLabel: string, selectedLabel: string) {
   if (selectedCount === totalCount) return allLabel;
   if (selectedCount === 0) return noneLabel;
   return selectedCount === 1 ? selectedLabel : `${selectedCount} selected`;
-}
-
-function SignalSigns({ markers, label }: { markers: SignalMarker[]; label: string }) {
-  if (!markers.length) return null;
-  return (
-    <span className="country-card-signs" aria-label={label}>
-      {[...markers]
-        .sort((left, right) => markerKindOrder[left.kind] - markerKindOrder[right.kind])
-        .map((marker) => (
-          <i key={marker.id} className={`signal-icon ${marker.kind}`} style={{ "--marker-color": marker.color } as CSSProperties} title={`${marker.label}: ${formatScore(marker.score)}`} />
-        ))}
-    </span>
-  );
 }
 
 function confidenceRank(confidence: string) {
@@ -85,8 +63,6 @@ function isMetricSortKey(sortKey: RankedSortKey): sortKey is MetricKey {
 function TopFilters({
   metrics,
   setMetrics,
-  scoreBuckets,
-  setScoreBuckets,
   selectedRegions,
   setSelectedRegions,
   actors,
@@ -95,16 +71,11 @@ function TopFilters({
   sourceTiers,
   setSourceTiers,
   sourceTierOptions,
-  sourceStatuses,
-  setSourceStatuses,
-  sourceStatusOptions,
   overlayLayers,
   setOverlayLayers
 }: {
   metrics: MetricKey[];
   setMetrics: (metrics: MetricKey[]) => void;
-  scoreBuckets: RiskScoreBucket[];
-  setScoreBuckets: (scoreBuckets: RiskScoreBucket[]) => void;
   selectedRegions: string[];
   setSelectedRegions: (regions: string[]) => void;
   actors: Actor[];
@@ -113,27 +84,19 @@ function TopFilters({
   sourceTiers: string[];
   setSourceTiers: (tiers: string[]) => void;
   sourceTierOptions: string[];
-  sourceStatuses: string[];
-  setSourceStatuses: (statuses: string[]) => void;
-  sourceStatusOptions: string[];
   overlayLayers: OverlayLayer[];
   setOverlayLayers: (layers: OverlayLayer[]) => void;
 }) {
   const actorSummary = actors.length === actorOptions.length ? "All actors" : actors.length ? actors.join(", ") : "No actors";
   const metricLabels = metricOptions.filter((option) => metrics.includes(option.key)).map((option) => option.label);
   const metricSummary = summarizeSelection(metrics.length, metricOptions.length, "All risk layers", "No risk layers", metricLabels[0]);
-  const scoreLabels = riskScoreOptions.filter((option) => scoreBuckets.includes(option.key)).map((option) => option.label);
-  const scoreSummary = summarizeSelection(scoreBuckets.length, riskScoreOptions.length, "All scores", "No scores", scoreLabels[0]);
   const regionSummary = summarizeSelection(selectedRegions.length, regions.length, "All regions", "No regions", selectedRegions[0]);
   const sourceTierSummary = summarizeSelection(sourceTiers.length, sourceTierOptions.length, "All source tiers", "No source tiers", sourceTiers[0]);
-  const sourceStatusSummary = summarizeSelection(sourceStatuses.length, sourceStatusOptions.length, "All source statuses", "No source statuses", sourceStatuses[0]);
   const overlayLabels = overlayOptions.filter((option) => overlayLayers.includes(option.key)).map((option) => option.label);
-  const overlaySummary = summarizeSelection(overlayLayers.length, overlayOptions.length, "All flows/signs", "No flows/signs", overlayLabels[0]);
+  const overlaySummary = summarizeSelection(overlayLayers.length, overlayOptions.length, "Flow lines on", "Flow lines off", overlayLabels[0]);
   const advancedActiveCount = [
-    scoreBuckets.length !== riskScoreKeys.length,
     selectedRegions.length !== regions.length,
     sourceTiers.length !== sourceTierOptions.length,
-    sourceStatuses.length !== sourceStatusOptions.length,
     overlayLayers.length > 0
   ].filter(Boolean).length;
   const toggleActor = (actor: Actor) => {
@@ -142,23 +105,11 @@ function TopFilters({
   const toggleMetric = (metric: MetricKey) => {
     setMetrics(metrics.includes(metric) ? metrics.filter((item) => item !== metric) : metricKeys.filter((item) => item === metric || metrics.includes(item)));
   };
-  const toggleScoreBucket = (scoreBucket: RiskScoreBucket) => {
-    setScoreBuckets(
-      scoreBuckets.includes(scoreBucket)
-        ? scoreBuckets.filter((item) => item !== scoreBucket)
-        : riskScoreKeys.filter((item) => item === scoreBucket || scoreBuckets.includes(item))
-    );
-  };
   const toggleRegion = (region: string) => {
     setSelectedRegions(selectedRegions.includes(region) ? selectedRegions.filter((item) => item !== region) : regions.filter((item) => item === region || selectedRegions.includes(item)));
   };
   const toggleSourceTier = (tier: string) => {
     setSourceTiers(sourceTiers.includes(tier) ? sourceTiers.filter((item) => item !== tier) : sourceTierOptions.filter((item) => item === tier || sourceTiers.includes(item)));
-  };
-  const toggleSourceStatus = (status: string) => {
-    setSourceStatuses(
-      sourceStatuses.includes(status) ? sourceStatuses.filter((item) => item !== status) : sourceStatusOptions.filter((item) => item === status || sourceStatuses.includes(item))
-    );
   };
   const toggleOverlay = (layer: OverlayLayer) => {
     setOverlayLayers(overlayLayers.includes(layer) ? overlayLayers.filter((item) => item !== layer) : overlayKeys.filter((item) => item === layer || overlayLayers.includes(item)));
@@ -217,32 +168,9 @@ function TopFilters({
       <details className="checkbox-menu advanced-filter-menu">
         <summary>
           <span>Advanced filters</span>
-          <strong>{advancedActiveCount ? `${advancedActiveCount} active` : "Score, region, source, signs"}</strong>
+          <strong>{advancedActiveCount ? `${advancedActiveCount} active` : "Region, source, flows"}</strong>
         </summary>
         <div className="checkbox-menu-panel advanced-filter-panel" aria-label="Advanced filters">
-          <div className="advanced-filter-section" role="group" aria-label="Risk scores">
-            <header>
-              <span>Risk scores</span>
-              <strong>{scoreSummary}</strong>
-            </header>
-            <div className="menu-bulk-actions">
-              <label>
-                <input type="checkbox" checked={scoreBuckets.length === riskScoreKeys.length} onChange={(event) => setScoreBuckets(event.target.checked ? riskScoreKeys : [])} />
-                <span>Select everything</span>
-              </label>
-              <label>
-                <input type="checkbox" checked={!scoreBuckets.length} onChange={(event) => setScoreBuckets(event.target.checked ? [] : riskScoreKeys)} />
-                <span>Unselect everything</span>
-              </label>
-            </div>
-            {riskScoreOptions.map((option) => (
-              <label key={option.key}>
-                <input type="checkbox" checked={scoreBuckets.includes(option.key)} onChange={() => toggleScoreBucket(option.key)} />
-                <span>{option.label}</span>
-                <small>{option.range}</small>
-              </label>
-            ))}
-          </div>
           <div className="advanced-filter-section" role="group" aria-label="Regions">
             <header>
               <span>Regions</span>
@@ -288,32 +216,9 @@ function TopFilters({
             ))}
             {!sourceTierOptions.length && <p className="empty">No source tiers in the workbook export.</p>}
           </div>
-          <div className="advanced-filter-section" role="group" aria-label="Source statuses">
+          <div className="advanced-filter-section" role="group" aria-label="Influence flows">
             <header>
-              <span>Source status</span>
-              <strong>{sourceStatusSummary}</strong>
-            </header>
-            <div className="menu-bulk-actions">
-              <label>
-                <input type="checkbox" checked={sourceStatuses.length === sourceStatusOptions.length} onChange={(event) => setSourceStatuses(event.target.checked ? sourceStatusOptions : [])} />
-                <span>Select everything</span>
-              </label>
-              <label>
-                <input type="checkbox" checked={!sourceStatuses.length} onChange={(event) => setSourceStatuses(event.target.checked ? [] : sourceStatusOptions)} />
-                <span>Unselect everything</span>
-              </label>
-            </div>
-            {sourceStatusOptions.map((item) => (
-              <label key={item}>
-                <input type="checkbox" checked={sourceStatuses.includes(item)} onChange={() => toggleSourceStatus(item)} />
-                <span>{item}</span>
-              </label>
-            ))}
-            {!sourceStatusOptions.length && <p className="empty">No source statuses in the workbook export.</p>}
-          </div>
-          <div className="advanced-filter-section" role="group" aria-label="Map flows and country card signs">
-            <header>
-              <span>Flows / signs</span>
+              <span>Influence flows</span>
               <strong>{overlaySummary}</strong>
             </header>
             <div className="menu-bulk-actions">
@@ -339,10 +244,44 @@ function TopFilters({
   );
 }
 
+function RiskLayerQuickControl({ metrics, setMetrics }: { metrics: MetricKey[]; setMetrics: (metrics: MetricKey[]) => void }) {
+  const metricLabels = metricOptions.filter((option) => metrics.includes(option.key)).map((option) => option.label);
+  const metricSummary = summarizeSelection(metrics.length, metricOptions.length, "All risk layers", "No risk layers", metricLabels[0]);
+  const toggleMetric = (metric: MetricKey) => {
+    setMetrics(metrics.includes(metric) ? metrics.filter((item) => item !== metric) : metricKeys.filter((item) => item === metric || metrics.includes(item)));
+  };
+
+  return (
+    <details className="mobile-risk-layer-control">
+      <summary>
+        <span>Risk layers</span>
+        <strong>{metricSummary}</strong>
+      </summary>
+      <div className="checkbox-menu-panel mobile-risk-layer-panel" role="group" aria-label="Risk layers">
+        <div className="menu-bulk-actions">
+          <label>
+            <input type="checkbox" checked={metrics.length === metricKeys.length} onChange={(event) => setMetrics(event.target.checked ? metricKeys : [])} />
+            <span>Select everything</span>
+          </label>
+          <label>
+            <input type="checkbox" checked={!metrics.length} onChange={(event) => setMetrics(event.target.checked ? [] : metricKeys)} />
+            <span>Unselect everything</span>
+          </label>
+        </div>
+        {metricOptions.map((option) => (
+          <label key={option.key}>
+            <input type="checkbox" checked={metrics.includes(option.key)} onChange={() => toggleMetric(option.key)} />
+            <span>{option.label}</span>
+          </label>
+        ))}
+      </div>
+    </details>
+  );
+}
+
 function LeftPanels({
   countries,
   allCountries,
-  cardMarkers,
   metrics,
   selected,
   searchQuery,
@@ -352,7 +291,6 @@ function LeftPanels({
 }: {
   countries: MapCountry[];
   allCountries: MapCountry[];
-  cardMarkers: SignalMarker[];
   metrics: MetricKey[];
   selected?: MapCountry;
   searchQuery: string;
@@ -363,15 +301,6 @@ function LeftPanels({
   const leaders = topCountries(countries, metrics, 6);
   const normalizedQuery = searchQuery.trim().toLowerCase();
   const visibleKeys = useMemo(() => new Set(countries.map(rowKey)), [countries]);
-  const markersByCountry = useMemo(() => {
-    const lookup = new Map<string, SignalMarker[]>();
-    cardMarkers.forEach((marker) => {
-      const key = markerKey(marker);
-      lookup.set(key, [...(lookup.get(key) ?? []), marker]);
-    });
-    lookup.forEach((markers) => markers.sort((left, right) => markerKindOrder[left.kind] - markerKindOrder[right.kind]));
-    return lookup;
-  }, [cardMarkers]);
   const searchResults = useMemo<CountrySearchResult[]>(() => {
     if (!normalizedQuery) return [];
     const groups = new Map<string, MapCountry[]>();
@@ -436,7 +365,6 @@ function LeftPanels({
                     <small>
                       {result.iso3} / {result.region} / {result.visibleActorCount ? `${result.visibleActorCount} visible` : "reveal hidden"}
                     </small>
-                    <SignalSigns markers={markersByCountry.get(rowKey(result.bestRow)) ?? []} label={`Signal signs for ${result.bestRow.actor} in ${result.country}`} />
                   </span>
                   <strong>{result.actorCount} actor{result.actorCount === 1 ? "" : "s"}</strong>
                 </button>
@@ -444,18 +372,17 @@ function LeftPanels({
             })}
           {!normalizedQuery &&
             leaders.map((country) => {
-            const datum = selectedMetric(country, metrics);
-            return (
-              <button type="button" key={`${country.actor}-${country.iso3}`} className={selected?.actor === country.actor && selected?.iso3 === country.iso3 ? "selected" : ""} onClick={() => onSelect(country)}>
-                <span>
-                  <b>{country.actor} / {country.country}</b>
-                  <small>{country.iso3} / {country.region}</small>
-                  <SignalSigns markers={markersByCountry.get(rowKey(country)) ?? []} label={`Signal signs for ${country.actor} in ${country.country}`} />
-                </span>
-                <strong>{formatScore(datum.score)}</strong>
-              </button>
-            );
-          })}
+              const datum = selectedMetric(country, metrics);
+              return (
+                <button type="button" key={`${country.actor}-${country.iso3}`} className={selected?.actor === country.actor && selected?.iso3 === country.iso3 ? "selected" : ""} onClick={() => onSelect(country)}>
+                  <span>
+                    <b>{country.actor} / {country.country}</b>
+                    <small>{country.iso3} / {country.region}</small>
+                  </span>
+                  <strong>{formatScore(datum.score)}</strong>
+                </button>
+              );
+            })}
           {normalizedQuery && !searchResults.length && <p className="empty">No matching countries.</p>}
           {!normalizedQuery && !leaders.length && <p className="empty">No countries match the current filters.</p>}
         </div>
@@ -568,155 +495,6 @@ function FilterEmptyState({
             }}
           >
             Reset map filters
-          </button>
-        )}
-      </div>
-    </section>
-  );
-}
-
-function ActiveFilterChips({
-  actors,
-  setActors,
-  metrics,
-  setMetrics,
-  scoreBuckets,
-  setScoreBuckets,
-  selectedRegions,
-  setSelectedRegions,
-  regions,
-  compareMode,
-  setCompareMode,
-  sourceTiers,
-  setSourceTiers,
-  sourceTierOptions,
-  sourceStatuses,
-  setSourceStatuses,
-  sourceStatusOptions,
-  overlayLayers,
-  setOverlayLayers
-}: {
-  actors: Actor[];
-  setActors: (actors: Actor[]) => void;
-  metrics: MetricKey[];
-  setMetrics: (metrics: MetricKey[]) => void;
-  scoreBuckets: RiskScoreBucket[];
-  setScoreBuckets: (scoreBuckets: RiskScoreBucket[]) => void;
-  selectedRegions: string[];
-  setSelectedRegions: (regions: string[]) => void;
-  regions: string[];
-  compareMode: boolean;
-  setCompareMode: (value: boolean) => void;
-  sourceTiers: string[];
-  setSourceTiers: (tiers: string[]) => void;
-  sourceTierOptions: string[];
-  sourceStatuses: string[];
-  setSourceStatuses: (statuses: string[]) => void;
-  sourceStatusOptions: string[];
-  overlayLayers: OverlayLayer[];
-  setOverlayLayers: (layers: OverlayLayer[]) => void;
-}) {
-  const hasCustomFilters =
-    actors.length !== actorOptions.length ||
-    metrics.length !== metricKeys.length ||
-    scoreBuckets.length !== riskScoreKeys.length ||
-    selectedRegions.length !== regions.length ||
-    sourceTiers.length !== sourceTierOptions.length ||
-    sourceStatuses.length !== sourceStatusOptions.length ||
-    overlayLayers.length > 0 ||
-    compareMode;
-
-  const resetFilters = () => {
-    setActors(actorOptions);
-    setMetrics(metricKeys);
-    setScoreBuckets(riskScoreKeys);
-    setSelectedRegions(regions);
-    setSourceTiers(sourceTierOptions);
-    setSourceStatuses(sourceStatusOptions);
-    setOverlayLayers(defaultOverlayLayers);
-    setCompareMode(false);
-  };
-
-  return (
-    <section className={`filter-chips ${hasCustomFilters ? "" : "quiet"}`} aria-label="Active filters">
-      <span>Active filters</span>
-      <div>
-        {!hasCustomFilters && <em>Countries are visible. Flow lines and country-card signs are off by default.</em>}
-        {!actors.length && (
-          <button type="button" onClick={() => setActors(actorOptions)}>
-            No actors <b>+</b>
-          </button>
-        )}
-        {actors.length > 0 &&
-          actors.length < actorOptions.length &&
-          actors.map((actor) => (
-            <button type="button" key={`actor-${actor}`} onClick={() => setActors(actors.filter((item) => item !== actor))}>
-              Actor: {actor} <b>x</b>
-            </button>
-          ))}
-        {!scoreBuckets.length && (
-          <button type="button" onClick={() => setScoreBuckets(riskScoreKeys)}>
-            No score ranges <b>+</b>
-          </button>
-        )}
-        {scoreBuckets.length > 0 &&
-          scoreBuckets.length < riskScoreKeys.length &&
-          riskScoreOptions
-            .filter((option) => scoreBuckets.includes(option.key))
-            .map((option) => (
-              <button type="button" key={`score-${option.key}`} onClick={() => setScoreBuckets(scoreBuckets.filter((item) => item !== option.key))}>
-                Score: {option.range} <b>x</b>
-              </button>
-            ))}
-        {!metrics.length && (
-          <button type="button" onClick={() => setMetrics(metricKeys)}>
-            No risk layers <b>+</b>
-          </button>
-        )}
-        {metrics.length > 0 &&
-          metrics.length < metricKeys.length &&
-          metricOptions
-            .filter((option) => metrics.includes(option.key))
-            .map((option) => (
-              <button type="button" key={`metric-${option.key}`} onClick={() => setMetrics(metrics.filter((item) => item !== option.key))}>
-                Layer: {option.label} <b>x</b>
-              </button>
-            ))}
-        {!selectedRegions.length && (
-          <button type="button" onClick={() => setSelectedRegions(regions)}>
-            No regions <b>+</b>
-          </button>
-        )}
-        {selectedRegions.length > 0 &&
-          selectedRegions.length < regions.length &&
-          selectedRegions.map((region) => (
-            <button type="button" key={`region-${region}`} onClick={() => setSelectedRegions(selectedRegions.filter((item) => item !== region))}>
-              Region: {region} <b>x</b>
-            </button>
-          ))}
-        {compareMode && (
-          <button type="button" onClick={() => setCompareMode(false)}>
-            Compare mode on <b>x</b>
-          </button>
-        )}
-        {sourceTierOptions.length > 0 && sourceTiers.length !== sourceTierOptions.length && (
-          <button type="button" onClick={() => setSourceTiers(sourceTierOptions)}>
-            Source tiers: {sourceTiers.length || "none"} <b>+</b>
-          </button>
-        )}
-        {sourceStatusOptions.length > 0 && sourceStatuses.length !== sourceStatusOptions.length && (
-          <button type="button" onClick={() => setSourceStatuses(sourceStatusOptions)}>
-            Source status: {sourceStatuses.length || "none"} <b>+</b>
-          </button>
-        )}
-        {overlayLayers.length > 0 && (
-          <button type="button" onClick={() => setOverlayLayers(defaultOverlayLayers)}>
-            Flows/signs: {overlayLayers.length} <b>x</b>
-          </button>
-        )}
-        {hasCustomFilters && (
-          <button type="button" className="reset-chip" onClick={resetFilters}>
-            Reset filters
           </button>
         )}
       </div>
@@ -865,63 +643,46 @@ function RiskLegend({ onOpenMethodology }: { onOpenMethodology: () => void }) {
   });
   return (
     <aside className="right-legend">
-      <section className="panel compact-legend">
-        <header>
-          <h2>Risk / Confidence</h2>
-          <span>Score color + opacity</span>
-        </header>
-        <div className="risk-scale" aria-label="Risk score legend">
-          {buckets.map((bucket) => (
-            <div className="risk-scale-item" key={bucket.score} title={`${bucket.score}: ${bucket.label}`}>
-              <i style={{ background: bucket.color }} />
-              <strong>{bucket.score}</strong>
-              <span>{bucket.label}</span>
-            </div>
-          ))}
-        </div>
-        <div className="confidence-scale" aria-label="Confidence opacity legend">
-          {[
-            ["High", 1],
-            ["Med", 0.75],
-            ["Low", 0.45],
-            ["Review", 0.25]
-          ].map(([label, opacity]) => (
-            <div className="confidence-pill" key={label}>
-              <i style={{ opacity: Number(opacity) }} />
-              <span>{label}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-      <section className="panel">
-        <h2>Country Card Signs</h2>
-        <div className="signal-legend">
-          <div>
-            <i className="signal-icon security" />
-            <strong>Security</strong>
-            <span>PSC / PMC / contractor signal</span>
+      <details className="panel legend-disclosure compact-legend" open>
+        <summary>
+          <span>
+            <h2>Risk / Confidence</h2>
+            <small>Score color + opacity</small>
+          </span>
+        </summary>
+        <div className="legend-body">
+          <div className="risk-scale" aria-label="Risk score legend">
+            {buckets.map((bucket) => (
+              <div className="risk-scale-item" key={bucket.score} title={`${bucket.score}: ${bucket.label}`}>
+                <i style={{ background: bucket.color }} />
+                <strong>{bucket.score}</strong>
+                <span>{bucket.label}</span>
+              </div>
+            ))}
           </div>
-          <div>
-            <i className="signal-icon channel" />
-            <strong>Channel</strong>
-            <span>Propaganda or information ecosystem signal</span>
-          </div>
-          <div>
-            <i className="signal-icon digital" />
-            <strong>Digital</strong>
-            <span>Election, cyber, or political-process signal</span>
+          <div className="confidence-scale" aria-label="Confidence opacity legend">
+            {[
+              ["High", 1],
+              ["Med", 0.75],
+              ["Low", 0.45],
+              ["Review", 0.25]
+            ].map(([label, opacity]) => (
+              <div className="confidence-pill" key={label}>
+                <i style={{ opacity: Number(opacity) }} />
+                <span>{label}</span>
+              </div>
+            ))}
           </div>
         </div>
-        <p className="legend-note">Signs are shown inside country cards. They are generated demo aids from workbook score fields, not verified intelligence points.</p>
-        <button type="button" className="panel-action-button" onClick={onOpenMethodology}>
-          Methodology / sources
-        </button>
-      </section>
+      </details>
+      <button type="button" className="panel-action-button legend-method-button" onClick={onOpenMethodology}>
+        Methodology / sources
+      </button>
     </aside>
   );
 }
 
-function AnalyticsCards({ countries, metrics, demoFlows, demoMarkers }: { countries: MapCountry[]; metrics: MetricKey[]; demoFlows: number; demoMarkers: number }) {
+function AnalyticsCards({ countries, metrics, demoFlows }: { countries: MapCountry[]; metrics: MetricKey[]; demoFlows: number }) {
   const average = countries.length ? countries.reduce((sum, country) => sum + selectedMetric(country, metrics).score, 0) / countries.length : 0;
   const highRisk = countries.filter((country) => selectedMetric(country, metrics).score >= 6).length;
   const demoRows = countries.filter((country) => country.data_status === "Demo").length;
@@ -941,7 +702,7 @@ function AnalyticsCards({ countries, metrics, demoFlows, demoMarkers }: { countr
       </article>
       <article>
         <span>Demo governance</span>
-        <strong>{demoRows + demoFlows + demoMarkers}</strong>
+        <strong>{demoRows + demoFlows}</strong>
       </article>
     </div>
   );
@@ -1040,7 +801,6 @@ function CountryDrawer({
   country,
   comparisonRows,
   metrics,
-  cardMarkers,
   evidence,
   sources,
   onClose
@@ -1048,7 +808,6 @@ function CountryDrawer({
   country?: MapCountry;
   comparisonRows: MapCountry[];
   metrics: MetricKey[];
-  cardMarkers: SignalMarker[];
   evidence: EvidenceRow[];
   sources: SourceRow[];
   onClose: () => void;
@@ -1093,7 +852,6 @@ function CountryDrawer({
           <span>{country.iso3}</span>
           <h2>{country.country}</h2>
           <p>{country.actor} / {country.region}</p>
-          <SignalSigns markers={cardMarkers} label={`Signal signs for ${country.actor} in ${country.country}`} />
         </div>
         <button type="button" onClick={onClose} aria-label="Close country profile">
           x
@@ -1245,7 +1003,7 @@ function MethodologyModal({ onClose }: { onClose: () => void }) {
           <article>
             <h3>Demo governance</h3>
             <p>
-              Generated flow lines and signal icons are visualization aids derived from score fields and are marked `Demo`.
+              Generated flow lines are visualization aids derived from score fields and are marked `Demo`.
               Numeric screening rows are marked `Needs review`; rows with no source-backed score are marked `Unscored`.
               Demo, review, and unscored material should not be presented as verified intelligence.
             </p>
@@ -1365,8 +1123,6 @@ export default function App() {
   const comparisonRows = selected ? data.countries.filter((country) => country.iso3 === selected.iso3) : [];
   const visibleKeys = new Set(visibleCountries.map(rowKey));
   const visibleFlows = overlayLayers.includes("flows") ? data.flows.filter((flow) => visibleKeys.has(`${flow.actor}:${flow.iso3}`)) : [];
-  const visibleCardMarkers = data.markers.filter((marker) => visibleKeys.has(markerKey(marker)) && overlayLayers.includes(marker.kind));
-  const selectedCardMarkers = selected ? visibleCardMarkers.filter((marker) => markerKey(marker) === rowKey(selected)) : [];
   const selectCountry = (country: MapCountry) => setSelectedKey(rowKey(country));
   const quickJumpCountry = (country: MapCountry) => {
     const effectiveMetrics = metrics.length ? metrics : metricKeys;
@@ -1387,12 +1143,12 @@ export default function App() {
         countries={visibleCountries}
         geojson={data.joined}
         flows={visibleFlows}
-        markers={[]}
         metrics={metrics}
         compareMode={compareMode}
         selectedKey={selectedKey}
         onSelect={selectCountry}
       />
+      <RiskLayerQuickControl metrics={metrics} setMetrics={setMetrics} />
 
       <FilterEmptyState
         loaded={!loading && !error && data.countries.length > 0}
@@ -1418,8 +1174,6 @@ export default function App() {
       <TopFilters
         metrics={metrics}
         setMetrics={setMetrics}
-        scoreBuckets={scoreBuckets}
-        setScoreBuckets={setScoreBuckets}
         actors={actors}
         setActors={setActors}
         selectedRegions={selectedRegions}
@@ -1428,37 +1182,12 @@ export default function App() {
         sourceTiers={sourceTiers}
         setSourceTiers={setSourceTiers}
         sourceTierOptions={sourceTierOptions}
-        sourceStatuses={sourceStatuses}
-        setSourceStatuses={setSourceStatuses}
-        sourceStatusOptions={sourceStatusOptions}
-        overlayLayers={overlayLayers}
-        setOverlayLayers={setOverlayLayers}
-      />
-      <ActiveFilterChips
-        actors={actors}
-        setActors={setActors}
-        metrics={metrics}
-        setMetrics={setMetrics}
-        scoreBuckets={scoreBuckets}
-        setScoreBuckets={setScoreBuckets}
-        selectedRegions={selectedRegions}
-        setSelectedRegions={setSelectedRegions}
-        regions={regions}
-        compareMode={compareMode}
-        setCompareMode={setCompareMode}
-        sourceTiers={sourceTiers}
-        setSourceTiers={setSourceTiers}
-        sourceTierOptions={sourceTierOptions}
-        sourceStatuses={sourceStatuses}
-        setSourceStatuses={setSourceStatuses}
-        sourceStatusOptions={sourceStatusOptions}
         overlayLayers={overlayLayers}
         setOverlayLayers={setOverlayLayers}
       />
       <LeftPanels
         countries={visibleCountries}
         allCountries={data.countries}
-        cardMarkers={visibleCardMarkers}
         metrics={metrics}
         selected={selected}
         searchQuery={searchQuery}
@@ -1472,7 +1201,6 @@ export default function App() {
           countries={visibleCountries}
           metrics={metrics}
           demoFlows={visibleFlows.length}
-          demoMarkers={visibleCardMarkers.length}
         />
       )}
 
@@ -1501,7 +1229,6 @@ export default function App() {
         country={selected}
         comparisonRows={comparisonRows}
         metrics={metrics}
-        cardMarkers={selectedCardMarkers}
         evidence={selectedEvidence}
         sources={data.sources}
         onClose={() => setSelectedKey("")}

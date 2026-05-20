@@ -9,8 +9,7 @@ Dark intelligence-dashboard UI for exploring Russia, USA, and China influence ro
 - `MapContainer` and configurable `TileLayer`
 - `L.geoJSON` country polygons joined by ISO3
 - `L.polyline` curved influence-flow overlays using `L.canvas()`
-- Leaflet `Marker` + `DivIcon` signal icons for security, digital, and channel indicators
-- Custom Leaflet panes for country fill, borders, flows, markers, selected outlines, and popups
+- Custom Leaflet panes for country fill, borders, flows, selected outlines, and popups
 
 Tile settings are configurable:
 
@@ -46,7 +45,6 @@ It also generates:
 - `normalized_map_data.json`
 - `joined_countries.geojson`
 - `flows.json`
-- `markers.json`
 - `build_summary.json`
 - `validation_report.json`
 
@@ -56,11 +54,11 @@ It also generates:
 
 ## Confidence Opacity
 
-Workbook score colors are used as a fixed 0-10 sequential palette for country fills, bars, legends, flows, and markers. The same score bucket always maps to the same color. Confidence fields drive map opacity. Review rows are deliberately less authoritative than verified rows.
+Workbook score colors are used as a fixed 0-10 sequential palette for country fills, bars, legends, and flows. The same score bucket always maps to the same color. Confidence fields drive map opacity. Review rows are deliberately less authoritative than verified rows.
 
 ## Demo Data Governance
 
-Generated curved flows and signal icons are marked `Demo`. Numeric screening rows are marked `Needs review`; rows with no source-backed score are marked `Unscored`. Demo, review, and unscored material must not be presented as verified intelligence.
+Generated curved flows are marked `Demo`. Numeric screening rows are marked `Needs review`; rows with no source-backed score are marked `Unscored`. Demo, review, and unscored material must not be presented as verified intelligence.
 
 To replace pilot scores with verified evidence:
 

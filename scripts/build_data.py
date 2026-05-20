@@ -624,42 +624,6 @@ def build_demo_flows(map_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     return flows
 
 
-def build_demo_markers(map_rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
-    marker_specs = [
-        ("security", "security", "Security/contractor indicator"),
-        ("channel", "propaganda", "Information channel indicator"),
-        ("digital", "election", "Digital/election indicator"),
-    ]
-    actor_lane_offsets = {"Russia": 0.82, "USA": 0.0, "China": -0.82}
-    markers = []
-    for row in map_rows:
-        active_specs = [(kind, metric, label) for kind, metric, label in marker_specs if row["metrics"][metric]["score"] > 0]
-        if not active_specs:
-            continue
-        row_latitude = row["latitude"] + actor_lane_offsets.get(row["actor"], 0)
-        spacing = 1.08
-        start_offset = -((len(active_specs) - 1) * spacing) / 2
-        for index, (kind, metric, label) in enumerate(active_specs):
-            score = row["metrics"][metric]["score"]
-            markers.append(
-                {
-                    "id": f"demo-{kind}-{row['actor_slug']}-{row['iso3'].lower()}",
-                    "actor": row["actor"],
-                    "kind": kind,
-                    "label": label,
-                    "country": row["country"],
-                    "iso3": row["iso3"],
-                    "score": score,
-                    "latitude": row_latitude,
-                    "longitude": row["longitude"] + start_offset + index * spacing,
-                    "color": row["metrics"][metric]["color"],
-                    "data_status": "Demo",
-                    "warning": "Generated icon from workbook score fields; arranged in a visual row and not verified intelligence.",
-                }
-            )
-    return markers
-
-
 def normalize_evidence_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
     normalized: list[dict[str, Any]] = []
     for index, row in enumerate(rows, start=1):
@@ -810,7 +774,7 @@ def main() -> int:
     source_rows = normalize_source_rows(extracted.get("source_register", []))
     joined = join_boundaries(map_rows)
     flows = build_demo_flows(map_rows)
-    markers = build_demo_markers(map_rows)
+    markers: list[dict[str, Any]] = []
 
     outputs = {
         "evidence_log.json": evidence_rows,
@@ -835,7 +799,7 @@ def main() -> int:
         "demo_flows": len(flows),
         "demo_markers": len(markers),
         "source_workbook": str(INPUT.relative_to(ROOT)),
-        "demo_notice": "Unscored rows and generated flows/markers are not verified intelligence.",
+        "demo_notice": "Unscored rows and generated flows are not verified intelligence.",
     }
     write_json(PUBLIC_DATA / "build_summary.json", summary)
     write_json(PROCESSED / "build_summary.json", summary)

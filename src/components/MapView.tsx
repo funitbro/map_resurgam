@@ -3,27 +3,16 @@ import L, { type Layer, type PathOptions } from "leaflet";
 import { MapContainer, TileLayer, useMap } from "react-leaflet";
 import { confidenceOpacity, normalizeHex } from "../data/colors";
 import { formatScore, riskLabel, SCORE_MAX, selectedMetric } from "../data/scoring";
-import type { Flow, MapCountry, MetricKey, SignalMarker } from "../data/types";
+import type { Flow, MapCountry, MetricKey } from "../data/types";
 
 type Props = {
   countries: MapCountry[];
   geojson: GeoJSON.FeatureCollection;
   flows: Flow[];
-  markers: SignalMarker[];
   metrics: MetricKey[];
   compareMode: boolean;
   selectedKey?: string;
   onSelect: (country: MapCountry) => void;
-};
-
-type MarkerGroup = {
-  id: string;
-  actor: SignalMarker["actor"];
-  country: string;
-  iso3: string;
-  latitude: number;
-  longitude: number;
-  markers: SignalMarker[];
 };
 
 const tileUrl =
@@ -103,70 +92,11 @@ function hoverCardHtml(country: MapCountry, metrics: MetricKey[], comparisonRows
   `;
 }
 
-function groupMarkers(markers: SignalMarker[]) {
-  const order: Record<SignalMarker["kind"], number> = { security: 0, channel: 1, digital: 2 };
-  const groups = new Map<string, MarkerGroup>();
-  markers.forEach((marker) => {
-    const key = `${marker.actor}:${marker.iso3}`;
-    const current =
-      groups.get(key) ??
-      ({
-        id: key,
-        actor: marker.actor,
-        country: marker.country,
-        iso3: marker.iso3,
-        latitude: 0,
-        longitude: 0,
-        markers: []
-      } satisfies MarkerGroup);
-    current.markers.push(marker);
-    groups.set(key, current);
-  });
-
-  return [...groups.values()].map((group) => {
-    group.markers.sort((left, right) => order[left.kind] - order[right.kind]);
-    const markerCount = group.markers.length || 1;
-    return {
-      ...group,
-      latitude: group.markers.reduce((sum, marker) => sum + marker.latitude, 0) / markerCount,
-      longitude: group.markers.reduce((sum, marker) => sum + marker.longitude, 0) / markerCount
-    };
-  });
-}
-
-function makeMarkerIcon(group: MarkerGroup) {
-  const html = group.markers
-    .map(
-      (marker) =>
-        `<span class="signal-icon ${marker.kind}" style="--marker-color:${normalizeHex(marker.color)}" title="${escapeHtml(marker.label)}" aria-label="${escapeHtml(marker.label)}"></span>`
-    )
-    .join("");
-  const width = group.markers.length * 26 + Math.max(0, group.markers.length - 1) * 6;
-  return L.divIcon({
-    className: `signal-marker signal-marker-row actor-${group.actor.toLowerCase()}`,
-    html,
-    iconSize: [width, 26],
-    iconAnchor: [width / 2, 13]
-  });
-}
-
-function markerPopupHtml(group: MarkerGroup) {
-  const rows = group.markers
-    .map(
-      (marker) =>
-        `<span><b>${escapeHtml(marker.label)}</b>: Score ${formatScore(marker.score)}</span>`
-    )
-    .join("");
-  const warning = group.markers[0]?.warning ?? "Generated icon from workbook score fields; not verified intelligence.";
-  return `<div class="intel-popup"><strong>${escapeHtml(group.country)}</strong><span>${group.actor} / ${group.iso3}</span>${rows}<em>${escapeHtml(warning)}</em></div>`;
-}
-
 function createPanes(map: L.Map) {
   const panes = [
     ["country-fill", 410],
     ["country-border", 420],
     ["flows", 430],
-    ["markers", 440],
     ["selected-outline", 450],
     ["intel-popups", 700]
   ] as const;
@@ -176,9 +106,8 @@ function createPanes(map: L.Map) {
   });
 }
 
-function LeafletLayers({ countries, geojson, flows, markers, metrics, compareMode, selectedKey, onSelect }: Props) {
+function LeafletLayers({ countries, geojson, flows, metrics, compareMode, selectedKey, onSelect }: Props) {
   const map = useMap();
-  const markerGroups = useMemo(() => groupMarkers(markers), [markers]);
   const selectedIso = selectedKey?.split(":")[1];
   const selectedCountry = useMemo(() => countries.find((country) => countryKey(country) === selectedKey), [countries, selectedKey]);
   const byIsoRows = useMemo(() => {
@@ -295,22 +224,6 @@ function LeafletLayers({ countries, geojson, flows, markers, metrics, compareMod
       flowLayers.forEach((layer) => layer.removeFrom(map));
     };
   }, [flows, map]);
-
-  useEffect(() => {
-    const markerLayers = markerGroups.map((group) =>
-      L.marker([group.latitude, group.longitude], {
-        pane: "markers",
-        icon: makeMarkerIcon(group),
-        keyboard: true,
-        title: `${group.actor} signal indicators: ${group.country}`
-      })
-        .bindPopup(markerPopupHtml(group), { pane: "intel-popups", className: "dark-popup" })
-        .addTo(map)
-    );
-    return () => {
-      markerLayers.forEach((layer) => layer.removeFrom(map));
-    };
-  }, [map, markerGroups]);
 
   return null;
 }
