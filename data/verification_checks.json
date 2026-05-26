@@ -1,0 +1,92 @@
+[
+  {
+    "Workbook verification checks": "Check",
+    "Unnamed: 1": "Formula / Value",
+    "Unnamed: 2": "Expected",
+    "Unnamed: 3": "Status"
+  },
+  {
+    "Workbook verification checks": "Country rows",
+    "Unnamed: 1": 123,
+    "Unnamed: 2": 123,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Actor count",
+    "Unnamed: 1": 4,
+    "Unnamed: 2": 4,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Subfactor count",
+    "Unnamed: 1": 4,
+    "Unnamed: 2": 4,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Scoring rows",
+    "Unnamed: 1": 492,
+    "Unnamed: 2": 492,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Evidence slots",
+    "Unnamed: 1": 1968,
+    "Unnamed: 2": 1968,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Weight total",
+    "Unnamed: 1": 1,
+    "Unnamed: 2": 1,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Missing country source URLs",
+    "Unnamed: 1": 0,
+    "Unnamed: 2": 0,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Leaflet Country_Config rows",
+    "Unnamed: 1": 123,
+    "Unnamed: 2": 123,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Leaflet selectable rows",
+    "Unnamed: 1": 123,
+    "Unnamed: 2": 123,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "GeoJSON feature rows",
+    "Unnamed: 1": 123,
+    "Unnamed: 2": 123,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Excluded non-country rows copied",
+    "Unnamed: 1": 11,
+    "Unnamed: 2": 11,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Scoring numeric scores",
+    "Unnamed: 1": 1968,
+    "Unnamed: 2": 1968,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Scoring confidence values",
+    "Unnamed: 1": 1968,
+    "Unnamed: 2": 1968,
+    "Unnamed: 3": "OK"
+  },
+  {
+    "Workbook verification checks": "Scoring source URLs",
+    "Unnamed: 1": 1968,
+    "Unnamed: 2": 1968,
+    "Unnamed: 3": "OK"
+  }
+]

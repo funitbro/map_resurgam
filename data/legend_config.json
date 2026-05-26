@@ -1,0 +1,106 @@
+[
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": "Score value",
+    "Unnamed: 1": "Colour swatch",
+    "Unnamed: 2": "Hex colour",
+    "Unnamed: 3": "Meaning",
+    "Unnamed: 4": "How to use it",
+    "Unnamed: 5": "Hex_NoHash"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": "Blank / No data",
+    "Unnamed: 1": "Neutral",
+    "Unnamed: 2": "#F8FAFC",
+    "Unnamed: 3": "Not assessed or no source-backed score yet",
+    "Unnamed: 4": "Leave neutral until a country-specific source URL supports a numeric score.",
+    "Unnamed: 5": "F8FAFC"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": 0,
+    "Unnamed: 1": "Grey",
+    "Unnamed: 2": "#E5E7EB",
+    "Unnamed: 3": "Verified absent / none",
+    "Unnamed: 4": "Use only where absence or negligible presence is verified.",
+    "Unnamed: 5": "E5E7EB"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": 1,
+    "Unnamed: 1": "Very light green",
+    "Unnamed: 2": "#D1FAE5",
+    "Unnamed: 3": "Trace or isolated indicator",
+    "Unnamed: 4": "One weak, old, indirect, or isolated country-specific indicator.",
+    "Unnamed: 5": "D1FAE5"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": 2,
+    "Unnamed: 1": "Light green",
+    "Unnamed: 2": "#A7F3D0",
+    "Unnamed: 3": "Identifiable but limited footprint",
+    "Unnamed: 4": "One credible source or a few limited country-specific indicators.",
+    "Unnamed: 5": "A7F3D0"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": 3,
+    "Unnamed: 1": "Light yellow",
+    "Unnamed: 2": "#FEF3C7",
+    "Unnamed: 3": "Limited recurring evidence",
+    "Unnamed: 4": "Repeated but narrow, limited, or low-intensity evidence.",
+    "Unnamed: 5": "FEF3C7"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": 4,
+    "Unnamed: 1": "Yellow",
+    "Unnamed: 2": "#FDE68A",
+    "Unnamed: 3": "Recurring and credible activity",
+    "Unnamed: 4": "Recurring activity with credible evidence, not strategically central.",
+    "Unnamed: 5": "FDE68A"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": 5,
+    "Unnamed: 1": "Gold",
+    "Unnamed: 2": "#FCD34D",
+    "Unnamed: 3": "Significant influence in one channel",
+    "Unnamed: 4": "Strong single-channel influence or limited multi-channel evidence.",
+    "Unnamed: 5": "FCD34D"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": 6,
+    "Unnamed: 1": "Light orange",
+    "Unnamed: 2": "#FDBA74",
+    "Unnamed: 3": "Sustained / strategically relevant evidence",
+    "Unnamed: 4": "Sustained activity with political, security, or information relevance.",
+    "Unnamed: 5": "FDBA74"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": 7,
+    "Unnamed: 1": "Orange",
+    "Unnamed: 2": "#FB923C",
+    "Unnamed: 3": "Strong multi-channel footprint",
+    "Unnamed: 4": "Several mechanisms, durable links, or strong network footprint.",
+    "Unnamed: 5": "FB923C"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": 8,
+    "Unnamed: 1": "Deep orange",
+    "Unnamed: 2": "#F97316",
+    "Unnamed: 3": "Entrenched institutional or network role",
+    "Unnamed: 4": "Entrenched role in institutions, strategic sectors, media, security, or elections.",
+    "Unnamed: 5": "F97316"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": 9,
+    "Unnamed: 1": "Red",
+    "Unnamed: 2": "#EF4444",
+    "Unnamed: 3": "Dominant in one or more key influence channels",
+    "Unnamed: 4": "Dominant in a key channel or highly influential across several channels.",
+    "Unnamed: 5": "EF4444"
+  },
+  {
+    "0–10 influence score colour legend — every point has a distinct colour": 10,
+    "Unnamed: 1": "Dark red",
+    "Unnamed: 2": "#B91C1C",
+    "Unnamed: 3": "Central / systemic influence",
+    "Unnamed: 4": "Use rarely; requires robust source-backed justification.",
+    "Unnamed: 5": "B91C1C"
+  }
+]

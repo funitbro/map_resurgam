@@ -1,0 +1,56 @@
+[
+  {
+    "Version": "v2",
+    "Date": "2026-05-19",
+    "Change": "Restructured to actor-level influence model",
+    "Notes": "Added Russia, China, United States and European Union main factors with four common subfactors."
+  },
+  {
+    "Version": "v1",
+    "Date": "2026-05-19",
+    "Change": "Initial all-country workbook",
+    "Notes": "Country master and source-ready scoring structure."
+  },
+  {
+    "Version": "2026-05-19",
+    "Date": "Updated scoring scale",
+    "Change": "Changed influence/evidence score fields from 0–5 to 0–10, added numeric 0–10 validation and a dedicated rubric.",
+    "Notes": "GPT-5.5 Pro"
+  },
+  {
+    "Version": "v3",
+    "Date": "2026-05-19",
+    "Change": "Added colour-coded 0–10 scoring",
+    "Notes": "Applied conditional score bands to Scoring_Matrix, Evidence_Log and Map_Data; added Score_Color_Legend and coloured rubric rows."
+  },
+  {
+    "Version": "v4",
+    "Date": "2026-05-19",
+    "Change": "Added point-by-point colours",
+    "Notes": "Each score value 0–10 now has its own distinct colour; blanks / No data remain neutral."
+  },
+  {
+    "Version": "2026-05-19",
+    "Date": "ChatGPT",
+    "Change": "Renewed Leaflet scope to all possible country/area rows",
+    "Notes": "Added Country_Config with 249 rows, appended Map_Data Leaflet columns Q:Z, added GeoJSON_Export and Map_Code."
+  },
+  {
+    "Version": "v5",
+    "Date": "2026-05-19",
+    "Change": "Standardized USA as one selectable country",
+    "Notes": "United States country row renamed to USA; U.S. states excluded as subnational units while all other Leaflet country/area rows remain."
+  },
+  {
+    "Version": "v6",
+    "Date": "2026-05-19",
+    "Change": "Filtered workbook to ResurgamHub-mentioned countries only",
+    "Notes": "Country_Master, Country_Config, Map_Data, Scoring_Matrix, Evidence_Log and GeoJSON_Export now use only 123 normalized country/country-area mentions."
+  },
+  {
+    "Version": "v7",
+    "Date": "2026-05-20",
+    "Change": "Filled Scoring_Matrix and Evidence_Log",
+    "Notes": "Added numeric 0–10 subfactor scores, 0–5 confidence ratings, and source URLs for all 1,968 actor/country/subfactor entries."
+  }
+]

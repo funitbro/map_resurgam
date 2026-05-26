@@ -1,0 +1,66 @@
+[
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Purpose",
+    "Unnamed: 1": "Workbook for source-backed scoring of Russian, Chinese, American and EU influence, filtered to country/country-area names mentioned in ResurgamHub materials."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Main factors",
+    "Unnamed: 1": "Russian influence, Chinese influence, American influence, EU influence."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Subfactors",
+    "Unnamed: 1": "Propaganda ecosystems; PMC presence; Election interference; Security contractors."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Scoring rule",
+    "Unnamed: 1": "Scores are 0–10 and must be supported by country-specific source URLs before being treated as verified."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Why blanks / No data appear",
+    "Unnamed: 1": "Blank score cells mean no verified country-specific evidence has been entered yet. This avoids fabricating influence values."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Primary workflow",
+    "Unnamed: 1": "Add evidence in Evidence_Log and/or fill source-backed 0–10 scores in Scoring_Matrix. Map_Data and Dashboard then roll up actor scores."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Scale",
+    "Unnamed: 1": "0 absent/no verified presence; 1–2 low; 3–4 moderate; 5–6 significant/high; 7–8 very high/entrenched; 9–10 dominant/systemic."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Generated",
+    "Unnamed: 1": "2026-05-19"
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Score colours",
+    "Unnamed: 1": "Scores 0 through 10 each have a distinct colour. Blank and No data cells remain neutral."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Colour legend",
+    "Unnamed: 1": "See Score_Color_Legend for the exact 0,1,2,3,4,5,6,7,8,9,10 colour mapping."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Leaflet country scope",
+    "Unnamed: 1": "Filtered to 123 ResurgamHub-mentioned country/country-area rows that can be represented as Leaflet point features and joined to polygons by ISO3/M49."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Leaflet sheets",
+    "Unnamed: 1": "Use Country_Config for the selectable country list; use Map_Data Q:Z and GeoJSON_Export for Leaflet-ready output."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "GeoJSON export",
+    "Unnamed: 1": "GeoJSON_Export provides prefix, 123 per-feature rows, and suffix."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "USA handling",
+    "Unnamed: 1": "United States is shown as one selectable country named United States / ISO3=USA. U.S. states are not separate country rows."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Traceability",
+    "Unnamed: 1": "See ResurgamHub_Countries for the normalized country list, source groups, example URLs, and normalization notes."
+  },
+  {
+    "Resurgam country influence workbook — ResurgamHub country scope": "Excluded terms",
+    "Unnamed: 1": "See Excluded_Not_Countries for non-country/subnational/region terms that were not added as country rows."
+  }
+]
