@@ -52,6 +52,8 @@ It also generates:
 
 `scripts/build_data.py` downloads a world boundary GeoJSON if needed, preserves workbook ISO3 values, and joins normalized actor rows to country polygons by ISO3. Countries without workbook rows remain visible as neutral dark boundaries. When multiple actors have scores for the same ISO3 in the all-actors view, the polygon uses the highest composite score; actor-specific filters show the selected actor layer.
 
+The generated joined boundary layer is simplified and stripped to the properties the app needs so GitHub Pages can load the map quickly.
+
 ## Confidence Opacity
 
 Workbook score colors are used as a fixed 0-10 sequential palette for country fills, bars, legends, and flows. The same score bucket always maps to the same color. Confidence fields drive map opacity. Review rows are deliberately less authoritative than verified rows.

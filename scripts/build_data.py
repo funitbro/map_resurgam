@@ -23,6 +23,8 @@ COUNTRIES = PUBLIC_DATA / "countries.geojson"
 JOINED = PUBLIC_DATA / "joined_countries.geojson"
 
 WORLD_URL = "https://raw.githubusercontent.com/datasets/geo-countries/master/data/countries.geojson"
+BOUNDARY_SIMPLIFY_TOLERANCE = 0.06
+BOUNDARY_DECIMALS = 4
 EXTRACT_SHEET_ALIASES = {
     "map_data": ["Map_Data"],
     "legend_config": ["Legend_Config", "Score_Color_Legend"],
@@ -180,7 +182,10 @@ def confidence_to_opacity(confidence: str, fallback: float = 0.35) -> float:
 
 def write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if path.suffix.lower() == ".geojson":
+        path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    else:
+        path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
 def frame_to_records(df: pd.DataFrame) -> list[dict[str, Any]]:
@@ -562,6 +567,87 @@ def iso_from_feature(feature: dict[str, Any]) -> str:
     return ""
 
 
+def squared_distance(left: list[float], right: list[float]) -> float:
+    return (left[0] - right[0]) ** 2 + (left[1] - right[1]) ** 2
+
+
+def point_line_distance(point: list[float], start: list[float], end: list[float]) -> float:
+    if start == end:
+        return math.sqrt(squared_distance(point, start))
+    x, y = point
+    x1, y1 = start
+    x2, y2 = end
+    numerator = abs((y2 - y1) * x - (x2 - x1) * y + x2 * y1 - y2 * x1)
+    denominator = math.sqrt((y2 - y1) ** 2 + (x2 - x1) ** 2)
+    return numerator / denominator
+
+
+def simplify_line(points: list[list[float]], tolerance: float) -> list[list[float]]:
+    if len(points) <= 2:
+        return points
+    max_distance = 0.0
+    max_index = 0
+    for index in range(1, len(points) - 1):
+        distance = point_line_distance(points[index], points[0], points[-1])
+        if distance > max_distance:
+            max_distance = distance
+            max_index = index
+    if max_distance <= tolerance:
+        return [points[0], points[-1]]
+    return simplify_line(points[: max_index + 1], tolerance)[:-1] + simplify_line(points[max_index:], tolerance)
+
+
+def rounded_point(point: list[float]) -> list[float]:
+    return [round(float(point[0]), BOUNDARY_DECIMALS), round(float(point[1]), BOUNDARY_DECIMALS)]
+
+
+def clean_ring(points: list[list[float]]) -> list[list[float]]:
+    cleaned: list[list[float]] = []
+    for point in points:
+        rounded = rounded_point(point)
+        if not cleaned or rounded != cleaned[-1]:
+            cleaned.append(rounded)
+    if cleaned and cleaned[0] != cleaned[-1]:
+        cleaned.append(cleaned[0])
+    return cleaned
+
+
+def path_between(points: list[list[float]], start: int, end: int) -> list[list[float]]:
+    if start <= end:
+        return points[start : end + 1]
+    return points[start:] + points[: end + 1]
+
+
+def simplify_ring(ring: list[list[float]]) -> list[list[float]]:
+    cleaned = clean_ring(ring)
+    body = cleaned[:-1] if cleaned and cleaned[0] == cleaned[-1] else cleaned
+    if len(body) <= 8:
+        return cleaned
+
+    min_x = min(range(len(body)), key=lambda index: body[index][0])
+    max_x = max(range(len(body)), key=lambda index: body[index][0])
+    min_y = min(range(len(body)), key=lambda index: body[index][1])
+    max_y = max(range(len(body)), key=lambda index: body[index][1])
+    start, end = (min_x, max_x) if squared_distance(body[min_x], body[max_x]) >= squared_distance(body[min_y], body[max_y]) else (min_y, max_y)
+
+    first_path = simplify_line(path_between(body, start, end), BOUNDARY_SIMPLIFY_TOLERANCE)
+    second_path = simplify_line(path_between(body, end, start), BOUNDARY_SIMPLIFY_TOLERANCE)
+    simplified = clean_ring(first_path + second_path[1:])
+    return simplified if len(simplified) >= 4 else cleaned
+
+
+def simplify_geometry(geometry: dict[str, Any] | None) -> dict[str, Any] | None:
+    if not geometry:
+        return geometry
+    geometry_type = geometry.get("type")
+    coordinates = geometry.get("coordinates")
+    if geometry_type == "Polygon":
+        return {"type": "Polygon", "coordinates": [simplify_ring(ring) for ring in coordinates]}
+    if geometry_type == "MultiPolygon":
+        return {"type": "MultiPolygon", "coordinates": [[simplify_ring(ring) for ring in polygon] for polygon in coordinates]}
+    return geometry
+
+
 def join_boundaries(map_rows: list[dict[str, Any]]) -> dict[str, Any]:
     ensure_world_geojson()
     world = json.loads(COUNTRIES.read_text(encoding="utf-8"))
@@ -574,13 +660,15 @@ def join_boundaries(map_rows: list[dict[str, Any]]) -> dict[str, Any]:
     for feature in world.get("features", []):
         iso3 = iso_from_feature(feature)
         row = by_iso.get(iso3)
-        props = dict(feature.get("properties", {}))
-        props["iso3"] = iso3
-        props["country"] = props.get("name") or (row or {}).get("country", "")
-        props["has_map_data"] = bool(row)
+        feature_props = feature.get("properties", {})
+        props = {
+            "iso3": iso3,
+            "country": feature_props.get("name") or feature_props.get("admin") or (row or {}).get("country", ""),
+            "has_map_data": bool(row),
+        }
         if row:
             props.update(row)
-        joined_features.append({"type": "Feature", "geometry": feature.get("geometry"), "properties": props})
+        joined_features.append({"type": "Feature", "geometry": simplify_geometry(feature.get("geometry")), "properties": props})
     return {"type": "FeatureCollection", "name": "joined_authoritarian_expansion_countries", "features": joined_features}
 
 
