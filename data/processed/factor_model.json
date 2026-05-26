@@ -1,0 +1,134 @@
+[
+  {
+    "Actor/factor model": "Subfactor",
+    "Unnamed: 1": "Weight",
+    "Unnamed: 2": "Score scale",
+    "Unnamed: 3": "Definition",
+    "Unnamed: 4": "Minimum evidence to score",
+    "Unnamed: 5": "Primary source categories",
+    "Unnamed: 6": null,
+    "Unnamed: 7": "Score",
+    "Unnamed: 8": "Meaning"
+  },
+  {
+    "Actor/factor model": "Propaganda ecosystems",
+    "Unnamed: 1": 0.25,
+    "Unnamed: 2": "0–10",
+    "Unnamed: 3": "State/proxy media, coordinated online influence, FIMI/disinformation infrastructure, narrative laundering, and platform amplification.",
+    "Unnamed: 4": "Country-specific source URL + summary + confidence rating",
+    "Unnamed: 5": "Official records, sanctions, election reports, platform threat reports, credible research datasets",
+    "Unnamed: 6": null,
+    "Unnamed: 7": 0,
+    "Unnamed: 8": "No verified presence / absent in available country-specific evidence."
+  },
+  {
+    "Actor/factor model": "PMC presence",
+    "Unnamed: 1": 0.25,
+    "Unnamed: 2": "0–10",
+    "Unnamed: 3": "Private military, paramilitary, mercenary, or combat-adjacent formations tied to the actor and operating in/against the country.",
+    "Unnamed: 4": "Country-specific source URL + summary + confidence rating",
+    "Unnamed: 5": "Official records, sanctions, election reports, platform threat reports, credible research datasets",
+    "Unnamed: 6": null,
+    "Unnamed: 7": 1,
+    "Unnamed: 8": "Trace / isolated indicator; very weak footprint."
+  },
+  {
+    "Actor/factor model": "Election interference",
+    "Unnamed: 1": 0.25,
+    "Unnamed: 2": "0–10",
+    "Unnamed: 3": "Covert, coercive, deceptive, or non-transparent action intended to affect election integrity, candidate outcomes, turnout, trust, or public confidence.",
+    "Unnamed: 4": "Country-specific source URL + summary + confidence rating",
+    "Unnamed: 5": "Official records, sanctions, election reports, platform threat reports, credible research datasets",
+    "Unnamed: 6": null,
+    "Unnamed: 7": 2,
+    "Unnamed: 8": "Low but identifiable influence or presence."
+  },
+  {
+    "Actor/factor model": "Security contractors",
+    "Unnamed: 1": 0.25,
+    "Unnamed: 2": "0–10",
+    "Unnamed: 3": "Private security, advisory, training, logistics, surveillance, or protection contractors linked to the actor and active in the country.",
+    "Unnamed: 4": "Country-specific source URL + summary + confidence rating",
+    "Unnamed: 5": "Official records, sanctions, election reports, platform threat reports, credible research datasets",
+    "Unnamed: 6": null,
+    "Unnamed: 7": 3,
+    "Unnamed: 8": "Limited but recurring evidence."
+  },
+  {
+    "Actor/factor model": null,
+    "Unnamed: 1": null,
+    "Unnamed: 2": null,
+    "Unnamed: 3": null,
+    "Unnamed: 4": null,
+    "Unnamed: 5": null,
+    "Unnamed: 6": null,
+    "Unnamed: 7": 4,
+    "Unnamed: 8": "Moderate influence; recurring and credible evidence."
+  },
+  {
+    "Actor/factor model": null,
+    "Unnamed: 1": null,
+    "Unnamed: 2": null,
+    "Unnamed: 3": null,
+    "Unnamed: 4": null,
+    "Unnamed: 5": null,
+    "Unnamed: 6": null,
+    "Unnamed: 7": 5,
+    "Unnamed: 8": "Significant influence in one channel or limited multi-channel activity."
+  },
+  {
+    "Actor/factor model": "Actor",
+    "Unnamed: 1": "Main_Factor",
+    "Unnamed: 2": "Actor_Type",
+    "Unnamed: 3": "Notes",
+    "Unnamed: 4": null,
+    "Unnamed: 5": null,
+    "Unnamed: 6": null,
+    "Unnamed: 7": 6,
+    "Unnamed: 8": "High influence; sustained, visible, or strategically relevant evidence."
+  },
+  {
+    "Actor/factor model": "Russia",
+    "Unnamed: 1": "Russian influence",
+    "Unnamed: 2": "State actor",
+    "Unnamed: 3": "Apply the same subfactors; PMC and security-contractor rows may overlap but should be scored separately based on evidence.",
+    "Unnamed: 4": null,
+    "Unnamed: 5": null,
+    "Unnamed: 6": null,
+    "Unnamed: 7": 7,
+    "Unnamed: 8": "Very high influence; strong multi-channel footprint."
+  },
+  {
+    "Actor/factor model": "China",
+    "Unnamed: 1": "Chinese influence",
+    "Unnamed: 2": "State actor",
+    "Unnamed: 3": "For PMC presence, distinguish true PMC/paramilitary evidence from private security contractors protecting BRI-linked assets.",
+    "Unnamed: 4": null,
+    "Unnamed: 5": null,
+    "Unnamed: 6": null,
+    "Unnamed: 7": 8,
+    "Unnamed: 8": "Entrenched influence; institutionally or network significant."
+  },
+  {
+    "Actor/factor model": "United States",
+    "Unnamed: 1": "American influence",
+    "Unnamed: 2": "State actor",
+    "Unnamed: 3": "Classify public diplomacy, assistance, election support and security contracting separately; avoid treating disclosed support as covert interference without evidence.",
+    "Unnamed: 4": null,
+    "Unnamed: 5": null,
+    "Unnamed: 6": null,
+    "Unnamed: 7": 9,
+    "Unnamed: 8": "Dominant in key influence channels; major political-security-information role."
+  },
+  {
+    "Actor/factor model": "European Union",
+    "Unnamed: 1": "EU influence",
+    "Unnamed: 2": "Supranational actor",
+    "Unnamed: 3": "Classify election observation/democracy support separately from interference; source-backed evidence required for any coercive/interference score.",
+    "Unnamed: 4": null,
+    "Unnamed: 5": null,
+    "Unnamed: 6": null,
+    "Unnamed: 7": 10,
+    "Unnamed: 8": "Systemic / commanding influence; central to the country’s political-security-information environment."
+  }
+]

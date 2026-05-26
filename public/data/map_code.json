@@ -1,0 +1,30 @@
+[
+  {
+    "Leaflet usage notes": "Snippet / note",
+    "Unnamed: 1": "Code / text"
+  },
+  {
+    "Leaflet usage notes": "Point layer",
+    "Unnamed: 1": "const geojson = { type: 'FeatureCollection', features: [ /* paste GeoJSON_Export!D7:D129 here */ ] };\\nL.geoJSON(geojson, {\\n  pointToLayer: (feature, latlng) => L.circleMarker(latlng, { radius: 6, fillColor: feature.properties.dominant_colour || '#F8FAFC', fillOpacity: 0.8, stroke: true, weight: 1 }),\\n  onEachFeature: (feature, layer) => {\\n    const p = feature.properties;\\n    layer.bindPopup(`${p.country}<br>Dominant: ${p.dominant_actor}<br>Score: ${p.dominant_score}`);\\n  }\\n}).addTo(map);"
+  },
+  {
+    "Leaflet usage notes": "Colour style",
+    "Unnamed: 1": "Use feature.properties.dominant_colour for marker fill or polygon fill. Blank/no data uses neutral #F8FAFC."
+  },
+  {
+    "Leaflet usage notes": "Polygon join",
+    "Unnamed: 1": "For country polygons, join a boundary GeoJSON/tileset by ISO3 using Map_Data!C or Country_Config!B. Leaflet can render any valid GeoJSON polygon layer."
+  },
+  {
+    "Leaflet usage notes": "Why no single full JSON cell",
+    "Unnamed: 1": "123 feature rows can exceed Excel's one-cell text limit after scoring/source notes, so the export is row-wise with prefix/suffix."
+  },
+  {
+    "Leaflet usage notes": "USA handling",
+    "Unnamed: 1": "Join the United States by ISO3=USA. The workbook intentionally has one USA country feature only, not 50 U.S. state features."
+  },
+  {
+    "Leaflet usage notes": "Scope",
+    "Unnamed: 1": "Workbook is filtered to the ResurgamHub_Countries sheet only."
+  }
+]

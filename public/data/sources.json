@@ -1,0 +1,200 @@
+[
+  {
+    "actor": "All",
+    "source_name": "UNSD M49 country/area codes",
+    "url": "https://unstats.un.org/unsd/methodology/m49/overview",
+    "publisher": "",
+    "source_type": "Official dataset",
+    "reliability": "Official dataset",
+    "notes": "Country/area names, M49, ISO-alpha2/alpha3, regions and subregions."
+  },
+  {
+    "actor": "All",
+    "source_name": "REST Countries",
+    "url": "https://restcountries.com/",
+    "publisher": "",
+    "source_type": "Open country metadata API",
+    "reliability": "Open country metadata API",
+    "notes": "Approximate latitude/longitude centroids used only for map placement."
+  },
+  {
+    "actor": "Russia",
+    "source_name": "EUvsDisinfo About",
+    "url": "https://euvsdisinfo.eu/about/",
+    "publisher": "",
+    "source_type": "Official EU project page",
+    "reliability": "Official EU project page",
+    "notes": "Explains East StratCom Task Force and EUvsDisinfo scope for Kremlin disinformation monitoring."
+  },
+  {
+    "actor": "Russia; China",
+    "source_name": "EUvsDisinfo / FIMI Explorer",
+    "url": "https://euvsdisinfo.eu/",
+    "publisher": "",
+    "source_type": "Official EU database/dashboard",
+    "reliability": "Official EU database/dashboard",
+    "notes": "Public EU disinformation/FIMI database and reports portal."
+  },
+  {
+    "actor": "Russia; China",
+    "source_name": "4th EEAS Annual Report on FIMI Threats",
+    "url": "https://www.eeas.europa.eu/eeas/4th-eeas-annual-report-foreign-information-manipulation-and-interference-threats_en",
+    "publisher": "",
+    "source_type": "Official EU report",
+    "reliability": "Official EU report",
+    "notes": "Annual EEAS report on foreign information manipulation and interference threats."
+  },
+  {
+    "actor": "Russia; China; United States; EU",
+    "source_name": "2026 ODNI Annual Threat Assessment",
+    "url": "https://www.dni.gov/index.php/newsroom/reports-publications/reports-publications-2026/4141-2026-annual-threat-assessment.",
+    "publisher": "",
+    "source_type": "Official U.S. intelligence assessment",
+    "reliability": "Official U.S. intelligence assessment",
+    "notes": "Use for state threat context; add country-specific evidence before scoring."
+  },
+  {
+    "actor": "Russia",
+    "source_name": "U.S. Treasury Wagner Mali sanctions",
+    "url": "https://home.treasury.gov/news/press-releases/jy1502",
+    "publisher": "",
+    "source_type": "Official sanctions release",
+    "reliability": "Official sanctions release",
+    "notes": "Identifies Wagner Group activity and senior Wagner representative in Mali."
+  },
+  {
+    "actor": "Russia",
+    "source_name": "Council of the EU Wagner sanctions",
+    "url": "https://www.consilium.europa.eu/en/press/press-releases/2023/02/25/wagner-group-council-adds-11-individuals-and-7-entities-to-eu-sanctions-lists/",
+    "publisher": "",
+    "source_type": "Official EU sanctions release",
+    "reliability": "Official EU sanctions release",
+    "notes": "Lists Wagner presence in Ukraine, Libya, CAR, Mali and Sudan, and rights-abuse/security context."
+  },
+  {
+    "actor": "China",
+    "source_name": "MERICS — Guardians of the Belt and Road",
+    "url": "https://merics.org/en/report/guardians-belt-and-road",
+    "publisher": "",
+    "source_type": "Research institute report",
+    "reliability": "Research institute report",
+    "notes": "Analysis of Chinese private security companies overseas and BRI-linked protection activity."
+  },
+  {
+    "actor": "China",
+    "source_name": "Carnegie — Chinese Security Contractors in Africa",
+    "url": "https://carnegieendowment.org/europe/research/2020/10/chinese-security-contractors-in-africa",
+    "publisher": "",
+    "source_type": "Research institute report",
+    "reliability": "Research institute report",
+    "notes": "Analysis of Chinese security contractors protecting BRI projects, citizens, diplomats and sites in Africa."
+  },
+  {
+    "actor": "European Union",
+    "source_name": "EEAS EU Election Observation Missions",
+    "url": "https://www.eeas.europa.eu/eeas/eu-election-observation-missions-1_en",
+    "publisher": "",
+    "source_type": "Official EU page",
+    "reliability": "Official EU page",
+    "notes": "EU election observation and democracy support mission reference; classify as observation/support, not interference, unless evidence indicates coercive activity."
+  },
+  {
+    "actor": "European Union",
+    "source_name": "European Parliament Election Observation",
+    "url": "https://www.europarl.europa.eu/intcoop/election_observation/default_en.htm",
+    "publisher": "",
+    "source_type": "Official EU page",
+    "reliability": "Official EU page",
+    "notes": "European Parliament role in election observation delegations outside the EU."
+  },
+  {
+    "actor": "USA",
+    "source_name": "USAGM Research and Reports",
+    "url": "https://www.usagm.gov/our-work/strategy-and-results/strategic-priorities/research-reports/",
+    "publisher": "",
+    "source_type": "Official U.S. agency page",
+    "reliability": "Official U.S. agency page",
+    "notes": "Public reports on U.S. global media operations, audience, budget and performance."
+  },
+  {
+    "actor": "USA",
+    "source_name": "U.S. Overseas Loans and Grants Greenbook",
+    "url": "https://catalog.data.gov/dataset/u-s-overseas-loans-and-grants-greenbook-data",
+    "publisher": "",
+    "source_type": "Official U.S. dataset catalog",
+    "reliability": "Official U.S. dataset catalog",
+    "notes": "Authoritative U.S. foreign assistance dataset by country; use to locate relevant country-level assistance."
+  },
+  {
+    "actor": "USA",
+    "source_name": "Security Assistance Monitor",
+    "url": "https://internationalpolicy.org/programs/sam/",
+    "publisher": "",
+    "source_type": "Public-interest data compilation from official sources",
+    "reliability": "Public-interest data compilation from official sources",
+    "notes": "Country-searchable U.S. security assistance, arms sales and training data; add original document URLs where possible."
+  },
+  {
+    "actor": "USA",
+    "source_name": "NED Grantmaking",
+    "url": "https://www.ned.org/ned-grantmaking/",
+    "publisher": "",
+    "source_type": "Grantmaking disclosure",
+    "reliability": "Grantmaking disclosure",
+    "notes": "Country/thematic democracy grantmaking; classify carefully and distinguish democracy support from interference."
+  },
+  {
+    "actor": "All",
+    "source_name": "Leaflet documentation",
+    "url": "https://leafletjs.com/reference.html",
+    "publisher": "",
+    "source_type": "Official documentation",
+    "reliability": "Official documentation",
+    "notes": "Leaflet supports GeoJSON layers; workbook exports point features and ISO3 join keys."
+  },
+  {
+    "actor": "All",
+    "source_name": "ResurgamHub country mention scan",
+    "url": "https://resurgamhub.org/",
+    "publisher": "",
+    "source_type": "Project website scan",
+    "reliability": "Project website scan",
+    "notes": "Normalized 123 country/country-area mentions; non-country terms excluded to Excluded_Not_Countries."
+  },
+  {
+    "actor": "European Union",
+    "source_name": "EEAS Public Diplomacy and International Cultural Relations",
+    "url": "https://www.eeas.europa.eu/eeas/public-diplomacy_en",
+    "publisher": "",
+    "source_type": "Official EU page",
+    "reliability": "Official EU page",
+    "notes": "EU public diplomacy / international cultural relations reference used for EU propaganda-ecosystem screening."
+  },
+  {
+    "actor": "European Union",
+    "source_name": "EEAS CSDP Missions and Operations",
+    "url": "https://www.eeas.europa.eu/eeas/missions-and-operations_en",
+    "publisher": "",
+    "source_type": "Official EU page",
+    "reliability": "Official EU page",
+    "notes": "CSDP mission/operation footprint used for EU security-contractor screening; not treated as PMC evidence by itself."
+  },
+  {
+    "actor": "European Union",
+    "source_name": "European Commission Global Gateway",
+    "url": "https://commission.europa.eu/topics/international-partnerships/global-gateway_en",
+    "publisher": "",
+    "source_type": "Official EU page",
+    "reliability": "Official EU page",
+    "notes": "EU external investment and partnership source used as contextual support for EU overseas footprint screening."
+  },
+  {
+    "actor": "Russia; China",
+    "source_name": "ODNI 2026 Annual Threat Assessment PDF",
+    "url": "https://www.dni.gov/files/ODNI/documents/assessments/ATA-2026-Unclassified-Report.pdf",
+    "publisher": "",
+    "source_type": "Official U.S. intelligence assessment",
+    "reliability": "Official U.S. intelligence assessment",
+    "notes": "State threat context used alongside EEAS/FIMI sources for Russia/China influence screening."
+  }
+]

@@ -1,0 +1,68 @@
+[
+  {
+    "Mentioned_Term": "Wales",
+    "Class": "Subnational",
+    "Workbook_Treatment": "Map under United Kingdom unless using UK subnational boundaries.",
+    "Evidence_Note": "Homepage article title: Elections in Wales and Scotland"
+  },
+  {
+    "Mentioned_Term": "Scotland",
+    "Class": "Subnational",
+    "Workbook_Treatment": "Map under United Kingdom unless using UK subnational boundaries.",
+    "Evidence_Note": "Homepage article title: Elections in Wales and Scotland"
+  },
+  {
+    "Mentioned_Term": "England",
+    "Class": "Subnational",
+    "Workbook_Treatment": "Map under United Kingdom unless using UK subnational boundaries.",
+    "Evidence_Note": "Africa article mentions Salisbury, England."
+  },
+  {
+    "Mentioned_Term": "Gaza Strip",
+    "Class": "Subnational/territory",
+    "Workbook_Treatment": "Map under Palestine/country-area row for this workbook.",
+    "Evidence_Note": "Middle East ceasefire article"
+  },
+  {
+    "Mentioned_Term": "West Bank",
+    "Class": "Subnational/territory",
+    "Workbook_Treatment": "Map under Palestine/country-area row for this workbook.",
+    "Evidence_Note": "Middle East ceasefire article"
+  },
+  {
+    "Mentioned_Term": "Crimea",
+    "Class": "Occupied territory/region",
+    "Workbook_Treatment": "Do not create a separate country row; map under Ukraine unless using conflict/territorial layer.",
+    "Evidence_Note": "Russia/Ukraine articles"
+  },
+  {
+    "Mentioned_Term": "Azawad",
+    "Class": "Unrecognized region",
+    "Workbook_Treatment": "Do not create a separate country row.",
+    "Evidence_Note": "Africa article"
+  },
+  {
+    "Mentioned_Term": "Nagorno-Karabakh / Artsakh",
+    "Class": "Unrecognized/former entity",
+    "Workbook_Treatment": "Do not create a separate country row for the national Leaflet workbook.",
+    "Evidence_Note": "South Caucasus article"
+  },
+  {
+    "Mentioned_Term": "European Union",
+    "Class": "Organization",
+    "Workbook_Treatment": "Actor/factor, not a country row.",
+    "Evidence_Note": "Multiple articles"
+  },
+  {
+    "Mentioned_Term": "NATO",
+    "Class": "Organization",
+    "Workbook_Treatment": "Security organization, not a country row.",
+    "Evidence_Note": "Multiple articles"
+  },
+  {
+    "Mentioned_Term": "Europe / Africa / Asia / Oceania / Middle East / Balkans / Sahel",
+    "Class": "Region",
+    "Workbook_Treatment": "Use as regional metadata only, not country rows.",
+    "Evidence_Note": "Site navigation and articles"
+  }
+]

@@ -1,0 +1,770 @@
+[
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Export note",
+    "Unnamed: 1": "Why row-wise",
+    "Unnamed: 2": "How to use",
+    "Unnamed: 3": "Limit"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "FeatureCollection prefix/suffix + 123 per-feature rows",
+    "Unnamed: 1": "A single large FeatureCollection can exceed Excel's one-cell text limit.",
+    "Unnamed: 2": "Copy C5 then D7:D129 then C131 to assemble a FeatureCollection.",
+    "Unnamed: 3": "Rows update from Map_Data formulas."
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "FeatureCollection prefix",
+    "Unnamed: 1": null,
+    "Unnamed: 2": "{\"type\":\"FeatureCollection\",\"features\":[",
+    "Unnamed: 3": "Copy before feature rows"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Country",
+    "Unnamed: 1": "ISO3",
+    "Unnamed: 2": "Feature_JSON",
+    "Unnamed: 3": "Feature_JSON_With_Comma"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Afghanistan",
+    "Unnamed: 1": "AFG",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[65,33]},\"properties\":{\"country\":\"Afghanistan\",\"iso3\":\"AFG\",\"region\":\"Asia\",\"russia_score\":\"1\",\"china_score\":\"1.75\",\"american_score\":\"7\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"7\",\"dominant_colour\":\"#FB923C\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[65,33]},\"properties\":{\"country\":\"Afghanistan\",\"iso3\":\"AFG\",\"region\":\"Asia\",\"russia_score\":\"1\",\"china_score\":\"1.75\",\"american_score\":\"7\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"7\",\"dominant_colour\":\"#FB923C\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Algeria",
+    "Unnamed: 1": "DZA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[3,28]},\"properties\":{\"country\":\"Algeria\",\"iso3\":\"DZA\",\"region\":\"Africa\",\"russia_score\":\"2\",\"china_score\":\"2.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[3,28]},\"properties\":{\"country\":\"Algeria\",\"iso3\":\"DZA\",\"region\":\"Africa\",\"russia_score\":\"2\",\"china_score\":\"2.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Argentina",
+    "Unnamed: 1": "ARG",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-64,-34]},\"properties\":{\"country\":\"Argentina\",\"iso3\":\"ARG\",\"region\":\"Americas\",\"russia_score\":\"1.25\",\"china_score\":\"1.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-64,-34]},\"properties\":{\"country\":\"Argentina\",\"iso3\":\"ARG\",\"region\":\"Americas\",\"russia_score\":\"1.25\",\"china_score\":\"1.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Armenia",
+    "Unnamed: 1": "ARM",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[45,40]},\"properties\":{\"country\":\"Armenia\",\"iso3\":\"ARM\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"1.25\",\"american_score\":\"3\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[45,40]},\"properties\":{\"country\":\"Armenia\",\"iso3\":\"ARM\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"1.25\",\"american_score\":\"3\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Australia",
+    "Unnamed: 1": "AUS",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[133,-27]},\"properties\":{\"country\":\"Australia\",\"iso3\":\"AUS\",\"region\":\"Oceania\",\"russia_score\":\"1.5\",\"china_score\":\"2.75\",\"american_score\":\"4.25\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.25\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[133,-27]},\"properties\":{\"country\":\"Australia\",\"iso3\":\"AUS\",\"region\":\"Oceania\",\"russia_score\":\"1.5\",\"china_score\":\"2.75\",\"american_score\":\"4.25\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.25\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Austria",
+    "Unnamed: 1": "AUT",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[13.333333,47.333333]},\"properties\":{\"country\":\"Austria\",\"iso3\":\"AUT\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[13.333333,47.333333]},\"properties\":{\"country\":\"Austria\",\"iso3\":\"AUT\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Azerbaijan",
+    "Unnamed: 1": "AZE",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[47.5,40.5]},\"properties\":{\"country\":\"Azerbaijan\",\"iso3\":\"AZE\",\"region\":\"Asia\",\"russia_score\":\"1.5\",\"china_score\":\"1.25\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2\",\"dominant_colour\":\"#A7F3D0\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[47.5,40.5]},\"properties\":{\"country\":\"Azerbaijan\",\"iso3\":\"AZE\",\"region\":\"Asia\",\"russia_score\":\"1.5\",\"china_score\":\"1.25\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2\",\"dominant_colour\":\"#A7F3D0\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Bahrain",
+    "Unnamed: 1": "BHR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[50.55,26]},\"properties\":{\"country\":\"Bahrain\",\"iso3\":\"BHR\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[50.55,26]},\"properties\":{\"country\":\"Bahrain\",\"iso3\":\"BHR\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Belarus",
+    "Unnamed: 1": "BLR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[28,53]},\"properties\":{\"country\":\"Belarus\",\"iso3\":\"BLR\",\"region\":\"Europe\",\"russia_score\":\"7\",\"china_score\":\"1.5\",\"american_score\":\"3.25\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"7\",\"dominant_colour\":\"#FB923C\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[28,53]},\"properties\":{\"country\":\"Belarus\",\"iso3\":\"BLR\",\"region\":\"Europe\",\"russia_score\":\"7\",\"china_score\":\"1.5\",\"american_score\":\"3.25\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"7\",\"dominant_colour\":\"#FB923C\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Benin",
+    "Unnamed: 1": "BEN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[2.25,9.5]},\"properties\":{\"country\":\"Benin\",\"iso3\":\"BEN\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[2.25,9.5]},\"properties\":{\"country\":\"Benin\",\"iso3\":\"BEN\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Bolivia",
+    "Unnamed: 1": "BOL",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-65,-17]},\"properties\":{\"country\":\"Bolivia\",\"iso3\":\"BOL\",\"region\":\"Americas\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-65,-17]},\"properties\":{\"country\":\"Bolivia\",\"iso3\":\"BOL\",\"region\":\"Americas\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Brazil",
+    "Unnamed: 1": "BRA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-55,-10]},\"properties\":{\"country\":\"Brazil\",\"iso3\":\"BRA\",\"region\":\"Americas\",\"russia_score\":\"1.5\",\"china_score\":\"1.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-55,-10]},\"properties\":{\"country\":\"Brazil\",\"iso3\":\"BRA\",\"region\":\"Americas\",\"russia_score\":\"1.5\",\"china_score\":\"1.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Bulgaria",
+    "Unnamed: 1": "BGR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[25,43]},\"properties\":{\"country\":\"Bulgaria\",\"iso3\":\"BGR\",\"region\":\"Europe\",\"russia_score\":\"2.75\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[25,43]},\"properties\":{\"country\":\"Bulgaria\",\"iso3\":\"BGR\",\"region\":\"Europe\",\"russia_score\":\"2.75\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Burkina Faso",
+    "Unnamed: 1": "BFA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-2,13]},\"properties\":{\"country\":\"Burkina Faso\",\"iso3\":\"BFA\",\"region\":\"Africa\",\"russia_score\":\"5.25\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"5.25\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-2,13]},\"properties\":{\"country\":\"Burkina Faso\",\"iso3\":\"BFA\",\"region\":\"Africa\",\"russia_score\":\"5.25\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"5.25\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Burundi",
+    "Unnamed: 1": "BDI",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[30,-3.5]},\"properties\":{\"country\":\"Burundi\",\"iso3\":\"BDI\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[30,-3.5]},\"properties\":{\"country\":\"Burundi\",\"iso3\":\"BDI\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Cambodia",
+    "Unnamed: 1": "KHM",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[105,13]},\"properties\":{\"country\":\"Cambodia\",\"iso3\":\"KHM\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.5\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.5\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[105,13]},\"properties\":{\"country\":\"Cambodia\",\"iso3\":\"KHM\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.5\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.5\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Cameroon",
+    "Unnamed: 1": "CMR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[12,6]},\"properties\":{\"country\":\"Cameroon\",\"iso3\":\"CMR\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[12,6]},\"properties\":{\"country\":\"Cameroon\",\"iso3\":\"CMR\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Canada",
+    "Unnamed: 1": "CAN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-95,60]},\"properties\":{\"country\":\"Canada\",\"iso3\":\"CAN\",\"region\":\"Americas\",\"russia_score\":\"2.5\",\"china_score\":\"2.5\",\"american_score\":\"4\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-95,60]},\"properties\":{\"country\":\"Canada\",\"iso3\":\"CAN\",\"region\":\"Americas\",\"russia_score\":\"2.5\",\"china_score\":\"2.5\",\"american_score\":\"4\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Central African Republic",
+    "Unnamed: 1": "CAF",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[21,7]},\"properties\":{\"country\":\"Central African Republic\",\"iso3\":\"CAF\",\"region\":\"Africa\",\"russia_score\":\"6.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"2\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"6.75\",\"dominant_colour\":\"#FB923C\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[21,7]},\"properties\":{\"country\":\"Central African Republic\",\"iso3\":\"CAF\",\"region\":\"Africa\",\"russia_score\":\"6.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"2\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"6.75\",\"dominant_colour\":\"#FB923C\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Chad",
+    "Unnamed: 1": "TCD",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[19,15]},\"properties\":{\"country\":\"Chad\",\"iso3\":\"TCD\",\"region\":\"Africa\",\"russia_score\":\"2.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[19,15]},\"properties\":{\"country\":\"Chad\",\"iso3\":\"TCD\",\"region\":\"Africa\",\"russia_score\":\"2.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Chile",
+    "Unnamed: 1": "CHL",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71,-30]},\"properties\":{\"country\":\"Chile\",\"iso3\":\"CHL\",\"region\":\"Americas\",\"russia_score\":\"1.25\",\"china_score\":\"1.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-71,-30]},\"properties\":{\"country\":\"Chile\",\"iso3\":\"CHL\",\"region\":\"Americas\",\"russia_score\":\"1.25\",\"china_score\":\"1.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "China",
+    "Unnamed: 1": "CHN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[105,35]},\"properties\":{\"country\":\"China\",\"iso3\":\"CHN\",\"region\":\"Asia\",\"russia_score\":\"1.5\",\"china_score\":\"3\",\"american_score\":\"3\",\"eu_score\":\"0.75\",\"dominant_actor\":\"China\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[105,35]},\"properties\":{\"country\":\"China\",\"iso3\":\"CHN\",\"region\":\"Asia\",\"russia_score\":\"1.5\",\"china_score\":\"3\",\"american_score\":\"3\",\"eu_score\":\"0.75\",\"dominant_actor\":\"China\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Colombia",
+    "Unnamed: 1": "COL",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-72,4]},\"properties\":{\"country\":\"Colombia\",\"iso3\":\"COL\",\"region\":\"Americas\",\"russia_score\":\"1.25\",\"china_score\":\"1.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-72,4]},\"properties\":{\"country\":\"Colombia\",\"iso3\":\"COL\",\"region\":\"Americas\",\"russia_score\":\"1.25\",\"china_score\":\"1.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Cook Islands",
+    "Unnamed: 1": "COK",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-159.766667,-21.233333]},\"properties\":{\"country\":\"Cook Islands\",\"iso3\":\"COK\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-159.766667,-21.233333]},\"properties\":{\"country\":\"Cook Islands\",\"iso3\":\"COK\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Cuba",
+    "Unnamed: 1": "CUB",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-80,21.5]},\"properties\":{\"country\":\"Cuba\",\"iso3\":\"CUB\",\"region\":\"Americas\",\"russia_score\":\"3.75\",\"china_score\":\"1.75\",\"american_score\":\"4.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-80,21.5]},\"properties\":{\"country\":\"Cuba\",\"iso3\":\"CUB\",\"region\":\"Americas\",\"russia_score\":\"3.75\",\"china_score\":\"1.75\",\"american_score\":\"4.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Cyprus",
+    "Unnamed: 1": "CYP",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[33,35]},\"properties\":{\"country\":\"Cyprus\",\"iso3\":\"CYP\",\"region\":\"Europe\",\"russia_score\":\"1.25\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[33,35]},\"properties\":{\"country\":\"Cyprus\",\"iso3\":\"CYP\",\"region\":\"Europe\",\"russia_score\":\"1.25\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Czechia",
+    "Unnamed: 1": "CZE",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[15.5,49.75]},\"properties\":{\"country\":\"Czechia\",\"iso3\":\"CZE\",\"region\":\"Europe\",\"russia_score\":\"2.75\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[15.5,49.75]},\"properties\":{\"country\":\"Czechia\",\"iso3\":\"CZE\",\"region\":\"Europe\",\"russia_score\":\"2.75\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Democratic Republic of the Congo",
+    "Unnamed: 1": "COD",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[25,]},\"properties\":{\"country\":\"Democratic Republic of the Congo\",\"iso3\":\"COD\",\"region\":\"Africa\",\"russia_score\":\"2.75\",\"china_score\":\"2.75\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[25,]},\"properties\":{\"country\":\"Democratic Republic of the Congo\",\"iso3\":\"COD\",\"region\":\"Africa\",\"russia_score\":\"2.75\",\"china_score\":\"2.75\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Egypt",
+    "Unnamed: 1": "EGY",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[30,27]},\"properties\":{\"country\":\"Egypt\",\"iso3\":\"EGY\",\"region\":\"Africa\",\"russia_score\":\"2\",\"china_score\":\"2.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[30,27]},\"properties\":{\"country\":\"Egypt\",\"iso3\":\"EGY\",\"region\":\"Africa\",\"russia_score\":\"2\",\"china_score\":\"2.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "El Salvador",
+    "Unnamed: 1": "SLV",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-88.916667,13.833333]},\"properties\":{\"country\":\"El Salvador\",\"iso3\":\"SLV\",\"region\":\"Americas\",\"russia_score\":\"1\",\"china_score\":\"1.25\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-88.916667,13.833333]},\"properties\":{\"country\":\"El Salvador\",\"iso3\":\"SLV\",\"region\":\"Americas\",\"russia_score\":\"1\",\"china_score\":\"1.25\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Eritrea",
+    "Unnamed: 1": "ERI",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[39,15]},\"properties\":{\"country\":\"Eritrea\",\"iso3\":\"ERI\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[39,15]},\"properties\":{\"country\":\"Eritrea\",\"iso3\":\"ERI\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Estonia",
+    "Unnamed: 1": "EST",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[26,59]},\"properties\":{\"country\":\"Estonia\",\"iso3\":\"EST\",\"region\":\"Europe\",\"russia_score\":\"3.25\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[26,59]},\"properties\":{\"country\":\"Estonia\",\"iso3\":\"EST\",\"region\":\"Europe\",\"russia_score\":\"3.25\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Federated States of Micronesia",
+    "Unnamed: 1": "FSM",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[158.25,6.916667]},\"properties\":{\"country\":\"Federated States of Micronesia\",\"iso3\":\"FSM\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[158.25,6.916667]},\"properties\":{\"country\":\"Federated States of Micronesia\",\"iso3\":\"FSM\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Fiji",
+    "Unnamed: 1": "FJI",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[175,-18]},\"properties\":{\"country\":\"Fiji\",\"iso3\":\"FJI\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[175,-18]},\"properties\":{\"country\":\"Fiji\",\"iso3\":\"FJI\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Finland",
+    "Unnamed: 1": "FIN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[26,64]},\"properties\":{\"country\":\"Finland\",\"iso3\":\"FIN\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[26,64]},\"properties\":{\"country\":\"Finland\",\"iso3\":\"FIN\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "France",
+    "Unnamed: 1": "FRA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[2,46]},\"properties\":{\"country\":\"France\",\"iso3\":\"FRA\",\"region\":\"Europe\",\"russia_score\":\"3\",\"china_score\":\"2\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[2,46]},\"properties\":{\"country\":\"France\",\"iso3\":\"FRA\",\"region\":\"Europe\",\"russia_score\":\"3\",\"china_score\":\"2\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Georgia",
+    "Unnamed: 1": "GEO",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[43.5,42]},\"properties\":{\"country\":\"Georgia\",\"iso3\":\"GEO\",\"region\":\"Asia\",\"russia_score\":\"3.75\",\"china_score\":\"1.25\",\"american_score\":\"3.25\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[43.5,42]},\"properties\":{\"country\":\"Georgia\",\"iso3\":\"GEO\",\"region\":\"Asia\",\"russia_score\":\"3.75\",\"china_score\":\"1.25\",\"american_score\":\"3.25\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Germany",
+    "Unnamed: 1": "DEU",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[9,51]},\"properties\":{\"country\":\"Germany\",\"iso3\":\"DEU\",\"region\":\"Europe\",\"russia_score\":\"3\",\"china_score\":\"2\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[9,51]},\"properties\":{\"country\":\"Germany\",\"iso3\":\"DEU\",\"region\":\"Europe\",\"russia_score\":\"3\",\"china_score\":\"2\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Ghana",
+    "Unnamed: 1": "GHA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-2,8]},\"properties\":{\"country\":\"Ghana\",\"iso3\":\"GHA\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2.25\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-2,8]},\"properties\":{\"country\":\"Ghana\",\"iso3\":\"GHA\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2.25\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Greece",
+    "Unnamed: 1": "GRC",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[22,39]},\"properties\":{\"country\":\"Greece\",\"iso3\":\"GRC\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[22,39]},\"properties\":{\"country\":\"Greece\",\"iso3\":\"GRC\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Guinea",
+    "Unnamed: 1": "GIN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-10,11]},\"properties\":{\"country\":\"Guinea\",\"iso3\":\"GIN\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-10,11]},\"properties\":{\"country\":\"Guinea\",\"iso3\":\"GIN\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Guyana",
+    "Unnamed: 1": "GUY",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-59,5]},\"properties\":{\"country\":\"Guyana\",\"iso3\":\"GUY\",\"region\":\"Americas\",\"russia_score\":\"1\",\"china_score\":\"1.25\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-59,5]},\"properties\":{\"country\":\"Guyana\",\"iso3\":\"GUY\",\"region\":\"Americas\",\"russia_score\":\"1\",\"china_score\":\"1.25\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Hungary",
+    "Unnamed: 1": "HUN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[20,47]},\"properties\":{\"country\":\"Hungary\",\"iso3\":\"HUN\",\"region\":\"Europe\",\"russia_score\":\"3\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[20,47]},\"properties\":{\"country\":\"Hungary\",\"iso3\":\"HUN\",\"region\":\"Europe\",\"russia_score\":\"3\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "India",
+    "Unnamed: 1": "IND",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[77,20]},\"properties\":{\"country\":\"India\",\"iso3\":\"IND\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"2.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[77,20]},\"properties\":{\"country\":\"India\",\"iso3\":\"IND\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"2.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Indonesia",
+    "Unnamed: 1": "IDN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[120,-5]},\"properties\":{\"country\":\"Indonesia\",\"iso3\":\"IDN\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[120,-5]},\"properties\":{\"country\":\"Indonesia\",\"iso3\":\"IDN\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Iran",
+    "Unnamed: 1": "IRN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[53,32]},\"properties\":{\"country\":\"Iran\",\"iso3\":\"IRN\",\"region\":\"Asia\",\"russia_score\":\"3.75\",\"china_score\":\"1.25\",\"american_score\":\"3.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"3.75\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[53,32]},\"properties\":{\"country\":\"Iran\",\"iso3\":\"IRN\",\"region\":\"Asia\",\"russia_score\":\"3.75\",\"china_score\":\"1.25\",\"american_score\":\"3.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"3.75\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Iraq",
+    "Unnamed: 1": "IRQ",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[44,33]},\"properties\":{\"country\":\"Iraq\",\"iso3\":\"IRQ\",\"region\":\"Asia\",\"russia_score\":\"1.5\",\"china_score\":\"2.75\",\"american_score\":\"6.75\",\"eu_score\":\"2\",\"dominant_actor\":\"United States\",\"dominant_score\":\"6.75\",\"dominant_colour\":\"#FB923C\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[44,33]},\"properties\":{\"country\":\"Iraq\",\"iso3\":\"IRQ\",\"region\":\"Asia\",\"russia_score\":\"1.5\",\"china_score\":\"2.75\",\"american_score\":\"6.75\",\"eu_score\":\"2\",\"dominant_actor\":\"United States\",\"dominant_score\":\"6.75\",\"dominant_colour\":\"#FB923C\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Israel",
+    "Unnamed: 1": "ISR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[34.75,31.5]},\"properties\":{\"country\":\"Israel\",\"iso3\":\"ISR\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"5\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"5\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[34.75,31.5]},\"properties\":{\"country\":\"Israel\",\"iso3\":\"ISR\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"5\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"5\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Italy",
+    "Unnamed: 1": "ITA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[12.833333,42.833333]},\"properties\":{\"country\":\"Italy\",\"iso3\":\"ITA\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"2\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[12.833333,42.833333]},\"properties\":{\"country\":\"Italy\",\"iso3\":\"ITA\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"2\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Japan",
+    "Unnamed: 1": "JPN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[138,36]},\"properties\":{\"country\":\"Japan\",\"iso3\":\"JPN\",\"region\":\"Asia\",\"russia_score\":\"1.25\",\"china_score\":\"3.25\",\"american_score\":\"5\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"5\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[138,36]},\"properties\":{\"country\":\"Japan\",\"iso3\":\"JPN\",\"region\":\"Asia\",\"russia_score\":\"1.25\",\"china_score\":\"3.25\",\"american_score\":\"5\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"5\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Jordan",
+    "Unnamed: 1": "JOR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[36,31]},\"properties\":{\"country\":\"Jordan\",\"iso3\":\"JOR\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[36,31]},\"properties\":{\"country\":\"Jordan\",\"iso3\":\"JOR\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Kazakhstan",
+    "Unnamed: 1": "KAZ",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[68,48]},\"properties\":{\"country\":\"Kazakhstan\",\"iso3\":\"KAZ\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"2.5\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[68,48]},\"properties\":{\"country\":\"Kazakhstan\",\"iso3\":\"KAZ\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"2.5\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Kenya",
+    "Unnamed: 1": "KEN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[38,1]},\"properties\":{\"country\":\"Kenya\",\"iso3\":\"KEN\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"3\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"China\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[38,1]},\"properties\":{\"country\":\"Kenya\",\"iso3\":\"KEN\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"3\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"China\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Kiribati",
+    "Unnamed: 1": "KIR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[173,1.416667]},\"properties\":{\"country\":\"Kiribati\",\"iso3\":\"KIR\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[173,1.416667]},\"properties\":{\"country\":\"Kiribati\",\"iso3\":\"KIR\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Kuwait",
+    "Unnamed: 1": "KWT",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[45.75,29.5]},\"properties\":{\"country\":\"Kuwait\",\"iso3\":\"KWT\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[45.75,29.5]},\"properties\":{\"country\":\"Kuwait\",\"iso3\":\"KWT\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Kyrgyzstan",
+    "Unnamed: 1": "KGZ",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[75,41]},\"properties\":{\"country\":\"Kyrgyzstan\",\"iso3\":\"KGZ\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"2.5\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[75,41]},\"properties\":{\"country\":\"Kyrgyzstan\",\"iso3\":\"KGZ\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"2.5\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Latvia",
+    "Unnamed: 1": "LVA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[25,57]},\"properties\":{\"country\":\"Latvia\",\"iso3\":\"LVA\",\"region\":\"Europe\",\"russia_score\":\"3.25\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[25,57]},\"properties\":{\"country\":\"Latvia\",\"iso3\":\"LVA\",\"region\":\"Europe\",\"russia_score\":\"3.25\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Lebanon",
+    "Unnamed: 1": "LBN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[35.833333,33.833333]},\"properties\":{\"country\":\"Lebanon\",\"iso3\":\"LBN\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"2.5\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[35.833333,33.833333]},\"properties\":{\"country\":\"Lebanon\",\"iso3\":\"LBN\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"2.5\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Liberia",
+    "Unnamed: 1": "LBR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-9.5,6.5]},\"properties\":{\"country\":\"Liberia\",\"iso3\":\"LBR\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-9.5,6.5]},\"properties\":{\"country\":\"Liberia\",\"iso3\":\"LBR\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Libya",
+    "Unnamed: 1": "LBY",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[17,25]},\"properties\":{\"country\":\"Libya\",\"iso3\":\"LBY\",\"region\":\"Africa\",\"russia_score\":\"6.25\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"2.25\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"6.25\",\"dominant_colour\":\"#FDBA74\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[17,25]},\"properties\":{\"country\":\"Libya\",\"iso3\":\"LBY\",\"region\":\"Africa\",\"russia_score\":\"6.25\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"2.25\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"6.25\",\"dominant_colour\":\"#FDBA74\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Lithuania",
+    "Unnamed: 1": "LTU",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[24,56]},\"properties\":{\"country\":\"Lithuania\",\"iso3\":\"LTU\",\"region\":\"Europe\",\"russia_score\":\"3.25\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[24,56]},\"properties\":{\"country\":\"Lithuania\",\"iso3\":\"LTU\",\"region\":\"Europe\",\"russia_score\":\"3.25\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Madagascar",
+    "Unnamed: 1": "MDG",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[47,-20]},\"properties\":{\"country\":\"Madagascar\",\"iso3\":\"MDG\",\"region\":\"Africa\",\"russia_score\":\"3.25\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[47,-20]},\"properties\":{\"country\":\"Madagascar\",\"iso3\":\"MDG\",\"region\":\"Africa\",\"russia_score\":\"3.25\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Malaysia",
+    "Unnamed: 1": "MYS",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[112.5,2.5]},\"properties\":{\"country\":\"Malaysia\",\"iso3\":\"MYS\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"2\",\"eu_score\":\"1.5\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[112.5,2.5]},\"properties\":{\"country\":\"Malaysia\",\"iso3\":\"MYS\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"2\",\"eu_score\":\"1.5\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Mali",
+    "Unnamed: 1": "MLI",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-4,17]},\"properties\":{\"country\":\"Mali\",\"iso3\":\"MLI\",\"region\":\"Africa\",\"russia_score\":\"6.5\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"2\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"6.5\",\"dominant_colour\":\"#FB923C\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-4,17]},\"properties\":{\"country\":\"Mali\",\"iso3\":\"MLI\",\"region\":\"Africa\",\"russia_score\":\"6.5\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"2\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"6.5\",\"dominant_colour\":\"#FB923C\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Marshall Islands",
+    "Unnamed: 1": "MHL",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[168,9]},\"properties\":{\"country\":\"Marshall Islands\",\"iso3\":\"MHL\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[168,9]},\"properties\":{\"country\":\"Marshall Islands\",\"iso3\":\"MHL\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Mauritania",
+    "Unnamed: 1": "MRT",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-12,20]},\"properties\":{\"country\":\"Mauritania\",\"iso3\":\"MRT\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-12,20]},\"properties\":{\"country\":\"Mauritania\",\"iso3\":\"MRT\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Moldova",
+    "Unnamed: 1": "MDA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[29,47]},\"properties\":{\"country\":\"Moldova\",\"iso3\":\"MDA\",\"region\":\"Europe\",\"russia_score\":\"4\",\"china_score\":\"1.5\",\"american_score\":\"3.25\",\"eu_score\":\"4.25\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4.25\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[29,47]},\"properties\":{\"country\":\"Moldova\",\"iso3\":\"MDA\",\"region\":\"Europe\",\"russia_score\":\"4\",\"china_score\":\"1.5\",\"american_score\":\"3.25\",\"eu_score\":\"4.25\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4.25\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Mongolia",
+    "Unnamed: 1": "MNG",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[105,46]},\"properties\":{\"country\":\"Mongolia\",\"iso3\":\"MNG\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2\",\"dominant_colour\":\"#A7F3D0\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[105,46]},\"properties\":{\"country\":\"Mongolia\",\"iso3\":\"MNG\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2\",\"dominant_colour\":\"#A7F3D0\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Morocco",
+    "Unnamed: 1": "MAR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-5,32]},\"properties\":{\"country\":\"Morocco\",\"iso3\":\"MAR\",\"region\":\"Africa\",\"russia_score\":\"2\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-5,32]},\"properties\":{\"country\":\"Morocco\",\"iso3\":\"MAR\",\"region\":\"Africa\",\"russia_score\":\"2\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Mozambique",
+    "Unnamed: 1": "MOZ",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[35,-18.25]},\"properties\":{\"country\":\"Mozambique\",\"iso3\":\"MOZ\",\"region\":\"Africa\",\"russia_score\":\"3.75\",\"china_score\":\"2.75\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"3.75\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[35,-18.25]},\"properties\":{\"country\":\"Mozambique\",\"iso3\":\"MOZ\",\"region\":\"Africa\",\"russia_score\":\"3.75\",\"china_score\":\"2.75\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"3.75\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Myanmar",
+    "Unnamed: 1": "MMR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[98,22]},\"properties\":{\"country\":\"Myanmar\",\"iso3\":\"MMR\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.75\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.75\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[98,22]},\"properties\":{\"country\":\"Myanmar\",\"iso3\":\"MMR\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.75\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.75\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Nauru",
+    "Unnamed: 1": "NRU",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[166.916667,-0.533333]},\"properties\":{\"country\":\"Nauru\",\"iso3\":\"NRU\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[166.916667,-0.533333]},\"properties\":{\"country\":\"Nauru\",\"iso3\":\"NRU\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Netherlands",
+    "Unnamed: 1": "NLD",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[5.75,52.5]},\"properties\":{\"country\":\"Netherlands\",\"iso3\":\"NLD\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"2\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[5.75,52.5]},\"properties\":{\"country\":\"Netherlands\",\"iso3\":\"NLD\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"2\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "New Caledonia",
+    "Unnamed: 1": "NCL",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[165.5,-21.5]},\"properties\":{\"country\":\"New Caledonia\",\"iso3\":\"NCL\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[165.5,-21.5]},\"properties\":{\"country\":\"New Caledonia\",\"iso3\":\"NCL\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "New Zealand",
+    "Unnamed: 1": "NZL",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[174,-41]},\"properties\":{\"country\":\"New Zealand\",\"iso3\":\"NZL\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"2.75\",\"american_score\":\"3\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[174,-41]},\"properties\":{\"country\":\"New Zealand\",\"iso3\":\"NZL\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"2.75\",\"american_score\":\"3\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Nicaragua",
+    "Unnamed: 1": "NIC",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-85,13]},\"properties\":{\"country\":\"Nicaragua\",\"iso3\":\"NIC\",\"region\":\"Americas\",\"russia_score\":\"2.75\",\"china_score\":\"1.75\",\"american_score\":\"4.25\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.25\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-85,13]},\"properties\":{\"country\":\"Nicaragua\",\"iso3\":\"NIC\",\"region\":\"Americas\",\"russia_score\":\"2.75\",\"china_score\":\"1.75\",\"american_score\":\"4.25\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.25\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Niger",
+    "Unnamed: 1": "NER",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[8,16]},\"properties\":{\"country\":\"Niger\",\"iso3\":\"NER\",\"region\":\"Africa\",\"russia_score\":\"5.25\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"2\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"5.25\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[8,16]},\"properties\":{\"country\":\"Niger\",\"iso3\":\"NER\",\"region\":\"Africa\",\"russia_score\":\"5.25\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"2\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"5.25\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Nigeria",
+    "Unnamed: 1": "NGA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[8,10]},\"properties\":{\"country\":\"Nigeria\",\"iso3\":\"NGA\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2.75\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[8,10]},\"properties\":{\"country\":\"Nigeria\",\"iso3\":\"NGA\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2.75\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "North Korea",
+    "Unnamed: 1": "PRK",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[127,40]},\"properties\":{\"country\":\"North Korea\",\"iso3\":\"PRK\",\"region\":\"Asia\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3\",\"eu_score\":\"1\",\"dominant_actor\":\"United States\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[127,40]},\"properties\":{\"country\":\"North Korea\",\"iso3\":\"PRK\",\"region\":\"Asia\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3\",\"eu_score\":\"1\",\"dominant_actor\":\"United States\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Norway",
+    "Unnamed: 1": "NOR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[10,62]},\"properties\":{\"country\":\"Norway\",\"iso3\":\"NOR\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"2.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"3.5\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[10,62]},\"properties\":{\"country\":\"Norway\",\"iso3\":\"NOR\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"2.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"3.5\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Oman",
+    "Unnamed: 1": "OMN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[57,21]},\"properties\":{\"country\":\"Oman\",\"iso3\":\"OMN\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"2.5\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[57,21]},\"properties\":{\"country\":\"Oman\",\"iso3\":\"OMN\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"2.5\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Palau",
+    "Unnamed: 1": "PLW",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[134.5,7.5]},\"properties\":{\"country\":\"Palau\",\"iso3\":\"PLW\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[134.5,7.5]},\"properties\":{\"country\":\"Palau\",\"iso3\":\"PLW\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Palestine",
+    "Unnamed: 1": "PSE",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[35.2332,31.9522]},\"properties\":{\"country\":\"Palestine\",\"iso3\":\"PSE\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"2.5\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[35.2332,31.9522]},\"properties\":{\"country\":\"Palestine\",\"iso3\":\"PSE\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"2.5\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Papua New Guinea",
+    "Unnamed: 1": "PNG",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[147,-6]},\"properties\":{\"country\":\"Papua New Guinea\",\"iso3\":\"PNG\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[147,-6]},\"properties\":{\"country\":\"Papua New Guinea\",\"iso3\":\"PNG\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Peru",
+    "Unnamed: 1": "PER",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-76,-10]},\"properties\":{\"country\":\"Peru\",\"iso3\":\"PER\",\"region\":\"Americas\",\"russia_score\":\"1.25\",\"china_score\":\"1.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-76,-10]},\"properties\":{\"country\":\"Peru\",\"iso3\":\"PER\",\"region\":\"Americas\",\"russia_score\":\"1.25\",\"china_score\":\"1.5\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Philippines",
+    "Unnamed: 1": "PHL",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[122,13]},\"properties\":{\"country\":\"Philippines\",\"iso3\":\"PHL\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.75\",\"american_score\":\"4.5\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.5\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[122,13]},\"properties\":{\"country\":\"Philippines\",\"iso3\":\"PHL\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.75\",\"american_score\":\"4.5\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.5\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Poland",
+    "Unnamed: 1": "POL",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[20,52]},\"properties\":{\"country\":\"Poland\",\"iso3\":\"POL\",\"region\":\"Europe\",\"russia_score\":\"3\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[20,52]},\"properties\":{\"country\":\"Poland\",\"iso3\":\"POL\",\"region\":\"Europe\",\"russia_score\":\"3\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Qatar",
+    "Unnamed: 1": "QAT",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[51.25,25.5]},\"properties\":{\"country\":\"Qatar\",\"iso3\":\"QAT\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[51.25,25.5]},\"properties\":{\"country\":\"Qatar\",\"iso3\":\"QAT\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Republic of the Congo",
+    "Unnamed: 1": "COG",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[15,-1]},\"properties\":{\"country\":\"Republic of the Congo\",\"iso3\":\"COG\",\"region\":\"Africa\",\"russia_score\":\"2.25\",\"china_score\":\"2.25\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[15,-1]},\"properties\":{\"country\":\"Republic of the Congo\",\"iso3\":\"COG\",\"region\":\"Africa\",\"russia_score\":\"2.25\",\"china_score\":\"2.25\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Romania",
+    "Unnamed: 1": "ROU",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[25,46]},\"properties\":{\"country\":\"Romania\",\"iso3\":\"ROU\",\"region\":\"Europe\",\"russia_score\":\"2.75\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[25,46]},\"properties\":{\"country\":\"Romania\",\"iso3\":\"ROU\",\"region\":\"Europe\",\"russia_score\":\"2.75\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Russia",
+    "Unnamed: 1": "RUS",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[100,60]},\"properties\":{\"country\":\"Russia\",\"iso3\":\"RUS\",\"region\":\"Europe\",\"russia_score\":\"8.25\",\"china_score\":\"1.5\",\"american_score\":\"3.25\",\"eu_score\":\"0.75\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"8.25\",\"dominant_colour\":\"#F97316\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[100,60]},\"properties\":{\"country\":\"Russia\",\"iso3\":\"RUS\",\"region\":\"Europe\",\"russia_score\":\"8.25\",\"china_score\":\"1.5\",\"american_score\":\"3.25\",\"eu_score\":\"0.75\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"8.25\",\"dominant_colour\":\"#F97316\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Rwanda",
+    "Unnamed: 1": "RWA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[30,-2]},\"properties\":{\"country\":\"Rwanda\",\"iso3\":\"RWA\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[30,-2]},\"properties\":{\"country\":\"Rwanda\",\"iso3\":\"RWA\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Samoa",
+    "Unnamed: 1": "WSM",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-172.333333,-13.583333]},\"properties\":{\"country\":\"Samoa\",\"iso3\":\"WSM\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-172.333333,-13.583333]},\"properties\":{\"country\":\"Samoa\",\"iso3\":\"WSM\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Saudi Arabia",
+    "Unnamed: 1": "SAU",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[45,25]},\"properties\":{\"country\":\"Saudi Arabia\",\"iso3\":\"SAU\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[45,25]},\"properties\":{\"country\":\"Saudi Arabia\",\"iso3\":\"SAU\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Serbia",
+    "Unnamed: 1": "SRB",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[16.428418,44.130502]},\"properties\":{\"country\":\"Serbia\",\"iso3\":\"SRB\",\"region\":\"Europe\",\"russia_score\":\"3.75\",\"china_score\":\"1.5\",\"american_score\":\"2.5\",\"eu_score\":\"2.75\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"3.75\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[16.428418,44.130502]},\"properties\":{\"country\":\"Serbia\",\"iso3\":\"SRB\",\"region\":\"Europe\",\"russia_score\":\"3.75\",\"china_score\":\"1.5\",\"american_score\":\"2.5\",\"eu_score\":\"2.75\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"3.75\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Singapore",
+    "Unnamed: 1": "SGP",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[103.8,1.366667]},\"properties\":{\"country\":\"Singapore\",\"iso3\":\"SGP\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3\",\"american_score\":\"2.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[103.8,1.366667]},\"properties\":{\"country\":\"Singapore\",\"iso3\":\"SGP\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3\",\"american_score\":\"2.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Slovakia",
+    "Unnamed: 1": "SVK",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[19.5,48.666667]},\"properties\":{\"country\":\"Slovakia\",\"iso3\":\"SVK\",\"region\":\"Europe\",\"russia_score\":\"2.75\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[19.5,48.666667]},\"properties\":{\"country\":\"Slovakia\",\"iso3\":\"SVK\",\"region\":\"Europe\",\"russia_score\":\"2.75\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Solomon Islands",
+    "Unnamed: 1": "SLB",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[159,-8]},\"properties\":{\"country\":\"Solomon Islands\",\"iso3\":\"SLB\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[159,-8]},\"properties\":{\"country\":\"Solomon Islands\",\"iso3\":\"SLB\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "South Africa",
+    "Unnamed: 1": "ZAF",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[24,-29]},\"properties\":{\"country\":\"South Africa\",\"iso3\":\"ZAF\",\"region\":\"Africa\",\"russia_score\":\"2\",\"china_score\":\"2.75\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[24,-29]},\"properties\":{\"country\":\"South Africa\",\"iso3\":\"ZAF\",\"region\":\"Africa\",\"russia_score\":\"2\",\"china_score\":\"2.75\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "South Korea",
+    "Unnamed: 1": "KOR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[127.5,37]},\"properties\":{\"country\":\"South Korea\",\"iso3\":\"KOR\",\"region\":\"Asia\",\"russia_score\":\"1.25\",\"china_score\":\"3\",\"american_score\":\"5\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"5\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[127.5,37]},\"properties\":{\"country\":\"South Korea\",\"iso3\":\"KOR\",\"region\":\"Asia\",\"russia_score\":\"1.25\",\"china_score\":\"3\",\"american_score\":\"5\",\"eu_score\":\"1.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"5\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Spain",
+    "Unnamed: 1": "ESP",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-4,40]},\"properties\":{\"country\":\"Spain\",\"iso3\":\"ESP\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"2\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-4,40]},\"properties\":{\"country\":\"Spain\",\"iso3\":\"ESP\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"2\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Sri Lanka",
+    "Unnamed: 1": "LKA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[81,7]},\"properties\":{\"country\":\"Sri Lanka\",\"iso3\":\"LKA\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"2.75\",\"american_score\":\"2\",\"eu_score\":\"1.5\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[81,7]},\"properties\":{\"country\":\"Sri Lanka\",\"iso3\":\"LKA\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"2.75\",\"american_score\":\"2\",\"eu_score\":\"1.5\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Sudan",
+    "Unnamed: 1": "SDN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[30,15]},\"properties\":{\"country\":\"Sudan\",\"iso3\":\"SDN\",\"region\":\"Africa\",\"russia_score\":\"6.25\",\"china_score\":\"3.25\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"6.25\",\"dominant_colour\":\"#FDBA74\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[30,15]},\"properties\":{\"country\":\"Sudan\",\"iso3\":\"SDN\",\"region\":\"Africa\",\"russia_score\":\"6.25\",\"china_score\":\"3.25\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"6.25\",\"dominant_colour\":\"#FDBA74\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Sweden",
+    "Unnamed: 1": "SWE",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[15,62]},\"properties\":{\"country\":\"Sweden\",\"iso3\":\"SWE\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[15,62]},\"properties\":{\"country\":\"Sweden\",\"iso3\":\"SWE\",\"region\":\"Europe\",\"russia_score\":\"2.5\",\"china_score\":\"1.5\",\"american_score\":\"3.5\",\"eu_score\":\"4\",\"dominant_actor\":\"European Union\",\"dominant_score\":\"4\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Syria",
+    "Unnamed: 1": "SYR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[38,35]},\"properties\":{\"country\":\"Syria\",\"iso3\":\"SYR\",\"region\":\"Asia\",\"russia_score\":\"6.75\",\"china_score\":\"1.25\",\"american_score\":\"5.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"6.75\",\"dominant_colour\":\"#FB923C\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[38,35]},\"properties\":{\"country\":\"Syria\",\"iso3\":\"SYR\",\"region\":\"Asia\",\"russia_score\":\"6.75\",\"china_score\":\"1.25\",\"american_score\":\"5.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"6.75\",\"dominant_colour\":\"#FB923C\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Taiwan",
+    "Unnamed: 1": "TWN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[121,23.5]},\"properties\":{\"country\":\"Taiwan\",\"iso3\":\"TWN\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"4.25\",\"american_score\":\"3.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"4.25\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[121,23.5]},\"properties\":{\"country\":\"Taiwan\",\"iso3\":\"TWN\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"4.25\",\"american_score\":\"3.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"4.25\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Tajikistan",
+    "Unnamed: 1": "TJK",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[71,39]},\"properties\":{\"country\":\"Tajikistan\",\"iso3\":\"TJK\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"2.5\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[71,39]},\"properties\":{\"country\":\"Tajikistan\",\"iso3\":\"TJK\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"2.5\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Thailand",
+    "Unnamed: 1": "THA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[100,15]},\"properties\":{\"country\":\"Thailand\",\"iso3\":\"THA\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[100,15]},\"properties\":{\"country\":\"Thailand\",\"iso3\":\"THA\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Tonga",
+    "Unnamed: 1": "TON",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-175,-20]},\"properties\":{\"country\":\"Tonga\",\"iso3\":\"TON\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-175,-20]},\"properties\":{\"country\":\"Tonga\",\"iso3\":\"TON\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Turkey",
+    "Unnamed: 1": "TUR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[35,39]},\"properties\":{\"country\":\"Turkey\",\"iso3\":\"TUR\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"3.5\",\"eu_score\":\"3\",\"dominant_actor\":\"United States\",\"dominant_score\":\"3.5\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[35,39]},\"properties\":{\"country\":\"Turkey\",\"iso3\":\"TUR\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"3.5\",\"eu_score\":\"3\",\"dominant_actor\":\"United States\",\"dominant_score\":\"3.5\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Turkmenistan",
+    "Unnamed: 1": "TKM",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[60,40]},\"properties\":{\"country\":\"Turkmenistan\",\"iso3\":\"TKM\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"2.5\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[60,40]},\"properties\":{\"country\":\"Turkmenistan\",\"iso3\":\"TKM\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"2.5\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Tuvalu",
+    "Unnamed: 1": "TUV",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[178,-8]},\"properties\":{\"country\":\"Tuvalu\",\"iso3\":\"TUV\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[178,-8]},\"properties\":{\"country\":\"Tuvalu\",\"iso3\":\"TUV\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Uganda",
+    "Unnamed: 1": "UGA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[32,1]},\"properties\":{\"country\":\"Uganda\",\"iso3\":\"UGA\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[32,1]},\"properties\":{\"country\":\"Uganda\",\"iso3\":\"UGA\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Ukraine",
+    "Unnamed: 1": "UKR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[32,49]},\"properties\":{\"country\":\"Ukraine\",\"iso3\":\"UKR\",\"region\":\"Europe\",\"russia_score\":\"9\",\"china_score\":\"1.5\",\"american_score\":\"6\",\"eu_score\":\"4.75\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"9\",\"dominant_colour\":\"#EF4444\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[32,49]},\"properties\":{\"country\":\"Ukraine\",\"iso3\":\"UKR\",\"region\":\"Europe\",\"russia_score\":\"9\",\"china_score\":\"1.5\",\"american_score\":\"6\",\"eu_score\":\"4.75\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"9\",\"dominant_colour\":\"#EF4444\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "United Arab Emirates",
+    "Unnamed: 1": "ARE",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[54,24]},\"properties\":{\"country\":\"United Arab Emirates\",\"iso3\":\"ARE\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[54,24]},\"properties\":{\"country\":\"United Arab Emirates\",\"iso3\":\"ARE\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"1.25\",\"american_score\":\"4.75\",\"eu_score\":\"1.25\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.75\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "United Kingdom",
+    "Unnamed: 1": "GBR",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-2,54]},\"properties\":{\"country\":\"United Kingdom\",\"iso3\":\"GBR\",\"region\":\"Europe\",\"russia_score\":\"3\",\"china_score\":\"2.5\",\"american_score\":\"4.25\",\"eu_score\":\"2.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.25\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-2,54]},\"properties\":{\"country\":\"United Kingdom\",\"iso3\":\"GBR\",\"region\":\"Europe\",\"russia_score\":\"3\",\"china_score\":\"2.5\",\"american_score\":\"4.25\",\"eu_score\":\"2.75\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.25\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "United States",
+    "Unnamed: 1": "USA",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-97,38]},\"properties\":{\"country\":\"United States\",\"iso3\":\"USA\",\"region\":\"Americas\",\"russia_score\":\"3.25\",\"china_score\":\"3\",\"american_score\":\"7.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"7.75\",\"dominant_colour\":\"#F97316\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-97,38]},\"properties\":{\"country\":\"United States\",\"iso3\":\"USA\",\"region\":\"Americas\",\"russia_score\":\"3.25\",\"china_score\":\"3\",\"american_score\":\"7.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"7.75\",\"dominant_colour\":\"#F97316\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Uzbekistan",
+    "Unnamed: 1": "UZB",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[64,41]},\"properties\":{\"country\":\"Uzbekistan\",\"iso3\":\"UZB\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"2.5\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[64,41]},\"properties\":{\"country\":\"Uzbekistan\",\"iso3\":\"UZB\",\"region\":\"Asia\",\"russia_score\":\"1.75\",\"china_score\":\"2.5\",\"american_score\":\"2.25\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"2.5\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Vanuatu",
+    "Unnamed: 1": "VUT",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[167,-16]},\"properties\":{\"country\":\"Vanuatu\",\"iso3\":\"VUT\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[167,-16]},\"properties\":{\"country\":\"Vanuatu\",\"iso3\":\"VUT\",\"region\":\"Oceania\",\"russia_score\":\"0.5\",\"china_score\":\"3.25\",\"american_score\":\"1.75\",\"eu_score\":\"1\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.25\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Venezuela",
+    "Unnamed: 1": "VEN",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-66,8]},\"properties\":{\"country\":\"Venezuela\",\"iso3\":\"VEN\",\"region\":\"Americas\",\"russia_score\":\"4.25\",\"china_score\":\"1.75\",\"american_score\":\"4.5\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.5\",\"dominant_colour\":\"#FCD34D\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-66,8]},\"properties\":{\"country\":\"Venezuela\",\"iso3\":\"VEN\",\"region\":\"Americas\",\"russia_score\":\"4.25\",\"china_score\":\"1.75\",\"american_score\":\"4.5\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"4.5\",\"dominant_colour\":\"#FCD34D\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Vietnam",
+    "Unnamed: 1": "VNM",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[107.833333,16.166667]},\"properties\":{\"country\":\"Vietnam\",\"iso3\":\"VNM\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.5\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.5\",\"dominant_colour\":\"#FDE68A\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[107.833333,16.166667]},\"properties\":{\"country\":\"Vietnam\",\"iso3\":\"VNM\",\"region\":\"Asia\",\"russia_score\":\"0.5\",\"china_score\":\"3.5\",\"american_score\":\"2\",\"eu_score\":\"1.25\",\"dominant_actor\":\"China\",\"dominant_score\":\"3.5\",\"dominant_colour\":\"#FDE68A\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Western Sahara",
+    "Unnamed: 1": "ESH",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-13,24.5]},\"properties\":{\"country\":\"Western Sahara\",\"iso3\":\"ESH\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[-13,24.5]},\"properties\":{\"country\":\"Western Sahara\",\"iso3\":\"ESH\",\"region\":\"Africa\",\"russia_score\":\"1.75\",\"china_score\":\"2\",\"american_score\":\"2.75\",\"eu_score\":\"1.5\",\"dominant_actor\":\"United States\",\"dominant_score\":\"2.75\",\"dominant_colour\":\"#FEF3C7\"}},"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "Zimbabwe",
+    "Unnamed: 1": "ZWE",
+    "Unnamed: 2": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[30,-20]},\"properties\":{\"country\":\"Zimbabwe\",\"iso3\":\"ZWE\",\"region\":\"Africa\",\"russia_score\":\"3\",\"china_score\":\"2.75\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}}",
+    "Unnamed: 3": "{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[30,-20]},\"properties\":{\"country\":\"Zimbabwe\",\"iso3\":\"ZWE\",\"region\":\"Africa\",\"russia_score\":\"3\",\"china_score\":\"2.75\",\"american_score\":\"2.75\",\"eu_score\":\"1.75\",\"dominant_actor\":\"Russia\",\"dominant_score\":\"3\",\"dominant_colour\":\"#FEF3C7\"}}"
+  },
+  {
+    "Leaflet point GeoJSON export — ResurgamHub-mentioned countries only": "FeatureCollection suffix",
+    "Unnamed: 1": null,
+    "Unnamed: 2": "]}",
+    "Unnamed: 3": "Copy after feature rows"
+  }
+]

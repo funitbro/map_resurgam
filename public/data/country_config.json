@@ -1,0 +1,1232 @@
+[
+  {
+    "Country": "Afghanistan",
+    "ISO3": "AFG",
+    "Region": "Asia-Pacific",
+    "Latitude": 33.0,
+    "Longitude": 65.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "AFG",
+    "Notes": "Included because mentioned by ResurgamHub source group: Middle East ceasefire."
+  },
+  {
+    "Country": "Algeria",
+    "ISO3": "DZA",
+    "Region": "Africa",
+    "Latitude": 28.0,
+    "Longitude": 3.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "DZA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Argentina",
+    "ISO3": "ARG",
+    "Region": "Americas",
+    "Latitude": -34.0,
+    "Longitude": -64.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "ARG",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Armenia",
+    "ISO3": "ARM",
+    "Region": "Asia-Pacific",
+    "Latitude": 40.0,
+    "Longitude": 45.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "ARM",
+    "Notes": "Included because mentioned by ResurgamHub source group: South Caucasus."
+  },
+  {
+    "Country": "Australia",
+    "ISO3": "AUS",
+    "Region": "Asia-Pacific",
+    "Latitude": -27.0,
+    "Longitude": 133.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "AUS",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Austria",
+    "ISO3": "AUT",
+    "Region": "Europe",
+    "Latitude": 47.33333333,
+    "Longitude": 13.33333333,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "AUT",
+    "Notes": "Included because mentioned by ResurgamHub source group: Black Sea energy."
+  },
+  {
+    "Country": "Azerbaijan",
+    "ISO3": "AZE",
+    "Region": "Asia-Pacific",
+    "Latitude": 40.5,
+    "Longitude": 47.5,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "AZE",
+    "Notes": "Included because mentioned by ResurgamHub source group: South Caucasus."
+  },
+  {
+    "Country": "Bahrain",
+    "ISO3": "BHR",
+    "Region": "Asia-Pacific",
+    "Latitude": 26.0,
+    "Longitude": 50.55,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "BHR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Iran conflict / Europe."
+  },
+  {
+    "Country": "Belarus",
+    "ISO3": "BLR",
+    "Region": "Europe",
+    "Latitude": 53.0,
+    "Longitude": 28.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "BLR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Europe/Ukraine/Belarus."
+  },
+  {
+    "Country": "Benin",
+    "ISO3": "BEN",
+    "Region": "Africa",
+    "Latitude": 9.5,
+    "Longitude": 2.25,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "BEN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Bolivia",
+    "ISO3": "BOL",
+    "Region": "Americas",
+    "Latitude": -17.0,
+    "Longitude": -65.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "BOL",
+    "Notes": "Included because mentioned by ResurgamHub source group: Chile article."
+  },
+  {
+    "Country": "Brazil",
+    "ISO3": "BRA",
+    "Region": "Americas",
+    "Latitude": -10.0,
+    "Longitude": -55.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "BRA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Gripen article."
+  },
+  {
+    "Country": "Bulgaria",
+    "ISO3": "BGR",
+    "Region": "Europe",
+    "Latitude": 43.0,
+    "Longitude": 25.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "BGR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Black Sea energy."
+  },
+  {
+    "Country": "Burkina Faso",
+    "ISO3": "BFA",
+    "Region": "Africa",
+    "Latitude": 13.0,
+    "Longitude": -2.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "BFA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Burundi",
+    "ISO3": "BDI",
+    "Region": "Africa",
+    "Latitude": -3.5,
+    "Longitude": 30.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "BDI",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Cambodia",
+    "ISO3": "KHM",
+    "Region": "Asia-Pacific",
+    "Latitude": 13.0,
+    "Longitude": 105.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "KHM",
+    "Notes": "Included because mentioned by ResurgamHub source group: Gripen article."
+  },
+  {
+    "Country": "Cameroon",
+    "ISO3": "CMR",
+    "Region": "Africa",
+    "Latitude": 6.0,
+    "Longitude": 12.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "CMR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Canada",
+    "ISO3": "CAN",
+    "Region": "Americas",
+    "Latitude": 60.0,
+    "Longitude": -95.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "CAN",
+    "Notes": "Included because mentioned by ResurgamHub source group: USA/North America."
+  },
+  {
+    "Country": "Central African Republic",
+    "ISO3": "CAF",
+    "Region": "Africa",
+    "Latitude": 7.0,
+    "Longitude": 21.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "CAF",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Chad",
+    "ISO3": "TCD",
+    "Region": "Africa",
+    "Latitude": 15.0,
+    "Longitude": 19.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "TCD",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Chile",
+    "ISO3": "CHL",
+    "Region": "Americas",
+    "Latitude": -30.0,
+    "Longitude": -71.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "CHL",
+    "Notes": "Included because mentioned by ResurgamHub source group: Chile article."
+  },
+  {
+    "Country": "China",
+    "ISO3": "CHN",
+    "Region": "Asia-Pacific",
+    "Latitude": 35.0,
+    "Longitude": 105.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "CHN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About."
+  },
+  {
+    "Country": "Colombia",
+    "ISO3": "COL",
+    "Region": "Americas",
+    "Latitude": 4.0,
+    "Longitude": -72.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "COL",
+    "Notes": "Included because mentioned by ResurgamHub source group: Gripen article."
+  },
+  {
+    "Country": "Cook Islands",
+    "ISO3": "COK",
+    "Region": "Asia-Pacific",
+    "Latitude": -21.23333333,
+    "Longitude": -159.76666666,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "COK",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China. Country/area rather than UN-member-only sovereign-state row; compatible with country-area map treatment."
+  },
+  {
+    "Country": "Cuba",
+    "ISO3": "CUB",
+    "Region": "Americas",
+    "Latitude": 21.5,
+    "Longitude": -80.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "CUB",
+    "Notes": "Included because mentioned by ResurgamHub source group: Venezuela/Cuba."
+  },
+  {
+    "Country": "Cyprus",
+    "ISO3": "CYP",
+    "Region": "Europe",
+    "Latitude": 35.0,
+    "Longitude": 33.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "CYP",
+    "Notes": "Included because mentioned by ResurgamHub source group: Iran conflict / Europe."
+  },
+  {
+    "Country": "Czechia",
+    "ISO3": "CZE",
+    "Region": "Europe",
+    "Latitude": 49.75,
+    "Longitude": 15.5,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "CZE",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About. Normalized from Czech Republic / Czechia."
+  },
+  {
+    "Country": "Democratic Republic of the Congo",
+    "ISO3": "COD",
+    "Region": "Africa",
+    "Latitude": 0.0,
+    "Longitude": 25.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "COD",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Egypt",
+    "ISO3": "EGY",
+    "Region": "Africa",
+    "Latitude": 27.0,
+    "Longitude": 30.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "EGY",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "El Salvador",
+    "ISO3": "SLV",
+    "Region": "Americas",
+    "Latitude": 13.83333333,
+    "Longitude": -88.91666666,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "SLV",
+    "Notes": "Included because mentioned by ResurgamHub source group: Chile article."
+  },
+  {
+    "Country": "Eritrea",
+    "ISO3": "ERI",
+    "Region": "Africa",
+    "Latitude": 15.0,
+    "Longitude": 39.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "ERI",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Estonia",
+    "ISO3": "EST",
+    "Region": "Europe",
+    "Latitude": 59.0,
+    "Longitude": 26.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "EST",
+    "Notes": "Included because mentioned by ResurgamHub source group: USA/North America."
+  },
+  {
+    "Country": "Federated States of Micronesia",
+    "ISO3": "FSM",
+    "Region": "Asia-Pacific",
+    "Latitude": 6.91666666,
+    "Longitude": 158.25,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "FSM",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Fiji",
+    "ISO3": "FJI",
+    "Region": "Asia-Pacific",
+    "Latitude": -18.0,
+    "Longitude": 175.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "FJI",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Finland",
+    "ISO3": "FIN",
+    "Region": "Europe",
+    "Latitude": 64.0,
+    "Longitude": 26.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "FIN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Finland article."
+  },
+  {
+    "Country": "France",
+    "ISO3": "FRA",
+    "Region": "Europe",
+    "Latitude": 46.0,
+    "Longitude": 2.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "FRA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About."
+  },
+  {
+    "Country": "Georgia",
+    "ISO3": "GEO",
+    "Region": "Asia-Pacific",
+    "Latitude": 42.0,
+    "Longitude": 43.5,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "GEO",
+    "Notes": "Included because mentioned by ResurgamHub source group: Black Sea energy."
+  },
+  {
+    "Country": "Germany",
+    "ISO3": "DEU",
+    "Region": "Europe",
+    "Latitude": 51.0,
+    "Longitude": 9.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "DEU",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About."
+  },
+  {
+    "Country": "Ghana",
+    "ISO3": "GHA",
+    "Region": "Africa",
+    "Latitude": 8.0,
+    "Longitude": -2.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "GHA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Greece",
+    "ISO3": "GRC",
+    "Region": "Europe",
+    "Latitude": 39.0,
+    "Longitude": 22.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "GRC",
+    "Notes": "Included because mentioned by ResurgamHub source group: Black Sea energy."
+  },
+  {
+    "Country": "Guinea",
+    "ISO3": "GIN",
+    "Region": "Africa",
+    "Latitude": 11.0,
+    "Longitude": -10.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "GIN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Guyana",
+    "ISO3": "GUY",
+    "Region": "Americas",
+    "Latitude": 5.0,
+    "Longitude": -59.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "GUY",
+    "Notes": "Included because mentioned by ResurgamHub source group: USA/North America."
+  },
+  {
+    "Country": "Hungary",
+    "ISO3": "HUN",
+    "Region": "Europe",
+    "Latitude": 47.0,
+    "Longitude": 20.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "HUN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Gripen article."
+  },
+  {
+    "Country": "India",
+    "ISO3": "IND",
+    "Region": "Asia-Pacific",
+    "Latitude": 20.0,
+    "Longitude": 77.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "IND",
+    "Notes": "Included because mentioned by ResurgamHub source group: Iran conflict / Europe."
+  },
+  {
+    "Country": "Indonesia",
+    "ISO3": "IDN",
+    "Region": "Asia-Pacific",
+    "Latitude": -5.0,
+    "Longitude": 120.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "IDN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Pacific NATO / Asia."
+  },
+  {
+    "Country": "Iran",
+    "ISO3": "IRN",
+    "Region": "Asia-Pacific",
+    "Latitude": 32.0,
+    "Longitude": 53.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "IRN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About."
+  },
+  {
+    "Country": "Iraq",
+    "ISO3": "IRQ",
+    "Region": "Asia-Pacific",
+    "Latitude": 33.0,
+    "Longitude": 44.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "IRQ",
+    "Notes": "Included because mentioned by ResurgamHub source group: Iran conflict / Europe."
+  },
+  {
+    "Country": "Israel",
+    "ISO3": "ISR",
+    "Region": "Asia-Pacific",
+    "Latitude": 31.5,
+    "Longitude": 34.75,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "ISR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Middle East ceasefire."
+  },
+  {
+    "Country": "Italy",
+    "ISO3": "ITA",
+    "Region": "Europe",
+    "Latitude": 42.83333333,
+    "Longitude": 12.83333333,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "ITA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Middle East ceasefire."
+  },
+  {
+    "Country": "Japan",
+    "ISO3": "JPN",
+    "Region": "Asia-Pacific",
+    "Latitude": 36.0,
+    "Longitude": 138.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "JPN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About."
+  },
+  {
+    "Country": "Jordan",
+    "ISO3": "JOR",
+    "Region": "Asia-Pacific",
+    "Latitude": 31.0,
+    "Longitude": 36.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "JOR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Middle East ceasefire."
+  },
+  {
+    "Country": "Kazakhstan",
+    "ISO3": "KAZ",
+    "Region": "Asia-Pacific",
+    "Latitude": 48.0,
+    "Longitude": 68.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "KAZ",
+    "Notes": "Included because mentioned by ResurgamHub source group: Central Asia/all materials."
+  },
+  {
+    "Country": "Kenya",
+    "ISO3": "KEN",
+    "Region": "Africa",
+    "Latitude": 1.0,
+    "Longitude": 38.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "KEN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Kiribati",
+    "ISO3": "KIR",
+    "Region": "Asia-Pacific",
+    "Latitude": 1.41666666,
+    "Longitude": 173.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "KIR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Kuwait",
+    "ISO3": "KWT",
+    "Region": "Asia-Pacific",
+    "Latitude": 29.5,
+    "Longitude": 45.75,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "KWT",
+    "Notes": "Included because mentioned by ResurgamHub source group: Iran conflict / Europe."
+  },
+  {
+    "Country": "Kyrgyzstan",
+    "ISO3": "KGZ",
+    "Region": "Asia-Pacific",
+    "Latitude": 41.0,
+    "Longitude": 75.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "KGZ",
+    "Notes": "Included because mentioned by ResurgamHub source group: Central Asia/all materials. Normalized from Kyrgyz Republic / Kyrgyzstan."
+  },
+  {
+    "Country": "Latvia",
+    "ISO3": "LVA",
+    "Region": "Europe",
+    "Latitude": 57.0,
+    "Longitude": 25.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "LVA",
+    "Notes": "Included because mentioned by ResurgamHub source group: USA/North America."
+  },
+  {
+    "Country": "Lebanon",
+    "ISO3": "LBN",
+    "Region": "Asia-Pacific",
+    "Latitude": 33.83333333,
+    "Longitude": 35.83333333,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "LBN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Middle East ceasefire."
+  },
+  {
+    "Country": "Liberia",
+    "ISO3": "LBR",
+    "Region": "Africa",
+    "Latitude": 6.5,
+    "Longitude": -9.5,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "LBR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Libya",
+    "ISO3": "LBY",
+    "Region": "Africa",
+    "Latitude": 25.0,
+    "Longitude": 17.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "LBY",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Lithuania",
+    "ISO3": "LTU",
+    "Region": "Europe",
+    "Latitude": 56.0,
+    "Longitude": 24.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "LTU",
+    "Notes": "Included because mentioned by ResurgamHub source group: USA/North America."
+  },
+  {
+    "Country": "Madagascar",
+    "ISO3": "MDG",
+    "Region": "Africa",
+    "Latitude": -20.0,
+    "Longitude": 47.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "MDG",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Malaysia",
+    "ISO3": "MYS",
+    "Region": "Asia-Pacific",
+    "Latitude": 2.5,
+    "Longitude": 112.5,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "MYS",
+    "Notes": "Included because mentioned by ResurgamHub source group: Pacific NATO / Asia."
+  },
+  {
+    "Country": "Mali",
+    "ISO3": "MLI",
+    "Region": "Africa",
+    "Latitude": 17.0,
+    "Longitude": -4.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "MLI",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Marshall Islands",
+    "ISO3": "MHL",
+    "Region": "Asia-Pacific",
+    "Latitude": 9.0,
+    "Longitude": 168.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "MHL",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Mauritania",
+    "ISO3": "MRT",
+    "Region": "Africa",
+    "Latitude": 20.0,
+    "Longitude": -12.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "MRT",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Moldova",
+    "ISO3": "MDA",
+    "Region": "Europe",
+    "Latitude": 47.0,
+    "Longitude": 29.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "MDA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Black Sea energy."
+  },
+  {
+    "Country": "Mongolia",
+    "ISO3": "MNG",
+    "Region": "Asia-Pacific",
+    "Latitude": 46.0,
+    "Longitude": 105.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "MNG",
+    "Notes": "Included because mentioned by ResurgamHub source group: Central Asia/all materials."
+  },
+  {
+    "Country": "Morocco",
+    "ISO3": "MAR",
+    "Region": "Africa",
+    "Latitude": 32.0,
+    "Longitude": -5.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "MAR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Algeria article."
+  },
+  {
+    "Country": "Mozambique",
+    "ISO3": "MOZ",
+    "Region": "Africa",
+    "Latitude": -18.25,
+    "Longitude": 35.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "MOZ",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Myanmar",
+    "ISO3": "MMR",
+    "Region": "Asia-Pacific",
+    "Latitude": 22.0,
+    "Longitude": 98.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "MMR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Pacific NATO / Asia."
+  },
+  {
+    "Country": "Nauru",
+    "ISO3": "NRU",
+    "Region": "Asia-Pacific",
+    "Latitude": -0.53333333,
+    "Longitude": 166.91666666,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "NRU",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Netherlands",
+    "ISO3": "NLD",
+    "Region": "Europe",
+    "Latitude": 52.5,
+    "Longitude": 5.75,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "NLD",
+    "Notes": "Included because mentioned by ResurgamHub source group: Iran conflict / Europe."
+  },
+  {
+    "Country": "New Caledonia",
+    "ISO3": "NCL",
+    "Region": "Asia-Pacific",
+    "Latitude": -21.5,
+    "Longitude": 165.5,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "NCL",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About. Country/area rather than UN-member-only sovereign-state row; compatible with country-area map treatment."
+  },
+  {
+    "Country": "New Zealand",
+    "ISO3": "NZL",
+    "Region": "Asia-Pacific",
+    "Latitude": -41.0,
+    "Longitude": 174.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "NZL",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Nicaragua",
+    "ISO3": "NIC",
+    "Region": "Americas",
+    "Latitude": 13.0,
+    "Longitude": -85.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "NIC",
+    "Notes": "Included because mentioned by ResurgamHub source group: Chile article."
+  },
+  {
+    "Country": "Niger",
+    "ISO3": "NER",
+    "Region": "Africa",
+    "Latitude": 16.0,
+    "Longitude": 8.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "NER",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Nigeria",
+    "ISO3": "NGA",
+    "Region": "Africa",
+    "Latitude": 10.0,
+    "Longitude": 8.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "NGA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "North Korea",
+    "ISO3": "PRK",
+    "Region": "Asia-Pacific",
+    "Latitude": 40.0,
+    "Longitude": 127.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "PRK",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About. Normalized from North Korea / DPRK."
+  },
+  {
+    "Country": "Norway",
+    "ISO3": "NOR",
+    "Region": "Europe",
+    "Latitude": 62.0,
+    "Longitude": 10.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "NOR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Europe/Ukraine/Belarus."
+  },
+  {
+    "Country": "Oman",
+    "ISO3": "OMN",
+    "Region": "Asia-Pacific",
+    "Latitude": 21.0,
+    "Longitude": 57.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "OMN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Algeria article."
+  },
+  {
+    "Country": "Palau",
+    "ISO3": "PLW",
+    "Region": "Asia-Pacific",
+    "Latitude": 7.5,
+    "Longitude": 134.5,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "PLW",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Palestine",
+    "ISO3": "PSE",
+    "Region": "Asia-Pacific",
+    "Latitude": 31.9522,
+    "Longitude": 35.2332,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "PSE",
+    "Notes": "Included because mentioned by ResurgamHub source group: Middle East ceasefire. Country/area rather than UN-member-only sovereign-state row; compatible with country-area map treatment."
+  },
+  {
+    "Country": "Papua New Guinea",
+    "ISO3": "PNG",
+    "Region": "Asia-Pacific",
+    "Latitude": -6.0,
+    "Longitude": 147.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "PNG",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Peru",
+    "ISO3": "PER",
+    "Region": "Americas",
+    "Latitude": -10.0,
+    "Longitude": -76.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "PER",
+    "Notes": "Included because mentioned by ResurgamHub source group: Gripen article."
+  },
+  {
+    "Country": "Philippines",
+    "ISO3": "PHL",
+    "Region": "Asia-Pacific",
+    "Latitude": 13.0,
+    "Longitude": 122.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "PHL",
+    "Notes": "Included because mentioned by ResurgamHub source group: China-Japan/Taiwan."
+  },
+  {
+    "Country": "Poland",
+    "ISO3": "POL",
+    "Region": "Europe",
+    "Latitude": 52.0,
+    "Longitude": 20.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "POL",
+    "Notes": "Included because mentioned by ResurgamHub source group: Europe/Ukraine/Belarus."
+  },
+  {
+    "Country": "Qatar",
+    "ISO3": "QAT",
+    "Region": "Asia-Pacific",
+    "Latitude": 25.5,
+    "Longitude": 51.25,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "QAT",
+    "Notes": "Included because mentioned by ResurgamHub source group: Middle East ceasefire."
+  },
+  {
+    "Country": "Republic of the Congo",
+    "ISO3": "COG",
+    "Region": "Africa",
+    "Latitude": -1.0,
+    "Longitude": 15.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "COG",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Romania",
+    "ISO3": "ROU",
+    "Region": "Europe",
+    "Latitude": 46.0,
+    "Longitude": 25.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "ROU",
+    "Notes": "Included because mentioned by ResurgamHub source group: Black Sea energy."
+  },
+  {
+    "Country": "Russia",
+    "ISO3": "RUS",
+    "Region": "Europe",
+    "Latitude": 60.0,
+    "Longitude": 100.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "RUS",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About. Normalized from ResurgamHub terms Moscovia / Muscovy / Russian Federation."
+  },
+  {
+    "Country": "Rwanda",
+    "ISO3": "RWA",
+    "Region": "Africa",
+    "Latitude": -2.0,
+    "Longitude": 30.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "RWA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Samoa",
+    "ISO3": "WSM",
+    "Region": "Asia-Pacific",
+    "Latitude": -13.58333333,
+    "Longitude": -172.33333333,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "WSM",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Saudi Arabia",
+    "ISO3": "SAU",
+    "Region": "Asia-Pacific",
+    "Latitude": 25.0,
+    "Longitude": 45.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "SAU",
+    "Notes": "Included because mentioned by ResurgamHub source group: Iran conflict / Europe."
+  },
+  {
+    "Country": "Serbia",
+    "ISO3": "SRB",
+    "Region": "Europe",
+    "Latitude": 44.1305021,
+    "Longitude": 16.4284181,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "SRB",
+    "Notes": "Included because mentioned by ResurgamHub source group: Europe/Ukraine/Belarus."
+  },
+  {
+    "Country": "Singapore",
+    "ISO3": "SGP",
+    "Region": "Asia-Pacific",
+    "Latitude": 1.36666666,
+    "Longitude": 103.8,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "SGP",
+    "Notes": "Included because mentioned by ResurgamHub source group: Pacific NATO / Asia."
+  },
+  {
+    "Country": "Slovakia",
+    "ISO3": "SVK",
+    "Region": "Europe",
+    "Latitude": 48.66666666,
+    "Longitude": 19.5,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "SVK",
+    "Notes": "Included because mentioned by ResurgamHub source group: Black Sea energy."
+  },
+  {
+    "Country": "Solomon Islands",
+    "ISO3": "SLB",
+    "Region": "Asia-Pacific",
+    "Latitude": -8.0,
+    "Longitude": 159.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "SLB",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "South Africa",
+    "ISO3": "ZAF",
+    "Region": "Africa",
+    "Latitude": -29.0,
+    "Longitude": 24.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "ZAF",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "South Korea",
+    "ISO3": "KOR",
+    "Region": "Asia-Pacific",
+    "Latitude": 37.0,
+    "Longitude": 127.5,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "KOR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About. Normalized from Republic of Korea / South Korea."
+  },
+  {
+    "Country": "Spain",
+    "ISO3": "ESP",
+    "Region": "Europe",
+    "Latitude": 40.0,
+    "Longitude": -4.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "ESP",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About."
+  },
+  {
+    "Country": "Sri Lanka",
+    "ISO3": "LKA",
+    "Region": "Asia-Pacific",
+    "Latitude": 7.0,
+    "Longitude": 81.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "LKA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Sudan",
+    "ISO3": "SDN",
+    "Region": "Africa",
+    "Latitude": 15.0,
+    "Longitude": 30.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "SDN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Sweden",
+    "ISO3": "SWE",
+    "Region": "Europe",
+    "Latitude": 62.0,
+    "Longitude": 15.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "SWE",
+    "Notes": "Included because mentioned by ResurgamHub source group: Gripen article."
+  },
+  {
+    "Country": "Syria",
+    "ISO3": "SYR",
+    "Region": "Asia-Pacific",
+    "Latitude": 35.0,
+    "Longitude": 38.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "SYR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Europe/Ukraine/Belarus."
+  },
+  {
+    "Country": "Taiwan",
+    "ISO3": "TWN",
+    "Region": "Asia-Pacific",
+    "Latitude": 23.5,
+    "Longitude": 121.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "TWN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China. Country/area rather than UN-member-only sovereign-state row; compatible with country-area map treatment."
+  },
+  {
+    "Country": "Tajikistan",
+    "ISO3": "TJK",
+    "Region": "Asia-Pacific",
+    "Latitude": 39.0,
+    "Longitude": 71.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "TJK",
+    "Notes": "Included because mentioned by ResurgamHub source group: Central Asia/all materials."
+  },
+  {
+    "Country": "Thailand",
+    "ISO3": "THA",
+    "Region": "Asia-Pacific",
+    "Latitude": 15.0,
+    "Longitude": 100.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "THA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Gripen article."
+  },
+  {
+    "Country": "Tonga",
+    "ISO3": "TON",
+    "Region": "Asia-Pacific",
+    "Latitude": -20.0,
+    "Longitude": -175.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "TON",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Turkey",
+    "ISO3": "TUR",
+    "Region": "Asia-Pacific",
+    "Latitude": 39.0,
+    "Longitude": 35.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "TUR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Middle East ceasefire."
+  },
+  {
+    "Country": "Turkmenistan",
+    "ISO3": "TKM",
+    "Region": "Asia-Pacific",
+    "Latitude": 40.0,
+    "Longitude": 60.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "TKM",
+    "Notes": "Included because mentioned by ResurgamHub source group: Central Asia/all materials."
+  },
+  {
+    "Country": "Tuvalu",
+    "ISO3": "TUV",
+    "Region": "Asia-Pacific",
+    "Latitude": -8.0,
+    "Longitude": 178.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "TUV",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Uganda",
+    "ISO3": "UGA",
+    "Region": "Africa",
+    "Latitude": 1.0,
+    "Longitude": 32.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "UGA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  },
+  {
+    "Country": "Ukraine",
+    "ISO3": "UKR",
+    "Region": "Europe",
+    "Latitude": 49.0,
+    "Longitude": 32.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "UKR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About."
+  },
+  {
+    "Country": "United Arab Emirates",
+    "ISO3": "ARE",
+    "Region": "Asia-Pacific",
+    "Latitude": 24.0,
+    "Longitude": 54.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "ARE",
+    "Notes": "Included because mentioned by ResurgamHub source group: Iran conflict / Europe."
+  },
+  {
+    "Country": "United Kingdom",
+    "ISO3": "GBR",
+    "Region": "Europe",
+    "Latitude": 54.0,
+    "Longitude": -2.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "GBR",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About. Use UK/GBR for Great Britain/Britain/England/Scotland/Wales references unless subnational layer is added."
+  },
+  {
+    "Country": "United States",
+    "ISO3": "USA",
+    "Region": "Americas",
+    "Latitude": 38.0,
+    "Longitude": -97.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "USA",
+    "Notes": "Included because mentioned by ResurgamHub source group: Homepage/About. Normalized from USA / United States / America."
+  },
+  {
+    "Country": "Uzbekistan",
+    "ISO3": "UZB",
+    "Region": "Asia-Pacific",
+    "Latitude": 41.0,
+    "Longitude": 64.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "UZB",
+    "Notes": "Included because mentioned by ResurgamHub source group: Central Asia/all materials."
+  },
+  {
+    "Country": "Vanuatu",
+    "ISO3": "VUT",
+    "Region": "Asia-Pacific",
+    "Latitude": -16.0,
+    "Longitude": 167.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "VUT",
+    "Notes": "Included because mentioned by ResurgamHub source group: Oceania/China."
+  },
+  {
+    "Country": "Venezuela",
+    "ISO3": "VEN",
+    "Region": "Americas",
+    "Latitude": 8.0,
+    "Longitude": -66.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "VEN",
+    "Notes": "Included because mentioned by ResurgamHub source group: Venezuela/Cuba."
+  },
+  {
+    "Country": "Vietnam",
+    "ISO3": "VNM",
+    "Region": "Asia-Pacific",
+    "Latitude": 16.16666666,
+    "Longitude": 107.83333333,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "VNM",
+    "Notes": "Included because mentioned by ResurgamHub source group: Pacific NATO / Asia."
+  },
+  {
+    "Country": "Western Sahara",
+    "ISO3": "ESH",
+    "Region": "Africa",
+    "Latitude": 24.5,
+    "Longitude": -13.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "ESH",
+    "Notes": "Included because mentioned by ResurgamHub source group: Algeria article. Country/area rather than UN-member-only sovereign-state row; compatible with country-area map treatment."
+  },
+  {
+    "Country": "Zimbabwe",
+    "ISO3": "ZWE",
+    "Region": "Africa",
+    "Latitude": -20.0,
+    "Longitude": 30.0,
+    "Include_on_Map": "Yes",
+    "Leaflet_Join_Key": "ZWE",
+    "Notes": "Included because mentioned by ResurgamHub source group: Africa hybrid war."
+  }
+]
